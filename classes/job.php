@@ -61,12 +61,19 @@ class Job {
     
             $jobObjects = [];
             foreach ($jobs as $job) {
-                // Ensure all keys exist before accessing them
-                // Use uppercase keys if the column names in the database are uppercase
                 if (isset(
-                    $job['JobID'], $job['CompanyID'], $job['JobTitle'], $job['JobDescription'],
-                    $job['JobType'], $job['SalaryMin'], $job['SalaryMax'], $job['WorkHours'],
-                    $job['JobLocation'], $job['JobLocationType'], $job['PostingDate'], $job['VerificationStatus']
+                    $job['JobID'], 
+                    $job['CompanyID'], 
+                    $job['JobTitle'], 
+                    $job['JobDescription'],
+                    $job['JobType'], 
+                    $job['SalaryMin'], 
+                    $job['SalaryMax'],
+                    $job['WorkHours'], 
+                    $job['JobLocationType'], 
+                    $job['PostingDate'], 
+                    $job['VerificationStatus'],
+                    $job['JobIndustry']
                 )) {
                     $jobObjects[] = new JobDetails(
                         $job['JobID'],
@@ -80,11 +87,11 @@ class Job {
                         $job['JobLocation'],
                         $job['JobLocationType'],
                         $job['PostingDate'],
-                        $job['VerificationStatus']
+                        $job['VerificationStatus'],
+                        $job['JobIndustry'],
+                        $job['OtherIndustry']
                     );
                 } else {
-                    // Handle the case where not all keys exist
-                    // This could be logging an error, skipping the job, or throwing an exception
                     error_log("Incomplete job data for JobID: " . ($job['JobID'] ?? 'Unknown JobID'));
                 }
             }
@@ -96,7 +103,7 @@ class Job {
             throw $e; // Rethrow the exception to allow for higher-level error handling
         }
     }
-    
+
     public function getJobDetails($jobID) {
         try {
             $stmt = $this->conn->prepare("SELECT * FROM Jobs WHERE JobID=?");
@@ -104,20 +111,27 @@ class Job {
             $stmt->execute();
             $result = $stmt->get_result();
             $jobs = $result->fetch_all(MYSQLI_ASSOC);
-            $stmt->close(); // Close the statement after fetching the results
+            $stmt->close();
     
             if (empty($jobs)) {
-                return []; // Return an empty array instead of false
+                return [];
             }
     
             $jobObjects = [];
             foreach ($jobs as $job) {
-                // Ensure all keys exist before accessing them
-                // Use uppercase keys if the column names in the database are uppercase
                 if (isset(
-                    $job['JobID'], $job['CompanyID'], $job['JobTitle'], $job['JobDescription'],
-                    $job['JobType'], $job['SalaryMin'], $job['SalaryMax'], $job['WorkHours'],
-                    $job['JobLocation'], $job['JobLocationType'], $job['PostingDate'], $job['VerificationStatus']
+                    $job['JobID'], 
+                    $job['CompanyID'], 
+                    $job['JobTitle'], 
+                    $job['JobDescription'],
+                    $job['JobType'], 
+                    $job['SalaryMin'], 
+                    $job['SalaryMax'],
+                    $job['WorkHours'], 
+                    $job['JobLocationType'], 
+                    $job['PostingDate'], 
+                    $job['VerificationStatus'],
+                    $job['JobIndustry']
                 )) {
                     $jobObjects[] = new JobDetails(
                         $job['JobID'],
@@ -131,20 +145,38 @@ class Job {
                         $job['JobLocation'],
                         $job['JobLocationType'],
                         $job['PostingDate'],
-                        $job['VerificationStatus']
+                        $job['VerificationStatus'],
+                        $job['JobIndustry'],
+                        $job['OtherIndustry']
                     );
                 } else {
-                    // Handle the case where not all keys exist
-                    // This could be logging an error, skipping the job, or throwing an exception
                     error_log("Incomplete job data for JobID: " . ($job['JobID'] ?? 'Unknown JobID'));
                 }
             }
     
             return $jobObjects;
         } catch (Exception $e) {
-            // Log the error or handle it in a way that allows for recovery
             error_log($e->getMessage());
-            throw $e; // Rethrow the exception to allow for higher-level error handling
+            throw $e;
+        }
+    }
+
+    public function getFaveJobsCountByJobID($jobID){
+        $stmt = $this->conn->prepare("SELECT COUNT(*) AS Interested FROM favoritejobs WHERE JobID = ?");
+        $stmt->bind_param("i", $jobID);
+        $stmt->execute();
+    
+        $result = $stmt->get_result();
+    
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $interested = $row['Interested'];
+            
+            $stmt->close();
+    
+            return $interested;
+        } else {
+            return null;
         }
     }
 }

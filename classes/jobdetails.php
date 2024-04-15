@@ -15,8 +15,10 @@ class JobDetails {
     private $jobLocationType;
     private $postingDate;
     private $verificationStatus;
+    private $jobIndustry;
+    private $otherIndustry;
 
-    public function __construct($jobID, $companyId, $jobTitle, $jobDescription, $jobType, $salaryMin, $salaryMax, $workHours, $jobLocation, $jobLocationType, $postingDate, $verificationStatus) {
+    public function __construct($jobID, $companyId, $jobTitle, $jobDescription, $jobType, $salaryMin, $salaryMax, $workHours, $jobLocation, $jobLocationType, $postingDate, $verificationStatus, $jobIndustry, $otherIndustry) {
         $this->jobID = $jobID;
         $this->companyId = $companyId;
         $this->jobTitle = $jobTitle;
@@ -29,6 +31,8 @@ class JobDetails {
         $this->jobLocationType = $jobLocationType;
         $this->postingDate = $postingDate;
         $this->verificationStatus = $verificationStatus;
+        $this->jobIndustry = $jobIndustry;
+        $this->otherIndustry = $otherIndustry;
     }
 
     // Getters
@@ -80,6 +84,14 @@ class JobDetails {
         return $this->verificationStatus;
     }
 
+    public function getJobIndustry(){
+        return $this->jobIndustry;
+    }
+
+    public function getOtherIndustry(){
+        return $this->otherIndustry;
+    }
+
     // Setters
     public function setJobID($jobID) {
         $this->jobID = $jobID;
@@ -127,5 +139,13 @@ class JobDetails {
 
     public function setVerificationStatus($verificationStatus) {
         $this->verificationStatus = $verificationStatus;
+    }
+
+    public function setJobIndustry($jobIndustry){
+        $this->jobIndustry = $jobIndustry;
+    }
+
+    public function setOtherIndustry($otherIndustry){
+        $this->otherIndustry = $otherIndustry;
     }
 }
