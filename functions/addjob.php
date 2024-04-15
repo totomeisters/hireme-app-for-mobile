@@ -30,9 +30,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $workHours = htmlspecialchars($_POST['workHours']);
     $jobLocation = htmlspecialchars($_POST['jobLocation']);
     $jobLocationType = htmlspecialchars($_POST['jobLocationType']);
+    $jobIndustry = htmlspecialchars($_POST['jobIndustry']);
+    $otherIndustry = htmlspecialchars($_POST['otherIndustry']);
 
     $job = new Job($conn);
-    if($job->addJob($companyID, $jobTitle, $jobDescription, $jobType, $salaryMin, $salaryMax, $workHours, $jobLocation, $jobLocationType)){
+    if($job->addJob($companyID, $jobTitle, $jobDescription, $jobType, $salaryMin, $salaryMax, $workHours, $jobLocation, $jobLocationType, $jobIndustry, $otherIndustry)){
         $response = array('status' => 'success', 'message' => 'Successfully added job. Connecting to server, please wait.', 'redirect' => './jobs.php');
     }
     else {

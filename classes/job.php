@@ -12,7 +12,7 @@ class Job {
         $this->conn = $conn;
     }
 
-    public function addJob($companyId, $jobTitle, $jobDescription, $jobType, $salaryMin, $salaryMax, $workHours, $jobLocation, $jobLocationType) {
+    public function addJob($companyId, $jobTitle, $jobDescription, $jobType, $salaryMin, $salaryMax, $workHours, $jobLocation, $jobLocationType, $jobIndustry, $otherIndustry) {
         try {
             $stmt = $this->conn->prepare("INSERT INTO Jobs (CompanyID, 
                                                             JobTitle, 
@@ -24,17 +24,14 @@ class Job {
                                                             JobLocation, 
                                                             JobLocationType, 
                                                             PostingDate, 
-                                                            VerificationStatus)
-                                            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), 'Pending')");
-            // Assuming $this->conn is your database connection object
+                                                            VerificationStatus,
+                                                            JobIndustry,
+                                                            OtherIndustry)
+                                            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), 'Pending', ?, ?)");
+            $stmt->bind_param("isssddsssss", $companyId, $jobTitle, $jobDescription, $jobType, $salaryMin, $salaryMax, $workHours, $jobLocation, $jobLocationType, $jobIndustry, $otherIndustry);
             
-            // Bind parameters
-            $stmt->bind_param("isssddsss", $companyId, $jobTitle, $jobDescription, $jobType, $salaryMin, $salaryMax, $workHours, $jobLocation, $jobLocationType);
-            
-            // Execute the statement
             $result = $stmt->execute();
             
-            // Close the statement
             $stmt->close();
             
             if (!$result) {

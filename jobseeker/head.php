@@ -23,5 +23,5 @@
     <script src="../assets/vendor/js/helpers.js"></script>
     <script src="../assets/js/config.js"></script>
     <link rel="stylesheet" href="../assets/css/toast.css">
-
+    <link rel="stylesheet" href="../assets/css/colorpalette.css">
   </head>

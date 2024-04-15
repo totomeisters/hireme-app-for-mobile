@@ -71,27 +71,7 @@ $pagetitle = "HireMe - Dashboard";
                 <!-- Card -->
                 <div class="col-lg-12 mb-4 order-0">
                   <div class="card p-2">
-
-                    <?php
-                    if (!$companydetails == null) {?>
-
-                        <h5 class="card-title">Hello <?php echo ucfirst($companyname);?>!</h5>
-                        <p class="card-text">Please pick an option from the side menu to continue working.</p>
-
-                        <img
-                        src="../assets/img/illustrations/dashboard-company.png"
-                        height="100%"
-                        alt="Company Dashboard Illustration"
-                        />
-                        <?php
-                    }
-                    else{?>
-
-                      <h5 class="card-title">Hello <?php echo ucfirst($username);?>!</h5>
-                      <p class="card-text">It looks like you have yet to register your company to us. Click "New Application" on the side bar to get started.</p>
-                      <?php
-                  }?>
-
+                    job seeker dashboard
                   </div>
                 </div>
                 <!-- /Card -->

@@ -46,62 +46,102 @@ $pagetitle = "HireMe - Post a Job";
                 <div class="row">
                     <div class="col-lg-12 mb-4 order-0">
                         <div class="card p-2">
-                        <form id="formAuthentication" action="../functions/addjob.php" method="post">
+                            <form id="formAuthentication" action="../functions/addjob.php" method="post">
                             <div class="form-group mb-2">
                                 <label for="jobTitle">Job Title:</label>
                                 <input type="text" class="form-control" id="jobTitle" name="jobTitle" placeholder="Enter job title" required>
                             </div>
                             <div class="form-group mb-2">
-                              <label for="jobDescription">Job Description:</label>
-                              <textarea class="form-control" id="jobDescription" name="jobDescription" rows="4" placeholder="Enter job description" required></textarea>
-                                                  </div>
-                                                  <div class="form-group mb-2">
-                              <label for="jobType">Job Type:</label>
-                              <select class="form-control" id="jobType" name="jobType" required>
-                                  <option value="">Select job type</option>
-                                  <option value="Full-Time">Full-Time</option>
-                                  <option value="Part-Time">Part-Time</option>
-                                  <option value="Contract">Contract</option>
-                                  <option value="Intern">Intern</option>
-                              </select>
-                                                  </div>
-                                                  <div class="row">
-                              <div class="form-group mb-2 col-md-6">
-                                  <label for="salaryMin">Minimum Salary:</label>
-                                  <input type="number" class="form-control" id="salaryMin" name="salaryMin" placeholder="Enter minimum salary" required>
-                              </div>
-                              <div class="form-group mb-2 col-md-6">
-                                  <label for="salaryMax">Maximum Salary:</label>
-                                  <input type="number" class="form-control" id="salaryMax" name="salaryMax" placeholder="Enter maximum salary" required>
-                              </div>
-                                                  </div>
-                                                  <div class="row p-4">
-                              <div class="col-md-12">
-                                  <div id="slider-range"></div>
-                              </div>
-                                                  </div>
-                                                  <div class="form-group mb-2">
-                              <label for="workHours">Work Hours:</label>
-                              <input type="text" class="form-control" id="workHours" name="workHours" placeholder="Enter work hours (8AM-5PM)" required>
-                                                  </div>
-                                                  <div class="form-group mb-2">
-                              <label for="jobLocation">Job Location:</label>
-                              <input type="text" class="form-control" id="jobLocation" name="jobLocation" placeholder="Enter office address">
-                                                  </div>
-                                                  <div class="form-group mb-2">
-                              <label for="jobLocationType">Job Location Type:</label>
-                              <div class="form-check form-check-inline mx-2">
-                                  <input class="form-check-input" type="radio" id="wfhRadio" name="jobLocationType" value="WFH" required>
-                                  <label class="form-check-label" for="wfhRadio">WFH</label>
-                              </div>
-                              <div class="form-check form-check-inline mx-2">
-                                  <input class="form-check-input" type="radio" id="onsiteRadio" name="jobLocationType" value="On Site" required>
-                                  <label class="form-check-label" for="onsiteRadio">On Site</label>
-                              </div>
+                                <label for="jobDescription">Job Description:</label>
+                                <textarea class="form-control" id="jobDescription" name="jobDescription" rows="4" placeholder="Enter job description" required></textarea>
                             </div>
-                                    
+                            <div class="form-group mb-2">
+                                <label for="jobType">Job Type:</label>
+                                <select class="form-control" id="jobType" name="jobType" required>
+                                    <option value="">Select job type</option>
+                                    <option value="Full-Time">Full-Time</option>
+                                    <option value="Part-Time">Part-Time</option>
+                                    <option value="Contract">Contract</option>
+                                    <option value="Intern">Intern</option>
+                                </select>
+                            </div>
+                            <div class="row">
+                                <div class="form-group mb-2 col-md-6">
+                                    <label for="salaryMin">Minimum Salary:</label>
+                                    <input type="number" class="form-control" id="salaryMin" name="salaryMin" placeholder="Enter minimum salary" required oninput="validateSalaryRange()">
+                                </div>
+                                <div class="form-group mb-2 col-md-6">
+                                    <label for="salaryMax">Maximum Salary:</label>
+                                    <input type="number" class="form-control" id="salaryMax" name="salaryMax" placeholder="Enter maximum salary" required>
+                                </div>
+                            </div>
+                            <div class="row p-4">
+                                <div class="col-md-12">
+                                    <div id="slider-range"></div>
+                                </div>
+                            </div>
+                            <div class="row pb-4">
+                                <div class="col-md-6">
+                                    <label for="workHours">Work Hours:</label>
+                                    <input type="text" class="form-control" id="workHours" name="workHours" placeholder="Enter work hours (8AM-5PM)" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="jobIndustry">Job Industry:</label>
+                                    <select class="form-control" id="jobIndustry" name="jobIndustry" required onchange="showTextField()">
+                                          <option value="">Select job industry</option>
+                                          <option value="Others">Others</option>
+                                          <option disabled>──────────</option>
+                                          <option value="Accounting">Accounting</option>
+                                          <option value="Business">Business</option>
+                                          <option value="Customer Service">Customer Service</option>
+                                          <option value="Design, Fashion, and Arts">Design, Fashion, and Arts</option>
+                                          <option value="Education">Education</option>
+                                          <option value="Energy and Utilities">Energy and Utilities</option>
+                                          <option value="Engineering and Construction">Engineering and Construction</option>
+                                          <option value="Environmental">Environmental</option>
+                                          <option value="Finance and Insurance">Finance and Insurance</option>
+                                          <option value="Food Service">Food Service</option>
+                                          <option value="Government">Government</option>
+                                          <option value="Healthcare">Healthcare</option>
+                                          <option value="Hospitality and Tourism">Hospitality and Tourism</option>
+                                          <option value="Human Resources">Human Resources</option>
+                                          <option value="Legal and Consulting">Legal and Consulting</option>
+                                          <option value="Manufacturing">Manufacturing</option>
+                                          <option value="Marketing and Advertising">Marketing and Advertising</option>
+                                          <option value="Media and Entertainment">Media and Entertainment</option>
+                                          <option value="Non-profit and Social Services">Non-profit and Social Services</option>
+                                          <option value="Real Estate">Real Estate</option>
+                                          <option value="Research and Development">Research and Development</option>
+                                          <option value="Retail">Retail</option>
+                                          <option value="Sales">Sales</option>
+                                          <option value="Security and Defense">Security and Defense</option>
+                                          <option value="Sports and Recreation">Sports and Recreation</option>
+                                          <option value="Technology and Telecommunications">Technology and Telecommunications</option>
+                                          <option value="Warehousing and Distribution">Warehousing and Distribution</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div id="otherIndustryField" class="form-group mb-2" style="display: none;">
+                                <label for="otherIndustry">Other Industry:</label>
+                                <input type="text" class="form-control" id="otherIndustry" name="otherIndustry" placeholder="Enter other industry">
+                            </div>
+                            <div class="form-group mb-2">
+                                <label for="jobLocation">Job Location:</label>
+                                <input type="text" class="form-control" id="jobLocation" name="jobLocation" placeholder="Enter office address">
+                            </div>
+                            <div class="form-group mb-2">
+                                <label for="jobLocationType">Job Location Type:</label>
+                                <div class="form-check form-check-inline mx-2">
+                                    <input class="form-check-input" type="radio" id="wfhRadio" name="jobLocationType" value="WFH" required>
+                                    <label class="form-check-label" for="wfhRadio">WFH</label>
+                                </div>
+                                <div class="form-check form-check-inline mx-2">
+                                    <input class="form-check-input" type="radio" id="onsiteRadio" name="jobLocationType" value="On Site" required>
+                                    <label class="form-check-label" for="onsiteRadio">On Site</label>
+                                </div>
+                            </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
-                        </form>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -205,6 +245,31 @@ $pagetitle = "HireMe - Post a Job";
               });
           });
       });
+    </script>
+
+    <script>
+        function showTextField() {
+            var industrySelect = document.getElementById("jobIndustry");
+            var otherIndustryField = document.getElementById("otherIndustryField");
+        
+            if (industrySelect.value === "Others") {
+                otherIndustryField.style.display = "block";
+            } else {
+                otherIndustryField.style.display = "none";
+            }
+        }
+    </script>
+
+    <script>
+        function validateSalaryRange() {
+            var minSalary = parseFloat(document.getElementById('salaryMin').value);
+            var maxSalary = parseFloat(document.getElementById('salaryMax').value);
+
+            if (minSalary > maxSalary) {
+                alert("Minimum salary cannot be greater than maximum salary");
+                document.getElementById('salaryMin').value = '';
+            }
+        }
     </script>
   </body>
 </html>

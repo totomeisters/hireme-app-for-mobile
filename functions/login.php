@@ -1,7 +1,8 @@
 <?php
 if (!isset($_SESSION)) {
     session_start();
-} else {
+} 
+else {
     session_destroy();
     session_start();
 }
@@ -39,10 +40,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($role != null) {
                 switch ($role) {
                     case "Admin":
-                        $response = array('status' => 'success', 'message' => 'Login verified. You will be redirected shortly.', 'redirect' => './manager/dashboard.php');
+                        $response = array('status' => 'success', 'message' => 'Welcome Admin. You will be redirected shortly.', 'redirect' => './admin/dashboard.php');
+                        break;
+                    case "Manager":
+                        $response = array('status' => 'success', 'message' => 'Welcome Manager. You will be redirected shortly.', 'redirect' => './manager/dashboard.php');
                         break;
                     case "Company":
-                        $response = array('status' => 'success', 'message' => 'Login verified. You will be redirected shortly.', 'redirect' => './company/dashboard.php');
+                        $response = array('status' => 'success', 'message' => 'Welcome Company. You will be redirected shortly.', 'redirect' => './company/dashboard.php');
+                        break;
+                    case "Job Seeker":
+                        $response = array('status' => 'success', 'message' => 'Welcome Job Seeker. You will be redirected shortly.', 'redirect' => './jobseeker/dashboard.php');
                         break;
                     default:
                         $response = array('status' => 'error', 'message' => 'Access denied. Please contact the support team or the managers.');
