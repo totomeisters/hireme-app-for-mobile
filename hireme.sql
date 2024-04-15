@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Apr 15, 2024 at 06:00 PM
+-- Generation Time: Apr 15, 2024 at 08:32 PM
 -- Server version: 8.2.0
 -- PHP Version: 8.2.13
 
@@ -64,6 +64,22 @@ CREATE TABLE IF NOT EXISTS `companyapplication` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `favoritejobs`
+--
+
+DROP TABLE IF EXISTS `favoritejobs`;
+CREATE TABLE IF NOT EXISTS `favoritejobs` (
+  `FavoriteID` int NOT NULL AUTO_INCREMENT,
+  `JobSeekerID` int NOT NULL,
+  `JobID` int NOT NULL,
+  PRIMARY KEY (`FavoriteID`),
+  KEY `JobSeekerID` (`JobSeekerID`),
+  KEY `JobID` (`JobID`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `jobs`
 --
 
@@ -81,6 +97,8 @@ CREATE TABLE IF NOT EXISTS `jobs` (
   `JobLocationType` enum('WFH','On Site') COLLATE utf8mb4_general_ci NOT NULL,
   `PostingDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `VerificationStatus` enum('Verified','Pending','Rejected') COLLATE utf8mb4_general_ci NOT NULL,
+  `JobIndustry` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `OtherIndustry` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`JobID`),
   KEY `CompanyID` (`CompanyID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
