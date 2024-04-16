@@ -3,9 +3,9 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
-require_once '../classes/user.php';
-require_once '../classes/jobseeker.php';
 require_once '../classes/job.php';
+require_once '../classes/jobseeker.php';
+require_once '../classes/user.php';
 
 $username = $_SESSION['username'];
 
@@ -15,9 +15,8 @@ $jobseeker = new JobSeeker($conn);
 
 $userID = $user->getUserDetails($username)->getUserID();
 $jobseekerID = $jobseeker->getJobSeekerDetailsByUserID($userID)->getJobSeekerID();
-$favejobsID = $jobseeker->getFaveJobsIDByJobseekerID($jobseekerID); //returns fave job id, use that as parameter to get all job details within a foreach
-
-$pagetitle = "HireMe - Dashboard";
+$jobdetails = $job->getAllVerifiedJobs();
+$pagetitle = "HireMe - Jobs";
 ?>
 
 <!DOCTYPE html>
@@ -30,7 +29,7 @@ $pagetitle = "HireMe - Dashboard";
   data-template="vertical-menu-template-free"
 >
   <!-- Head -->
-  <?php require_once __DIR__ . "/head.php";?>
+    <?php require_once './head.php';?>
   <!-- /Head -->
 
   <body>
@@ -44,21 +43,21 @@ $pagetitle = "HireMe - Dashboard";
       <div class="layout-container">
 
         <!-- Menu -->
-          <?php require_once __DIR__ . "/menubar.php";?>
+          <?php require_once "./menubar.php";?>
         <!-- / Menu -->
 
         <!-- Layout container -->
         <div class="layout-page">
           <!-- Navbar -->
-          <?php require_once __DIR__ . "/navbar.php";?>
+            <?php require_once "./navbar.php";?>
           <!-- / Navbar -->
 
           <!-- Content wrapper -->
           <div class="content-wrapper">
             <!-- Content -->
             <div class="container mt-5">
-        <h1 class="text-center mb-4">Favorite Jobs</h1>
-        <?php if ($favejobsID): ?>
+        <h1 class="text-center mb-4">All Verified Jobs</h1>
+        <?php if ($jobdetails): ?>
             <table class="table">
                 <thead>
                     <tr>
@@ -72,52 +71,45 @@ $pagetitle = "HireMe - Dashboard";
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($favejobsID as $favejobID):
-                        $jobdetails = $job->getJobDetails($favejobID);
-                        if ($jobdetails): 
-                          $jobID = $jobdetails->getJobID();
-                          $favorite = $jobdetails->getJobID();?>
-                            <tr>
-                                <td>
-                                  <form id="favejobform_<?php echo $jobID; ?>" method="post" action="../functions/favejob.php">
-                                    <input type="hidden" name="jobID" value="<?php echo $jobID; ?>">
-                                    <input type="hidden" name="jobSeekerID" value="<?php echo $jobseekerID; ?>">
-                                    <input type="hidden" name="favoriteAction" value="<?php echo ($jobID == $favorite) ? 'unfavorite' : 'favorite'; ?>">
-                                    <input type="hidden" name="referer" value="./favejobs.php">
-                                    <?php
-                                      if ($jobID == $favorite){
-                                        echo '<button type="submit" class="btn btn-circle"><i class="bx bxs-heart"></i></button>';
-                                      }
-                                      else{
-                                        echo '<button type="submit" class="btn btn-circle"><i class="bx bx-heart"></i></button>';
-                                      }
-                                    ?>
-                                  </form>
-                                </td>
-                                <td><?php echo $jobdetails->getJobTitle(); ?></td>
-                                <td class="d-none d-md-table-cell"><?php echo $jobdetails->getJobType(); ?></td>
-                                <td class="d-none d-md-table-cell"><?php echo $jobdetails->getJobLocationType(); ?></td>
-                                <td class="d-none d-md-table-cell"><?php echo $jobdetails->getPostingDate(); ?></td>
-                                <td class="d-none d-md-table-cell"><?php echo $job->getFaveJobsCountByJobID($jobdetails->getJobID());?></td>
-                                <td>
-                                    <form method="post" action="./viewjob.php">
-                                        <input type="hidden" name="jobID" value="<?php echo $jobID; ?>">
-                                        <button class="btn btn-primary" type="submit">View</button>
-                                    </form>
-                                </td>
-                            </tr>
-                        <?php else: ?>
-                            <tr>
-                                <td colspan="7" class="text-center">There was a problem getting job details.</td>
-                            </tr>
-                        <?php endif;
-                    endforeach; ?>
+                    <?php foreach ($jobdetails as $jobdetail): 
+                      $jobID = $jobdetail->getJobID();
+                      $favorite = $job->getFaveJobsIDByJobID($jobdetail->getJobID());
+                      ?>
+                        <tr>
+                            <td>
+                              <form id="favejobform_<?php echo $jobID; ?>" method="post" action="../functions/favejob.php">
+                                <input type="hidden" name="jobID" value="<?php echo $jobID; ?>">
+                                <input type="hidden" name="jobSeekerID" value="<?php echo $jobseekerID; ?>">
+                                <input type="hidden" name="favoriteAction" value="<?php echo ($jobID == $favorite) ? 'unfavorite' : 'favorite'; ?>">
+                                <input type="hidden" name="referer" value="./jobs.php">
+                                <?php
+                                  if ($jobID == $favorite){
+                                    echo '<button type="submit" class="btn btn-circle"><i class="bx bxs-heart"></i></button>';
+                                  }
+                                  else{
+                                    echo '<button type="submit" class="btn btn-circle"><i class="bx bx-heart"></i></button>';
+                                  }
+                                ?>
+                              </form>
+                            </td>
+                            <td><?php echo $jobdetail->getJobTitle(); ?></td>
+                            <td class="d-none d-md-table-cell"><?php echo $jobdetail->getJobType(); ?></td>
+                            <td class="d-none d-md-table-cell"><?php echo $jobdetail->getJobLocationType(); ?></td>
+                            <td class="d-none d-md-table-cell"><?php echo $jobdetail->getPostingDate(); ?></td>
+                            <td class="d-none d-md-table-cell"><?php echo $job->getFaveJobsCountByJobID($jobdetail->getJobID())?></td>
+                            <td>
+                            <form method="post" action="./viewjob.php">
+                                <input type="hidden" name="jobID" value="<?php echo $jobdetail->getJobID(); ?>">
+                                <button class="btn btn-primary" type="submit">View</button>
+                            </form>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
         <?php else: ?>
-            <p class="text-center">You have yet to add a job to your "favorite" list. Pick one now at the Jobs tab on the side bar.</p>
+            <p class="text-center">No verified jobs found.</p>
         <?php endif; ?>
-
     </div>
             <!-- / Content -->
 
@@ -149,8 +141,8 @@ $pagetitle = "HireMe - Dashboard";
 
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
-    <?php require_once __DIR__ . "/endscripts.php";?>
-
+    <?php require_once "./endscripts.php";?>
+    
     <script>
       function showToast(message, type) {
           var toast = $('<div>', {

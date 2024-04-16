@@ -13,7 +13,7 @@ class JobSeeker {
     }
 
     public function getJobSeekerDetailsByUserID($userID) {
-        $query = "SELECT * FROM jobseeker WHERE UserID = ?";
+        $query = "SELECT * FROM jobseekers WHERE UserID = ?";
         $stmt = $this->conn->prepare($query);
         $stmt->bind_param('i', $userID);
         $stmt->execute();
@@ -35,7 +35,7 @@ class JobSeeker {
         }
     }
 
-    public function getFaveJobsByJobseekerID($jobseekerID){
+    public function getFaveJobsIDByJobseekerID($jobseekerID){
         $stmt = $this->conn->prepare("SELECT * FROM favoritejobs WHERE JobSeekerID = ?");
         $stmt->bind_param("i", $jobseekerID);
         $stmt->execute();

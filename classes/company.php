@@ -55,5 +55,33 @@ class Company {
             return null;
         }
     }
+
+    public function getAllVerifiedCompanies() {
+        $status = 'Verified';
+        $stmt = $this->conn->prepare("SELECT * FROM companies WHERE VerificationStatus = ?");
+        $stmt->bind_param("s", $status);
+        $stmt->execute();
+    
+        $result = $stmt->get_result();
+    
+        $companies = array();
+    
+        while ($row = $result->fetch_assoc()) {
+            $companyDetails = new CompanyDetails(
+                $row['CompanyID'],
+                $row['UserID'],
+                $row['CompanyName'],
+                $row['CompanyDescription'],
+                $row['CompanyAddress'],
+                $row['VerificationStatus']
+            );
+    
+            $companies[] = $companyDetails;
+        }
+    
+        $stmt->close();
+    
+        return $companies;
+    }    
     
 }

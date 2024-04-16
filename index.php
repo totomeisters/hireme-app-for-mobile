@@ -3,7 +3,7 @@
 //   session_destroy();
 // }
 
-// require_once '/HireMe/classes/user.php';
+// require_once './classes/user.php';
 
 // $user = new User($conn);
 
@@ -12,14 +12,14 @@
 //     exit();
 // }
 // else{
-//     header("Location: /HireMe/auth-login-basic.php");
+//     header("Location: ./auth-login-basic.php");
 //     exit();
 // }
 ?>
 
 <?php
 if (true){
-  header("Location: /HireMe/auth-login-basic.php");
+  header("Location: ./auth-login-basic.php");
   exit();
 }
 else{

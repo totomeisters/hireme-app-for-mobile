@@ -12,7 +12,7 @@
     <!-- Search -->
     <div class="navbar-nav align-items-center">
         <span class="logotext">HireMe-App</span>
-        <!-- <img src="/HireMe/assets/img/icons/websiteicons/hiremeappnewlogo.png" alt="HireMeLogo" style="max-height: 30px;"> -->
+        <!-- <img src="../assets/img/icons/websiteicons/hiremeappnewlogo.png" alt="HireMeLogo" style="max-height: 30px;"> -->
     </div>
     <!-- /Search -->
 
@@ -31,7 +31,7 @@
                     echo $usernameinitial;
                   ?>
           </span>
-            <!-- <img src="/HireMe/assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" /> -->
+            <!-- <img src="../assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" /> -->
           </div>
         </a>
         <ul class="dropdown-menu dropdown-menu-end">
@@ -91,7 +91,7 @@
             <div class="dropdown-divider"></div>
           </li>
           <li>
-            <a class="dropdown-item" href="/HireMe/functions/logout.php">
+            <a class="dropdown-item" href="../functions/logout.php">
               <i class="bx bx-power-off me-2"></i>
               <span class="align-middle">Log Out</span>
             </a>

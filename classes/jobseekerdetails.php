@@ -22,7 +22,7 @@ class JobSeekerDetails {
         $this->contactNumber = $contactNumber;
     }
 
-    // Getters
+    // Getters and Setters
     public function getJobSeekerID() {
         return $this->jobSeekerID;
     }
@@ -42,8 +42,6 @@ class JobSeekerDetails {
     public function getFirstName() {
         return $this->firstName;
     }
-
-    // Setters
 
     public function setFirstName($firstName) {
         $this->firstName = $firstName;

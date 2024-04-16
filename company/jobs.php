@@ -51,7 +51,7 @@ $pagetitle = "HireMe - Jobs";
           <div class="content-wrapper">
             <!-- Content -->
             <div class="container mt-5">
-        <h1 class="text-center mb-4">Jobs Posted</h1>
+        <h1 class="text-center mb-4">Jobs You Posted</h1>
         <?php if ($jobdetails): ?>
             <table class="table">
                 <thead>
@@ -77,7 +77,7 @@ $pagetitle = "HireMe - Jobs";
                             <td>
                             <form method="post" action="./viewjob.php">
                                 <input type="hidden" name="jobID" value="<?php echo $jobdetail->getJobID(); ?>">
-                                <button type="submit">View</button>
+                                <button class="btn btn-primary" type="submit">View</button>
                             </form>
                             </td>
                         </tr>

@@ -11,8 +11,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 require_once '../classes/job.php';
 
 $job = new Job($conn);
-$jobs = $job->getJobDetails($jobID);
-$pagetitle = "HireMe - View Job # ".$jobID;
+$jobdetails = $job->getJobDetails($jobID);
+$pagetitle = "HireMe - View Job #".$jobID;
 ?>
 
 <!DOCTYPE html>
@@ -50,20 +50,20 @@ $pagetitle = "HireMe - View Job # ".$jobID;
               <div class="row">
                 <!-- Card -->
                 <div class="col-lg-12 mb-4 order-0">
-                <?php if (!empty($jobs)): ?>
+                <?php if (!empty($jobdetails)): ?>
                   <div class="card p-2">
                     <div class="card-body">
-                        <h4 class="card-title"><?php echo $jobs->getJobTitle(); ?></h4>
-                        <h6 class="card-subtitle mb-2 text-muted"><?php echo $jobs->getJobLocation(); ?></h6>
-                        <p class="card-text"><?php echo $jobs->getJobDescription(); ?></p>
+                        <h4 class="card-title"><?php echo $jobdetails->getJobTitle(); ?></h4>
+                        <h6 class="card-subtitle mb-2 text-muted"><?php echo $jobdetails->getJobLocation(); ?></h6>
+                        <p class="card-text"><?php echo $jobdetails->getJobDescription(); ?></p>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Job Type: <?php echo $jobs->getJobType(); ?></li>
-                            <li class="list-group-item">Job Type: <?php echo $jobs->getJobLocationType(); ?></li>
-                            <li class="list-group-item">Salary Range: ₱<?php echo $jobs->getSalaryMin() . ' - ₱' . $jobs->getSalaryMax(); ?></li>
-                            <li class="list-group-item">Work Hours: <?php echo $jobs->getWorkHours(); ?></li>
+                            <li class="list-group-item">Job Type: <?php echo $jobdetails->getJobType(); ?></li>
+                            <li class="list-group-item">Job Type: <?php echo $jobdetails->getJobLocationType(); ?></li>
+                            <li class="list-group-item">Salary Range: ₱<?php echo $jobdetails->getSalaryMin() . ' - ₱' . $jobdetails->getSalaryMax(); ?></li>
+                            <li class="list-group-item">Work Hours: <?php echo $jobdetails->getWorkHours(); ?></li>
                         </ul>
                         <?php
-                            $postingDate = new DateTime($jobs->getPostingDate());
+                            $postingDate = new DateTime($jobdetails->getPostingDate());
                             $currentDate = new DateTime();
                             $interval = $currentDate->diff($postingDate);
 
@@ -83,14 +83,8 @@ $pagetitle = "HireMe - View Job # ".$jobID;
                             }
                             ?>
 
-                        <p class="card-text"><small class="text-muted">Posted on: <?php echo $jobs->getPostingDate(); ?></small></p>
+                        <p class="card-text"><small class="text-muted">Posted on: <?php echo $jobdetails->getPostingDate(); ?></small></p>
                         <p class="card-text"><small class="text-muted">Time posted: <?php echo $timePassed; ?></small></p>
-                        <p class="card-text"><small class="text-muted">Verification: 
-                            <?php 
-                                $verification = $jobs->getVerificationStatus();
-
-                                if($verification == 'Pending'){echo '<span class="text-warning">'.$verification.'</span>';}
-                                else{echo '<span class="text-success">'.$verification.'</span>';}?></small></p>
                     </div>
                     <a href="<?php echo isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : './jobs.php'; ?>" class="btn btn-secondary">Back</a>
                   </div>

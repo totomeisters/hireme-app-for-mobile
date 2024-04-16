@@ -19,7 +19,7 @@ else {
   <div class="app-brand demo">
         <div class="app-brand-link gap-2">
         <span class="logotext">HireMe-App</span>
-          <!-- <img src="/HireMe/assets/img/icons/websiteicons/hiremeappnewlogo.png" alt="HireMeLogo" style="max-height: 100px;"> -->
+          <!-- <img src="../assets/img/icons/websiteicons/hiremeappnewlogo.png" alt="HireMeLogo" style="max-height: 100px;"> -->
         </div>
 
     <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">

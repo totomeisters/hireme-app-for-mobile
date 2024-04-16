@@ -110,6 +110,43 @@ class Job {
             $stmt->bind_param("i", $jobID);
             $stmt->execute();
             $result = $stmt->get_result();
+            $job = $result->fetch_assoc();
+    
+            if (!$job) {
+                return [];
+            }
+
+            $jobdetails = new JobDetails(
+                $job['JobID'],
+                $job['CompanyID'],
+                $job['JobTitle'],
+                $job['JobDescription'],
+                $job['JobType'],
+                $job['SalaryMin'],
+                $job['SalaryMax'],
+                $job['WorkHours'],
+                $job['JobLocation'],
+                $job['JobLocationType'],
+                $job['PostingDate'],
+                $job['VerificationStatus'],
+                $job['JobIndustry'],
+                $job['OtherIndustry']
+            );
+
+            return $jobdetails;
+        } catch (Exception $e) {
+            error_log($e->getMessage());
+            throw $e;
+        }
+    }  
+
+    public function getAllVerifiedJobs() {
+            $status = 'Verified';
+        try {
+            $stmt = $this->conn->prepare("SELECT * FROM Jobs WHERE VerificationStatus=?");
+            $stmt->bind_param("s", $status);
+            $stmt->execute();
+            $result = $stmt->get_result();
             $jobs = $result->fetch_all(MYSQLI_ASSOC);
             $stmt->close();
     
@@ -160,7 +197,7 @@ class Job {
             throw $e;
         }
     }
-
+    
     public function getFaveJobsCountByJobID($jobID){
         $stmt = $this->conn->prepare("SELECT COUNT(*) AS Interested FROM favoritejobs WHERE JobID = ?");
         $stmt->bind_param("i", $jobID);
@@ -179,4 +216,58 @@ class Job {
             return null;
         }
     }
+
+    public function getFaveJobsIDByJobID($jobID){
+        $stmt = $this->conn->prepare("SELECT JobID FROM favoritejobs WHERE JobID = ?");
+        $stmt->bind_param("i", $jobID);
+        $stmt->execute();
+    
+        $result = $stmt->get_result();
+    
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $faveID = $row['JobID'];
+            
+            $stmt->close();
+    
+            return $faveID;
+        } else {
+            return null;
+        }
+    }
+
+    public function addFavoriteJob($jobSeekerID, $jobID) {
+        $sql = "INSERT INTO FavoriteJobs (JobSeekerID, JobID) VALUES (?, ?)";
+        $stmt = $this->conn->prepare($sql);
+        if (!$stmt) {
+            return false;
+        }
+        $stmt->bind_param("ii", $jobSeekerID, $jobID);
+        if (!$stmt->execute()) {
+            return false;
+        }
+        $rowsAffected = $stmt->affected_rows;
+        $stmt->close();
+        
+        $affected = ($rowsAffected > 0) ? true : false;
+        return $affected;
+    }
+    
+    public function deleteFavoriteJob($jobSeekerID, $jobID) {
+        $sql = "DELETE FROM FavoriteJobs WHERE JobSeekerID = ? AND JobID = ?";
+        $stmt = $this->conn->prepare($sql);
+        if (!$stmt) {
+            return false;
+        }
+        $stmt->bind_param("ii", $jobSeekerID, $jobID);
+        if (!$stmt->execute()) {
+            return false;
+        }
+        $rowsAffected = $stmt->affected_rows;
+        $stmt->close();
+        
+        $affected = ($rowsAffected > 0) ? true : false;
+        return $affected;
+    }
+    
 }
