@@ -183,5 +183,25 @@ class User {
         );
     }
     
+    public function getUserDetailsByUserID($userID) {
+        $query = "SELECT * FROM users WHERE UserID = ?";
+        $statement = $this->conn->prepare($query);
+        $statement->bind_param('s', $userID);
+        $statement->execute();
+        $result = $statement->get_result()->fetch_assoc();
+    
+        if (!$result) {
+            return null;
+        }
+    
+        return new UserDetails(
+            $result['UserID'],
+            $result['Username'],
+            $result['Password'],
+            $result['Email'],
+            $result['Role'],
+            $result['Token']
+        );
+    }
 }
 ?>

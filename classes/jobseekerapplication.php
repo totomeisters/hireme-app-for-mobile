@@ -44,6 +44,27 @@ Class JobSeekerApplication {
     
         return $applications;
     }
+
+    public function getJobApplicationDetailsByUserID($userID) {
+        $stmt = $this->conn->prepare("SELECT * FROM jobseekerapplication WHERE UserID = ?");
+        $stmt->bind_param("s", $userID);
+        $stmt->execute();
+        $result = $stmt->get_result();
+    
+        $applications = array();
+        while ($row = $result->fetch_assoc()) {
+            $application = new JobSeekerApplicationDetails(
+                $row['JobSeekerApplicationID'], 
+                $row['JobID'], 
+                $row['UserID'], 
+                $row['ResumeFilePath'], 
+                $row['ApplicationDate'], 
+                $row['Status']);
+            $applications[] = $application;
+        }
+    
+        return $applications;
+    }
     
 }
 ?>

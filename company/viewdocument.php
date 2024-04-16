@@ -92,7 +92,8 @@ $pagetitle = "HireMe - Requirement Verification";
                                         case 'jpeg':
                                         case 'png':
                                             // Display image file using an img tag
-                                            echo '<img src="' . $filePath . '" alt="'.$fileName.'" style="height: 80vh; object-fit: scale-down;">';
+                                            echo '<img src="' . $filePath . '" alt="'.$fileName.'" style="height: 80vh; object-fit: scale-down; 
+                                                    class="img-fluid bg-secondary rounded border border-dark">';
                                             break;
                                         default:
                                             // Handle other file types or unknown extensions

@@ -4,14 +4,27 @@ if (!isset($_SESSION)) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-    $jobID = $_POST['jobID'];
+    if(isset($_POST['jobID'])){
+      $jobID = $_POST['jobID'];
+    }
+    else{
+      $jobID = 0;
+    }
 }
 
 require_once '../classes/job.php';
+require_once '../classes/user.php';
+require_once '../classes/jobseekerapplication.php';
+require_once '../classes/jobseeker.php';
 
+$user = new User($conn);
 $job = new Job($conn);
+$jobseeker = new JobSeeker($conn);
+$jobseekerapplication = new JobSeekerApplication($conn);
+
+$applications = $jobseekerapplication->getJobApplicationDetailsByJobID($jobID);
 $jobs = $job->getJobDetails($jobID);
+
 $pagetitle = "HireMe - View Job # ".$jobID;
 ?>
 
@@ -51,7 +64,7 @@ $pagetitle = "HireMe - View Job # ".$jobID;
                 <!-- Card -->
                 <div class="col-lg-12 mb-4 order-0">
                 <?php if (!empty($jobs)): ?>
-                  <div class="card p-2">
+                  <div class="card p-2 mb-4">
                     <div class="card-body">
                         <h4 class="card-title"><?php echo $jobs->getJobTitle(); ?></h4>
                         <h6 class="card-subtitle mb-2 text-muted"><?php echo $jobs->getJobLocation(); ?></h6>
@@ -94,14 +107,64 @@ $pagetitle = "HireMe - View Job # ".$jobID;
                     </div>
                     <a href="<?php echo isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : './jobs.php'; ?>" class="btn btn-secondary">Back</a>
                   </div>
-                    <?php else: ?>
-                        <p class="text-center">No job details. Don't play with the URL kid. Gonna send you to God, bye.</p>
-                    <?php endif; ?>
+                  <?php else: ?>
+                    <div>
+                      <p>This place is nonexistent. Pray tell, how didst thou arrive hither? Go back whence you came, human.</p>
+                    </div>
+                  <?php endif; ?>
+                  <h4>Applicants for "<?php echo $jobs->getJobTitle();?>"</h4>
+
+                  <?php if (empty($applications)): ?>
+                      <div class="row">
+                          <div class="col-lg-12 mb-2 order-0">
+                              <div class="card p-2">
+                                  No applicants found.
+                              </div>
+                          </div>
+                      </div>
+                  <?php else: ?>
+                      <div class="row">
+                          <table class="table table-striped">
+                              <thead>
+                                  <tr>
+                                      <th>Name</th>
+                                      <th>Birth Date</th>
+                                      <th>Address</th>
+                                      <th>Email</th>
+                                      <th>Contact Number</th>
+                                      <th>Action</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <?php foreach ($applications as $application): ?>
+                                      <?php 
+                                      $userID = $application->getUserID(); 
+                                      $jobseekerdetails = $jobseeker->getJobSeekerDetailsByUserID($userID);
+                                      $email = $user->getUserDetailsByUserID($jobseekerdetails->getUserID())->getEmail();
+                                      ?>
+                                      <tr>
+                                          <td><?= $jobseekerdetails->getFirstName() .' '.$jobseekerdetails->getLastName() ?></td>
+                                          <td><?= $jobseekerdetails->getBirthDate() ?></td>
+                                          <td><?= $jobseekerdetails->getAddress() ?></td>
+                                          <td><?= $email ?></td>
+                                          <td><?= $jobseekerdetails->getContactNumber() ?></td>
+                                          <td>
+                                            <form action="./viewapplicant.php" method="post">
+                                              <input type="text" value="<?= $userID;?>" name="applicantID" hidden>
+                                              <button type="submit" class="btn btn-primary">View</button>
+                                            </form>
+                                          </td>
+                                      </tr>
+                                  <?php endforeach; ?>
+                              </tbody>
+                          </table>
+                      </div>
+                  <?php endif; ?>
                 </div>
 
                 <!-- /Card -->
-
               </div>
+
             </div>
             <!-- / Content -->
 
