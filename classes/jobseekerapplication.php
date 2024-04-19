@@ -66,6 +66,26 @@ Class JobSeekerApplication {
         return $applications;
     }
 
+    public function getAllVerifiedJobApplicationDetails() {
+        $stmt = $this->conn->prepare("SELECT * FROM jobseekerapplication WHERE Status = 'Verified'");
+        $stmt->execute();
+        $result = $stmt->get_result();
+    
+        $applications = array();
+        while ($row = $result->fetch_assoc()) {
+            $application = new JobSeekerApplicationDetails(
+                $row['JobSeekerApplicationID'], 
+                $row['JobID'], 
+                $row['UserID'], 
+                $row['ResumeFilePath'], 
+                $row['ApplicationDate'], 
+                $row['Status']);
+            $applications[] = $application;
+        }
+    
+        return $applications;
+    }
+
     public function changeJobApplicationStatus($status, $applicationID) {
         $stmt = $this->conn->prepare("UPDATE jobseekerapplication SET Status = ? WHERE JobSeekerApplicationID = ?;");
 

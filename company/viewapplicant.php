@@ -4,13 +4,15 @@ if (!isset($_SESSION)) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if(isset($_POST['applicantID']) && isset($_POST['jobID'])){
+    if(isset($_POST['applicantID']) && isset($_POST['jobID']) && isset($_POST['referer'])){
       $applicantID = $_POST['applicantID'];
       $jobID = $_POST['jobID'];
+      $referer = $_POST['referer'];
     }
     else{
       $applicantID = 0;
       $jobID = 0;
+      $referer = 0;
     }
 }
 
@@ -201,16 +203,25 @@ $pagetitle = "HireMe - View Applicant # ".$applicantID;
                                   }
                                 ?>
                             </div>
-                            <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirmationModal"> -->
-                              <!-- Test Modal -->
-                            <!-- </button> -->
+                            <?php
+                            if($referer == "ViewJob"){?>                            
                             <form class="p-2 mt-4" method="post" action="./viewjob.php">
                               <input type="hidden" name="jobID" value="<?= $jobID; ?>">
                               <div class="card">
                                 <button class="btn btn-primary" type="submit">Back</button>
                               </div>
                             </form>
-
+                            <?php }
+                            elseif($referer == "Candidates"){?>
+                                <form class="p-2 mt-4" method="post" action="./candidates.php">
+                                  <div class="card">
+                                    <button class="btn btn-primary" type="submit">Back</button>
+                                  </div>
+                                </form>
+                            <?php }
+                            else{
+                                echo 'You are not supposed to be here.';
+                            }?>
                         </div>
                     </div>
                 </div>

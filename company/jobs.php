@@ -53,7 +53,7 @@ $pagetitle = "HireMe - Jobs";
             <div class="container mt-5">
         <h1 class="text-center mb-4">Jobs You Posted</h1>
         <?php if ($jobdetails): ?>
-            <table class="table">
+            <table class="table table-hover">
                 <thead>
                     <tr>
                         <th>Job Title</th>

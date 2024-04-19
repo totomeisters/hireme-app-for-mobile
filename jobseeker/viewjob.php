@@ -14,7 +14,7 @@ require_once '../classes/jobseekerapplication.php';
 $job = new Job($conn);
 $jobseekerapplication = new JobSeekerApplication($conn);
 $jobseekerapplicationdetails = $jobseekerapplication->getJobApplicationDetailsByJobID($jobID);
-$jobdetails = $job->getJobDetails($jobID);
+$jobdetails = $job->getJobDetailsByID($jobID);
 $pagetitle = "HireMe - View Job #".$jobID;
 ?>
 

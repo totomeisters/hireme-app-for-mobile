@@ -73,7 +73,7 @@ $pagetitle = "HireMe - Dashboard";
                 </thead>
                 <tbody>
                     <?php foreach ($favejobsID as $favejobID):
-                        $jobdetails = $job->getJobDetails($favejobID);
+                        $jobdetails = $job->getJobDetailsByID($favejobID);
                         if ($jobdetails): 
                           $jobID = $jobdetails->getJobID();
                           $favorite = $jobdetails->getJobID();?>

@@ -23,7 +23,7 @@ $jobseeker = new JobSeeker($conn);
 $jobseekerapplication = new JobSeekerApplication($conn);
 
 $applications = $jobseekerapplication->getJobApplicationDetailsByJobID($jobID);
-$jobs = $job->getJobDetails($jobID);
+$jobs = $job->getJobDetailsByID($jobID);
 
 $pagetitle = "HireMe - View Job # ".$jobID;
 ?>
@@ -124,7 +124,7 @@ $pagetitle = "HireMe - View Job # ".$jobID;
                       </div>
                   <?php else: ?>
                       <div class="row">
-                          <table class="table table-striped">
+                        <table class="table table-striped">
                               <thead>
                                   <tr>
                                       <th>Name</th>
@@ -152,6 +152,7 @@ $pagetitle = "HireMe - View Job # ".$jobID;
                                             <form action="./viewapplicant.php" method="post">
                                               <input type="text" value="<?= $userID;?>" name="applicantID" hidden>
                                               <input type="text" value="<?= $jobID;?>" name="jobID" hidden>
+                                              <input type="text" value="ViewJob" name="referer" hidden>
                                               <button type="submit" class="btn btn-primary">View</button>
                                             </form>
                                           </td>

@@ -104,7 +104,7 @@ class Job {
         }
     }
 
-    public function getJobDetails($jobID) {
+    public function getJobDetailsByID($jobID) {
         try {
             $stmt = $this->conn->prepare("SELECT * FROM Jobs WHERE JobID=?");
             $stmt->bind_param("i", $jobID);
