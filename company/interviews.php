@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $interviewDate = $_POST['interview_date'];
     $dateMade = date('Y-m-d H:i:s');
 
-    $interviewDetails = new InterviewDetails(null, $jobID, $jobSeekerApplicationID, $interviewDate, $dateMade);
+    $interviewDetails = new InterviewDetails(null, $jobID, $jobSeekerApplicationID, $interviewDate, $dateMade, null);
 
     if ($interview->addInterview($interviewDetails)) {
         echo "Interview added successfully.";

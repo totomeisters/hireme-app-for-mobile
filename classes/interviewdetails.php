@@ -6,13 +6,15 @@ class InterviewDetails {
     private $jobSeekerApplicationID;
     private $interviewDate;
     private $dateMade;
+    private $status;
 
-    public function __construct($interviewID, $jobID, $jobSeekerApplicationID, $interviewDate, $dateMade) {
+    public function __construct($interviewID, $jobID, $jobSeekerApplicationID, $interviewDate, $dateMade, $status) {
         $this->interviewID = $interviewID;
         $this->jobID = $jobID;
         $this->jobSeekerApplicationID = $jobSeekerApplicationID;
         $this->interviewDate = $interviewDate;
         $this->dateMade = $dateMade;
+        $this->status = $status;
     }
 
     // Getters
@@ -36,6 +38,10 @@ class InterviewDetails {
         return $this->dateMade;
     }
 
+    public function getStatus() {
+        return $this->status;
+    }
+
     // Setters
     public function setInterviewID($interviewID) {
         $this->interviewID = $interviewID;
@@ -55,6 +61,10 @@ class InterviewDetails {
 
     public function setDateMade($dateMade) {
         $this->dateMade = $dateMade;
+    }
+
+    public function setStatus($status) {
+        $this->status = $status;
     }
 }
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Apr 19, 2024 at 05:20 PM
+-- Generation Time: Apr 20, 2024 at 12:51 AM
 -- Server version: 8.2.0
 -- PHP Version: 8.2.13
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `hireme`
 --
+CREATE DATABASE IF NOT EXISTS `hireme` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `hireme`;
 
 -- --------------------------------------------------------
 
@@ -73,6 +75,25 @@ CREATE TABLE IF NOT EXISTS `favoritejobs` (
   PRIMARY KEY (`FavoriteID`),
   KEY `JobSeekerID` (`JobSeekerID`),
   KEY `JobID` (`JobID`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `interviews`
+--
+
+DROP TABLE IF EXISTS `interviews`;
+CREATE TABLE IF NOT EXISTS `interviews` (
+  `InterviewID` int NOT NULL AUTO_INCREMENT,
+  `JobID` int NOT NULL,
+  `JobSeekerApplicationID` int NOT NULL,
+  `InterviewDate` datetime NOT NULL,
+  `DateMade` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `Status` enum('Pending','No show','Done','') COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'Pending',
+  PRIMARY KEY (`InterviewID`),
+  KEY `JobID` (`JobID`),
+  KEY `JobSeekerApplicationID` (`JobSeekerApplicationID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
