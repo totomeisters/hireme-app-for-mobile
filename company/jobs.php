@@ -58,25 +58,25 @@ $pagetitle = "HireMe - Jobs";
                     <tr>
                         <th>Job Title</th>
                         <th class="d-none d-md-table-cell">Job Type</th>
-                        <th class="d-none d-md-table-cell">Location Type</th>
                         <th class="d-none d-md-table-cell">Posting Date</th>
                         <th class="d-none d-md-table-cell">Verification Status</th>
-                        <th class="d-none d-md-table-cell">People Interested</th>
+                        <th class="d-none d-md-table-cell">Interested</th>
+                        <th class="d-none d-md-table-cell">Applicants</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach ($jobdetails as $jobdetail): ?>
                         <tr>
-                            <td><?php echo $jobdetail->getJobTitle(); ?></td>
-                            <td class="d-none d-md-table-cell"><?php echo $jobdetail->getJobType(); ?></td>
-                            <td class="d-none d-md-table-cell"><?php echo $jobdetail->getJobLocationType(); ?></td>
-                            <td class="d-none d-md-table-cell"><?php echo $jobdetail->getPostingDate(); ?></td>
-                            <td class="d-none d-md-table-cell"><?php echo $jobdetail->getVerificationStatus(); ?></td>
-                            <td class="d-none d-md-table-cell"><?php echo $job->getFaveJobsCountByJobID($jobdetail->getJobID())?></td>
+                            <td><?= $jobdetail->getJobTitle(); ?></td>
+                            <td class="d-none d-md-table-cell"><?= $jobdetail->getJobType(); ?></td>
+                            <td class="d-none d-md-table-cell"><?= $jobdetail->getPostingDate(); ?></td>
+                            <td class="d-none d-md-table-cell"><?= $jobdetail->getVerificationStatus(); ?></td>
+                            <td class="d-none d-md-table-cell"><?= $job->getApplicantsCountByJobID($jobdetail->getJobID()); ?></td>
+                            <td class="d-none d-md-table-cell"><?= $job->getFaveJobsCountByJobID($jobdetail->getJobID()); ?></td>
                             <td>
                             <form method="post" action="./viewjob.php">
-                                <input type="hidden" name="jobID" value="<?php echo $jobdetail->getJobID(); ?>">
+                                <input type="hidden" name="jobID" value="<?= $jobdetail->getJobID(); ?>">
                                 <button class="btn btn-primary" type="submit">View</button>
                             </form>
                             </td>

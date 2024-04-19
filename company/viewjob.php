@@ -105,7 +105,7 @@ $pagetitle = "HireMe - View Job # ".$jobID;
                                 if($verification == 'Pending'){echo '<span class="text-warning">'.$verification.'</span>';}
                                 else{echo '<span class="text-success">'.$verification.'</span>';}?></small></p>
                     </div>
-                    <a href="<?php echo isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : './jobs.php'; ?>" class="btn btn-secondary">Back</a>
+                    <a href="./jobs.php" class="btn btn-secondary">Back</a>
                   </div>
                   <?php else: ?>
                     <div>
@@ -151,6 +151,7 @@ $pagetitle = "HireMe - View Job # ".$jobID;
                                           <td>
                                             <form action="./viewapplicant.php" method="post">
                                               <input type="text" value="<?= $userID;?>" name="applicantID" hidden>
+                                              <input type="text" value="<?= $jobID;?>" name="jobID" hidden>
                                               <button type="submit" class="btn btn-primary">View</button>
                                             </form>
                                           </td>

@@ -21,17 +21,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       } else {
           echo "Company details are not available.";
       }
-                 
-    $jobTitle = htmlspecialchars($_POST['jobTitle']);
-    $jobDescription = htmlspecialchars($_POST['jobDescription']);
-    $jobType = htmlspecialchars($_POST['jobType']);
-    $salaryMin = htmlspecialchars($_POST['salaryMin']);
-    $salaryMax = htmlspecialchars($_POST['salaryMax']);
+       
+    if(htmlspecialchars($_POST['salaryMin'])<htmlspecialchars($_POST['salaryMax'])) {
+        $salaryMin = htmlspecialchars($_POST['salaryMin']);
+        $salaryMax = htmlspecialchars($_POST['salaryMax']);
+    }
+    else{
+        $salaryMax = htmlspecialchars($_POST['salaryMin']);
+        $salaryMin = htmlspecialchars($_POST['salaryMax']);
+    }
     $workHours = htmlspecialchars($_POST['workHours']);
     $jobLocation = htmlspecialchars($_POST['jobLocation']);
     $jobLocationType = htmlspecialchars($_POST['jobLocationType']);
     $jobIndustry = htmlspecialchars($_POST['jobIndustry']);
-    $otherIndustry = htmlspecialchars($_POST['otherIndustry']);
+    $otherIndustry = htmlspecialchars($_POST['otherIndustry']);          
+    $jobTitle = htmlspecialchars($_POST['jobTitle']);
+    $jobDescription = htmlspecialchars($_POST['jobDescription']);
+    $jobType = htmlspecialchars($_POST['jobType']);
+
+    if($jobLocationType === "On Site" && ($jobLocation == null || empty($jobLocation))){
+        $response = array('status' => 'error', 'message' => 'Job location is required if the job is "On Site". Please try again.', 'redirect' => './addjob.php');
+        echo json_encode($response);
+        exit();
+    }
 
     $job = new Job($conn);
     if($job->addJob($companyID, $jobTitle, $jobDescription, $jobType, $salaryMin, $salaryMax, $workHours, $jobLocation, $jobLocationType, $jobIndustry, $otherIndustry)){

@@ -15,7 +15,7 @@ Class JobSeekerApplication {
     public function addJobApplication($jobID, $userID, $resumeFilePath) {
         $stmt = $this->conn->prepare("INSERT INTO jobseekerapplication (JobID, UserID, ResumeFilePath, ApplicationDate, Status) VALUES (?, ?, ?, NOW(), 'Pending')");
 
-        $stmt->bind_param("sss", $jobID, $userID, $resumeFilePath);
+        $stmt->bind_param("iis", $jobID, $userID, $resumeFilePath);
 
         if ($stmt->execute()) {
             return true;
@@ -64,6 +64,18 @@ Class JobSeekerApplication {
         }
     
         return $applications;
+    }
+
+    public function changeJobApplicationStatus($status, $applicationID) {
+        $stmt = $this->conn->prepare("UPDATE jobseekerapplication SET Status = ? WHERE JobSeekerApplicationID = ?;");
+
+        $stmt->bind_param("si", $status, $applicationID);
+
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            return false;
+        }
     }
     
 }

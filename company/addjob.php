@@ -53,7 +53,7 @@ $pagetitle = "HireMe - Post a Job";
                             </div>
                             <div class="form-group mb-2">
                                 <label for="jobDescription">Job Description:</label>
-                                <textarea class="form-control" id="jobDescription" name="jobDescription" rows="4" placeholder="Enter job description" required></textarea>
+                                <textarea class="form-control" id="jobDescription" name="jobDescription" rows="10" placeholder="Enter job description" required></textarea>
                             </div>
                             <div class="form-group mb-2">
                                 <label for="jobType">Job Type:</label>
@@ -257,6 +257,27 @@ $pagetitle = "HireMe - Post a Job";
             } else {
                 otherIndustryField.style.display = "none";
             }
+        }
+    </script>
+
+    <script>
+        function requireLocation() {
+            var jobLocationType = document.getElementById("onsiteRadio");
+            var jobLocation = document.getElementById("jobLocation");
+        
+            if (jobLocationType.checked) {
+                jobLocation.required = true;
+            } else {
+                jobLocation.required = false;
+            }
+        }
+    
+        window.onload = function() {
+            var onsiteRadio = document.getElementById("onsiteRadio");
+            var wfhRadio = document.getElementById("wfhRadio");
+        
+            onsiteRadio.addEventListener('change', requireLocation);
+            wfhRadio.addEventListener('change', requireLocation);
         }
     </script>
 

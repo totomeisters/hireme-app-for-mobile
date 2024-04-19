@@ -217,6 +217,25 @@ class Job {
         }
     }
 
+    public function getApplicantsCountByJobID($jobID){
+        $stmt = $this->conn->prepare("SELECT COUNT(*) AS Applicants FROM jobseekerapplication WHERE JobID = ?");
+        $stmt->bind_param("i", $jobID);
+        $stmt->execute();
+    
+        $result = $stmt->get_result();
+    
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $applicants = $row['Applicants'];
+            
+            $stmt->close();
+    
+            return $applicants;
+        } else {
+            return null;
+        }
+    }
+
     public function getFaveJobsIDByJobID($jobID){
         $stmt = $this->conn->prepare("SELECT JobID FROM favoritejobs WHERE JobID = ?");
         $stmt->bind_param("i", $jobID);
