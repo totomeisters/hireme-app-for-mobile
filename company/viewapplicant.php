@@ -177,14 +177,22 @@ $pagetitle = "HireMe - View Applicant # ".$applicantID;
                                 ?>
                             </div>
                             <div class="card p-2 my-1">
-                                <h5>Verification</h5>
                                 <?php
                                   if ($applicationdetails) {
                                       $applicationID = $applicationdetail->getJobSeekerApplicationID();
                                       $status = $applicationdetail->getStatus();
+                                    
+                                    if($referer == "Candidates" && $status == "Verified"){?>
+
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#setInterviewModal">
+                                              Set Interview
+                                            </button>
+
+                                    <?php }else{?>
+
+                                  <h5>Verification</h5>
+                                      <?php if ($status === "Pending") {?>
                                   
-                                      if ($status === "Pending") {
-                                  ?>
                                           <form id="updateapplication" method="post" action="../functions/updateapplicationstatus.php">
                                               <input type="hidden" name="applicationID" value="<?= $applicationID; ?>">
                                               <input type="hidden" name="status" name="applicationID" value="">
@@ -198,7 +206,9 @@ $pagetitle = "HireMe - View Applicant # ".$applicantID;
                                         echo 'This application is already marked as: <strong class="'.$statuscolor.'">'. strtoupper($status) .'</strong>.<br>';
                                         echo 'This applicant can now be seen on the candidates page.';
                                       }
-                                  } else {
+                                  } 
+                                }
+                                else {
                                       echo "Error getting application details.";
                                   }
                                 ?>
@@ -228,8 +238,8 @@ $pagetitle = "HireMe - View Applicant # ".$applicantID;
             </div>
             <!-- / Content -->
 
-            <!-- Modal -->
-            <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+            <!-- Confirmation Modal -->
+                <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -246,8 +256,34 @@ $pagetitle = "HireMe - View Applicant # ".$applicantID;
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- / Modal -->
+                </div>
+            <!-- / Confirmation Modal -->
+
+            <!-- Set Interview Modal -->
+                <div class="modal fade" id="setInterviewModal" tabindex="-1" role="dialog" aria-labelledby="setInterviewModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="setInterviewModalLabel">Set Interview</h5>
+                          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <form id="setInterview" method="post" action="../functions/addinterview.php">
+                                  <input type="text" id="jobID" name="jobID" value="<?= $jobID; ?>" hidden required>
+                                  <input type="text" id="jobSeekerApplicationID" name="jobSeekerApplicationID" value="<?= $applicationID ?>" hidden required>
+
+                              <div class="form-group mb-5">
+                                  <label for="interview_date">Interview Date:</label>
+                                  <input type="datetime-local" id="interviewDate" name="interviewDate" required>
+                              </div>
+
+                            <input type="submit" class="btn btn-primary" value="Submit">
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            <!-- / Set Interview Modal -->
 
             <!-- Footer -->
             <footer>
@@ -323,42 +359,26 @@ $pagetitle = "HireMe - View Applicant # ".$applicantID;
               });
           });
       });
-    </script>
+    </script> -->
 
-    <script>
-      function showToast(message, type) {
-          var toast = $('<div>', {
-              class: 'toast ' + type,
-              text: message
-          });
-          $('#toast-container').append(toast);
-          toast.addClass('show');
-          setTimeout(function() {
-              toast.remove();
-              // Hide the overlay after the toast has faded out
-              $('.overlay').hide();
-          }, 2000); // 3000 milliseconds = 3 seconds
-      }
-      
+    <script>      
       $(document).ready(function() {
-          $('#updateapplication').on('submit', function(e) {
+          $('#setInterview').on('submit', function(e) {
               e.preventDefault();
           
               var formData = $(this).serialize();
-              console.log(formData);
+              const modal = document.getElementById("setInterviewModal");
           
               $.ajax({
                   type: 'POST',
-                  url: '../functions/updateapplicationstatus.php',
+                  url: '../functions/addinterview.php',
                   data: formData,
                   dataType: 'json',
                   success: function(response) {
                       if (response.status === 'success') {
                           $('.overlay').show();
                           showToast(response.message, 'success');
-                          setTimeout(function() {
-                              window.location.href = response.redirect;
-                          }, 1400);
+                          modal.classList.remove("show");
                       } else if (response.status === 'error') {
                           showToast(response.message, 'warning');
                       } else {
@@ -371,17 +391,8 @@ $pagetitle = "HireMe - View Applicant # ".$applicantID;
                   }
               });
           });
-
-          $('#updateapplication button[type="submit"]').click(function(e) {
-              e.preventDefault();
-
-              var status = $(this).val();
-              $('#updateapplication input[name="status"]').val(status);
-
-              $('#updateapplication').submit();
-          });
       });
-    </script> -->
+    </script>
 
     <script>
       function handleFormSubmission(formData) {
