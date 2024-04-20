@@ -3,6 +3,17 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
+require_once '../classes/user.php';
+require_once '../classes/company.php';
+
+$username = $_SESSION['username'];
+
+$user = new User($conn);
+$company = new Company($conn);
+
+$userId = $user->getUserDetails($username)->getUserID();
+$companyID = $company->getCompanyDetails($userId)->getCompanyID();
+
 $pagetitle = "HireMe - Interviews";
 ?>
 
@@ -20,6 +31,7 @@ $pagetitle = "HireMe - Interviews";
   <!-- /Head -->
 
   <body>
+  <input type="hidden" id="companyID" value="<?= $companyID; ?>">
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
       <div class="layout-container">

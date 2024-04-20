@@ -1,4 +1,9 @@
 <?php
+if(!session_start()){
+    session_start();
+}
+if(isset($_GET['companyID'])) {
+    $companyId = $_GET['companyID'];
 
 require_once('../classes/jobseekerapplication.php');
 require_once('../classes/jobseeker.php');
@@ -10,7 +15,11 @@ $jobseeker = new JobSeeker($conn);
 $job = new Job($conn);
 $application = new Interview($conn);
 
-$interviews = $application->getAllInterviews();
+$jobdetails = $job->getAllJobs($companyId);
+
+foreach ($jobdetails as $jobdetail) {
+    // get all interviews for all jobs for the current company
+    $interviews = $application->getAllInterviewsByJobID($jobdetail->getJobID());
 
 $events = [];
 foreach ($interviews as $interview) {
@@ -37,7 +46,13 @@ foreach ($interviews as $interview) {
     );
     $events[] = $event;
 }
+}
 
 echo json_encode($events);
 
+} else {
+    http_response_code(400);
+    echo json_encode(array("error" => "CompanyID is not provided"));
+    exit;
+}
 ?>

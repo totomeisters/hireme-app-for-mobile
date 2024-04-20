@@ -1,6 +1,7 @@
   $(document).ready(function() {
     var calendarEl = document.getElementById('calendar');
     var cardEl = document.getElementById('card');
+    var companyID = $('#companyID').val();
   
     var calendar = new FullCalendar.Calendar(calendarEl, {
       themeSystem: 'bootstrap5',
@@ -9,6 +10,7 @@
         $.ajax({
           url: '../functions/getinterviewdates.php',
           dataType: 'json',
+          data: { companyID: companyID},
           success: function(events) {
             successCallback(events);
           }
