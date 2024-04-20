@@ -66,6 +66,28 @@ Class JobSeekerApplication {
         return $applications;
     }
 
+    public function getJobApplicationDetailsByID($applicationID) {
+        $stmt = $this->conn->prepare("SELECT * FROM jobseekerapplication WHERE JobSeekerApplicationID = ?");
+        $stmt->bind_param("i", $applicationID);
+        $stmt->execute();
+        $result = $stmt->get_result();
+      
+        $application = $result->fetch_assoc();
+      
+        if ($application) {
+          return new JobSeekerApplicationDetails(
+            $application['JobSeekerApplicationID'],
+            $application['JobID'],
+            $application['UserID'],
+            $application['ResumeFilePath'],
+            $application['ApplicationDate'],
+            $application['Status']
+          );
+        } else {
+          return null;
+        }
+    }  
+
     public function getAllVerifiedJobApplicationDetails() {
         $stmt = $this->conn->prepare("SELECT * FROM jobseekerapplication WHERE Status = 'Verified'");
         $stmt->execute();

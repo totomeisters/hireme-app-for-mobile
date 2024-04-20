@@ -40,12 +40,12 @@ $pagetitle = "HireMe - Interviews";
             <div class="container-xxl flex-grow-1 container-p-y">
               <div class="row">
                 <!-- Card -->
-                <div class="col-lg-12 mb-4 order-0">
-                  <div class="card p-2">
-
-                    calendar here
-
-                  </div>
+                <div class="col-md-8 col-sm-8 mb-4 order-0">
+                    <div id='calendar' class="card p-4"></div>
+                </div>
+                <div class="col-md-4 col-sm-4 mb-4 order-1">
+                    <h4>Event Details</h4>
+                    <div id='card'>Select an event on the calendar to view the details.</div>
                 </div>
                 <!-- /Card -->
 
@@ -82,5 +82,6 @@ $pagetitle = "HireMe - Interviews";
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
     <?php require_once __DIR__ . "/endscripts.php";?>
+    <script src="../assets/js/calendar.js"></script>
   </body>
 </html>
