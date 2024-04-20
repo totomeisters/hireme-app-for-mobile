@@ -6,10 +6,12 @@ if (!isset($_SESSION)) {
 require_once '../classes/jobseekerapplication.php';
 require_once '../classes/job.php';
 require_once '../classes/jobseeker.php';
+require_once '../classes/interview.php';
 
 $job = new Job($conn);
 $jobseeker = new JobSeeker($conn);
 $jobSeekerApplication = new JobSeekerApplication($conn);
+$interview = new Interview($conn);
 
 $verifiedApplications = $jobSeekerApplication->getAllVerifiedJobApplicationDetails();
 
@@ -75,6 +77,11 @@ $pagetitle = "HireMe - Candidates";
                                 if(empty($applicantName)){
                                     $applicantName = 'error getting job title';
                                 }
+
+                                if(!empty($application->getJobSeekerApplicationID())){
+                                  $applicationStatus = $interview->getInterviewByJobSeekerApplicationID($application->getJobSeekerApplicationID())->getStatus();
+                                  $status = !empty($applicationStatus) ? $applicationStatus : "Unknown";
+                                }
                                 
                                 
                                 ?>
@@ -83,7 +90,7 @@ $pagetitle = "HireMe - Candidates";
                                     <td><?= $applicantName ?></td>
                                     <td class="d-none d-md-table-cell"><?= date('Y-m-d', strtotime($application->getApplicationDate())) ?></td>
                                     <td class="d-none d-md-table-cell"><?= $application->getStatus() ?></td>
-                                    <td class="d-none d-md-table-cell">wala pa laman ya</td>
+                                    <td class="d-none d-md-table-cell"><?= $status ?></td>
                                     <td>
                                         <form action="./viewapplicant.php" method="post">
                                             <input type="text" value="<?= $application->getUserID() ?>" name="applicantID" hidden>

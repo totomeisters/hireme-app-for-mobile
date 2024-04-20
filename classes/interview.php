@@ -30,28 +30,28 @@ class Interview {
         }
     }
 
-    public function getAllInterviews() {
-        $sql = "SELECT InterviewID, JobID, JobSeekerApplicationID, InterviewDate, DateMade, Status FROM Interviews";
-        $result = $this->conn->query($sql);
+    // public function getAllInterviews() {
+    //     $sql = "SELECT InterviewID, JobID, JobSeekerApplicationID, InterviewDate, DateMade, Status FROM Interviews";
+    //     $result = $this->conn->query($sql);
     
-        if ($result->num_rows > 0) {
-          $interviews = [];
-          while ($row = $result->fetch_assoc()) {
-            $interview = new InterviewDetails(
-              $row["InterviewID"],
-              $row["JobID"],
-              $row["JobSeekerApplicationID"],
-              $row["InterviewDate"],
-              $row["DateMade"],
-              $row["Status"]
-            );
-            $interviews[] = $interview;
-          }
-          return $interviews;
-        } else {
-          return [];
-        }
-    }
+    //     if ($result->num_rows > 0) {
+    //       $interviews = [];
+    //       while ($row = $result->fetch_assoc()) {
+    //         $interview = new InterviewDetails(
+    //           $row["InterviewID"],
+    //           $row["JobID"],
+    //           $row["JobSeekerApplicationID"],
+    //           $row["InterviewDate"],
+    //           $row["DateMade"],
+    //           $row["Status"]
+    //         );
+    //         $interviews[] = $interview;
+    //       }
+    //       return $interviews;
+    //     } else {
+    //       return [];
+    //     }
+    // }
 
     public function getAllInterviewsByJobID($jobID) {
       try {
@@ -79,9 +79,38 @@ class Interview {
         else {
           return [];
         }
-    } catch (Exception $e) {
-        error_log($e->getMessage());
-        throw $e;
+      } catch (Exception $e) {
+          error_log($e->getMessage());
+          throw $e;
+      }
     }
+
+    public function getInterviewByJobSeekerApplicationID($applicationID) {
+      try {
+          $stmt = $this->conn->prepare("SELECT * FROM Interviews WHERE JobSeekerApplicationID=? LIMIT 1");
+          $stmt->bind_param("i", $applicationID);
+          $stmt->execute();
+          $result = $stmt->get_result();
+          $stmt->close();
+  
+          if ($result->num_rows > 0) {
+              $row = $result->fetch_assoc();
+              $interview = new InterviewDetails(
+                  $row["InterviewID"],
+                  $row["JobID"],
+                  $row["JobSeekerApplicationID"],
+                  $row["InterviewDate"],
+                  $row["DateMade"],
+                  $row["Status"]
+              );
+              return $interview;
+          } else {
+              return null;
+          }
+      } catch (Exception $e) {
+          error_log($e->getMessage());
+          throw $e;
+      }
   }
+  
 }

@@ -43,6 +43,8 @@ foreach ($interviews as $interview) {
         'interviewdate' => $date,
         'name' => $userFullName,
         'job' => ucfirst($jobTitle),
+        'applicantID' => $userID,
+        'jobID' => $jobID,
     );
     $events[] = $event;
 }

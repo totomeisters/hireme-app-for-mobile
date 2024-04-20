@@ -18,7 +18,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 require_once '../classes/jobseeker.php';
 require_once '../classes/jobseekerapplication.php';
+require_once '../classes/interview.php';
 
+$interview = new Interview($conn);
 $jobseeker = new JobSeeker($conn);
 $jobseekerapplication = new JobSeekerApplication($conn);
 
@@ -181,14 +183,21 @@ $pagetitle = "HireMe - View Applicant # ".$applicantID;
                                   if ($applicationdetails) {
                                       $applicationID = $applicationdetail->getJobSeekerApplicationID();
                                       $status = $applicationdetail->getStatus();
+                                      $interviewcheck = $interview->getInterviewByJobSeekerApplicationID($applicationID); 
                                     
-                                    if($referer == "Candidates" && $status == "Verified"){?>
+                                      //check if the user came from "Candidates" page, the status of the application is "Verified", there are no interviews yet
+                                    if($referer == "Candidates" && $status == "Verified" && (empty($interviewcheck) || $interviewcheck == null)){?>
 
                                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#setInterviewModal">
                                               Set Interview
                                             </button>
 
-                                    <?php }else{?>
+                                    <?php }
+                                    elseif($referer == "Candidates" && $status == "Verified" && (!empty($interviewcheck) || $interviewcheck !== null)){?>
+
+                                        An interview was set already. Check the Interviews page for more info.
+
+                                <?php }else{?>
 
                                   <h5>Verification</h5>
                                       <?php if ($status === "Pending") {?>
@@ -204,7 +213,7 @@ $pagetitle = "HireMe - View Applicant # ".$applicantID;
                                       else{
                                         $statuscolor = ($status === "Rejected") ? 'text-danger' : 'text-success';
                                         echo 'This application is already marked as: <strong class="'.$statuscolor.'">'. strtoupper($status) .'</strong>.<br>';
-                                        echo 'This applicant can now be seen on the candidates page.';
+                                        echo 'This applicant can now be seen on the Candidates page.';
                                       }
                                   } 
                                 }
@@ -224,6 +233,13 @@ $pagetitle = "HireMe - View Applicant # ".$applicantID;
                             <?php }
                             elseif($referer == "Candidates"){?>
                                 <form class="p-2 mt-4" method="post" action="./candidates.php">
+                                  <div class="card">
+                                    <button class="btn btn-primary" type="submit">Back</button>
+                                  </div>
+                                </form>
+                            <?php }
+                            elseif($referer == "Interviews"){?>
+                                <form class="p-2 mt-4" method="post" action="./interviews.php">
                                   <div class="card">
                                     <button class="btn btn-primary" type="submit">Back</button>
                                   </div>
