@@ -11,10 +11,8 @@
   <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
     <!-- Search -->
     <div class="navbar-nav align-items-center">
-      <div class="nav-item d-flex align-items-center">
-        <!-- <span class="fw-bold">HireMe</span> -->
-        <img src="../assets/img/icons/websiteicons/hireme-high-resolution-logo-black-transparent.png" alt="HireMeLogo" style="max-height: 30px;">
-      </div>
+        <span class="logotext">HireMe-App</span>
+        <!-- <img src="../assets/img/icons/websiteicons/hiremeappnewlogo.png" alt="HireMeLogo" style="max-height: 30px;"> -->
     </div>
     <!-- /Search -->
 
@@ -24,7 +22,7 @@
       <li class="nav-item navbar-dropdown dropdown-user dropdown">
         <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
           <div class="avatar avatar-online">
-          <span class="flex-shrink-0 badge badge-center rounded-pill bg-danger w-px-40 h-px-40 rounded-circle">
+          <span class="flex-shrink-0 badge badge-center rounded-pill bg-warning w-px-40 h-px-40 rounded-circle">
           <?php
                     $username = $_SESSION['username'];
 
@@ -42,7 +40,7 @@
               <div class="d-flex">
                 <div class="flex-shrink-0 me-3">
                   <div class="avatar avatar-online">
-                  <span class="flex-shrink-0 badge badge-center rounded-pill bg-danger w-px-40 h-px-40 rounded-circle">
+                  <span class="flex-shrink-0 badge badge-center rounded-pill bg-warning w-px-40 h-px-40 rounded-circle">
 
                   <?php
                     $username = $_SESSION['username'];

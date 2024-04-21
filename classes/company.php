@@ -56,6 +56,33 @@ class Company {
         }
     }
 
+    public function getCompanyDetailsByCompanyID($companyID) {
+        $stmt = $this->conn->prepare("SELECT * FROM companies WHERE CompanyID = ?");
+        $stmt->bind_param("i", $companyID);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+
+            $companyDetails = new CompanyDetails(
+                $row['CompanyID'],
+                $row['UserID'],
+                $row['CompanyName'],
+                $row['CompanyDescription'],
+                $row['CompanyAddress'],
+                $row['VerificationStatus']
+            );
+
+            $stmt->close();
+
+            return $companyDetails;
+        } else {
+            return null;
+        }
+    }
+
     public function getAllVerifiedCompanies() {
         $status = 'Verified';
         $stmt = $this->conn->prepare("SELECT * FROM companies WHERE VerificationStatus = ?");
@@ -82,6 +109,34 @@ class Company {
         $stmt->close();
     
         return $companies;
-    }    
+    }   
+    
+    public function getAllUnverifiedCompanies() {
+        $status = 'Pending';
+        $stmt = $this->conn->prepare("SELECT * FROM companies WHERE VerificationStatus = ?");
+        $stmt->bind_param("s", $status);
+        $stmt->execute();
+    
+        $result = $stmt->get_result();
+    
+        $companies = array();
+    
+        while ($row = $result->fetch_assoc()) {
+            $companyDetails = new CompanyDetails(
+                $row['CompanyID'],
+                $row['UserID'],
+                $row['CompanyName'],
+                $row['CompanyDescription'],
+                $row['CompanyAddress'],
+                $row['VerificationStatus']
+            );
+    
+            $companies[] = $companyDetails;
+        }
+    
+        $stmt->close();
+    
+        return $companies;
+    }
     
 }

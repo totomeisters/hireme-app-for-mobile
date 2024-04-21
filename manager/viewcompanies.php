@@ -15,7 +15,9 @@ $userdetails = $user->getUserDetails($username);
 
 if(!$userdetails == null){
   $userId = $userdetails->getUserID();
-  if($userId == null){
+  if(!$userId == null){
+  }
+  else{
     echo 'UserID not found.';
   }
 }
@@ -61,9 +63,46 @@ $pagetitle = "HireMe - Dashboard";
               <div class="row">
                 <!-- Card -->
                 <div class="col-lg-12 mb-4 order-0">
-                  <div class="card p-2">
-                    manager
-                  </div>
+                <h3>Verified Companies</h3>
+                    <div class="card">
+                <?php
+                    $verifiedCompanies = $company->getAllVerifiedCompanies();
+                    if (!empty($verifiedCompanies)) {
+                ?>
+                        <table class="table table-hover table-bordered">
+                            <thead>
+                                <tr>
+                                    <th class="col-1" scope="col">#</th>
+                                    <th class="col-2" scope="col">Company Name</th>
+                                    <th class="col-5" scope="col">Address</th>
+                                    <th class="col-2" scope="col">Verification Status</th>
+                                    <th class="col-2" scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php $count = 1;
+                                    foreach ($verifiedCompanies as $verifiedCompany) { ?>
+                                    <tr>
+                                        <td><?php echo $count++; ?></td>
+                                        <td><?php echo $verifiedCompany->getCompanyName(); ?></td>
+                                        <td><?php echo $verifiedCompany->getCompanyAddress(); ?></td>
+                                        <td><?php echo $verifiedCompany->getVerificationStatus(); ?></td>
+                                        <td>
+                                            <form action="./viewcompany.php" method="post">
+                                              <input type="hidden" name="companyID" value="<?= $verifiedCompany->getCompanyID(); ?>">
+                                              <button type="submit" class="btn btn-warning">View Details</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
+                <?php
+                    } else {
+                        echo 'No Verified Companies.';
+                    }
+                ?>
+                    </div>
                 </div>
                 <!-- /Card -->
 

@@ -1,4 +1,4 @@
-  <!-- <script src="../assets/vendor/libs/jquery/jquery.js"></script> -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script src="../assets/vendor/libs/popper/popper.js"></script>
   <script src="../assets/vendor/js/bootstrap.js"></script>
   <script src="../assets/vendor/js/menu.js"></script>
@@ -6,6 +6,7 @@
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+  <!-- <script src="https://cdn.datatables.net/2.0.5/js/dataTables.min.js"></script> -->
   
   <script>
       document.addEventListener("DOMContentLoaded", function() {
