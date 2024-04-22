@@ -26,6 +26,7 @@
     <script src="../assets/vendor/js/helpers.js"></script>
     <script src="../assets/js/config.js"></script>
     <link rel="stylesheet" href="../assets/css/toast.css">
+    <link rel="stylesheet" href="../assets/css/colorpalette.css">
 
     <!-- jQuery CDN -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

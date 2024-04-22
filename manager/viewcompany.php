@@ -14,10 +14,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 require_once '../classes/user.php';
 require_once '../classes/company.php';
+require_once '../classes/job.php';
+require_once __DIR__.'/../classes/companyapplication.php';
 
 $user = new User($conn);
 $company = new Company($conn);
+$job = new Job($conn);
+$companyapplication = new CompanyApplication($conn);
 
+$companyapplciationdetails = $companyapplication->getCompanyApplicationDetails($companyID);
 $companyDetails = $company->getCompanyDetailsByCompanyID($companyID);
 if(!empty($companyDetails)){
     $companyName = $companyDetails->getCompanyName();
@@ -64,7 +69,7 @@ $pagetitle = "HireMe - View: ".$companyName;
             <!-- Content -->
             <div class="container-xxl flex-grow-1 container-p-y">
               <div class="row mb-4">
-              <h2 class="card-title"><strong>Company Details</strong></h2>
+              <section id="CompanyDetails"><h2 class="card-title"><strong>Company Details</strong></h2></section>
                 <div class="col-md-8">
                     <div class="card">
                       <div class="card-body">
@@ -91,21 +96,39 @@ $pagetitle = "HireMe - View: ".$companyName;
                     <div class="card">
                         <div class="card-body">
                           <h5 class="card-title">People</h5>
-                          <p>Interested: <mark>9384</mark></p> <!-- make a function -->
-                          <p>Applied: <mark>2243</mark></p> <!-- make a function -->
+                          <?php 
+                            $faveCounts = 0; 
+                            $applicantCounts = 0;
+                            $jobdetails = $job->getAllJobs($companyID);
+
+                            foreach ($jobdetails as $jobdetail) {
+                                $faveCounts += $job->getFaveJobsCountByJobID($jobdetail->getJobID());
+                                $applicantCounts += $job->getApplicantsCountByJobID($jobdetail->getJobID());
+                            }
+                          ?>
+                          <p>Interested: <mark><?= $faveCounts; ?></mark></p> <!-- make a function -->
+                          <p>Applied: <mark><?= $applicantCounts; ?></mark></p> <!-- make a function -->
                         </div>
+                    </div>
+                  </div>
+                  <div class="row mb-2">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title">Verification</h5>
+                        <button class="btn btn-success">Verify</button> <!-- make a function -->
+                        <button class="btn btn-danger">Reject</button> <!-- make a function -->
+                      </div>
                     </div>
                   </div>
                   <div class="row">
                     <div class="card">
-                        <div class="card-body mb-2">
-                          <h5 class="card-title">Verification</h5>
-                          <button class="btn btn-success">Verify</button> <!-- make a function -->
-                          <button class="btn btn-danger">Reject</button> <!-- make a function -->
-                        </div>
+                      <a href="#documentSection">
+                      <div class="card-body">
                         <div>
-                          <a href="#documentSection">Click here to go to the Documents Section.</a>
+                          Click here to go to the Documents Section.
                         </div>
+                      </div>
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -115,18 +138,92 @@ $pagetitle = "HireMe - View: ".$companyName;
                 <h2 class="card-title"><strong>Jobs Posted</strong></h2>
                   <div class="card">
                         <div class="card-body">
-                          jobs here
+                        <?php if ($jobdetails): ?>
+            <table class="table table-hover table-bordered">
+                <thead>
+                    <tr>
+                        <th class="col-3">Job Title</th>
+                        <th class="col-2 d-none d-md-table-cell">Job Type</th>
+                        <th class="col-3 d-none d-md-table-cell">Posting Date</th>
+                        <th class="col-1 d-none d-md-table-cell">Verification Status</th>
+                        <th class="col-1 d-none d-md-table-cell">Interested</th>
+                        <th class="col-1 d-none d-md-table-cell">Applicants</th>
+                        <th class="col-1">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($jobdetails as $jobdetail): ?>
+                        <tr>
+                            <td><?= ucfirst($jobdetail->getJobTitle()); ?></td>
+                            <td class="d-none d-md-table-cell"><?= $jobdetail->getJobType(); ?></td>
+                            <td class="d-none d-md-table-cell"><?= $jobdetail->getPostingDate(); ?></td>
+                            <td class="d-none d-md-table-cell"><?= $jobdetail->getVerificationStatus(); ?></td>
+                            <td class="d-none d-md-table-cell"><?= $job->getApplicantsCountByJobID($jobdetail->getJobID()); ?></td>
+                            <td class="d-none d-md-table-cell"><?= $job->getFaveJobsCountByJobID($jobdetail->getJobID()); ?></td>
+                            <td>
+                            <form method="post" action="./viewjob.php">
+                                <input type="hidden" name="jobID" value="<?= $jobdetail->getJobID(); ?>">
+                                <input type="hidden" name="companyID" value="<?= $companyID; ?>">
+                                <button class="btn btn-secondary" type="submit">View</button>
+                            </form>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        <?php else: ?>
+            <p class="text-center">No jobs found for this company.</p>
+        <?php endif; ?>
                         </div>
                   </div>
                 </div>
               </section>
               <section id="documentSection">
-                <div class="row mb-4">
-                <h2 class="card-title"><strong>Documents Submitted</strong></h2>
+                <div class="row mb-2">
+                  <div class="col-md-11"><h2 class="card-title"><strong>Documents Submitted</strong></h2></div>
+                  <div class="col-md-1">
+                    <a href="#CompanyDetails">
+                        <button class="btn btn-primary"><i class='bx bx-chevrons-up'></i></button>
+                    </a>
+                  </div>
+                </div>
+                  
+                <div class="row">
                   <div class="card">
-                        <div class="card-body">
-                          documents here
-                        </div>
+                    <div class="card-body">
+                        <?php if ($companyapplciationdetails): ?>
+                          <table class="table table-hover table-bordered">
+                              <thead>
+                                  <tr>
+                                      <th class="col-7">Document Name</th>
+                                      <th class="col-1 d-none d-md-table-cell">Document Type</th>
+                                      <th class="col-3 d-none d-md-table-cell">Posting Date</th>
+                                      <th class="col-1 d-none d-md-table-cell">Verification Status</th>
+                                      <th class="col-1">Action</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <?php foreach ($companyapplciationdetails as $companyapplciationdetail): ?>
+                                      <tr>
+                                          <td><?= ucfirst($companyapplciationdetail->getDocumentName()); ?></td>
+                                          <td class="d-none d-md-table-cell"><?= strtoupper(pathinfo($companyapplciationdetail->getDocumentFilePath(), PATHINFO_EXTENSION)); ?></td>
+                                          <td class="d-none d-md-table-cell"><?= $companyapplciationdetail->getDate(); ?></td>
+                                          <td class="d-none d-md-table-cell"><?= $companyapplciationdetail->getVerification(); ?></td>
+                                          <td>
+                                            <form action="./viewdocument.php" method="post">
+                                                <input hidden type="text" name="CompanyApplicationID" value="<?= $companyapplciationdetail->getCompanyApplicationID(); ?>"/>
+                                                <input hidden type="text" name="companyID" value="<?= $companyID; ?>"/>
+                                                <button class="btn btn-secondary" type="submit">View</button>
+                                            </form>
+                                          </td>
+                                      </tr>
+                                  <?php endforeach; ?>
+                              </tbody>
+                          </table>
+                        <?php else: ?>
+                            <p class="text-center">Maybe they have yet to submit a document?</p>
+                        <?php endif; ?>
+                    </div>
                   </div>
                 </div>
               </section>

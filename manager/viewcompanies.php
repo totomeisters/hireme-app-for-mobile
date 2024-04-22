@@ -25,7 +25,7 @@ else{
   echo 'User details not found.';
 }
 
-$pagetitle = "HireMe - Dashboard";
+$pagetitle = "HireMe - Verified Companies";
 ?>
 
 <!DOCTYPE html>

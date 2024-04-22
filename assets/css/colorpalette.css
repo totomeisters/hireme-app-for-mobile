@@ -4,4 +4,31 @@
     --pear: #e5f141ff;
     --un-blue: #4d98e4ff;
     --asparagus: #73956fff;
-  }
+    --mygreen: rgb(87, 177, 48) !important;
+    --myred: rgb(167, 49, 49) !important;
+    --mygreenhover: rgb(90, 197, 45) !important;
+    --myredhover: rgb(197, 42, 42) !important;
+    --mywhite: #F8F8F8FF !important;
+}
+
+.btn-success{
+  background-color: var(--mygreen);
+  border-color: var(--mygreen);
+  color: var(--mywhite);
+}
+.btn-success:hover {
+  background-color: var(--mygreenhover);
+  border-color: var(--mygreenhover);
+  color: var(--mywhite);
+}
+
+.btn-danger{
+  background-color: var(--myred);
+  border-color: var(--myred);
+  color: var(--mywhite);
+}
+.btn-danger:hover {
+  background-color: var(--myredhover);
+  border-color: var(--myredhover);
+  color: var(--mywhite);
+}
