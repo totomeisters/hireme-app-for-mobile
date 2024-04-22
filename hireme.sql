@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Apr 20, 2024 at 12:51 AM
+-- Generation Time: Apr 22, 2024 at 06:50 PM
 -- Server version: 8.2.0
 -- PHP Version: 8.2.13
 
@@ -90,10 +90,10 @@ CREATE TABLE IF NOT EXISTS `interviews` (
   `JobSeekerApplicationID` int NOT NULL,
   `InterviewDate` datetime NOT NULL,
   `DateMade` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `Status` enum('Pending','No show','Done','') COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'Pending',
+  `Status` enum('Pending','No show','Done','Cancelled') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'Pending',
   PRIMARY KEY (`InterviewID`),
-  KEY `JobID` (`JobID`),
-  KEY `JobSeekerApplicationID` (`JobSeekerApplicationID`)
+  UNIQUE KEY `JobSeekerApplicationID` (`JobSeekerApplicationID`) USING BTREE,
+  KEY `JobID` (`JobID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -172,7 +172,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `Username` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   `Password` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   `Email` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
-  `Role` enum('Admin','Company','Job Seeker','User') COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'User',
+  `Role` enum('Admin','Company','Job Seeker','User','Manager') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'User',
   `Token` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`UserID`),
   UNIQUE KEY `unique_email` (`Email`),
