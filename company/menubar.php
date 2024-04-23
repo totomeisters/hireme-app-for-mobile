@@ -11,6 +11,7 @@ if (isset($_SESSION['username'])) {
   if($userID) {
       $company = new Company($conn);
       $companydetails = $company->getCompanyDetails($userID);
+      $status = $companydetails->getVerificationStatus();
   }
 } else {
     echo "No company details found for user ID: $userID";
@@ -47,7 +48,7 @@ if (isset($_SESSION['username'])) {
     </li>
     <?php
 
-      if (!$companydetails == null){?>
+      if (!$companydetails == null && $status !== 'Pending'){?>
     <li class="menu-item open">
       <a href="javascript:void(0);" class="menu-link menu-toggle">
         <i class="menu-icon tf-icons bx bx-briefcase"></i>
