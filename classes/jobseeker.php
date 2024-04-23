@@ -12,6 +12,32 @@ class JobSeeker {
         $this->conn = $conn;
     }
 
+    public function addJobSeekerDetails($jobSeekerDetails) {
+        $userID = $jobSeekerDetails->getUserID();
+        $firstName = $jobSeekerDetails->getFirstName();
+        $lastName = $jobSeekerDetails->getLastName();
+        $birthDate = $jobSeekerDetails->getBirthDate();
+        $address = $jobSeekerDetails->getAddress();
+        $contactNumber = $jobSeekerDetails->getContactNumber();
+    
+        try {
+          $sql = "INSERT INTO jobseekers (UserID, FirstName, LastName, BirthDate, Address, ContactNumber) VALUES (?, ?, ?, ?, ?, ?)";
+          $stmt = $this->conn->prepare($sql);
+          $stmt->bind_param("isssss", $userID, $firstName, $lastName, $birthDate, $address, $contactNumber);
+          $stmt->execute();
+    
+          if ($stmt->affected_rows === 1) {
+            return true;
+          } else {
+            return false;
+          }
+    
+          $stmt->close();
+        } catch (mysqli_sql_exception $e) {
+          return false;
+        }
+      }
+
     public function getJobSeekerDetailsByUserID($userID) {
         $query = "SELECT * FROM jobseekers WHERE UserID = ?";
         $stmt = $this->conn->prepare($query);

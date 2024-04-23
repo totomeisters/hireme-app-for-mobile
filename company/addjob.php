@@ -53,7 +53,14 @@ $pagetitle = "HireMe - Post a Job";
                             </div>
                             <div class="form-group mb-2">
                                 <label for="jobDescription">Job Description:</label>
-                                <textarea class="form-control" id="jobDescription" name="jobDescription" rows="10" placeholder="Enter job description" required></textarea>
+                                <textarea id="jobDescription" name="jobDescription" placeholder="Enter Job Description..."></textarea>
+
+                                <!-- Quill JS Rich Text Editor -->
+                                <!-- <input id="jobDescription" name="jobDescription" hidden> -->
+                                <!-- <div id="content-container"> -->
+                                  <!-- <div id="editor"></div> -->
+                                <!-- </div> -->
+
                             </div>
                             <div class="form-group mb-2">
                                 <label for="jobType">Job Type:</label>
@@ -178,7 +185,10 @@ $pagetitle = "HireMe - Post a Job";
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
     <?php require_once "./endscripts.php";?>
+    <!-- <script src="../assets/js/quill.js"></script> -->
+    <script src="../assets/js/tinymce.js"></script>
 
+    <!-- Salary Slider -->
     <script>
       $(function() {
           $("#slider-range").slider({
@@ -197,6 +207,7 @@ $pagetitle = "HireMe - Post a Job";
       });
     </script>
 
+    <!-- Toast and AJAX -->
     <script>
       function showToast(message, type) {
           var toast = $('<div>', {
@@ -215,20 +226,22 @@ $pagetitle = "HireMe - Post a Job";
       $(document).ready(function() {
           $('#formAuthentication').on('submit', function(e) {
               e.preventDefault();
-          
-              var formData = $(this).serialize();
-          
+              
+            //   var jobDescription = JSON.stringify(quill.getContents());
+              
+              var formData = $(this).serializeArray();
+              
+            //   formData.push({ name: 'jobDescription', value: jobDescription });
+              
               $.ajax({
                   type: 'POST',
-                  url: '../functions/addjob.php', // replace with your actual login script URL
+                  url: '../functions/addjob.php',
                   data: formData,
                   dataType: 'json',
                   success: function(response) {
                       if (response.status === 'success') {
-                          // Show the overlay
                           $('.overlay').show();
                           showToast(response.message, 'success');
-                          // Wait for the toast to disappear before redirecting
                           setTimeout(function() {
                               window.location.href = response.redirect;
                           }, 1900);
@@ -247,6 +260,7 @@ $pagetitle = "HireMe - Post a Job";
       });
     </script>
 
+    <!-- Show text field if industry is not on the list -->
     <script>
         function showTextField() {
             var industrySelect = document.getElementById("jobIndustry");
@@ -260,6 +274,7 @@ $pagetitle = "HireMe - Post a Job";
         }
     </script>
 
+    <!-- Required job location if "On Site" -->
     <script>
         function requireLocation() {
             var jobLocationType = document.getElementById("onsiteRadio");
@@ -281,6 +296,7 @@ $pagetitle = "HireMe - Post a Job";
         }
     </script>
 
+    <!-- Salary Min-Max checker, salarymin cant be greater than salarymax -->
     <script>
         function validateSalaryRange() {
             var minSalary = parseFloat(document.getElementById('salaryMin').value);

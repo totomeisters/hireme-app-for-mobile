@@ -38,4 +38,10 @@
     <!-- Bootstrap -->
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"> -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script> -->
+
+    <!-- QuillJS -->
+    <!-- <link href="https://cdn.jsdelivr.net/npm/quill@2.0.0-beta.0/dist/quill.snow.css" rel="stylesheet" /> -->
+
+    <!-- TinyMCE -->
+    <script type="text/javascript" src="https://cdn.tiny.cloud/1/tcgxxydkqx73ozufy4rzvmt2kb9hc4c46iguzha6hdrjpz56/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
   </head>

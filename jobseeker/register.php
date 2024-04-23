@@ -48,7 +48,7 @@ $pagetitle = "HireMe - Dashboard";
 
         <!-- Menu -->
         <?php 
-          if($role == 'Manager'){
+          if($role == 'Job Seeker'){
             require_once __DIR__ . "/menubar.php";
           }else{
             $rolecheck = 1;
@@ -76,7 +76,32 @@ $pagetitle = "HireMe - Dashboard";
                 <!-- Card -->
                 <div class="col-lg-12 mb-4 order-0">
                   <div class="card p-2">
-                    manager
+                    <form class="row g-3" action="../functions/addjobseekerdetails.php" method="post">
+                        <input hidden type="text" class="form-control" id="userID" name="userID" value="<?= $userID; ?>">
+                      <div class="col-md-6">
+                        <label for="firstName" class="form-label">First Name:</label>
+                        <input type="text" class="form-control" id="firstName" name="firstName" required>
+                      </div>
+                      <div class="col-md-6">
+                        <label for="lastName" class="form-label">Last Name:</label>
+                        <input type="text" class="form-control" id="lastName" name="lastName" required>
+                      </div>
+                      <div class="col-md-6">
+                        <label for="birthDate" class="form-label">Birth Date (YYYY-MM-DD):</label>
+                        <input type="date" class="form-control" id="birthDate" name="birthDate" required>
+                      </div>
+                      <div class="col-md-6">
+                        <label for="contactNumber" class="form-label">Contact Number:</label>
+                        <input type="text" class="form-control" id="contactNumber" name="contactNumber" required maxlength="11" placeholder="Enter 11-digit mobile number">
+                      </div>
+                      <div class="col-12">
+                        <label for="address" class="form-label">Address:</label>
+                        <textarea class="form-control" id="address" name="address" rows="4" required></textarea>
+                      </div>
+                      <div class="col-12">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                      </div>
+                    </form>
                   </div>
                 </div>
                 <!-- /Card -->

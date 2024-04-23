@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/../classes/user.php';
 require_once __DIR__ . '/../classes/company.php';
+require_once __DIR__ . '/../classes/jobseeker.php';
 
 if (isset($_SESSION['username'])) {
     $username = $_SESSION['username'];
@@ -12,6 +13,10 @@ if (isset($_SESSION['username'])) {
 else {
     echo "No user details found for user ID: $userID";
 }
+
+$jobseeker = new JobSeeker($conn);
+$jobseekerdetails = $jobseeker->getJobSeekerDetailsByUserID($userID);
+
 ?>
 
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
@@ -38,10 +43,11 @@ else {
         <div data-i18n="Dashboard">Dashboard</div>
       </a>
     </li>
-
     <li class="menu-header small text-uppercase">
       <span class="menu-header-text">Pages</span>
     </li>
+    
+    <?php if(!empty($jobseekerdetails)){?>
     <li class="menu-item">
       <a href="./jobs.php" class="menu-link">
         <i class="menu-icon tf-icons bx bx-briefcase"></i>
@@ -66,7 +72,13 @@ else {
         <div data-i18n="Companies">Companies</div>
       </a>
     </li>
-    
-    
+    <?php } else{?>
+      <li class="menu-item">
+      <a href="./register.php" class="menu-link">
+        <i class="menu-icon tf-icons bx bx-user-plus"></i>
+        <div data-i18n="Register">Register</div>
+      </a>
+    </li>
+    <?php }?>
   </ul>
 </aside>

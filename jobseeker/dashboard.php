@@ -12,19 +12,11 @@ $user = new User($conn);
 $company = new Company($conn);
 
 $userdetails = $user->getUserDetails($username);
+$role = $user->getUserDetails($_SESSION['username'])->getRole();
 
 if(!$userdetails == null){
   $userId = $userdetails->getUserID();
-  if(!$userId == null){
-    $companydetails = $company->getCompanyDetails($userId);
-    if(!$companydetails == null){
-      $companyname = $companydetails->getCompanyName();
-    }
-    else{
-      echo 'Company Name not found.';
-    }
-  }
-  else{
+  if($userId == null){
     echo 'UserID not found.';
   }
 }
@@ -32,6 +24,7 @@ else{
   echo 'User details not found.';
 }
 
+$rolecheck = 0;
 $pagetitle = "HireMe - Dashboard";
 ?>
 
@@ -54,7 +47,14 @@ $pagetitle = "HireMe - Dashboard";
       <div class="layout-container">
 
         <!-- Menu -->
-          <?php require_once __DIR__ . "/menubar.php";?>
+        <?php 
+          if($role == 'Job Seeker'){
+            require_once __DIR__ . "/menubar.php";
+          }else{
+            $rolecheck = 1;
+            echo '<img src="../assets/img/error1.gif" alt="Error Image">';
+          }
+        ?>
         <!-- / Menu -->
 
         <!-- Layout container -->
@@ -62,7 +62,12 @@ $pagetitle = "HireMe - Dashboard";
           <!-- Navbar -->
           <?php require_once __DIR__ . "/navbar.php";?>
           <!-- / Navbar -->
-
+          <?php 
+          if($rolecheck == 1){
+            echo '<img src="../assets/img/error1.gif" alt="Error Image">';
+          }else{
+          
+        ?>
           <!-- Content wrapper -->
           <div class="content-wrapper">
             <!-- Content -->
@@ -108,6 +113,6 @@ $pagetitle = "HireMe - Dashboard";
 
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
-    <?php require_once __DIR__ . "/endscripts.php";?>
+    <?php } require_once __DIR__ . "/endscripts.php";?>
   </body>
 </html>

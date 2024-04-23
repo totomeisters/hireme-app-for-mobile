@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $jobIndustry = htmlspecialchars($_POST['jobIndustry']);
     $otherIndustry = htmlspecialchars($_POST['otherIndustry']);          
     $jobTitle = htmlspecialchars($_POST['jobTitle']);
-    $jobDescription = htmlspecialchars($_POST['jobDescription']);
+    $jobDescription = $_POST['jobDescription'];
     $jobType = htmlspecialchars($_POST['jobType']);
 
     if($jobLocationType === "On Site" && ($jobLocation == null || empty($jobLocation))){

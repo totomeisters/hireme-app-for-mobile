@@ -66,8 +66,7 @@ if (isset($_SESSION['username'])) {
         </li>
       </ul>
     </li>
-    <?php 
-      }?>
+      
     <li class="menu-item">
       <a href="./candidates.php" class="menu-link">
         <i class="menu-icon tf-icons bx bx-user"></i>
@@ -80,7 +79,7 @@ if (isset($_SESSION['username'])) {
         <div data-i18n="Interviews">Interviews</div>
       </a>
     </li>
-    <?php
+    <?php }
 
       if ($companydetails == null){?>
 

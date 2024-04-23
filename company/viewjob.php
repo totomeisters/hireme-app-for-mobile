@@ -66,14 +66,21 @@ $pagetitle = "HireMe - View Job # ".$jobID;
                 <?php if (!empty($jobs)): ?>
                   <div class="card p-2 mb-4">
                     <div class="card-body">
-                        <h4 class="card-title"><?php echo $jobs->getJobTitle(); ?></h4>
-                        <h6 class="card-subtitle mb-2 text-muted"><?php echo $jobs->getJobLocation(); ?></h6>
-                        <p class="card-text"><?php echo $jobs->getJobDescription(); ?></p>
+                        <h4 class="card-title"><?= $jobs->getJobTitle(); ?></h4>
+                        <h6 class="card-subtitle mb-4 text-muted">
+                          <?php $location = empty($jobs->getJobLocation()) ? 'No location added.' : $jobs->getJobLocation();
+                           echo $location;
+                          ?>
+                        </h6>
+                        <div class="mb-4"><?= $jobs->getJobDescription(); ?></div>
+
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Job Type: <?php echo $jobs->getJobType(); ?></li>
-                            <li class="list-group-item">Job Type: <?php echo $jobs->getJobLocationType(); ?></li>
-                            <li class="list-group-item">Salary Range: ₱<?php echo $jobs->getSalaryMin() . ' - ₱' . $jobs->getSalaryMax(); ?></li>
-                            <li class="list-group-item">Work Hours: <?php echo $jobs->getWorkHours(); ?></li>
+                          <li class="list-group-item"></li>
+                            <li class="list-group-item">Job Type: <?= $jobs->getJobType(); ?></li>
+                            <li class="list-group-item">Job Type: <?= $jobs->getJobLocationType(); ?></li>
+                            <li class="list-group-item">Salary Range: ₱<?= $jobs->getSalaryMin() . ' - ₱' . $jobs->getSalaryMax(); ?></li>
+                            <li class="list-group-item">Work Hours: <?= $jobs->getWorkHours(); ?></li>
+                          <li class="list-group-item"></li>
                         </ul>
                         <?php
                             $postingDate = new DateTime($jobs->getPostingDate());
@@ -96,8 +103,8 @@ $pagetitle = "HireMe - View Job # ".$jobID;
                             }
                             ?>
 
-                        <p class="card-text"><small class="text-muted">Posted on: <?php echo $jobs->getPostingDate(); ?></small></p>
-                        <p class="card-text"><small class="text-muted">Time posted: <?php echo $timePassed; ?></small></p>
+                        <p class="card-text"><small class="text-muted">Posted on: <?= $jobs->getPostingDate(); ?></small></p>
+                        <p class="card-text"><small class="text-muted">Time posted: <?= $timePassed; ?></small></p>
                         <p class="card-text"><small class="text-muted">Verification: 
                             <?php 
                                 $verification = $jobs->getVerificationStatus();
@@ -112,7 +119,7 @@ $pagetitle = "HireMe - View Job # ".$jobID;
                       <p>This place is nonexistent. Pray tell, how didst thou arrive hither? Go back whence you came, human.</p>
                     </div>
                   <?php endif; ?>
-                  <h4>Applicants for "<?php echo $jobs->getJobTitle();?>"</h4>
+                  <h4>Applicants for "<?= $jobs->getJobTitle();?>"</h4>
 
                   <?php if (empty($applications)): ?>
                       <div class="row">
