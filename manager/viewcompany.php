@@ -28,6 +28,7 @@ if(!empty($companyDetails)){
     $companyName = $companyDetails->getCompanyName();
     $companyDescription = $companyDetails->getCompanyDescription();
     $companyAddress = $companyDetails->getCompanyAddress();
+    $companyStatus = $companyDetails->getVerificationStatus();
 }
 else{
     echo 'How did you get here?';
@@ -115,8 +116,22 @@ $pagetitle = "HireMe - View: ".$companyName;
                     <div class="card">
                       <div class="card-body">
                         <h5 class="card-title">Verification</h5>
-                        <button class="btn btn-success">Verify</button> <!-- make a function -->
-                        <button class="btn btn-danger">Reject</button> <!-- make a function -->
+
+                        <?php
+                          if ($companyStatus == 'Pending') {
+                        ?>
+                          <form id="updateapplication" method="post" action="../functions/updateapplicationstatus.php">
+                              <input type="hidden" name="companyID" value="<?= $companyID; ?>">
+                              <input type="hidden" name="status" name="applicationID" value="">
+                              <button class="btn btn-success" type="submit" name="status" value="Verified">Verify</button>
+                              <button class="btn btn-danger" type="submit" name="status" value="Rejected">Reject</button>
+                          </form>
+                        <?php
+                          } else {
+                            echo 'This company is already <span class="' . ($companyStatus == 'Verified' ? 'text-success' : 'text-danger') . '">' . strtoupper($companyStatus) . '</span>.';
+                          }
+                        ?>
+
                       </div>
                     </div>
                   </div>
@@ -257,8 +272,102 @@ $pagetitle = "HireMe - View: ".$companyName;
     </div>
     <!-- / Layout wrapper -->
 
+  <!-- Confirmation Modal -->
+  <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="confirmationModalLabel">Confirmation</h5>
+                  <!-- <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button> -->
+              </div>
+              <p class="mx-3"><small class="text-muted">To dismiss or close this message, please click anywhere outside the box.</small></p>
+              <div class="modal-body">
+                  <span id="modalMessage"></span>
+              </div>
+              <div class="modal-footer">
+                  <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button> -->
+                  <button type="button" class="btn btn-primary">Confirm</button>
+              </div>
+          </div>
+      </div>
+      </div>
+  <!-- / Confirmation Modal -->
+
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
     <?php require_once "./endscripts.php";?>
+
+    <script>
+      function handleFormSubmission(formData) {
+          $.ajax({
+              type: 'POST',
+              url: '../functions/updatecompanystatus.php',
+              data: formData,
+              dataType: 'json',
+              success: function(response) {
+                  if (response.status === 'success') {
+                      $('.overlay').show();
+                      showToast(response.message, 'success');
+                      setTimeout(function() {
+                          window.location.href = response.redirect;
+                      }, 1400);
+                  } else if (response.status === 'error') {
+                      showToast(response.message, 'warning');
+                  } else {
+                      console.error('Unknown response status:', response.status);
+                  }
+              },
+              error: function(xhr, status, error) {
+                  console.error('AJAX Error:', error);
+                  showToast('An error occurred. Please try again.', 'error');
+              }
+          });
+      }
+
+      function showToast(message, type) {
+          var toast = $('<div>', {
+              class: 'toast ' + type,
+              text: message
+          });
+          $('#toast-container').append(toast);
+          toast.addClass('show');
+          setTimeout(function() {
+              toast.remove();
+              $('.overlay').hide();
+          }, 2000);
+      }
+
+      document.addEventListener("DOMContentLoaded", function() {
+          var confirmationModal = document.getElementById("confirmationModal");
+          var verifyButton = document.querySelector("#updateapplication button[value='Verified']");
+          var rejectButton = document.querySelector("#updateapplication button[value='Rejected']");
+          var statusValue = "";
+
+          verifyButton.addEventListener("click", function(event) {
+              event.preventDefault();
+              statusValue = "Verified";
+              var modalMessage = confirmationModal.querySelector(".modal-body");
+              modalMessage.innerHTML = "You clicked <strong class='text-success'>VERIFY</strong>. Are you sure you want to continue? <strong>This action cannot be undone.</strong>";
+              var modal = new bootstrap.Modal(confirmationModal);
+              modal.show();
+          });
+        
+          rejectButton.addEventListener("click", function(event) {
+              event.preventDefault();
+              statusValue = "Rejected";
+              var modalMessage = confirmationModal.querySelector(".modal-body");
+              modalMessage.innerHTML = "You clicked <strong class='text-danger'>REJECT</strong>. Are you sure you want to continue? <strong>This action cannot be undone.</strong>";
+              var modal = new bootstrap.Modal(confirmationModal);
+              modal.show();
+          });
+        
+          document.getElementById("confirmationModal").querySelector(".btn-primary").addEventListener("click", function() {
+              var formData = $('#updateapplication').serialize();
+              formData += "&status=" + statusValue;
+              handleFormSubmission(formData);
+          });
+      });
+  </script>
+
   </body>
 </html>

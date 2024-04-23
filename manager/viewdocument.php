@@ -103,6 +103,7 @@ $pagetitle = "HireMe - Company Documents";
                         <?php
                             if ($companyapplicationdetails){
                                 foreach ($companyapplicationdetails as $companyapplicationdetail){
+                                    $companyApplicationID = $companyapplicationdetail->getCompanyApplicationID();
                                     $documentname = $companyapplicationdetail->getDocumentName();
                                     $documenttype = $companyapplicationdetail->getDocumentFilePath();
                                         $fileextension = pathinfo($documenttype, PATHINFO_EXTENSION);
@@ -126,8 +127,22 @@ $pagetitle = "HireMe - Company Documents";
                         </div>
                         <div class="row card mb-2 py-3 px-2">
                               <h5 class="card-title">Verification</h5>
-                              <button class="btn btn-success mb-2">Verify</button> <!-- make a function -->
-                              <button class="btn btn-danger">Reject</button> <!-- make a function -->
+                              
+                        <?php
+                          if ($verificationstatus == 'Pending') {
+                        ?>
+                          <form id="updateapplication" method="post" action="../functions/updatedocumenttatus.php">
+                              <input type="hidden" name="companyApplicationID" value="<?= $companyApplicationID; ?>">
+                              <input type="hidden" name="status" name="applicationID" value="">
+                              <button class="btn btn-success" type="submit" name="status" value="Verified">Verify</button>
+                              <button class="btn btn-danger" type="submit" name="status" value="Rejected">Reject</button>
+                          </form>
+                        <?php
+                          } else {
+                            echo '<p>This document is already <span class="' . ($verificationstatus == 'Verified' ? 'text-success' : 'text-danger') . '">' . strtoupper($verificationstatus) . '</span>.</p>';
+                          }
+                        ?>
+
                         </div>
                         <div class="row card py-3">
                           <form action="./viewcompany.php" method="post">
@@ -162,6 +177,28 @@ $pagetitle = "HireMe - Company Documents";
         <!-- / Layout page -->
       </div>
 
+  <!-- Confirmation Modal -->
+  <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="confirmationModalLabel">Confirmation</h5>
+                  <!-- <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button> -->
+              </div>
+              <p class="mx-3"><small class="text-muted">To dismiss or close this message, please click anywhere outside the box.</small></p>
+              <div class="modal-body">
+                  <span id="modalMessage"></span>
+                  
+              </div>
+              <div class="modal-footer">
+                  <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button> -->
+                  <button type="button" class="btn btn-primary">Confirm</button>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- / Confirmation Modal -->
+
       <!-- Overlay -->
       <div class="layout-overlay layout-menu-toggle"></div>
     </div>
@@ -170,22 +207,91 @@ $pagetitle = "HireMe - Company Documents";
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
     <?php require_once "./endscripts.php";?>
-    <script>
-      $(function() {
-          $("#slider-range").slider({
-              range: true,
-              min: 0,
-              max: 100000, // Maximum of 10 digits
-              step: 1000, // Increment by 1000
-              values: [0, 100000], // Default values
-              slide: function(event, ui) {
-                  $("#salaryMin").val(ui.values[0]);
-                  $("#salaryMax").val(ui.values[1]);
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      function handleFormSubmission(formData) {
+          $.ajax({
+              type: 'POST',
+              url: '../functions/updatedocumentstatus.php',
+              data: formData,
+              dataType: 'json',
+              success: function(response) {
+                  if (response.status === 'success') {
+                      $('.overlay').show();
+                      showToast(response.message, 'success');
+                      setTimeout(function() {
+                          window.location.href = response.redirect;
+                      }, 1400);
+                  } else if (response.status === 'error') {
+                      showToast(response.message, 'warning');
+                  } else {
+                      console.error('Unknown response status:', response.status);
+                  }
+              },
+              error: function(xhr, status, error) {
+                  console.error('AJAX Error:', error);
+                  showToast('An error occurred. Please try again.', 'error');
               }
           });
-          $("#salaryMin").val($("#slider-range").slider("values", 0));
-          $("#salaryMax").val($("#slider-range").slider("values", 1));
+      }
+
+      function showToast(message, type) {
+          var toast = $('<div>', {
+              class: 'toast ' + type,
+              text: message
+          });
+          $('#toast-container').append(toast);
+          toast.addClass('show');
+          setTimeout(function() {
+              toast.remove();
+              $('.overlay').hide();
+          }, 2000);
+      }
+      
+          var confirmationModal = document.getElementById("confirmationModal");
+          var verifyButton = document.querySelector("#updateapplication button[value='Verified']");
+          var rejectButton = document.querySelector("#updateapplication button[value='Rejected']");
+          var statusValue = "";
+
+          verifyButton.addEventListener("click", function(event) {
+              event.preventDefault();
+              statusValue = "Verified";
+              var modalMessage = confirmationModal.querySelector(".modal-body");
+              modalMessage.innerHTML = "You clicked <strong class='text-success'>VERIFY</strong>. Are you sure you want to continue? <strong>This action cannot be undone.</strong>";
+              var modal = new bootstrap.Modal(confirmationModal);
+              modal.show();
+          });
+        
+          rejectButton.addEventListener("click", function(event) {
+            event.preventDefault();
+            statusValue = "Rejected";
+            var modalMessage = confirmationModal.querySelector(".modal-body");
+            modalMessage.innerHTML = "You clicked <strong class='text-danger'>REJECT</strong>. Are you sure you want to continue? <strong>This action cannot be undone.</strong><br><div class='my-4'><label for='reasonInput'><span class='text-danger'>*</span>Reason for Rejection:</label><textarea id='reasonInput' class='form-control mt-3' name='reason' placeholder='THIS IS REQUIRED'></textarea></div>";
+            var reasonInput = document.getElementById("reasonInput");
+            var modal = new bootstrap.Modal(confirmationModal);
+            modal.show();
+          });
+        
+          document.getElementById("confirmationModal").querySelector(".btn-primary").addEventListener("click", function() {
+              var formData = $('#updateapplication').serialize();
+              formData += "&status=" + statusValue;
+
+              if (statusValue === "Rejected") {
+                  var reasonValue = document.getElementById("reasonInput").value.trim();
+
+                  if (reasonValue === "") { //prevent form submission if reason for rejection is blank
+                      showToast("Please provide a reason for rejection.", "error");
+                      return;
+                  } else{
+                    formData += "&reason=" + reasonValue;
+                  }
+              }
+            
+              handleFormSubmission(formData);
+          });
       });
-    </script>
+  </script>
+    
   </body>
 </html>

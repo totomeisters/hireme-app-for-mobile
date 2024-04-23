@@ -98,5 +98,20 @@ class CompanyApplication {
             return false;
         }
     }
+
+    public function updateCompanyApplication($companyApplicationID, $status, $reason) {
+        try {
+            $stmt = $this->conn->prepare("UPDATE companyapplication SET VerificationStatus = ?, ReasonForRejection = ? WHERE CompanyApplicationID = ?");
+            $stmt->bind_param("ssi", $status, $reason, $companyApplicationID);
+            $result = $stmt->execute();
+            $stmt->close();
+            if (!$result) {
+                return false;
+            }
+            return true;
+        } catch (Exception $e) {
+            return false;
+        }
+    }
     
 }

@@ -138,5 +138,48 @@ class Company {
     
         return $companies;
     }
+
+    public function getAllRejectedCompanies() {
+        $status = 'Rejected';
+        $stmt = $this->conn->prepare("SELECT * FROM companies WHERE VerificationStatus = ?");
+        $stmt->bind_param("s", $status);
+        $stmt->execute();
+    
+        $result = $stmt->get_result();
+    
+        $companies = array();
+    
+        while ($row = $result->fetch_assoc()) {
+            $companyDetails = new CompanyDetails(
+                $row['CompanyID'],
+                $row['UserID'],
+                $row['CompanyName'],
+                $row['CompanyDescription'],
+                $row['CompanyAddress'],
+                $row['VerificationStatus']
+            );
+    
+            $companies[] = $companyDetails;
+        }
+    
+        $stmt->close();
+    
+        return $companies;
+    }
+
+    public function updateCompanyStatus($companyID, $status){
+        try {
+            $stmt = $this->conn->prepare("UPDATE companies SET VerificationStatus = ? WHERE CompanyID = ?");
+            $stmt->bind_param("si", $status, $companyID);
+            $result = $stmt->execute();
+            $stmt->close();
+            if (!$result) {
+                return false;
+            }
+            return true;
+        } catch (Exception $e) {
+            return false;
+        }
+    }
     
 }

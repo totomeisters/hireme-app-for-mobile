@@ -99,7 +99,7 @@ $pagetitle = "HireMe - Verified Companies";
                         </table>
                 <?php
                     } else {
-                        echo 'No Verified Companies.';
+                        echo '<p class="p-3 pb-1">No Verified Companies.</p>';
                     }
                 ?>
                     </div>

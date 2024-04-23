@@ -53,6 +53,11 @@ if (isset($_SESSION['username'])) {
             <div data-i18n="Unverified Companies">Unverified Companies</div> <!--all unverified companies-->
           </a>
         </li>
+        <li class="menu-item">
+          <a href="./rejectedcompanies.php" class="menu-link">
+            <div data-i18n="Rejected Companies">Rejected Companies</div> <!--all rejected companies-->
+          </a>
+        </li>
       </ul>
     </li>    
   </ul>

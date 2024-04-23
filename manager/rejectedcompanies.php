@@ -25,7 +25,7 @@ else{
   echo 'User details not found.';
 }
 
-$pagetitle = "HireMe - Unverified Companies";
+$pagetitle = "HireMe - Rejected Companies";
 ?>
 
 <!DOCTYPE html>
@@ -63,11 +63,11 @@ $pagetitle = "HireMe - Unverified Companies";
               <div class="row">
                 <!-- Card -->
                 <div class="col-lg-12 mb-4 order-0">
-                    <h3>Unverified Companies</h3>
+                    <h3>Rejected Companies</h3>
                     <div class="card">
                 <?php
-                    $unVerifiedCompanies = $company->getAllUnverifiedCompanies();
-                    if (!empty($unVerifiedCompanies)) {
+                    $rejectedCompanies = $company->getAllRejectedCompanies();
+                    if (!empty($rejectedCompanies)) {
                 ?>
                         <table class="table table-hover table-bordered">
                             <thead>
@@ -81,15 +81,15 @@ $pagetitle = "HireMe - Unverified Companies";
                             </thead>
                             <tbody>
                                 <?php $count = 1; 
-                                    foreach ($unVerifiedCompanies as $unVerifiedCompany) { ?>
+                                    foreach ($rejectedCompanies as $rejectedCompany) { ?>
                                     <tr>
                                         <td><?php echo $count++; ?></td>
-                                        <td><?php echo $unVerifiedCompany->getCompanyName(); ?></td>
-                                        <td><?php echo $unVerifiedCompany->getCompanyAddress(); ?></td>
-                                        <td><?php echo $unVerifiedCompany->getVerificationStatus(); ?></td>
+                                        <td><?php echo $rejectedCompany->getCompanyName(); ?></td>
+                                        <td><?php echo $rejectedCompany->getCompanyAddress(); ?></td>
+                                        <td><?php echo $rejectedCompany->getVerificationStatus(); ?></td>
                                         <td>
                                             <form action="./viewcompany.php" method="post">
-                                              <input type="hidden" name="companyID" value="<?= $unVerifiedCompany->getCompanyID(); ?>">
+                                              <input type="hidden" name="companyID" value="<?= $rejectedCompany->getCompanyID(); ?>">
                                               <button type="submit" class="btn btn-warning">View Details</button>
                                             </form>
                                         </td>
@@ -99,7 +99,7 @@ $pagetitle = "HireMe - Unverified Companies";
                         </table>
                 <?php
                     } else {
-                        echo '<p class="p-3 pb-1">No Unverified Companies.</p>';
+                        echo '<p class="p-3 pb-1">No Rejected Companies.</p>';
                     }
                 ?>              
                     </div>
