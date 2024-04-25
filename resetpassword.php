@@ -4,13 +4,18 @@ if (!isset($_SESSION)) {
 }
 
 if(isset($_GET['token'])){
+  if(strlen($_GET['token']) !== 16){
+
+      $error = 'Oops.. your token was invalid.';
+  }
+  else{
     $token = $_GET['token'];
     $error = 0;
+  }
 }
 else{
-    $error = 'Oops.. your token was invalid.';
+  $error = 1;
 }
-// $token = 1; //testing only
 
 ?>
 
@@ -55,12 +60,11 @@ else{
   <div id="toast-container"></div>
   <div class="overlay"></div>
     <!-- Content -->
-
     <div class="container-xxl">
       <div class="authentication-wrapper authentication-basic container-p-y">
         <div class="authentication-inner">
           <!-- Forgot Password -->
-          <?php if($error == 0){ ?>
+          <?php if($error == 1 || isset($_GET['token'])){ ?>
           <div class="card">
             <div class="card-body">
               <!-- Logo -->
@@ -72,9 +76,18 @@ else{
               </div>
               <!-- /Logo -->
               <h4 class="mb-2">Ready to change your password? 🔒</h4>
-              <p class="mb-4">Please enter your new password.</p>
-                <form action="./functions/changepassword.php" method="post">
-                    <input type="hidden" name="token" value="<?= $token ?>">
+              <p class="mb-4">Please enter your <?php if($error == 1) {echo 'verification code and ';} ?> new password.</p>
+                <form id="formAuthentication" action="./functions/changepassword.php" method="post">
+
+                <?php if(isset($_GET['token'])){ ?>
+                    <input type="hidden" name="token" value="<?= $token ?>" class="input-group input-group-merge">
+                <?php } elseif($error == 1){ ?>
+                  <label for="token" class="form-label">Verification Code</label>
+                  <div class="input-group mb-3">                    
+                    <input type="text" name="token" value="" placeholder="Enter code here..." class="form-control" required>
+                  </div>
+                    
+                <?php } ?>
                     <div class="mb-3 form-password-toggle">
                         <label for="password">Password:</label>
                         <div class="input-group input-group-merge">
@@ -116,13 +129,13 @@ else{
               </div>
             </div>
           </div>
-          <?php } else{
-            echo '  <div class="card">
+          <?php } else { ?>
+                    <div class="card">
                         <div class="card-body">
                             <p class="card-title">
                                 <h3>
                                     <strong>
-                                        '.$error.'
+                                        <?= $error ?>
                                     </strong>
                                 </h3>
                             </p>
@@ -133,8 +146,8 @@ else{
                           <i class="bx bx-chevron-left scaleX-n1-rtl bx-sm"></i>
                           Back to login
                         </a>
-                    </div>';
-          } ?>
+                    </div>
+          <?php } ?>
           <!-- /Forgot Password -->
         </div>
       </div>

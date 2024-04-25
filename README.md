@@ -29,6 +29,9 @@ Join HireMe-App today and embark on a journey towards success – whether you're
 ## Credits
 Big thanks to OpenAI ChatGPT 3.5, Google Gemini, and Microsoft Copilot for helping me code, that really shaved a lot of time. Also to my vape, never left my side all throughout the journey.
 
+## Notes
+Because all of the libraries used are either open source or demos, some functions are limited. One of those is the "Forgot Password" function. I am using PHPMailer along with MailTrap, an email delivery platform that is easier to work with. The issue is that my account on MailTrap is only for demos, thus, the "Forgot Password" function only works on the email that I used for their platform (hiremeapp0@gmail.com).
+
 ## License
 ```
 MIT License

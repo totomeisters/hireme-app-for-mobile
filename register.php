@@ -60,11 +60,13 @@
 
               <form id="formAuthentication" class="mb-3" action="./functions/register.php" method="POST">
                 <div class="mb-3">
+                <div id="managerRoleMessage" class="small mb-2"><span class="text-danger">*Manager accounts are not granted access immediately. Approval from system admins are needed.</span></div>
                 <label for="role" class="form-label">What is your role?</label>
                   <select class="form-control" id="role" name="role" required>
                     <option value="" disabled selected>Select Role</option>
-                    <option value="company">Company</option>
-                    <option value="job_seeker">Job Seeker</option>
+                    <option value="Company">Company</option>
+                    <option value="Job Seeker">Job Seeker</option>
+                    <option value="User">Manager</option>
                   </select>
                 </div>
                 <div class="mb-3">
@@ -177,6 +179,19 @@
                   }
               });
           });
+
+          var roleSelect = document.getElementById("role");
+          var managerRoleMessage = document.getElementById("managerRoleMessage");
+
+          managerRoleMessage.style.display = "none";
+
+          roleSelect.addEventListener("change", function() {
+              if (roleSelect.value === "User") {
+                  managerRoleMessage.style.display = "block";
+              } else {
+                  managerRoleMessage.style.display = "none";
+              }
+          }); 
       });
     </script>
   </body>

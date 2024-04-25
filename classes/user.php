@@ -244,7 +244,7 @@ class User {
 
     public function sendEmailForgotPassword($email){
 
-        $token = $this->generateRandomToken(); //create random 150-character string as token 
+        $token = $this->generateRandomToken(16); //create random 16-character string as token 
 
         $mail = new PHPMailer(true); //Create an instance; passing `true` enables exceptions
 
@@ -255,7 +255,7 @@ class User {
             $mail->Host       = 'live.smtp.mailtrap.io';                //Set the SMTP server to send through
             $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
             $mail->Username   = 'api';                                  //SMTP username
-            $mail->Password   = '36d1cde56b9f332e6c39dbd40914b75f';     //SMTP password
+            $mail->Password   = '26251abf632c973b082929e5764ba1c4';     //SMTP password
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         //Enable implicit TLS encryption; use 465 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_SMTPS`
             $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
         
@@ -266,8 +266,44 @@ class User {
             //Content
             $mail->isHTML(true);                                        //Set email format to HTML
             $mail->Subject = 'Password Reset';
-            $mail->Body    = 'Click this link to change your password.<br><a href="localhost/hireme/resetpassword.php?token='.$token.'">Change Password</a>';
             $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+            $mail->Body = '
+                            <html>
+                            <head>
+                                <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+                                <style>
+                                    .card {
+                                        margin: 20px auto;
+                                        width: 80%;
+                                    }
+                                    .card-body {
+                                        padding: 20px;
+                                    }
+                                    .btn {
+                                        margin-top: 10px;
+                                    }
+                                </style>
+                            </head>
+                            <body>
+                                <div class="container">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Password Reset</h5>
+                                            <p class="card-text">To reset your password, click the button below:</p>
+                                            <a href="localhost/hireme/resetpassword.php?token='.$token.'" class="btn btn-primary">Change Password</a>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="mb-4 card-title">You can also paste this code on the reset password page.</h5>
+                                            <a href="localhost/hireme/resetpassword.php">Reset Password Page</a>
+                                            <p class="mt-4 card-text strong">Verification Code: '.$token.'</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </body>
+                            </html>
+                        ';            
         
             
             //set the token that was generated
@@ -280,14 +316,12 @@ class User {
                     return $msg;
                 }
                 else{
-                    if($mail->send()){
+                    if(!$mail->send()){
 
-                        return true;
-                    }
-                    else{
                         $msg = "Oops.. there was an error: ". $mail->ErrorInfo;
                         return $msg;
                     }
+                    return true;
                 }
         } catch (Exception $e) {
             $msg = "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
@@ -295,7 +329,7 @@ class User {
         }
     }
 
-    private function generateRandomToken($length = 150) {
+    private function generateRandomToken($length) {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $token = '';
         for ($i = 0; $i < $length; $i++) {
@@ -307,16 +341,18 @@ class User {
     public function changePasswordByToken($password, $token){
         try {
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-            $stmt = $this->conn->prepare("UPDATE Users SET Password = ?, Token = null WHERE Token = ?");
+            $stmt = $this->conn->prepare("UPDATE Users SET Password = ?, Token = NULL WHERE Token = ?"); //change password and removes previous token
             $stmt->bind_param("ss", $hashedPassword, $token);
             $result = $stmt->execute();
             $stmt->close();
             if (!$result) {
-                return false;
+                $errorInfo = $stmt->errorInfo();
+                $errorMessage = $errorInfo[2];
+                return $errorMessage;
             }
             return true;
         } catch (Exception $e) {
-            return false;
+            return $e;
         }
     }
 }

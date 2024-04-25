@@ -21,11 +21,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $response = array('status' => 'success', 'message' => 'Password changed! You can now use it to log in.', 'redirect' => './login.php');
             }
             else{
-                $response = array('status' => 'error', 'message' => 'Sorry there was an error.', 'redirect' => './resetpassword.php?token='.$token);
+                $response = array('status' => 'error', 'message' => 'Sorry there was an error.' . $resetpassword, 'redirect' => './resetpassword.php?token='.$token);
             }
         }
         else{
-            $response = array('status' => 'error', 'message' => 'W-wait.. your passwords do not match? Sorry, but I will redirect you to a new page.', 'redirect' => './resetpassword.php?token='.$token);
+            $response = array('status' => 'error', 'message' => 'Your passwords did not match. Try typing slower next time.', 'redirect' => './resetpassword.php?token='.$token);
 
         }
     }
