@@ -18,7 +18,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $user = new User($conn);
     $logincheck = $user->login($emailusername, $password);
 
-    if (!$logincheck == null) {
+    if ($logincheck === true) {
+        $_SESSION['loggedin'] = true;
         if (filter_var($emailusername, FILTER_VALIDATE_EMAIL)) {
             $userDetails = $user->getUserDetailsUsingEmail($emailusername);
         } else {
@@ -26,13 +27,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         
 
-        if ($rememberMe) {
-            if (!$user->rememberUser($emailusername)) {
-                $response = array('status' => 'error', 'message' => 'Error remembering user, try again.');
-                echo json_encode($response);
-                exit();
-            }
-        }
+        // if ($rememberMe) {
+        //     if (!$user->rememberUser($emailusername)) {
+        //         $response = array('status' => 'error', 'message' => 'Error remembering user, try again.');
+        //         echo json_encode($response);
+        //         exit();
+        //     }
+        // }
 
         if ($userDetails) {
             $role = $userDetails->getRole();
@@ -62,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $response = array('status' => 'error', 'message' => 'Error getting user details. Please contact the support team if the issue persists.');
         }
     } else {
-        $response = array('status' => 'error', 'message' => 'Login failed. Please contact the support team if the issue persists.');
+        $response = array('status' => 'error', 'message' => $logincheck);
     }
 
     echo json_encode($response);

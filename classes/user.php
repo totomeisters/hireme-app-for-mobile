@@ -30,18 +30,136 @@ class User {
         }
     }
 
-    public function rememberUser($username) {
+    // public function rememberUser($username) {
+    //     try {
+    //         $token = bin2hex(random_bytes(32));
+    //         $stmt = $this->conn->prepare("UPDATE Users SET Token=? WHERE Username=?");
+    //         $stmt->bind_param("ss", $token, $username);
+    //         $result = $stmt->execute();
+    //         $stmt->close();
+    //         if ($result) {
+    //             setcookie('remember_me', $token, time() + (86400 * 30)); // cookie expires in 30 days
+    //             return true;
+    //         } else {
+    //             // handle error
+    //             return false;
+    //         }
+    //     } catch (Exception $e) {
+    //         // handle exception
+    //         return false;
+    //     }
+    // }
+
+    // public function autoLogin() {
+    //     if (isset($_COOKIE['remember_me'])) {
+    //         $token = $_COOKIE['remember_me'];
+    //         try {
+    //             // Retrieve user based on token
+    //             $stmt = $this->conn->prepare("SELECT * FROM Users WHERE Token=?");
+    //             $stmt->bind_param("s", $token);
+    //             $stmt->execute();
+    //             $result = $stmt->get_result();
+    //             $stmt->close();
+    
+    //             if ($result->num_rows > 0) {
+    //                 $user = $result->fetch_assoc();
+    
+    //                 // Validate token
+    //                 if (password_verify($token, $user['Token'])) {
+    //                     // Token is valid, start session
+    //                     if (session_status() !== PHP_SESSION_ACTIVE) {
+    //                         session_start();
+    //                         session_regenerate_id(true); // Regenerate session ID to prevent session fixation
+    //                     }
+    //                     $_SESSION['loggedin'] = true;
+    //                     return true;
+    //                 } else {
+    //                     // Token is invalid, delete the cookie
+    //                     setcookie('remember_me', '', time() - 3600);
+    //                     return false;
+    //                 }
+    //             } else {
+    //                 // Token not found, delete the cookie
+    //                 setcookie('remember_me', '', time() - 3600, '/', '', true, true);
+    //                 return false;
+    //             }
+    //         } catch (Exception $e) {
+    //             // Log the error or display a user-friendly message
+    //             error_log("Database error: " . $e->getMessage());
+    //             return false;
+    //         }
+    //     }
+    //     return false;
+    // }    
+
+    public function login($username, $password) {
         try {
-            $token = bin2hex(random_bytes(32));
-            $stmt = $this->conn->prepare("UPDATE Users SET Token=? WHERE Username=?");
-            $stmt->bind_param("ss", $token, $username);
-            $result = $stmt->execute();
+            
+            if (session_status() !== PHP_SESSION_ACTIVE) {
+            session_start();
+            }
+
+            $query = "SELECT Password FROM Users WHERE Username = ?";
+            $userDetails = $this->getUserDetails($username);
+            $_SESSION['username'] = $username;
+
+            if (filter_var($username, FILTER_VALIDATE_EMAIL)) {
+                $query = "SELECT Password FROM Users WHERE Email = ?";
+                $userDetails = $this->getUserDetailsUsingEmail($username);
+                if ($userDetails) {
+                    $usernamee = $userDetails->getUsername();
+                    $_SESSION['username'] = $usernamee;
+                    // $msg = $query.$username;
+                    // return $msg;
+                } else {
+                    $msg = 'User details not found with email provided.';
+                    return $msg;
+                }
+            }
+            // else {
+            //     $msg = $query;
+            //     return $msg;
+            // }
+
+            $stmt = $this->conn->prepare($query);
+            $stmt->bind_param("s", $username);
+            $stmt->execute();
+            $stmt->bind_result($hashedPassword);
+            $stmt->fetch();
             $stmt->close();
-            if ($result) {
-                setcookie('remember_me', $token, time() + (86400 * 30)); // cookie expires in 30 days
+
+
+            if ($hashedPassword) {
+                if (password_verify($password, $hashedPassword)) {
+                    return true;
+                } else {
+                    $msg = 'Wrong password.';
+                    return $msg;
+                }
+            } else {
+                $msg = 'User not found.';
+                return $msg;
+            }
+        } catch (Exception $e) {
+            $msg = 'Login try-catch failed.';
+            return $msg;
+        }
+    }
+
+    public function logintest($username, $password) {
+        try {
+            $stmt = $this->conn->prepare("SELECT Password FROM Users WHERE Username = ?");
+            $stmt->bind_param("s", $username);
+            $stmt->execute();
+            $stmt->bind_result($hashedPassword);
+            $stmt->fetch();
+            $stmt->close();
+            
+            if (password_verify($password, $hashedPassword)) {
+                // Passwords match, user is authenticated
                 return true;
             } else {
-                // handle error
+                // Passwords don't match
                 return false;
             }
         } catch (Exception $e) {
@@ -49,97 +167,7 @@ class User {
             return false;
         }
     }
-
-    public function autoLogin() {
-        if (isset($_COOKIE['remember_me'])) {
-            $token = $_COOKIE['remember_me'];
-            try {
-                // Retrieve user based on token
-                $stmt = $this->conn->prepare("SELECT * FROM Users WHERE Token=?");
-                $stmt->bind_param("s", $token);
-                $stmt->execute();
-                $result = $stmt->get_result();
-                $stmt->close();
     
-                if ($result->num_rows > 0) {
-                    $user = $result->fetch_assoc();
-    
-                    // Validate token
-                    if (password_verify($token, $user['Token'])) {
-                        // Token is valid, start session
-                        if (session_status() !== PHP_SESSION_ACTIVE) {
-                            session_start();
-                            session_regenerate_id(true); // Regenerate session ID to prevent session fixation
-                        }
-                        $_SESSION['loggedin'] = true;
-                        return true;
-                    } else {
-                        // Token is invalid, delete the cookie
-                        setcookie('remember_me', '', time() - 3600);
-                        return false;
-                    }
-                } else {
-                    // Token not found, delete the cookie
-                    setcookie('remember_me', '', time() - 3600, '/', '', true, true);
-                    return false;
-                }
-            } catch (Exception $e) {
-                // Log the error or display a user-friendly message
-                error_log("Database error: " . $e->getMessage());
-                return false;
-            }
-        }
-        return false;
-    }    
-
-    public function login($username, $password) {
-        try {
-
-            if (filter_var($username, FILTER_VALIDATE_EMAIL)) {
-                $query = "SELECT Password FROM Users WHERE Email=?";
-                $userDetails = $this->getUserDetailsUsingEmail($username);
-                if ($userDetails) {
-                    $username = $userDetails->getUsername();
-                    $_SESSION['username'] = $username;
-                } else {
-                    $msg = array('status' => 'error', 'message' => 'User details not found.');
-                    return $msg;
-                    exit();
-                }
-            } else {
-                $query = "SELECT Password FROM Users WHERE Username=?";
-                $_SESSION['username'] = $username;
-            }
-
-            $stmt = $this->conn->prepare($query);
-            $stmt->bind_param("s", $username);
-            $stmt->execute();
-            $result = $stmt->get_result();
-            $stmt->close();
-
-
-            if ($result->num_rows === 1) {
-                $row = $result->fetch_assoc();
-                $hashedPassword = $row['Password'];
-                if (password_verify($password, $hashedPassword)) {
-                    if (session_status() !== PHP_SESSION_ACTIVE) {
-                        session_start();
-                    }
-                    $_SESSION['loggedin'] = true;
-                    return true;
-                } else {
-                    $msg = array('status' => 'error', 'message' => 'Wrong password.');
-                    return $msg;
-                }
-            } else {
-                $msg = array('status' => 'error', 'message' => 'User not found.');
-                return $msg;
-            }
-        } catch (Exception $e) {
-            $msg = array('status' => 'error', 'message' => 'Login try-catch failed.');
-            return $msg;
-        }
-    }
 
     public function getUserDetails($username) {
         $query = "SELECT * FROM users WHERE Username = ?";

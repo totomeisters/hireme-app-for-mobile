@@ -2,23 +2,16 @@
 if (!isset($_SESSION)) {
     session_start();
 }
-require_once '../classes/companyapplication.php';
+require_once '../classes/job.php';
 
-$company = new CompanyApplication($conn);
+$job = new Job($conn);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $status = $_POST['status'];
-    $companyApplicationID = $_POST['companyApplicationID'];
+    $jobID = $_POST['jobID'];
     $companyID = $_POST['companyID'];
-    if($_POST['reason'] == null || empty($_POST['reason'])){
-        $reason = 'nullOrEmpty';
-    }
-    else{
-        $reason = $_POST['reason'];
-    }
-
     $statusErr = 0;
-    $companyApplicationIDerr = 0;
+    $jobIDerr = 0;
 
     if(empty($status) || ($status !== "Rejected" && $status !== "Verified")) {
         $statusErr = 1;
@@ -31,16 +24,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
     
-    if(empty($companyApplicationID) || !is_numeric($companyApplicationID)) {
-        $companyApplicationIDerr = 1;
+    if(empty($jobID) || !is_numeric($jobID)) {
+        $jobIDerr = 1;
         $response = array('status' => 'error', 'message' => 'Application ID is invalid. Please try again.', 'redirect' => '');
     }
 
-    if($statusErr == 0 && $companyApplicationIDerr == 0) {
-        $_SESSION['viewcompanyApplicationID'] = $companyApplicationID;
-        $_SESSION['viewcompanyID'] = $companyID;
-        if($company->updateCompanyApplication($companyApplicationID, $status, $reason)) {
-            $response = array('status' => 'success', 'message' => 'Status was successfully updated.', 'redirect' => './viewdocument.php');
+    if($statusErr == 0 && $jobIDerr == 0) {
+        if($job->updateJobStatus($status, $jobID)) {
+            $_SESSION['viewjobID'] = $jobID;
+            $_SESSION['viewcompanyID'] = $companyID;
+            $response = array('status' => 'success', 'message' => 'Status was successfully updated.', 'redirect' => './viewjob.php');
         } else {
             $response = array('status' => 'error', 'message' => 'Failed to update status.', 'redirect' => '');
         }

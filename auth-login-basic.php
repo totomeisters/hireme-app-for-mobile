@@ -28,12 +28,13 @@ else {
 
     <meta name="description" content="" />
     <link rel="icon" type="image/x-icon" href="./assets/img/favicon/favicon.ico" />
+    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
-      rel="stylesheet"
-    />
+      <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet"/>
+      <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="./assets/vendor/fonts/boxicons.css" />
     <link rel="stylesheet" href="./assets/vendor/css/core.css" class="template-customizer-core-css" />
     <link rel="stylesheet" href="./assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
@@ -58,7 +59,8 @@ else {
               <!-- Logo -->
               <div class="app-brand justify-content-center">
                 <a href="index.php" class="app-brand-link gap-2">
-                  <img src="./assets/img/icons/websiteicons/hireme-high-resolution-logo-black-transparent.png" alt="HireMeLogo" style="max-height: 30px;">
+                <span class="logotext text-black">HireMe-App</span>
+                  <!-- <img src="./assets/img/icons/websiteicons/hireme-high-resolution-logo-black-transparent.png" alt="HireMeLogo" style="max-height: 30px;"> -->
                 </a>
               </div>
               <!-- /Logo -->
@@ -103,7 +105,7 @@ else {
                   </div>
                 </div>
                 <div class="mb-3">
-                  <button class="btn btn-primary d-grid w-100" type="submit">Sign in</button>
+                  <button class="btn btn-success d-grid w-100" type="submit">Sign in</button>
                 </div>
               </form>
 
@@ -138,9 +140,8 @@ else {
           toast.addClass('show');
           setTimeout(function() {
               toast.remove();
-              // Hide the overlay after the toast has faded out
               $('.overlay').hide();
-          }, 2000); // 3000 milliseconds = 3 seconds
+          }, 2000);
       }
       
       $(document).ready(function() {
@@ -151,15 +152,13 @@ else {
           
               $.ajax({
                   type: 'POST',
-                  url: './functions/login.php', // replace with your actual login script URL
+                  url: './functions/login.php',
                   data: formData,
                   dataType: 'json',
                   success: function(response) {
                       if (response.status === 'success') {
-                          // Show the overlay
                           $('.overlay').show();
                           showToast(response.message, 'success');
-                          // Wait for the toast to disappear before redirecting
                           setTimeout(function() {
                               window.location.href = response.redirect;
                           }, 1900);

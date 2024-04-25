@@ -45,7 +45,7 @@ if (isset($_SESSION['username'])) {
       <ul class="menu-sub">
         <li class="menu-item">
           <a href="./viewcompanies.php" class="menu-link">
-            <div data-i18n="View Companies">View Companies</div> <!--all verified companies-->
+            <div data-i18n="Verified Companies">Verified Companies</div> <!--all verified companies-->
           </a>
         </li>
         <li class="menu-item">

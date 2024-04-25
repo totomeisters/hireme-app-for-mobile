@@ -7,14 +7,25 @@ require_once __DIR__.'/../classes/companyapplication.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $companyapplicationID = $_POST['CompanyApplicationID'];
-    $companyID = $_POST['companyID'];
+    if(isset($_POST['CompanyApplicationID']) && isset($_POST['companyID'])){
+        $companyapplicationID = $_POST['CompanyApplicationID'];
+        $companyID = $_POST['companyID'];
+      }
+      else{
+        $companyapplicationID = 0;
+        $companyID = 0;
+      }
 
 }
+elseif (isset($_SESSION['viewcompanyApplicationID']) && isset($_SESSION['viewcompanyID'])){
+    $companyapplicationID = $_SESSION['viewcompanyApplicationID'];
+    $companyID = $_SESSION['viewcompanyID'];
+    $_SESSION['viewcompanyApplicationID'] = null;
+    $_SESSION['viewcompanyID'] = null;
+}
 else{
-    echo "How'd you get in here?";
-    exit();
-    header("Location: ./dashboard.php");
+  $companyapplicationID = 0;
+  $companyID = 0;
 }
 
 $companyapplication = new CompanyApplication($conn);
@@ -37,6 +48,11 @@ $pagetitle = "HireMe - Company Documents";
   <!-- /Head -->
 
   <body>
+    <!-- Toast Overlay -->
+    <div id="toast-container"></div>
+    <div class="overlay"></div>
+    <!-- / Toast Overlay   -->
+
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
       <div class="layout-container">
@@ -115,7 +131,7 @@ $pagetitle = "HireMe - Company Documents";
                                     echo "<strong><p>Date Posted: </strong>". $dateposted.'</p>';
                                     echo "<strong><p>File Type: </strong>". strtoupper($fileextension).'</p>';
                                     echo "<strong><p>Verification Status: </strong>". $verificationstatus.'</p>';
-                                    if(isset($rejectionreason)){
+                                    if(isset($rejectionreason) && $verificationstatus == 'Rejected'){
                                         echo "<strong><p>Reason for Rejection: </strong>". $rejectionreason.'</p>';
                                     }
                                 }
@@ -131,9 +147,9 @@ $pagetitle = "HireMe - Company Documents";
                         <?php
                           if ($verificationstatus == 'Pending') {
                         ?>
-                          <form id="updateapplication" method="post" action="../functions/updatedocumenttatus.php">
+                          <form id="updateapplication" method="post" action="../functions/updatedocumentstatus.php">
                               <input type="hidden" name="companyApplicationID" value="<?= $companyApplicationID; ?>">
-                              <input type="hidden" name="status" name="applicationID" value="">
+                              <input type="hidden" name="companyID" value="<?= $companyID; ?>">
                               <button class="btn btn-success" type="submit" name="status" value="Verified">Verify</button>
                               <button class="btn btn-danger" type="submit" name="status" value="Rejected">Reject</button>
                           </form>
@@ -237,6 +253,7 @@ $pagetitle = "HireMe - Company Documents";
       }
 
       function showToast(message, type) {
+        console.log('Message: ' + message, 'Type: ' + type);
           var toast = $('<div>', {
               class: 'toast ' + type,
               text: message
@@ -281,7 +298,7 @@ $pagetitle = "HireMe - Company Documents";
                   var reasonValue = document.getElementById("reasonInput").value.trim();
 
                   if (reasonValue === "") { //prevent form submission if reason for rejection is blank
-                      showToast("Please provide a reason for rejection.", "error");
+                      showToast("Please provide a reason for rejection.", "warning");
                       return;
                   } else{
                     formData += "&reason=" + reasonValue;

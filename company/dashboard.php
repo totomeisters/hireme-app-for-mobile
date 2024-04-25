@@ -83,7 +83,7 @@ $pagetitle = "HireMe - Dashboard";
             <div class="container-xxl flex-grow-1 container-p-y">
               <div class="row">
                 <!-- Card -->
-                <div class="col-lg-12 mb-4 order-0">
+                <div class="col-lg-12 mb-2 order-0">
                   <div class="card p-2">
 
                     <?php
@@ -92,11 +92,11 @@ $pagetitle = "HireMe - Dashboard";
                         <h5 class="card-title">Hello <?php echo ucfirst($companyname);?>!</h5>
                         <p class="card-text">Please pick an option from the side menu to continue working.</p>
 
-                        <img
+                        <!-- <img
                         src="../assets/img/illustrations/dashboard-company.png"
                         height="100%"
                         alt="Company Dashboard Illustration"
-                        />
+                        /> -->
                         <?php
                     }
                     else{?>
@@ -110,6 +110,18 @@ $pagetitle = "HireMe - Dashboard";
                 </div>
                 <!-- /Card -->
 
+              </div>
+              <div class="row">
+                <div class="col-lg-6 mb-2 order-1">
+                  <div class="card p-3">
+                    <canvas id="JobListingPieChart"></canvas>
+                  </div>
+                </div>
+                <div class="col-lg-6 mb-2 order-2">
+                  <div class="card p-3">
+                    <canvas id="JobListingBarChart"></canvas>
+                  </div>
+                </div>
               </div>
             </div>
             <!-- / Content -->
@@ -143,5 +155,6 @@ $pagetitle = "HireMe - Dashboard";
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
     <?php } require_once __DIR__ . "/endscripts.php";?>
+    <script src="../assets/js/chart.js"></script>
   </body>
 </html>

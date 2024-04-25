@@ -11,7 +11,9 @@ if (isset($_SESSION['username'])) {
   if($userID) {
       $company = new Company($conn);
       $companydetails = $company->getCompanyDetails($userID);
-      $status = $companydetails->getVerificationStatus();
+      if($companydetails !== null){
+        $status = $companydetails->getVerificationStatus();
+      }
   }
 } else {
     echo "No company details found for user ID: $userID";
@@ -87,7 +89,7 @@ if (isset($_SESSION['username'])) {
         <li class="menu-item">
           <a href="./application.php" class="menu-link">
             <i class="menu-icon tf-icons bx bx-file"></i>
-            <div data-i18n="Application">New Application</div>
+            <div data-i18n="Register">Register</div>
           </a>
         </li>
 

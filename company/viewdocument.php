@@ -109,7 +109,8 @@ $pagetitle = "HireMe - Requirement Verification";
                         </div>
                     </div>
                     <div class="col-lg-4 order-1 my-1">
-                        <div class="card p-2 my-1">
+                      <div class="row my-1">
+                        <div class="card p-2">
                         <?php
                             if ($companyapplciationdetails){
                                 foreach ($companyapplciationdetails as $companyapplciationdetail){
@@ -134,7 +135,12 @@ $pagetitle = "HireMe - Requirement Verification";
                             }
                         ?>
                         </div>
+                      </div>
+                      <div class="row py-4 my-1">
+                        <a href="./verification.php" class="btn btn-secondary">Go Back</a>
                     </div>
+                    </div>
+                    
                 </div>
             </div>
 

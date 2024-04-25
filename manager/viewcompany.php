@@ -51,6 +51,11 @@ $pagetitle = "HireMe - View: ".$companyName;
   <!-- /Head -->
 
   <body>
+    <!-- Toast Overlay -->
+    <div id="toast-container"></div>
+    <div class="overlay"></div>
+    <!-- / Toast Overlay   -->
+    
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
       <div class="layout-container">

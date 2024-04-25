@@ -288,5 +288,17 @@ class Job {
         $affected = ($rowsAffected > 0) ? true : false;
         return $affected;
     }
+
+    public function updateJobStatus($status, $jobID) {
+        $stmt = $this->conn->prepare("UPDATE jobs SET VerificationStatus = ? WHERE JobID = ?");
+
+        $stmt->bind_param("si", $status, $jobID);
+
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     
 }

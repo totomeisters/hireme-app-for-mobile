@@ -14,16 +14,17 @@
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>HireMe - Login</title>
+    <title>HireMe - Register</title>
 
     <meta name="description" content="" />
     <link rel="icon" type="image/x-icon" href="./assets/img/favicon/favicon.ico" />
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
-      rel="stylesheet"
-    />
+      <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet"/>
+      <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="./assets/vendor/fonts/boxicons.css" />
     <link rel="stylesheet" href="./assets/vendor/css/core.css" class="template-customizer-core-css" />
     <link rel="stylesheet" href="./assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
@@ -49,14 +50,23 @@
               <!-- Logo -->
               <div class="app-brand justify-content-center">
                 <a href="index.php" class="app-brand-link gap-2">
-                  <img src="./assets/img/icons/websiteicons/hireme-high-resolution-logo-black-transparent.png" alt="HireMeLogo" style="max-height: 30px;">
+                <span class="logotext text-black">HireMe-App</span>
+                  <!-- <img src="./assets/img/icons/websiteicons/hireme-high-resolution-logo-black-transparent.png" alt="HireMeLogo" style="max-height: 30px;"> -->
                 </a>
               </div>
               <!-- /Logo -->
-              <h4 class="mb-2">Welcome to HireMe! 🚀</h4>
+              <h4 class="mb-2">Welcome to HireMe-App! 🚀</h4>
               <p class="mb-4">Job hunting has never been this easy!</p>
 
               <form id="formAuthentication" class="mb-3" action="./functions/register.php" method="POST">
+                <div class="mb-3">
+                <label for="role" class="form-label">What is your role?</label>
+                  <select class="form-control" id="role" name="role" required>
+                    <option value="" disabled selected>Select Role</option>
+                    <option value="company">Company</option>
+                    <option value="job_seeker">Job Seeker</option>
+                  </select>
+                </div>
                 <div class="mb-3">
                   <label for="username" class="form-label">Username</label>
                   <input
@@ -98,7 +108,7 @@
                     </label>
                   </div>
                 </div>
-                <button class="btn btn-primary d-grid w-100">Sign up</button>
+                <button class="btn btn-warning d-grid w-100">Sign up</button>
               </form>
 
               <p class="text-center">
