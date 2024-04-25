@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Apr 23, 2024 at 11:11 PM
+-- Generation Time: Apr 25, 2024 at 09:36 AM
 -- Server version: 8.2.0
 -- PHP Version: 8.2.13
 
@@ -114,7 +114,7 @@ CREATE TABLE IF NOT EXISTS `jobs` (
   `WorkHours` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `JobLocation` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `JobLocationType` enum('WFH','On Site') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `PostingDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `PostingDate` datetime DEFAULT CURRENT_TIMESTAMP,
   `VerificationStatus` enum('Verified','Pending','Rejected') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `JobIndustry` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `OtherIndustry` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
