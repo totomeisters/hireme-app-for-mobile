@@ -5,6 +5,14 @@ if (!isset($_SESSION)) {
 require_once __DIR__ . '/../config/config.php';
 require_once __DIR__ . '/userdetails.php';
 
+require_once '../assets/vendor/libs/phpmailer/src/PHPMailer.php';
+require_once '../assets/vendor/libs/phpmailer/src/SMTP.php';
+require_once '../assets/vendor/libs/phpmailer/src/Exception.php';
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
 class User {
     private $conn;
 
@@ -94,6 +102,8 @@ class User {
 
     public function login($username, $password) {
         try {
+
+            $hashedPassword = '';
             
             if (session_status() !== PHP_SESSION_ACTIVE) {
             session_start();
@@ -146,27 +156,27 @@ class User {
         }
     }
 
-    public function logintest($username, $password) {
-        try {
-            $stmt = $this->conn->prepare("SELECT Password FROM Users WHERE Username = ?");
-            $stmt->bind_param("s", $username);
-            $stmt->execute();
-            $stmt->bind_result($hashedPassword);
-            $stmt->fetch();
-            $stmt->close();
+    // public function logintest($username, $password) {
+    //     try {
+    //         $stmt = $this->conn->prepare("SELECT Password FROM Users WHERE Username = ?");
+    //         $stmt->bind_param("s", $username);
+    //         $stmt->execute();
+    //         $stmt->bind_result($hashedPassword);
+    //         $stmt->fetch();
+    //         $stmt->close();
             
-            if (password_verify($password, $hashedPassword)) {
-                // Passwords match, user is authenticated
-                return true;
-            } else {
-                // Passwords don't match
-                return false;
-            }
-        } catch (Exception $e) {
-            // handle exception
-            return false;
-        }
-    }
+    //         if (password_verify($password, $hashedPassword)) {
+    //             // Passwords match, user is authenticated
+    //             return true;
+    //         } else {
+    //             // Passwords don't match
+    //             return false;
+    //         }
+    //     } catch (Exception $e) {
+    //         // handle exception
+    //         return false;
+    //     }
+    // }
     
 
     public function getUserDetails($username) {
@@ -230,6 +240,84 @@ class User {
             $result['Role'],
             $result['Token']
         );
+    }
+
+    public function sendEmailForgotPassword($email){
+
+        $token = $this->generateRandomToken(); //create random 150-character string as token 
+
+        $mail = new PHPMailer(true); //Create an instance; passing `true` enables exceptions
+
+        try {
+            //Server settings
+            // $mail->SMTPDebug = SMTP::DEBUG_CONNECTION;                  //Enable verbose debug output
+            $mail->isSMTP();                                            //Send using SMTP
+            $mail->Host       = 'live.smtp.mailtrap.io';                //Set the SMTP server to send through
+            $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+            $mail->Username   = 'api';                                  //SMTP username
+            $mail->Password   = '36d1cde56b9f332e6c39dbd40914b75f';     //SMTP password
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         //Enable implicit TLS encryption; use 465 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_SMTPS`
+            $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+        
+            //Recipients
+            $mail->setFrom('mailtrap@demomailtrap.com', 'HireMe-App');
+            $mail->addAddress($email);
+        
+            //Content
+            $mail->isHTML(true);                                        //Set email format to HTML
+            $mail->Subject = 'Password Reset';
+            $mail->Body    = 'Click this link to change your password.<br><a href="localhost/hireme/resetpassword.php?token='.$token.'">Change Password</a>';
+            $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+        
+            
+            //set the token that was generated
+                $stmt = $this->conn->prepare("UPDATE Users SET Token = ? WHERE Email = ?");
+                $stmt->bind_param("ss", $token, $email);
+                $result = $stmt->execute();
+                $stmt->close();
+                if (!$result) {
+                    $msg = "Oops.. there was an error with the database.";
+                    return $msg;
+                }
+                else{
+                    if($mail->send()){
+
+                        return true;
+                    }
+                    else{
+                        $msg = "Oops.. there was an error: ". $mail->ErrorInfo;
+                        return $msg;
+                    }
+                }
+        } catch (Exception $e) {
+            $msg = "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+            return $msg;
+        }
+    }
+
+    private function generateRandomToken($length = 150) {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $token = '';
+        for ($i = 0; $i < $length; $i++) {
+            $token .= $characters[rand(0, strlen($characters) - 1)];
+        }
+        return $token;
+    }
+
+    public function changePasswordByToken($password, $token){
+        try {
+            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+            $stmt = $this->conn->prepare("UPDATE Users SET Password = ?, Token = null WHERE Token = ?");
+            $stmt->bind_param("ss", $hashedPassword, $token);
+            $result = $stmt->execute();
+            $stmt->close();
+            if (!$result) {
+                return false;
+            }
+            return true;
+        } catch (Exception $e) {
+            return false;
+        }
     }
 }
 ?>

@@ -19,7 +19,7 @@
 
 <?php
 if (true){
-  header("Location: ./auth-login-basic.php");
+  header("Location: ./login.php");
   exit();
 }
 else{

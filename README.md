@@ -21,9 +21,13 @@ Join HireMe-App today and embark on a journey towards success – whether you're
 ## Dependencies
 - Bootstrap
 - JQuery
+- Toast
+- ChartsJS
+- TinyMCE
+- PHPMailer 6.9.1
 
 ## Credits
-Big thanks to ChatGPT for helping me code, that really shaved a lot of time. Also to my vape, never left my side all throughout the journey.
+Big thanks to OpenAI ChatGPT 3.5, Google Gemini, and Microsoft Copilot for helping me code, that really shaved a lot of time. Also to my vape, never left my side all throughout the journey.
 
 ## License
 ```
