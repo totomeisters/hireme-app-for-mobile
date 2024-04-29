@@ -53,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         $response = array('status' => 'success', 'message' => 'Welcome Job Seeker. You will be redirected shortly.', 'redirect' => './jobseeker/dashboard.php');
                         break;
                     default:
-                        $response = array('status' => 'error', 'message' => 'Access denied. Please contact the support team or the managers.');
+                        $response = array('status' => 'error', 'message' => 'Oops.. access denied. Please contact the support team or the system admin.');
                         break;
                 }
             } else {

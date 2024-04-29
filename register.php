@@ -66,7 +66,7 @@
                     <option value="" disabled selected>Select Role</option>
                     <option value="Company">Company</option>
                     <option value="Job Seeker">Job Seeker</option>
-                    <option value="User">Manager</option>
+                    <option value="Manager">Manager</option>
                   </select>
                 </div>
                 <div class="mb-3">
@@ -186,7 +186,7 @@
           managerRoleMessage.style.display = "none";
 
           roleSelect.addEventListener("change", function() {
-              if (roleSelect.value === "User") {
+              if (roleSelect.value === "Manager") {
                   managerRoleMessage.style.display = "block";
               } else {
                   managerRoleMessage.style.display = "none";

@@ -69,6 +69,7 @@ $pagetitle = "HireMe - Candidates";
                                 $applicantFName = $jobseeker->getJobSeekerDetailsByUserID($application->getUserID())->getFirstName();
                                 $applicantLName = $jobseeker->getJobSeekerDetailsByUserID($application->getUserID())->getLastName();
                                 $applicantName = $applicantFName.' '.$applicantLName;
+                                $status = 'Pending';
 
                                 if(empty($jobTitle)){
                                     $jobTitle = 'error getting job title';
@@ -78,10 +79,10 @@ $pagetitle = "HireMe - Candidates";
                                     $applicantName = 'error getting job title';
                                 }
 
-                                if(!empty($application->getJobSeekerApplicationID())){
-                                  $applicationStatus = $interview->getInterviewByJobSeekerApplicationID($application->getJobSeekerApplicationID())->getStatus();
-                                  $status = !empty($applicationStatus) ? $applicationStatus : "Unknown";
-                                }
+                                // if(!empty($application->getJobSeekerApplicationID())){
+                                //   $applicationStatus = $interview->getInterviewByJobSeekerApplicationID($application->getJobSeekerApplicationID())->getStatus();
+                                //   $status = !empty($applicationStatus) ? $applicationStatus : "Unknown";
+                                // }
                                 
                                 
                                 ?>

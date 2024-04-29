@@ -12,9 +12,9 @@ Take the next step in your career with HireMe-App. Browse through a wide array o
 
 Key Features Include:
 - Customizable job postings for companies
-- Advanced search filters for job seekers
 - Seamless application management system
-- Interactive profiles for both companies and job seekers
+- Set interview dates with ease
+- Hierarchical management (Admin > Manager > Company > Job Seeker)
 
 Join HireMe-App today and embark on a journey towards success – whether you're a company seeking top talent or an individual striving for career growth, we've got you covered.
 
@@ -25,38 +25,13 @@ Join HireMe-App today and embark on a journey towards success – whether you're
 - ChartsJS
 - TinyMCE
 - PHPMailer 6.9.1
+- Sweet Alert 2@11
 
 ## Credits
 Big thanks to OpenAI ChatGPT 3.5, Google Gemini, and Microsoft Copilot for helping me code, that really shaved a lot of time. Also to my vape, never left my side all throughout the journey.
 
 ## Notes
 Because all of the libraries used are either open source or demos, some functions are limited. One of those is the "Forgot Password" function. I am using PHPMailer along with MailTrap, an email delivery platform that is easier to work with. The issue is that my account on MailTrap is only for demos, thus, the "Forgot Password" function only works on the email that I used for their platform (hiremeapp0@gmail.com).
-
-## License
-```
-MIT License
-
-Copyright (c) 2024 marlcorpuz
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
-```
 
 ## Contact
 For inquiries and feedback, please contact me at [marlangelocorpuz@gmail.com](mailto:marlangelocorpuz@gmail.com)

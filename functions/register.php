@@ -13,10 +13,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST['password'];
     $email = $_POST['email'];
     $role = isset($_POST['role']) ? $_POST['role'] : false;
+    $token = null;
+
+    if($_POST['role'] == 'Manager'){
+        $token = hash('md5', 'Manager');
+        $role = 'User';
+    }
 
     $user = new User($conn);
 if($role !== false){
-    if($user->addUser($username, $password, $email, $role)) {
+    if($user->addUser($username, $password, $email, $role, $token)) {
         $response = array('status' => 'success', 'message' => 'Successfully registered. You will be redirected to the login page shortly.', 'redirect' => './login.php');
     } 
     else {

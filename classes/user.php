@@ -20,11 +20,11 @@ class User {
         $this->conn = $conn;
     }
 
-    public function addUser($username, $password, $email, $role) {
+    public function addUser($username, $password, $email, $role, $token) {
         try {
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-            $stmt = $this->conn->prepare("INSERT INTO Users (Username, Password, Email, Role) VALUES (?, ?, ?, ?)");
-            $stmt->bind_param("ssss", $username, $hashedPassword, $email, $role);
+            $stmt = $this->conn->prepare("INSERT INTO Users (Username, Password, Email, Role, Token) VALUES (?, ?, ?, ?, ?)");
+            $stmt->bind_param("sssss", $username, $hashedPassword, $email, $role, $token);
             $result = $stmt->execute();
             $stmt->close();
             if (!$result) {
@@ -355,5 +355,60 @@ class User {
             return $e;
         }
     }
+
+    public function getAllFutureManager() {
+        try {
+            $token = hash('md5', 'Manager');
+            $query = "SELECT * FROM users WHERE Token = ?";
+            $statement = $this->conn->prepare($query);
+            $statement->bind_param('s', $token);
+            $statement->execute();
+            $result = $statement->get_result();
+    
+            $userDetailsArray = [];
+            
+            while ($row = $result->fetch_assoc()) {
+                $userDetails = new UserDetails(
+                    $row['UserID'],
+                    $row['Username'],
+                    $row['Password'],
+                    $row['Email'],
+                    $row['Role'],
+                    $row['Token']
+                );
+                $userDetailsArray[] = $userDetails;
+            }
+    
+            return $userDetailsArray;
+        } catch (Exception $e) {
+            return $e;
+        }
+    }    
+    
+    public function convertUserToManagerByUserID($userID){
+        $query = "UPDATE users SET Role = 'Manager', Token = NULL WHERE UserID = ?";
+        
+        try {
+            $stmt = $this->conn->prepare($query);
+            if (!$stmt) {
+                $errormsg = "Statement preparation failed.";
+                return $errormsg;
+            }
+            
+            $stmt->bind_param("i", $userID);
+            $success = $stmt->execute();
+            $stmt->close();
+            
+            if (!$success) {
+                $errormsg = "Execution failed.";
+                return $errormsg;
+            }
+            
+            return true;
+        } catch (Exception $e) {
+            return false;
+        }
+    }
+    
 }
 ?>
