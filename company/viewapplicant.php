@@ -188,7 +188,7 @@ $pagetitle = "HireMe - View Applicant # ".$applicantID;
                                       //check if the user came from "Candidates" page, the status of the application is "Verified", there are no interviews yet
                                     if($referer == "Candidates" && $status == "Verified" && (empty($interviewcheck) || $interviewcheck == null)){?>
 
-                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#setInterviewModal">
+                                            <button id="setInterviewButton" type="button" class="btn btn-primary" data-toggle="modal" data-target="#setInterviewModal">
                                               Set Interview
                                             </button>
 
@@ -204,7 +204,6 @@ $pagetitle = "HireMe - View Applicant # ".$applicantID;
                                   
                                           <form id="updateapplication" method="post" action="../functions/updateapplicationstatus.php">
                                               <input type="hidden" name="applicationID" value="<?= $applicationID; ?>">
-                                              <input type="hidden" name="status" name="applicationID" value="">
                                               <button class="btn btn-success" type="submit" name="status" value="Verified">Verify</button>
                                               <button class="btn btn-danger" type="submit" name="status" value="Rejected">Reject</button>
                                           </form>
@@ -256,27 +255,27 @@ $pagetitle = "HireMe - View Applicant # ".$applicantID;
 
             <!-- Confirmation Modal -->
                 <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="confirmationModalLabel">Confirmation</h5>
-                            <!-- <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button> -->
-                        </div>
-                        <p class="mx-3"><small class="text-muted">To dismiss or close this message, please click anywhere outside the box.</small></p>
-                        <div class="modal-body">
-                            <span id="modalMessage"></span>
-                        </div>
-                        <div class="modal-footer">
-                            <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button> -->
-                            <button type="button" class="btn btn-primary">Continue</button>
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="confirmationModalLabel">Confirmation</h5>
+                                <!-- <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button> -->
+                            </div>
+                            <p class="mx-3"><small class="text-muted">To dismiss or close this message, please click anywhere outside the box.</small></p>
+                            <div class="modal-body">
+                                <span id="modalMessage"></span>
+                            </div>
+                            <div class="modal-footer">
+                                <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button> -->
+                                <button type="button" class="btn btn-primary">Continue</button>
+                            </div>
                         </div>
                     </div>
-                </div>
                 </div>
             <!-- / Confirmation Modal -->
 
             <!-- Set Interview Modal -->
-                <div class="modal fade" id="setInterviewModal" tabindex="-1" role="dialog" aria-labelledby="setInterviewModalLabel" aria-hidden="true">
+                <div class="modal fade" id="setInterviewModal" tabindex="-2" role="dialog" aria-labelledby="setInterviewModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                       <div class="modal-content">
                         <div class="modal-header">
@@ -302,7 +301,7 @@ $pagetitle = "HireMe - View Applicant # ".$applicantID;
             <!-- / Set Interview Modal -->
 
             <!-- Footer -->
-            <footer>
+                <footer>
               <div class="container">
                 <div class="mb-2 mb-md-1">
                   ©
@@ -312,7 +311,7 @@ $pagetitle = "HireMe - View Applicant # ".$applicantID;
                   <span class="footer-link fw-bolder"> HireMe</span>
                 </div>
               </div>
-            </footer>
+                </footer>
             <!-- / Footer -->
 
             <div class="content-backdrop fade"></div>
@@ -331,59 +330,20 @@ $pagetitle = "HireMe - View Applicant # ".$applicantID;
     <!-- build:js assets/vendor/js/core.js -->
     <?php require_once "./endscripts.php";?>
 
-    <!-- <script>
-      // Wait for the DOM to be fully loaded
-      document.addEventListener("DOMContentLoaded", function() {
-          // Get the modal and buttons
-          var confirmationModal = document.getElementById("confirmationModal");
-          var verifyButton = document.querySelector("#updateapplication button[value='Verified']");
-          var rejectButton = document.querySelector("#updateapplication button[value='Rejected']");
-      
-          // Function to handle form submission after confirmation
-          function handleFormSubmission(status) {
-              // Set the value of the hidden input field
-              document.querySelector("#updateapplication input[name='status']").value = status;
-              // Submit the form
-              document.getElementById("updateapplication").submit();
-          }
-        
-          // Event listener for the Verify button
-          verifyButton.addEventListener("click", function(event) {
-              // Prevent the default form submission behavior
-              event.preventDefault();
-              // Display the modal
-              var modal = new bootstrap.Modal(confirmationModal);
-              modal.show();
-              // Event listener for the Continue button in the modal
-              document.getElementById("confirmationModal").querySelector(".btn-primary").addEventListener("click", function() {
-                  // Handle form submission with "Verified" status
-                  handleFormSubmission("Verified");
-              });
-          });
-        
-          // Event listener for the Reject button
-          rejectButton.addEventListener("click", function(event) {
-              // Prevent the default form submission behavior
-              event.preventDefault();
-              // Display the modal
-              var modal = new bootstrap.Modal(confirmationModal);
-              modal.show();
-              // Event listener for the Continue button in the modal
-              document.getElementById("confirmationModal").querySelector(".btn-primary").addEventListener("click", function() {
-                  // Handle form submission with "Rejected" status
-                  handleFormSubmission("Rejected");
-              });
-          });
-      });
-    </script> -->
-
     <script>      
       $(document).ready(function() {
+        var setInterviewButton = document.getElementById("setInterviewButton");
+
+setInterviewButton.addEventListener("click", function(event) {
+    var modal = new bootstrap.Modal(document.getElementById("setInterviewModal"));
+    modal.show();
+})
+
+        
           $('#setInterview').on('submit', function(e) {
               e.preventDefault();
           
               var formData = $(this).serialize();
-              const modal = document.getElementById("setInterviewModal");
           
               $.ajax({
                   type: 'POST',
@@ -394,7 +354,9 @@ $pagetitle = "HireMe - View Applicant # ".$applicantID;
                       if (response.status === 'success') {
                           $('.overlay').show();
                           showToast(response.message, 'success');
-                          modal.classList.remove("show");
+                          setTimeout(function() {
+                            location.reload();
+                          }, 1400);
                       } else if (response.status === 'error') {
                           showToast(response.message, 'warning');
                       } else {
@@ -480,6 +442,6 @@ $pagetitle = "HireMe - View Applicant # ".$applicantID;
               handleFormSubmission(formData);
           });
       });
-  </script>
+    </script>
   </body>
 </html>

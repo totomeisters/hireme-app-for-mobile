@@ -293,6 +293,7 @@ $pagetitle = "HireMe - Company Documents";
           document.getElementById("confirmationModal").querySelector(".btn-primary").addEventListener("click", function() {
               var formData = $('#updateapplication').serialize();
               formData += "&status=" + statusValue;
+              formData += "&reason=";
 
               if (statusValue === "Rejected") {
                   var reasonValue = document.getElementById("reasonInput").value.trim();

@@ -10,12 +10,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $status = $_POST['status'];
     $companyApplicationID = $_POST['companyApplicationID'];
     $companyID = $_POST['companyID'];
-    if($_POST['reason'] == null || empty($_POST['reason'])){
-        $reason = 'nullOrEmpty';
-    }
-    else{
-        $reason = $_POST['reason'];
-    }
+    // if($_POST['reason'] == null || empty($_POST['reason'])){
+    //     $reason = 'nullOrEmpty';
+    // }
+    // else{
+    //     $reason = $_POST['reason'];
+    // }
+    $reason = $_POST['reason'];
 
     $statusErr = 0;
     $companyApplicationIDerr = 0;
