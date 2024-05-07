@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Apr 25, 2024 at 09:36 AM
+-- Generation Time: May 07, 2024 at 09:43 PM
 -- Server version: 8.2.0
 -- PHP Version: 8.2.13
 
@@ -173,7 +173,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `Password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `Email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `Role` enum('Admin','Company','Job Seeker','User','Manager') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'User',
-  `Token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `Token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`UserID`),
   UNIQUE KEY `unique_email` (`Email`),
   UNIQUE KEY `unique_username` (`Username`)
