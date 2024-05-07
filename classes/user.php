@@ -102,8 +102,6 @@ class User {
 
     public function login($username, $password) {
         try {
-
-            $hashedPassword = '';
             
             if (session_status() !== PHP_SESSION_ACTIVE) {
             session_start();
@@ -134,8 +132,9 @@ class User {
             $stmt = $this->conn->prepare($query);
             $stmt->bind_param("s", $username);
             $stmt->execute();
-            $stmt->bind_result($hashedPassword);
-            $stmt->fetch();
+            $result = $stmt->get_result();
+            $row = $result->fetch_assoc();
+            $hashedPassword = $row['Password'];
             $stmt->close();
 
 
