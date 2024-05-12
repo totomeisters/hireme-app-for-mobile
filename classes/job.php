@@ -5,14 +5,17 @@ if (!isset($_SESSION)) {
 require_once __DIR__ . '/../config/config.php';
 require_once __DIR__ . '/jobdetails.php';
 
-class Job {
+class Job
+{
     private $conn;
 
-    public function __construct($conn) {
+    public function __construct($conn)
+    {
         $this->conn = $conn;
     }
 
-    public function addJob($companyId, $jobTitle, $jobDescription, $jobType, $salaryMin, $salaryMax, $workHours, $jobLocation, $jobLocationType, $jobIndustry, $otherIndustry) {
+    public function addJob($companyId, $jobTitle, $jobDescription, $jobType, $salaryMin, $salaryMax, $workHours, $jobLocation, $jobLocationType, $jobIndustry, $otherIndustry)
+    {
         try {
             $stmt = $this->conn->prepare("INSERT INTO Jobs (CompanyID, 
                                                             JobTitle, 
@@ -29,16 +32,16 @@ class Job {
                                                             OtherIndustry)
                                             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), 'Pending', ?, ?)");
             $stmt->bind_param("isssddsssss", $companyId, $jobTitle, $jobDescription, $jobType, $salaryMin, $salaryMax, $workHours, $jobLocation, $jobLocationType, $jobIndustry, $otherIndustry);
-            
+
             $result = $stmt->execute();
-            
+
             $stmt->close();
-            
+
             if (!$result) {
                 // handle error
                 return false;
             }
-            
+
             return true;
         } catch (Exception $e) {
             // handle exception
@@ -46,7 +49,8 @@ class Job {
         }
     }
 
-    public function getAllJobs($companyId) {
+    public function getAllJobs($companyId)
+    {
         try {
             $stmt = $this->conn->prepare("SELECT * FROM Jobs WHERE CompanyID=?");
             $stmt->bind_param("i", $companyId);
@@ -54,24 +58,24 @@ class Job {
             $result = $stmt->get_result();
             $jobs = $result->fetch_all(MYSQLI_ASSOC);
             $stmt->close(); // Close the statement after fetching the results
-    
+
             if (empty($jobs)) {
                 return []; // Return an empty array instead of false
             }
-    
+
             $jobObjects = [];
             foreach ($jobs as $job) {
                 if (isset(
-                    $job['JobID'], 
-                    $job['CompanyID'], 
-                    $job['JobTitle'], 
+                    $job['JobID'],
+                    $job['CompanyID'],
+                    $job['JobTitle'],
                     $job['JobDescription'],
-                    $job['JobType'], 
-                    $job['SalaryMin'], 
+                    $job['JobType'],
+                    $job['SalaryMin'],
                     $job['SalaryMax'],
-                    $job['WorkHours'], 
-                    $job['JobLocationType'], 
-                    $job['PostingDate'], 
+                    $job['WorkHours'],
+                    $job['JobLocationType'],
+                    $job['PostingDate'],
                     $job['VerificationStatus'],
                     $job['JobIndustry']
                 )) {
@@ -95,7 +99,7 @@ class Job {
                     error_log("Incomplete job data for JobID: " . ($job['JobID'] ?? 'Unknown JobID'));
                 }
             }
-    
+
             return $jobObjects;
         } catch (Exception $e) {
             // Log the error or handle it in a way that allows for recovery
@@ -104,14 +108,15 @@ class Job {
         }
     }
 
-    public function getJobDetailsByID($jobID) {
+    public function getJobDetailsByID($jobID)
+    {
         try {
             $stmt = $this->conn->prepare("SELECT * FROM Jobs WHERE JobID=?");
             $stmt->bind_param("i", $jobID);
             $stmt->execute();
             $result = $stmt->get_result();
             $job = $result->fetch_assoc();
-    
+
             if (!$job) {
                 return [];
             }
@@ -138,10 +143,11 @@ class Job {
             error_log($e->getMessage());
             throw $e;
         }
-    }  
+    }
 
-    public function getAllVerifiedJobs() {
-            $status = 'Verified';
+    public function getAllVerifiedJobs()
+    {
+        $status = 'Verified';
         try {
             $stmt = $this->conn->prepare("SELECT * FROM Jobs WHERE VerificationStatus=?");
             $stmt->bind_param("s", $status);
@@ -149,24 +155,24 @@ class Job {
             $result = $stmt->get_result();
             $jobs = $result->fetch_all(MYSQLI_ASSOC);
             $stmt->close();
-    
+
             if (empty($jobs)) {
                 return [];
             }
-    
+
             $jobObjects = [];
             foreach ($jobs as $job) {
                 if (isset(
-                    $job['JobID'], 
-                    $job['CompanyID'], 
-                    $job['JobTitle'], 
+                    $job['JobID'],
+                    $job['CompanyID'],
+                    $job['JobTitle'],
                     $job['JobDescription'],
-                    $job['JobType'], 
-                    $job['SalaryMin'], 
+                    $job['JobType'],
+                    $job['SalaryMin'],
                     $job['SalaryMax'],
-                    $job['WorkHours'], 
-                    $job['JobLocationType'], 
-                    $job['PostingDate'], 
+                    $job['WorkHours'],
+                    $job['JobLocationType'],
+                    $job['PostingDate'],
                     $job['VerificationStatus'],
                     $job['JobIndustry']
                 )) {
@@ -190,72 +196,76 @@ class Job {
                     error_log("Incomplete job data for JobID: " . ($job['JobID'] ?? 'Unknown JobID'));
                 }
             }
-    
+
             return $jobObjects;
         } catch (Exception $e) {
             error_log($e->getMessage());
             throw $e;
         }
     }
-    
-    public function getFaveJobsCountByJobID($jobID){
+
+    public function getFaveJobsCountByJobID($jobID)
+    {
         $stmt = $this->conn->prepare("SELECT COUNT(*) AS Interested FROM favoritejobs WHERE JobID = ?");
         $stmt->bind_param("i", $jobID);
         $stmt->execute();
-    
+
         $result = $stmt->get_result();
-    
+
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
             $interested = $row['Interested'];
-            
+
             $stmt->close();
-    
+
             return $interested;
         } else {
             return null;
         }
     }
 
-    public function getApplicantsCountByJobID($jobID){
+    public function getApplicantsCountByJobID($jobID)
+    {
         $stmt = $this->conn->prepare("SELECT COUNT(*) AS Applicants FROM jobseekerapplication WHERE JobID = ?");
         $stmt->bind_param("i", $jobID);
         $stmt->execute();
-    
+
         $result = $stmt->get_result();
-    
+
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
             $applicants = $row['Applicants'];
-            
+
             $stmt->close();
-    
+
             return $applicants;
         } else {
             return null;
         }
     }
 
-    public function getFaveJobsIDByJobID($jobID){
+    public function getFaveJobsIDByJobID($jobID)
+    {
         $stmt = $this->conn->prepare("SELECT JobID FROM favoritejobs WHERE JobID = ?");
         $stmt->bind_param("i", $jobID);
         $stmt->execute();
-    
+
         $result = $stmt->get_result();
-    
+
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
             $faveID = $row['JobID'];
-            
+
             $stmt->close();
-    
+
             return $faveID;
         } else {
             return null;
         }
     }
 
-    public function addFavoriteJob($jobSeekerID, $jobID) {
+    public function addFavoriteJob($jobSeekerID, $jobID)
+    {
         $sql = "INSERT INTO FavoriteJobs (JobSeekerID, JobID) VALUES (?, ?)";
         $stmt = $this->conn->prepare($sql);
         if (!$stmt) {
@@ -267,12 +277,13 @@ class Job {
         }
         $rowsAffected = $stmt->affected_rows;
         $stmt->close();
-        
+
         $affected = ($rowsAffected > 0) ? true : false;
         return $affected;
     }
-    
-    public function deleteFavoriteJob($jobSeekerID, $jobID) {
+
+    public function deleteFavoriteJob($jobSeekerID, $jobID)
+    {
         $sql = "DELETE FROM FavoriteJobs WHERE JobSeekerID = ? AND JobID = ?";
         $stmt = $this->conn->prepare($sql);
         if (!$stmt) {
@@ -284,12 +295,13 @@ class Job {
         }
         $rowsAffected = $stmt->affected_rows;
         $stmt->close();
-        
+
         $affected = ($rowsAffected > 0) ? true : false;
         return $affected;
     }
 
-    public function updateJobStatus($status, $jobID) {
+    public function updateJobStatus($status, $jobID)
+    {
         $stmt = $this->conn->prepare("UPDATE jobs SET VerificationStatus = ? WHERE JobID = ?");
 
         $stmt->bind_param("si", $status, $jobID);
@@ -300,5 +312,57 @@ class Job {
             return false;
         }
     }
-    
+
+    public function getJobCountByStatus($companyID)
+    {
+        $query = "SELECT VerificationStatus, COUNT(*) as count FROM jobs WHERE CompanyID = $companyID GROUP BY VerificationStatus";
+
+        $result = mysqli_query($this->conn, $query);
+
+        if ($result) {
+            $data = array();
+
+            while ($row = mysqli_fetch_assoc($result)) {
+                $data[] = array(
+                    'label' => $row['VerificationStatus'],
+                    'value' => (int)$row['count']
+                );
+            }
+
+            return json_encode($data);
+        } else {
+            return json_encode(array('error' => 'Failed to fetch data from the database'));
+        }
+    }
+
+    public function getApplicantCountByMonth($jobID)
+    {
+        $query = "SELECT MONTH(ApplicationDate) AS month, COUNT(*) AS applicants 
+                  FROM jobseekerapplication 
+                  WHERE JobID = ? 
+                  GROUP BY MONTH(ApplicationDate)";
+
+        if ($stmt = $this->conn->prepare($query)) {
+            $stmt->bind_param('i', $jobID);
+
+            $stmt->execute();
+
+            $result = $stmt->get_result();
+
+            $data = array();
+            while ($row = $result->fetch_assoc()) {
+                $data[] = array(
+                    'month' => $row['month'],
+                    'applicants' => $row['applicants']
+                );
+            }
+
+            return json_encode($data);
+
+            $stmt->close();
+        } else {
+            http_response_code(500);
+            return json_encode(array('error' => 'Database error: ' . $this->conn->error));
+        }
+    }
 }
