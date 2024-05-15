@@ -7,16 +7,33 @@ require_once '../classes/companyapplication.php';
 $company = new CompanyApplication($conn);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $reason = null;
+    if(isset($_POST['reason']) && !empty($_POST['reason'])){
+        $reason = $_POST['reason'];
+    }
     $status = $_POST['status'];
     $companyApplicationID = $_POST['companyApplicationID'];
     $companyID = $_POST['companyID'];
-    // if($_POST['reason'] == null || empty($_POST['reason'])){
-    //     $reason = 'nullOrEmpty';
-    // }
-    // else{
-    //     $reason = $_POST['reason'];
-    // }
-    $reason = $_POST['reason'];
+    $docstatus = ($status == "Verified") ? 1 : 0;
+    if ($_POST['DocumentType']) {
+        switch ($_POST['DocumentType']) {
+            case 'BIR Registration':
+                $document = 'bir';
+                break;
+            case 'SEC Registration':
+                $document = 'sec';
+                break;
+            case 'Business Permit':
+                $document = 'businesspermit';
+                break;
+            case 'Mayor\'s Permit':
+                $document = 'mayorpermit';
+                break;
+            case 'FDA or DOLE Certificate':
+                $document = 'certificate';
+                break;
+        }
+    }    
 
     $statusErr = 0;
     $companyApplicationIDerr = 0;
@@ -40,10 +57,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if($statusErr == 0 && $companyApplicationIDerr == 0) {
         $_SESSION['viewcompanyApplicationID'] = $companyApplicationID;
         $_SESSION['viewcompanyID'] = $companyID;
-        if($company->updateCompanyApplication($companyApplicationID, $status, $reason)) {
+        $update = $company->updateCompanyApplication($companyApplicationID, $status, $reason, $document, $docstatus, $companyID);
+        if($update === true) {
             $response = array('status' => 'success', 'message' => 'Status was successfully updated.', 'redirect' => './viewdocument.php');
         } else {
-            $response = array('status' => 'error', 'message' => 'Failed to update status.', 'redirect' => '');
+            $response = array('status' => 'error', 'message' => $update, 'redirect' => '');
         }
     }
 } else {

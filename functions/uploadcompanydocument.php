@@ -1,15 +1,15 @@
 <?php
-if(!session_start()){
+if (!session_start()) {
     session_start();
 }
 
-if(isset($_SESSION['username'])){
+if (isset($_SESSION['username'])) {
     $username = $_SESSION['username'];
 }
-    
-require_once __DIR__.'/../classes/user.php';
-require_once __DIR__.'/../classes/company.php';
-require_once __DIR__.'/../classes/companyapplication.php';
+
+require_once __DIR__ . '/../classes/user.php';
+require_once __DIR__ . '/../classes/company.php';
+require_once __DIR__ . '/../classes/companyapplication.php';
 
 $user = new User($conn);
 $company = new Company($conn);
@@ -20,6 +20,33 @@ $companyID = $company->getCompanyDetails($userID)->getCompanyID();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $docname = $_POST['DocumentName'];
+    $documenttype = $_POST['DocumentType'];
+    if ($documenttype) {
+        switch ($documenttype) {
+            case 'BIR Registration':
+                $document = 'bir';
+                break;
+            case 'SEC Registration':
+                $document = 'sec';
+                break;
+            case 'Business Permit':
+                $document = 'businesspermit';
+                break;
+            case 'Mayor\'s Permit':
+                $document = 'mayorpermit';
+                break;
+            case 'Certificate':
+                $document = 'certificate';
+                break;
+        }
+    }
+
+    if (!isset($document)) {
+        $response = array('status' => 'error', 'message' => 'Document Type not defined.', 'redirect' => './verification.php');
+        echo json_encode($response);
+        exit();
+    }
+
     $documentName = 'file_' . microtime(true) . '_' . rand(1000, 9999);
 
     if (!isset($_FILES['fileUpload'])) {
@@ -55,22 +82,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // upload doc muna bago mag sql query, "move_uploaded_file($_FILES['fileUpload']['tmp_name'], $documentfilepath)" muna
     // tas saka lang mag send $documentName saka $documentfilepath
 
-        if (!move_uploaded_file($_FILES['fileUpload']['tmp_name'], $documentfilepath)) {
-            $response = array('status' => 'error', 'message' => 'Error uploading document. Please try again.', 'redirect' => './verification.php');
-        } 
-        else {
-            $addapplication = $companyapplication->addCompanyApplication($companyID, $docname, $documentfilepath);
+    if (!move_uploaded_file($_FILES['fileUpload']['tmp_name'], $documentfilepath)) {
+        $response = array('status' => 'error', 'message' => 'Error uploading document. Please try again.', 'redirect' => './verification.php');
+    } else {
+        $addapplication = $companyapplication->addCompanyApplication($companyID, $docname, $documentfilepath, $documenttype, $document);
 
-            if(!$addapplication == true){
-                $response = array('status' => 'error', 'message' => 'Error connecting to server. Please try again.', 'redirect' => './verification.php');
-            }
-
+        if ($addapplication === true) {
             $response = array('status' => 'success', 'message' => 'Successfully added document. Page will reload please wait.', 'redirect' => './verification.php');
+        } else {
+            $response = array('status' => 'error', 'message' => $addapplication, 'redirect' => './verification.php');
         }
-        
+    }
+
     echo json_encode($response);
     exit();
 }
-?>
-
-

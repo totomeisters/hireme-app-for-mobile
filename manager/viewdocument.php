@@ -122,12 +122,14 @@ $pagetitle = "HireMe - Company Documents";
                                     $companyApplicationID = $companyapplicationdetail->getCompanyApplicationID();
                                     $documentname = $companyapplicationdetail->getDocumentName();
                                     $documenttype = $companyapplicationdetail->getDocumentFilePath();
+                                    $requirementtype = $companyapplicationdetail->getDocumentType();
                                         $fileextension = pathinfo($documenttype, PATHINFO_EXTENSION);
                                     $verificationstatus = $companyapplicationdetail->getVerification();
                                     $rejectionreason = $companyapplicationdetail->getReasonForRejection();
                                     $dateposted = $companyapplicationdetail->getDate();
 
                                     echo "<strong><p>Name: </strong>". $documentname.'</p>';
+                                    echo "<strong><p>Document: </strong>". $requirementtype.'</p>';
                                     echo "<strong><p>Date Posted: </strong>". $dateposted.'</p>';
                                     echo "<strong><p>File Type: </strong>". strtoupper($fileextension).'</p>';
                                     echo "<strong><p>Verification Status: </strong>". $verificationstatus.'</p>';
@@ -150,6 +152,7 @@ $pagetitle = "HireMe - Company Documents";
                           <form id="updateapplication" method="post" action="../functions/updatedocumentstatus.php">
                               <input type="hidden" name="companyApplicationID" value="<?= $companyApplicationID; ?>">
                               <input type="hidden" name="companyID" value="<?= $companyID; ?>">
+                              <input type="hidden" name="DocumentType" value="<?= $requirementtype; ?>">
                               <button class="btn btn-success" type="submit" name="status" value="Verified">Verify</button>
                               <button class="btn btn-danger" type="submit" name="status" value="Rejected">Reject</button>
                           </form>
@@ -247,6 +250,7 @@ $pagetitle = "HireMe - Company Documents";
               },
               error: function(xhr, status, error) {
                   console.error('AJAX Error:', error);
+                  console.log(response);
                   showToast('An error occurred. Please try again.', 'error');
               }
           });

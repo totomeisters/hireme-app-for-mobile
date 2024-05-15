@@ -5,15 +5,17 @@ class CompanyApplicationDetails {
     private $companyID;
     private $documentName;
     private $documentFilePath;
+    private $documentType;
     private $verification;
     private $reasonForRejection;
     private $date;
 
-    public function __construct($companyApplicationID, $companyID, $documentName, $documentFilePath, $verification, $reasonForRejection, $date) {
+    public function __construct($companyApplicationID, $companyID, $documentName, $documentFilePath, $documentType, $verification, $reasonForRejection, $date) {
         $this->companyApplicationID = $companyApplicationID;
         $this->companyID = $companyID;
         $this->documentName = $documentName;
         $this->documentFilePath = $documentFilePath;
+        $this->documentType = $documentType;
         $this->verification = $verification;
         $this->reasonForRejection = $reasonForRejection;
         $this->date = $date;
@@ -49,6 +51,14 @@ class CompanyApplicationDetails {
 
     public function setDocumentFilePath($documentFilePath) {
         $this->documentFilePath = $documentFilePath;
+    }
+
+    public function getDocumentType() {
+        return $this->documentType;
+    }
+
+    public function setDocumentType($documentType) {
+        $this->documentType = $documentType;
     }
 
     public function getVerification() {

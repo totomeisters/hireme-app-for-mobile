@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
+  var companyID = document.getElementById("companyID").value;
 // applicant chart
   const applicantBarChart = document.getElementById("JobListingBarChart");
   var applicantChart = new Chart(applicantBarChart, {
@@ -34,30 +35,18 @@ document.addEventListener("DOMContentLoaded", function () {
   $.ajax({
     url: "../functions/getapplicantsdata.php",
     method: "POST",
-    data: { jobID: 4 }, // hardcoded, will fix later
+    data: { companyID: companyID },
     success: function(response) {
       try {
-        var jsonData = JSON.parse(response);
-  
-        if (Array.isArray(jsonData) && jsonData.length > 0) {
-          var dataValues = Array(12).fill(0); // Initialize an array with 12 zeros
-          jsonData.forEach(function(item) {
-            var monthIndex = parseInt(item.month) - 1;
-            if (monthIndex >= 0 && monthIndex < 12) {
-              dataValues[monthIndex] = item.applicants;
-            }
-          });
-  
-          // Update chart data
-          applicantChart.data.datasets[0].data = dataValues;
-          applicantChart.update();
-        } else {
-          console.error("Response does not contain valid data:", jsonData);
-        }
+        var dataValues = JSON.parse(response);
+    
+        // Update chart data
+        applicantChart.data.datasets[0].data = dataValues;
+        applicantChart.update();
       } catch (error) {
         console.error("Error parsing JSON response:", error);
       }
-    },
+    },    
     error: function(xhr, status, error) {
       console.error("Error fetching data from the database:", error);
     },
@@ -68,15 +57,15 @@ document.addEventListener("DOMContentLoaded", function () {
   var jobListings = new Chart(jobListingPieChart, {
     type: "doughnut",
     data: {
-      labels: ["Rejected", "Pending", "Verified"],
+      labels: ["Verified", "Rejected", "Pending"],
       datasets: [
         {
           label: "Job Listings",
-          data: [1, 1, 1],
+          data: [0, 0, 0],
           backgroundColor: [
             "rgb(56, 142, 60)",
             "rgb(251, 192, 45)",
-            "rgb(198, 40, 40)",
+            "rgb(198, 40, 40)"
           ],
           hoverOffset: 4,
         },
@@ -90,11 +79,11 @@ document.addEventListener("DOMContentLoaded", function () {
   $.ajax({
     url: "../functions/getjobsdata.php",
     method: "POST",
-    data: { companyID: 2 }, //hardcoded, will fix later
+    data: { companyID: companyID },
     success: function (response) {
       try {
         var jsonData = JSON.parse(response);
-
+    
         if (Array.isArray(jsonData) && jsonData.length > 0) {
           var labels = [];
           var dataValues = [];
@@ -102,17 +91,19 @@ document.addEventListener("DOMContentLoaded", function () {
             labels.push(item.label);
             dataValues.push(item.value);
           });
-
+    
           jobListings.data.labels = labels;
           jobListings.data.datasets[0].data = dataValues;
           jobListings.update();
         } else {
-          console.error("Response does not contain valid data:", jsonData);
+          document.getElementById("PieChart").innerHTML = "It looks like you have not yet posted a job?<br>Once you post a job, a chart will appear here!<br>So, get verified, then make sure to add one!";
+          document.getElementById("BarChart").innerHTML = "A chart will also appear here!";
+          console.log("Response does not contain valid data:", jsonData);
         }
       } catch (error) {
         console.error("Error parsing JSON response:", error);
       }
-    },
+    },    
     error: function (xhr, status, error) {
       console.error("Error fetching data from the database:", error);
     },

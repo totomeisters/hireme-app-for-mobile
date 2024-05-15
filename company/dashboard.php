@@ -20,6 +20,7 @@ if(!$userdetails == null){
     $companydetails = $company->getCompanyDetails($userId);
     if(!$companydetails == null){
       $companyname = $companydetails->getCompanyName();
+      $companyID = $companydetails->getCompanyID();
     }
     else{
       echo 'Company Name not found.';
@@ -85,6 +86,8 @@ $pagetitle = "HireMe - Dashboard";
                 <!-- Card -->
                 <div class="col-lg-12 mb-2 order-0">
                   <div class="card p-2">
+                  <input type="hidden" id="companyID" value="<?= $companyID; ?>">
+
 
                     <?php
                     if (!$companydetails == null) {?>
@@ -113,12 +116,12 @@ $pagetitle = "HireMe - Dashboard";
               </div>
               <div class="row">
                 <div class="col-lg-6 mb-2 order-1">
-                  <div class="card p-3">
+                  <div class="card p-3" id="PieChart">
                     <canvas id="JobListingPieChart"></canvas>
                   </div>
                 </div>
                 <div class="col-lg-6 mb-2 order-2">
-                  <div class="card p-3">
+                  <div class="card p-3" id="BarChart">
                     <canvas id="JobListingBarChart"></canvas>
                   </div>
                 </div>

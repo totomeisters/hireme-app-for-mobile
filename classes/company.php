@@ -4,15 +4,20 @@ if (!isset($_SESSION)) {
 }
 require_once __DIR__ . '/../config/config.php';
 require_once __DIR__ . '/companydetails.php';
+require_once __DIR__ . '/companydocumentscheck.php';
+require_once __DIR__ . '/companyprofile.php';
 
-class Company {
+class Company
+{
     private $conn;
 
-    public function __construct($conn) {
+    public function __construct($conn)
+    {
         $this->conn = $conn;
     }
 
-    public function addCompany($companyname, $companydesc, $companyaddress, $userID) {
+    public function addCompany($companyname, $companydesc, $companyaddress, $userID)
+    {
         try {
             $stmt = $this->conn->prepare("INSERT INTO Companies (UserID, CompanyName, CompanyDescription, CompanyAddress) VALUES (?, ?, ?, ?)");
             $stmt->bind_param("isss", $userID, $companyname, $companydesc, $companyaddress);
@@ -29,7 +34,8 @@ class Company {
         }
     }
 
-    public function getCompanyDetails($userID) {
+    public function getCompanyDetails($userID)
+    {
         $stmt = $this->conn->prepare("SELECT * FROM companies WHERE UserID = ?");
         $stmt->bind_param("i", $userID);
         $stmt->execute();
@@ -56,7 +62,8 @@ class Company {
         }
     }
 
-    public function getCompanyDetailsByCompanyID($companyID) {
+    public function getCompanyDetailsByCompanyID($companyID)
+    {
         $stmt = $this->conn->prepare("SELECT * FROM companies WHERE CompanyID = ?");
         $stmt->bind_param("i", $companyID);
         $stmt->execute();
@@ -83,16 +90,17 @@ class Company {
         }
     }
 
-    public function getAllVerifiedCompanies() {
+    public function getAllVerifiedCompanies()
+    {
         $status = 'Verified';
         $stmt = $this->conn->prepare("SELECT * FROM companies WHERE VerificationStatus = ?");
         $stmt->bind_param("s", $status);
         $stmt->execute();
-    
+
         $result = $stmt->get_result();
-    
+
         $companies = array();
-    
+
         while ($row = $result->fetch_assoc()) {
             $companyDetails = new CompanyDetails(
                 $row['CompanyID'],
@@ -102,25 +110,26 @@ class Company {
                 $row['CompanyAddress'],
                 $row['VerificationStatus']
             );
-    
+
             $companies[] = $companyDetails;
         }
-    
+
         $stmt->close();
-    
+
         return $companies;
-    }   
-    
-    public function getAllUnverifiedCompanies() {
+    }
+
+    public function getAllUnverifiedCompanies()
+    {
         $status = 'Pending';
         $stmt = $this->conn->prepare("SELECT * FROM companies WHERE VerificationStatus = ?");
         $stmt->bind_param("s", $status);
         $stmt->execute();
-    
+
         $result = $stmt->get_result();
-    
+
         $companies = array();
-    
+
         while ($row = $result->fetch_assoc()) {
             $companyDetails = new CompanyDetails(
                 $row['CompanyID'],
@@ -130,25 +139,26 @@ class Company {
                 $row['CompanyAddress'],
                 $row['VerificationStatus']
             );
-    
+
             $companies[] = $companyDetails;
         }
-    
+
         $stmt->close();
-    
+
         return $companies;
     }
 
-    public function getAllRejectedCompanies() {
+    public function getAllRejectedCompanies()
+    {
         $status = 'Rejected';
         $stmt = $this->conn->prepare("SELECT * FROM companies WHERE VerificationStatus = ?");
         $stmt->bind_param("s", $status);
         $stmt->execute();
-    
+
         $result = $stmt->get_result();
-    
+
         $companies = array();
-    
+
         while ($row = $result->fetch_assoc()) {
             $companyDetails = new CompanyDetails(
                 $row['CompanyID'],
@@ -158,16 +168,17 @@ class Company {
                 $row['CompanyAddress'],
                 $row['VerificationStatus']
             );
-    
+
             $companies[] = $companyDetails;
         }
-    
+
         $stmt->close();
-    
+
         return $companies;
     }
 
-    public function updateCompanyStatus($companyID, $status){
+    public function updateCompanyStatus($companyID, $status)
+    {
         try {
             $stmt = $this->conn->prepare("UPDATE companies SET VerificationStatus = ? WHERE CompanyID = ?");
             $stmt->bind_param("si", $status, $companyID);
@@ -179,6 +190,88 @@ class Company {
             return true;
         } catch (Exception $e) {
             return false;
+        }
+    }
+
+    public function addCompanyDetails($companyID, $companyName, $address, $contactNumber, $email, $repPosition, $repName, $repNumber)
+    {
+        $stmt = $this->conn->prepare("INSERT INTO companyprofile (CompanyID, company_name, address, contact_number, email, rep_position, rep_name, rep_number) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("isssssss", $companyID, $companyName, $address, $contactNumber, $email, $repPosition, $repName, $repNumber);
+
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+
+        $stmt->close();
+    }
+
+    public function getCompanyDocumentsCheckByCompanyID($companyID)
+    {
+        $query = "SELECT * FROM companydocuments WHERE CompanyID = ?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bind_param("i", $companyID);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows == 1) {
+            $row = $result->fetch_assoc();
+
+            $companyDocumentsCheck = new CompanyDocumentsCheck(
+                $row['listID'],
+                $row['CompanyID'],
+                $row['sec'],
+                $row['businesspermit'],
+                $row['bir'],
+                $row['mayorpermit'],
+                $row['certificate']
+            );
+
+            return $companyDocumentsCheck;
+        } else {
+            return null;
+        }
+    }
+
+    public function addCompanyProfile($name, $address, $contactNumber, $email, $repPosition, $repName, $repNumber, $companyId)
+    {
+        $stmt1 = $this->conn->prepare("INSERT INTO companyprofile (name, address, contact_number, email, rep_position, rep_name, rep_number, companyID) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt1->bind_param("ssssssss", $name, $address, $contactNumber, $email, $repPosition, $repName, $repNumber, $companyId);
+
+        $stmt2 = $this->conn->prepare("INSERT INTO companydocuments (CompanyID, sec, businesspermit, bir, mayorpermit, certificate) VALUES (?, 0, 0, 0, 0, 0)");
+        $stmt2->bind_param("s", $companyId);
+
+        $success = $stmt1->execute() && $stmt2->execute();
+
+        if ($success) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function getCompanyProfile($companyId) {
+        $stmt = $this->conn->prepare("SELECT * FROM companyprofile WHERE companyID = ?");
+        $stmt->bind_param("s", $companyId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $companyDetails = $result->fetch_assoc();
+    
+        if ($companyDetails) {
+            return new CompanyProfile(
+                $companyDetails['profileid'],
+                $companyDetails['name'],
+                $companyDetails['address'],
+                $companyDetails['contact_number'],
+                $companyDetails['email'],
+                $companyDetails['rep_position'],
+                $companyDetails['rep_name'],
+                $companyDetails['rep_number'],
+                $companyDetails['CompanyID']
+            );
+        } else {
+            return null;
         }
     }
     
