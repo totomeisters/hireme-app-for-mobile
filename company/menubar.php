@@ -107,7 +107,7 @@ if (isset($_SESSION['username'])) {
       </li>
 
     <?php
-    } if ($companydetails !== null) { ?>
+    } if ($companydetails !== null && $companyprofile !== null) { ?>
 
       <li class="menu-item">
         <a href="./verification.php" class="menu-link">

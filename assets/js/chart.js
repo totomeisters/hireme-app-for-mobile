@@ -96,8 +96,7 @@ document.addEventListener("DOMContentLoaded", function () {
           jobListings.data.datasets[0].data = dataValues;
           jobListings.update();
         } else {
-          document.getElementById("PieChart").innerHTML = "It looks like you have not yet posted a job?<br>Once you post a job, a chart will appear here!<br>So, get verified, then make sure to add one!";
-          document.getElementById("BarChart").innerHTML = "A chart will also appear here!";
+          document.getElementById("ChartDiv").innerHTML = "<div class='col-lg-6 mb-2 order-1'><div class='card p-3'><p>It looks like you have not yet posted a job?</p><p>Once you post a job, two charts will appear here!</p><p>So, get verified, then make sure to add one!</p></div></div>";
           console.log("Response does not contain valid data:", jsonData);
         }
       } catch (error) {
