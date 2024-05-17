@@ -56,6 +56,7 @@ $pagetitle = "HireMe - Post a Job";
                                     <form id="formAuthentication" action="../functions/addjob.php" method="post">
                                         <input type="text" id="jobIndustry" name="jobIndustry" value="Hotel and Restaurant Management" hidden>
                                         <input type="number" id="salaryMin" name="salaryMin" value="0" hidden>
+                                        <input type="text" name="jobLocationType" value="On Site" hidden>
                                         <div class="form-group mb-2">
                                             <label for="jobTitle">Job Title:</label>
                                             <input type="text" class="form-control" id="jobTitle" name="jobTitle" placeholder="Enter job title" required>
@@ -100,7 +101,7 @@ $pagetitle = "HireMe - Post a Job";
                                             <p class="small"><span class="text-danger">*Antipolo City is automatically added to the address</span></p>
                                             <input type="text" class="form-control" id="jobLocation" name="jobLocation" placeholder="Enter office address">
                                         </div>
-                                        <div class="form-group mb-2">
+                                        <!-- <div class="form-group mb-2">
                                             <label for="jobLocationType">Job Location Type:</label>
                                             <div class="form-check form-check-inline mx-2">
                                                 <input class="form-check-input" type="radio" id="wfhRadio" name="jobLocationType" value="WFH" required>
@@ -110,7 +111,7 @@ $pagetitle = "HireMe - Post a Job";
                                                 <input class="form-check-input" type="radio" id="onsiteRadio" name="jobLocationType" value="On Site" required>
                                                 <label class="form-check-label" for="onsiteRadio">On Site</label>
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <button type="submit" class="btn btn-primary">Submit</button>
                                     </form>
                                 </div>
