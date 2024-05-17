@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             case 'Mayor\'s Permit':
                 $document = 'mayorpermit';
                 break;
-            case 'FDA or DOLE Certificate':
+            case 'Certificate':
                 $document = 'certificate';
                 break;
         }
