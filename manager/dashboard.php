@@ -1,6 +1,6 @@
 <?php
 if (!isset($_SESSION)) {
-    session_start();
+  session_start();
 }
 
 require_once '../classes/user.php';
@@ -14,13 +14,12 @@ $company = new Company($conn);
 $userdetails = $user->getUserDetails($username);
 $role = $user->getUserDetails($_SESSION['username'])->getRole();
 
-if(!$userdetails == null){
+if (!$userdetails == null) {
   $userId = $userdetails->getUserID();
-  if($userId == null){
+  if ($userId == null) {
     echo 'UserID not found.';
   }
-}
-else{
+} else {
   echo 'User details not found.';
 }
 
@@ -29,44 +28,37 @@ $pagetitle = "HireMe - Dashboard";
 ?>
 
 <!DOCTYPE html>
-<html
-  lang="en"
-  class="light-style layout-menu-fixed"
-  dir="ltr"
-  data-theme="theme-default"
-  data-assets-path="../assets/"
-  data-template="vertical-menu-template-free"
->
-  <!-- Head -->
-  <?php require_once __DIR__ . "/head.php";?>
-  <!-- /Head -->
+<html lang="en" class="light-style layout-menu-fixed" dir="ltr" data-theme="theme-default" data-assets-path="../assets/" data-template="vertical-menu-template-free">
+<!-- Head -->
+<?php require_once __DIR__ . "/head.php"; ?>
+<!-- /Head -->
 
-  <body>
-    <!-- Layout wrapper -->
-    <div class="layout-wrapper layout-content-navbar">
-      <div class="layout-container">
+<body>
+  <!-- Layout wrapper -->
+  <div class="layout-wrapper layout-content-navbar">
+    <div class="layout-container">
 
-        <!-- Menu -->
-        <?php 
-          if($role == 'Manager'){
-            require_once __DIR__ . "/menubar.php";
-          }else{
-            $rolecheck = 1;
-            echo '<img src="../assets/img/error1.gif" alt="Error Image">';
-          }
-        ?>
-        <!-- / Menu -->
+      <!-- Menu -->
+      <?php
+      if ($role == 'Manager') {
+        require_once __DIR__ . "/menubar.php";
+      } else {
+        $rolecheck = 1;
+        echo '<img src="../assets/img/error1.gif" alt="Error Image">';
+      }
+      ?>
+      <!-- / Menu -->
 
-        <!-- Layout container -->
-        <div class="layout-page">
-          <!-- Navbar -->
-          <?php require_once __DIR__ . "/navbar.php";?>
-          <!-- / Navbar -->
-          <?php 
-          if($rolecheck == 1){
-            echo '<img src="../assets/img/error1.gif" alt="Error Image">';
-          }else{
-          
+      <!-- Layout container -->
+      <div class="layout-page">
+        <!-- Navbar -->
+        <?php require_once __DIR__ . "/navbar.php"; ?>
+        <!-- / Navbar -->
+        <?php
+        if ($rolecheck == 1) {
+          echo '<img src="../assets/img/error1.gif" alt="Error Image">';
+        } else {
+
         ?>
           <!-- Content wrapper -->
           <div class="content-wrapper">
@@ -102,17 +94,19 @@ $pagetitle = "HireMe - Dashboard";
             <div class="content-backdrop fade"></div>
           </div>
           <!-- Content wrapper -->
-        </div>
-        <!-- / Layout page -->
       </div>
-
-      <!-- Overlay -->
-      <div class="layout-overlay layout-menu-toggle"></div>
+      <!-- / Layout page -->
     </div>
-    <!-- / Layout wrapper -->
 
-    <!-- Core JS -->
-    <!-- build:js assets/vendor/js/core.js -->
-    <?php } require_once __DIR__ . "/endscripts.php";?>
-  </body>
+    <!-- Overlay -->
+    <div class="layout-overlay layout-menu-toggle"></div>
+  </div>
+  <!-- / Layout wrapper -->
+
+  <!-- Core JS -->
+  <!-- build:js assets/vendor/js/core.js -->
+<?php }
+        require_once __DIR__ . "/endscripts.php"; ?>
+</body>
+
 </html>

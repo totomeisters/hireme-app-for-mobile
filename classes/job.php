@@ -49,6 +49,72 @@ class Job
         }
     }
 
+    public function addNotif($companyName, $jobTitle, $notiftype, $userID)
+    {
+        $sql = "INSERT INTO notifications (user_id, content, type, is_read) VALUES (?, ?, ?, ?)";
+
+        $type = "job_posted";
+        $is_read = 0;
+        if ($notiftype === 0) {
+            $content = "A new job, '$jobTitle', has been posted by company: $companyName";
+        } else {
+            $content = "Your job posting, '$jobTitle', has been verified!";
+        }
+
+        try {
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bind_param("issi", $userID, $content, $type, $is_read);
+            $stmt->execute();
+            $stmt->close();
+
+            return true;
+        } catch (Exception $e) {
+            return "Error adding notification: " . $e->getMessage();
+        }
+    }
+
+    public function getNotifications($userID)
+    {
+        $sql = "SELECT * FROM notifications WHERE user_id = ? ORDER BY created_at DESC";
+
+        try {
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bind_param("i", $userID);
+            $stmt->execute();
+
+            $result = $stmt->get_result();
+            $notifications = [];
+
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    $notifications[] = $row;
+                }
+            }
+
+            $stmt->close();
+            return $notifications;
+        } catch (Exception $e) {
+            return "Error fetching notifications: " . $e->getMessage();
+        }
+    }
+
+    public function readNotification($notifID)
+    {
+        $sql = "UPDATE notifications SET is_read = 1 WHERE id = ?";
+
+        try {
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bind_param("i", $notifID);
+            $stmt->execute();
+
+            return true;
+        } catch (Exception $e) {
+            return "Error reading notifications: " . $e->getMessage();
+        } finally {
+            $stmt->close();
+        }
+    }
+
     public function getAllJobs($companyId)
     {
         try {

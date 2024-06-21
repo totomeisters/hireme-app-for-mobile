@@ -46,6 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $jobTitle = htmlspecialchars($_POST['jobTitle']);
     $jobDescription = $_POST['jobDescription'];
     $jobType = htmlspecialchars($_POST['jobType']);
+    $companyName = $companydetails->getCompanyName();
 
     if ($jobLocationType === "On Site" && ($jobLocation == null || empty($jobLocation))) {
         $response = array('status' => 'error', 'message' => 'Job location is required if the job is "On Site". Please try again.', 'redirect' => './addjob.php');
@@ -55,7 +56,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $job = new Job($conn);
     if ($job->addJob($companyID, $jobTitle, $jobDescription, $jobType, $salaryMin, $salaryMax, $workHours, $jobLocation, $jobLocationType, $jobIndustry, $otherIndustry)) {
-        $response = array('status' => 'success', 'message' => 'Successfully added job. Connecting to server, please wait.', 'redirect' => './jobs.php');
+        if ($job->addNotif($companyName, $jobTitle, 0, 0)) {
+            $response = array('status' => 'success', 'message' => 'Successfully added job. Connecting to server, please wait.', 'redirect' => './jobs.php');
+        } else {
+            $response = array('status' => 'error', 'message' => 'Notifiying the managers failed. Please try again.', 'redirect' => './addjob.php');
+        }
     } else {
         $response = array('status' => 'error', 'message' => 'Adding job failed. Please try again.', 'redirect' => './addjob.php');
     }

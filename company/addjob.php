@@ -97,7 +97,7 @@ $pagetitle = "HireMe - Post a Job";
                                         </div>
                                         <div class="form-group mb-2">
                                             <label for="jobLocation">Job Location:</label>
-                                            <p class="small"><span class="text-danger">*Required only if choosing "On Site"</span></p>
+                                            <!-- <p class="small"><span class="text-danger">*Required only if choosing "On Site"</span></p> -->
                                             <p class="small"><span class="text-danger">*Antipolo City is automatically added to the address</span></p>
                                             <input type="text" class="form-control" id="jobLocation" name="jobLocation" placeholder="Enter office address">
                                         </div>

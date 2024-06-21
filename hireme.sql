@@ -3,13 +3,13 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: May 17, 2024 at 02:12 PM
+-- Generation Time: Jun 22, 2024 at 07:22 AM
 -- Server version: 8.2.0
 -- PHP Version: 8.2.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
-SET time_zone = "+08:00";
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -27,6 +27,8 @@ USE `hireme`;
 
 --
 -- Table structure for table `companies`
+--
+-- Creation: May 12, 2024 at 11:33 AM
 --
 
 DROP TABLE IF EXISTS `companies`;
@@ -46,6 +48,8 @@ CREATE TABLE IF NOT EXISTS `companies` (
 
 --
 -- Table structure for table `companyapplication`
+--
+-- Creation: May 15, 2024 at 04:41 PM
 --
 
 DROP TABLE IF EXISTS `companyapplication`;
@@ -67,6 +71,9 @@ CREATE TABLE IF NOT EXISTS `companyapplication` (
 --
 -- Table structure for table `companydocuments`
 --
+-- Creation: May 13, 2024 at 10:36 AM
+-- Last update: May 17, 2024 at 03:00 PM
+--
 
 DROP TABLE IF EXISTS `companydocuments`;
 CREATE TABLE IF NOT EXISTS `companydocuments` (
@@ -85,6 +92,9 @@ CREATE TABLE IF NOT EXISTS `companydocuments` (
 
 --
 -- Table structure for table `companyprofile`
+--
+-- Creation: May 14, 2024 at 09:19 AM
+-- Last update: May 16, 2024 at 02:34 PM
 --
 
 DROP TABLE IF EXISTS `companyprofile`;
@@ -107,6 +117,9 @@ CREATE TABLE IF NOT EXISTS `companyprofile` (
 --
 -- Table structure for table `favoritejobs`
 --
+-- Creation: Apr 22, 2024 at 10:53 AM
+-- Last update: Apr 22, 2024 at 10:53 AM
+--
 
 DROP TABLE IF EXISTS `favoritejobs`;
 CREATE TABLE IF NOT EXISTS `favoritejobs` (
@@ -122,6 +135,9 @@ CREATE TABLE IF NOT EXISTS `favoritejobs` (
 
 --
 -- Table structure for table `interviews`
+--
+-- Creation: Apr 22, 2024 at 10:53 AM
+-- Last update: Apr 30, 2024 at 11:50 AM
 --
 
 DROP TABLE IF EXISTS `interviews`;
@@ -141,6 +157,8 @@ CREATE TABLE IF NOT EXISTS `interviews` (
 
 --
 -- Table structure for table `jobs`
+--
+-- Creation: May 12, 2024 at 11:34 AM
 --
 
 DROP TABLE IF EXISTS `jobs`;
@@ -168,6 +186,9 @@ CREATE TABLE IF NOT EXISTS `jobs` (
 --
 -- Table structure for table `jobseekerapplication`
 --
+-- Creation: Apr 22, 2024 at 10:53 AM
+-- Last update: Apr 30, 2024 at 11:36 AM
+--
 
 DROP TABLE IF EXISTS `jobseekerapplication`;
 CREATE TABLE IF NOT EXISTS `jobseekerapplication` (
@@ -187,6 +208,9 @@ CREATE TABLE IF NOT EXISTS `jobseekerapplication` (
 --
 -- Table structure for table `jobseekers`
 --
+-- Creation: Apr 22, 2024 at 10:53 AM
+-- Last update: Apr 22, 2024 at 12:52 PM
+--
 
 DROP TABLE IF EXISTS `jobseekers`;
 CREATE TABLE IF NOT EXISTS `jobseekers` (
@@ -204,7 +228,29 @@ CREATE TABLE IF NOT EXISTS `jobseekers` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `notifications`
+--
+-- Creation: Jun 21, 2024 at 06:10 PM
+-- Last update: Jun 21, 2024 at 06:09 PM
+--
+
+DROP TABLE IF EXISTS `notifications`;
+CREATE TABLE IF NOT EXISTS `notifications` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `user_id` int NOT NULL COMMENT 'zero means that all managers can see the notif',
+  `content` text COLLATE utf8mb4_general_ci NOT NULL,
+  `type` enum('job_posted','job_verified') COLLATE utf8mb4_general_ci NOT NULL,
+  `is_read` tinyint(1) DEFAULT '0',
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
+--
+-- Creation: May 15, 2024 at 04:17 PM
 --
 
 DROP TABLE IF EXISTS `users`;
@@ -219,25 +265,6 @@ CREATE TABLE IF NOT EXISTS `users` (
   UNIQUE KEY `unique_email` (`Email`),
   UNIQUE KEY `unique_username` (`Username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-INSERT INTO
-  `users` (
-    `UserID`,
-    `Username`,
-    `Password`,
-    `Email`,
-    `Role`,
-    `Token`
-  )
-VALUES
-  (
-    NULL,
-    'admin',
-    '$2y$10$H6lz4V/CFcdUzV7v.Ct5VOJjoBmKGV2EpmamJggdDD8u8QBFaMg1u',
-    'admin@gmail.com',
-    'Admin',
-    ''
-  );
 
 --
 -- Constraints for dumped tables

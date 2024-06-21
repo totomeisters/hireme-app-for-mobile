@@ -12,25 +12,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $companyID = $_POST['companyID'];
     $statusErr = 0;
     $jobIDerr = 0;
+    $jobTitle = $job->getJobDetailsByID($jobID)->getJobTitle();
 
-    if(empty($status) || ($status !== "Rejected" && $status !== "Verified")) {
+    if (empty($status) || ($status !== "Rejected" && $status !== "Verified")) {
         $statusErr = 1;
 
-        if(empty($status)){
+        if (empty($status)) {
             $response = array('status' => 'error', 'message' => 'Status is missing. Please try again.', 'redirect' => '');
-        }
-        else{
+        } else {
             $response = array('status' => 'error', 'message' => 'Status is invalid. Please try again.', 'redirect' => '');
         }
     }
-    
-    if(empty($jobID) || !is_numeric($jobID)) {
+
+    if (empty($jobID) || !is_numeric($jobID)) {
         $jobIDerr = 1;
         $response = array('status' => 'error', 'message' => 'Application ID is invalid. Please try again.', 'redirect' => '');
     }
 
-    if($statusErr == 0 && $jobIDerr == 0) {
-        if($job->updateJobStatus($status, $jobID)) {
+    if ($statusErr == 0 && $jobIDerr == 0) {
+        if ($job->updateJobStatus($status, $jobID)) {
+            $job->addNotif(null, $jobTitle, 1, $companyID);
             $_SESSION['viewjobID'] = $jobID;
             $_SESSION['viewcompanyID'] = $companyID;
             $response = array('status' => 'success', 'message' => 'Status was successfully updated.', 'redirect' => './viewjob.php');
@@ -43,4 +44,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 echo json_encode($response);
-?>
