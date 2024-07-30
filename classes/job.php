@@ -14,7 +14,7 @@ class Job
         $this->conn = $conn;
     }
 
-    public function addJob($companyId, $jobTitle, $jobDescription, $jobType, $salaryMin, $salaryMax, $workHours, $jobLocation, $jobLocationType, $jobIndustry, $otherIndustry)
+    public function addJob($companyId, $jobTitle, $jobDescription, $jobType, $salaryMin, $salaryMax, $workHours, $jobLocation, $jobLocationType, $jobIndustry, $otherIndustry, $workType)
     {
         try {
             $stmt = $this->conn->prepare("INSERT INTO Jobs (CompanyID, 
@@ -29,9 +29,10 @@ class Job
                                                             PostingDate, 
                                                             VerificationStatus,
                                                             JobIndustry,
-                                                            OtherIndustry)
-                                            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), 'Pending', ?, ?)");
-            $stmt->bind_param("isssddsssss", $companyId, $jobTitle, $jobDescription, $jobType, $salaryMin, $salaryMax, $workHours, $jobLocation, $jobLocationType, $jobIndustry, $otherIndustry);
+                                                            OtherIndustry,
+                                                            WorkType)
+                                            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), 'Pending', ?, ?, ?)");
+            $stmt->bind_param("isssddssssss", $companyId, $jobTitle, $jobDescription, $jobType, $salaryMin, $salaryMax, $workHours, $jobLocation, $jobLocationType, $jobIndustry, $otherIndustry, $workType);
 
             $result = $stmt->execute();
 
@@ -151,6 +152,7 @@ class Job
                         $job['JobTitle'],
                         $job['JobDescription'],
                         $job['JobType'],
+                        $job['WorkType'],
                         $job['SalaryMin'],
                         $job['SalaryMax'],
                         $job['WorkHours'],
@@ -193,6 +195,7 @@ class Job
                 $job['JobTitle'],
                 $job['JobDescription'],
                 $job['JobType'],
+                $job['WorkType'],
                 $job['SalaryMin'],
                 $job['SalaryMax'],
                 $job['WorkHours'],
@@ -248,6 +251,7 @@ class Job
                         $job['JobTitle'],
                         $job['JobDescription'],
                         $job['JobType'],
+                        $job['WorkType'],
                         $job['SalaryMin'],
                         $job['SalaryMax'],
                         $job['WorkHours'],

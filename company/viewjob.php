@@ -69,6 +69,7 @@ $pagetitle = "HireMe - View Job # " . $jobID;
                       <ul class="list-group list-group-flush">
                         <li class="list-group-item"></li>
                         <li class="list-group-item">Job Type: <?= $jobs->getJobType(); ?></li>
+                        <li class="list-group-item">Work Type: <?= $jobs->getWorkType(); ?></li>
                         <li class="list-group-item">Job Industry: <?= $jobs->getJobIndustry(); ?></li>
                         <li class="list-group-item">Location Type: <?= $jobs->getJobLocationType(); ?></li>
                         <li class="list-group-item">Salary: ₱<?= $jobs->getSalaryMax(); ?></li>

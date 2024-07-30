@@ -66,15 +66,33 @@ $pagetitle = "HireMe - Post a Job";
                                             <textarea id="jobDescription" name="jobDescription" placeholder="Enter Job Description..."></textarea>
 
                                         </div>
-                                        <div class="form-group mb-2">
-                                            <label for="jobType">Job Type:</label>
-                                            <select class="form-control" id="jobType" name="jobType" required>
-                                                <option value="">Select job type</option>
-                                                <option value="Full-Time">Full-Time</option>
-                                                <option value="Part-Time">Part-Time</option>
-                                                <option value="Contract">Contract</option>
-                                                <option value="Intern">Intern</option>
-                                            </select>
+                                        <div class="row">
+                                            <div class="form-group mb-2 col-6">
+                                                <label for="jobType">Job Type:</label>
+                                                <select class="form-control" id="jobType" name="jobType" required>
+                                                    <option selected disabled value="">Select job type</option>
+                                                    <option value="Full-Time">Full-Time</option>
+                                                    <option value="Part-Time">Part-Time</option>
+                                                    <option value="Contract">Contract</option>
+                                                    <option value="Intern">Intern</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group mb-2 col-6">
+                                                <label for="workType">Work Type:</label>
+                                                <select class="form-control" id="workType" name="workType" required>
+                                                    <option selected disabled value="">Select work type</option>
+                                                    <option value="Janitor">Janitor/Cleaner</option>
+                                                    <option value="Security Guard">Security Guard</option>
+                                                    <option value="Receptionist">Receptionist</option>
+                                                    <option value="Mailroom Clerk">Mailroom Clerk</option>
+                                                    <option value="Food Service Worker">Food Service Worker</option>
+                                                    <option value="Driver">Driver</option>
+                                                    <option value="Maintenance Worker">Maintenance Worker</option>
+                                                    <option value="others">Others</option>
+                                                </select>
+
+                                                <input class="form-control mt-2" type="text" id="otherWorkType" name="otherWorkType" style="display: none;" placeholder="Enter work type...">
+                                            </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
@@ -190,6 +208,21 @@ $pagetitle = "HireMe - Post a Job";
         }
 
         $(document).ready(function() {
+
+            const workTypeSelect = document.getElementById('workType');
+            const otherWorkTypeInput = document.getElementById('otherWorkType');
+
+            workTypeSelect.addEventListener('change', () => {
+                if (workTypeSelect.value === 'others') {
+                    otherWorkTypeInput.style.display = 'block';
+                    otherWorkTypeInput.required = true;
+                } else {
+                    otherWorkTypeInput.style.display = 'none';
+                    otherWorkTypeInput.required = false;
+                }
+            });
+
+
             $('#formAuthentication').on('submit', function(e) {
                 e.preventDefault();
 

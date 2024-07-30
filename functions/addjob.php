@@ -37,6 +37,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $jobLocation = trim($jobLocation);
         }
     }
+    
+    $workType = $_POST['workType'];
+
+    if ($workType === 'others') {
+        if (!isset($_POST['otherWorkType'])) {
+            $response = array('status' => 'error', 'message' => 'Work type is missing.', 'redirect' => './addjob.php');
+        } else {
+            $otherWorkType = htmlspecialchars($_POST['otherWorkType']);
+            $workType = ucfirst($otherWorkType);
+        }
+    }
 
     $workHours = htmlspecialchars($_POST['workHours']);
     $jobLocation = $jobLocation . ' (Antipolo City)';
@@ -55,7 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     $job = new Job($conn);
-    if ($job->addJob($companyID, $jobTitle, $jobDescription, $jobType, $salaryMin, $salaryMax, $workHours, $jobLocation, $jobLocationType, $jobIndustry, $otherIndustry)) {
+    if ($job->addJob($companyID, $jobTitle, $jobDescription, $jobType, $salaryMin, $salaryMax, $workHours, $jobLocation, $jobLocationType, $jobIndustry, $otherIndustry, $workType)) {
         if ($job->addNotif($companyName, $jobTitle, 0, 0)) {
             $response = array('status' => 'success', 'message' => 'Successfully added job. Connecting to server, please wait.', 'redirect' => './jobs.php');
         } else {

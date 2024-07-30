@@ -6,6 +6,7 @@ class JobDetails {
     private $jobTitle;
     private $jobDescription;
     private $jobType;
+    private $workType;
     private $salaryMin;
     private $salaryMax;
     private $workHours;
@@ -16,12 +17,13 @@ class JobDetails {
     private $jobIndustry;
     private $otherIndustry;
 
-    public function __construct($jobID, $companyId, $jobTitle, $jobDescription, $jobType, $salaryMin, $salaryMax, $workHours, $jobLocation, $jobLocationType, $postingDate, $verificationStatus, $jobIndustry, $otherIndustry) {
+    public function __construct($jobID, $companyId, $jobTitle, $jobDescription, $jobType, $workType, $salaryMin, $salaryMax, $workHours, $jobLocation, $jobLocationType, $postingDate, $verificationStatus, $jobIndustry, $otherIndustry) {
         $this->jobID = $jobID;
         $this->companyId = $companyId;
         $this->jobTitle = $jobTitle;
         $this->jobDescription = $jobDescription;
         $this->jobType = $jobType;
+        $this->workType = $workType;
         $this->salaryMin = $salaryMin;
         $this->salaryMax = $salaryMax;
         $this->workHours = $workHours;
@@ -52,6 +54,10 @@ class JobDetails {
 
     public function getJobType(){
         return $this->jobType;
+    }
+
+    public function getWorkType(){
+        return $this->workType;
     }
 
     public function getSalaryMin(){
@@ -109,6 +115,10 @@ class JobDetails {
 
     public function setJobType($jobType) {
         $this->jobType = $jobType;
+    }
+
+    public function setWorkType($workType) {
+        $this->workType = $workType;
     }
 
     public function setSalaryMin($salaryMin) {
