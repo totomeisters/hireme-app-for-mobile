@@ -132,4 +132,34 @@ class CompanyApplication
             return $e->getMessage();
         }
     }
+
+    public function addNotif($companyName, $docName, $notiftype, $status, $userID)
+    {
+        $sql = "INSERT INTO notifications (user_id, content, type, is_read) VALUES (?, ?, ?, ?)";
+
+        $ver = "document_verified";
+        $rej = "document_rejected";
+        if ($status === 'Verified'){
+            $type = $ver;
+        } elseif ($status === 'Rejected'){
+            $type = $rej;
+        }
+        $is_read = 0;
+        if ($notiftype === 0) {
+            $content = "A document, '$docName', has been posted by company: $companyName";
+        } else {
+            $content = "Your document, '$docName', has been ".$status."!";
+        }
+
+        try {
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bind_param("issi", $userID, $content, $type, $is_read);
+            $stmt->execute();
+            $stmt->close();
+
+            return true;
+        } catch (Exception $e) {
+            return "Error adding notification: " . $e->getMessage();
+        }
+    }
 }

@@ -3,8 +3,10 @@ if (!isset($_SESSION)) {
     session_start();
 }
 require_once '../classes/companyapplication.php';
+require_once '../classes/company.php';
 
 $company = new CompanyApplication($conn);
+$comp = new Company($conn);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $reason = null;
@@ -37,6 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $statusErr = 0;
     $companyApplicationIDerr = 0;
+    $companyName = $comp->getCompanyDetailsByCompanyID($companyID)->getCompanyName();
 
     if(empty($status) || ($status !== "Rejected" && $status !== "Verified")) {
         $statusErr = 1;
@@ -57,9 +60,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if($statusErr == 0 && $companyApplicationIDerr == 0) {
         $_SESSION['viewcompanyApplicationID'] = $companyApplicationID;
         $_SESSION['viewcompanyID'] = $companyID;
+        $notifType = 1;
         $update = $company->updateCompanyApplication($companyApplicationID, $status, $reason, $document, $docstatus, $companyID);
         if($update === true) {
-            $response = array('status' => 'success', 'message' => 'Status was successfully updated.', 'redirect' => './viewdocument.php');
+            $notif = $company->addNotif($companyName, $_POST['DocumentType'], $notifType, $status, $companyID);
+            if ($notif === true){
+                $response = array('status' => 'success', 'message' => 'Status was successfully updated.', 'redirect' => './viewdocument.php');
+            }
         } else {
             $response = array('status' => 'error', 'message' => $update, 'redirect' => '');
         }
