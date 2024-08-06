@@ -45,9 +45,9 @@ Class JobSeekerApplication {
         return $applications;
     }
 
-    public function getJobApplicationDetailsByUserID($userID) {
-        $stmt = $this->conn->prepare("SELECT * FROM jobseekerapplication WHERE UserID = ?");
-        $stmt->bind_param("s", $userID);
+    public function getJobApplicationDetailsByUserID($userID, $jobID) {
+        $stmt = $this->conn->prepare("SELECT * FROM jobseekerapplication WHERE UserID = ? AND JobID = ?");
+        $stmt->bind_param("ii", $userID, $jobID);
         $stmt->execute();
         $result = $stmt->get_result();
     

@@ -274,5 +274,35 @@ class Company
             return null;
         }
     }
+
+    public function addNotif($companyName, $notiftype, $status, $userID)
+    {
+        $sql = "INSERT INTO notifications (user_id, content, type, is_read) VALUES (?, ?, ?, ?)";
+
+        $ver = "application_verified";
+        $rej = "application_rejected";
+        if ($status === 'Verified'){
+            $type = $ver;
+        } elseif ($status === 'Rejected'){
+            $type = $rej;
+        }
+        $is_read = 0;
+        if ($notiftype === 0) {
+            $content = "An application has been posted by company: $companyName";
+        } else {
+            $content = "Your application has been ".$status."!";
+        }
+
+        try {
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bind_param("issi", $userID, $content, $type, $is_read);
+            $stmt->execute();
+            $stmt->close();
+
+            return true;
+        } catch (Exception $e) {
+            return "Error adding notification: " . $e->getMessage();
+        }
+    }
     
 }

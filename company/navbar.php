@@ -2,6 +2,32 @@
 require_once '../classes/job.php';
 $job = new Job($conn);
 $notifications = $job->getNotifications($companyID);
+
+function time_elapsed($datetime) {
+  $now = new DateTime();
+  $past = DateTime::createFromFormat('Y-m-d H:i:s', $datetime);
+  $diff = $now->diff($past);
+
+  $intervals = [
+    'y' => 'year',
+    'm' => 'month',
+    'd' => 'day',
+    'h' => 'hour',
+    'i' => 'minute',
+    's' => 'second'
+  ];
+
+  $elapsed = '';
+  foreach ($intervals as $key => $name) {
+    $value = $diff->$key;
+    if ($value > 0) {
+      $elapsed .= $value . ' ' . $name . ($value > 1 ? 's' : '') . ' ';
+    }
+  }
+
+  return $elapsed ? trim($elapsed) . ' ago' : 'just now';
+}
+
 ?>
 
 <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme" id="layout-navbar">
@@ -39,13 +65,17 @@ $notifications = $job->getNotifications($companyID);
             ?>
           </span>
         </a>
-        <ul class="px-1 dropdown-menu dropdown-menu-end border border-secondary">
+        <ul class="p-1 dropdown-menu dropdown-menu-end border border-secondary">
           <h4>Notifications</h4>
           <?php if (count($notifications) > 0) : ?>
             <?php foreach ($notifications as $notification) : ?>
               <li>
-                <div class="rounded-2 mb-1 dropdown-item text-wrap mark-as-read <?php echo $notification['is_read'] ? 'bg-light text-dark border border-secondary' : 'bg-dark text-white'; ?>" data-notification-id="<?= $notification['id']; ?>" style="width: 25rem;">
-                  <?php echo $notification['content'];?>
+                <div class="rounded-1 my-1 p-2 dropdown-item text-wrap mark-as-read small <?php echo $notification['is_read'] ? 'bg-light text-dark border border-secondary' : 'bg-dark text-white'; ?>" data-notification-id="<?= $notification['id']; ?>" style="width: 30rem;">
+                  <?= $notification['content'];?>
+                  <div class="small text-end">
+                    <p class="mb-0"><?= $notification['created_at'];?></p>
+                    <p class="mb-0"><?= time_elapsed($notification['created_at']);?></p>
+                  </div>
                 </div>
               </li>
             <?php endforeach; ?>

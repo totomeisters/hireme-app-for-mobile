@@ -64,7 +64,8 @@ $pagetitle = "HireMe - Requirement Verification";
                     </div>
                     <div class="form-group my-2">
                       <label for="documentType">Document Type:</label>
-                      <p class="small"><span class="text-danger">*</span>If some options are missing, you may have submitted it and it is currently pending, or it has already been verified.</p>
+                      <p class="small m-0"><span class="text-danger">*</span>If some options are missing, you may have submitted it and it is currently pending, or it has already been verified.</p>
+                      <p class="small m-0"><span class="text-danger">*</span>You can resubmit if your prior submission was rejected.</p>
                       <select class="form-select" id="DocumentType" name="DocumentType">
                         <option value="" disabled selected>Select Document Type..</option>
                         <?php
@@ -100,7 +101,8 @@ $pagetitle = "HireMe - Requirement Verification";
 
                     </div>
                     <div class="form-group my-4">
-                      <label for="fileUpload">Upload Document</label><br>
+                      <label for="fileUpload">Upload Document</label>
+                      <p class="small m-0"><span class="text-danger">*</span>Accepting (PDF, JPEG, JPG, PNG) files only.</p>
                       <input type="file" class="form-control" id="fileUpload" name="fileUpload">
                     </div>
                     <button type="submit" class="btn btn-primary my-2">Submit</button>

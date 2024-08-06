@@ -11,6 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $companyID = $_POST['companyID'];
     $statusErr = 0;
     $companyIDerr = 0;
+    $companyName = $company->getCompanyDetailsByCompanyID($companyID)->getCompanyName();
 
     if(empty($status) || ($status !== "Rejected" && $status !== "Verified")) {
         $statusErr = 1;
@@ -30,7 +31,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if($statusErr == 0 && $companyIDerr == 0) {
         if($company->updateCompanyStatus($companyID, $status)) {
-            $response = array('status' => 'success', 'message' => 'Status was successfully updated.', 'redirect' => './viewcompanies.php');
+            $notifType = 1;
+            $notif = $company->addNotif($companyName, $notifType, $status, $companyID);
+            if ($notif === true){
+                $response = array('status' => 'success', 'message' => 'Status was successfully updated.', 'redirect' => './viewcompanies.php');
+            }
         } else {
             $response = array('status' => 'error', 'message' => 'Failed to update status.', 'redirect' => '');
         }

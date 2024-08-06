@@ -19,12 +19,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 require_once '../classes/jobseeker.php';
 require_once '../classes/jobseekerapplication.php';
 require_once '../classes/interview.php';
+require_once '../classes/pdf.php';
 
+$pdfGenerator = new BinaryPDF($conn);
 $interview = new Interview($conn);
 $jobseeker = new JobSeeker($conn);
 $jobseekerapplication = new JobSeekerApplication($conn);
 
-$applicationdetails = $jobseekerapplication->getJobApplicationDetailsByUserID($applicantID);
+$applicationdetails = $jobseekerapplication->getJobApplicationDetailsByUserID($applicantID, $jobID);
 $applicantdetails = $jobseeker->getJobSeekerDetailsByUserID($applicantID);
 
 $pagetitle = "HireMe - View Applicant # ".$applicantID;
@@ -79,33 +81,34 @@ $pagetitle = "HireMe - View Applicant # ".$applicantID;
                             if ($applicationdetails){
                                 foreach ($applicationdetails as $applicationdetail){
                                     // Assuming you have a file path in a variable
-                                    $filePath = $applicationdetail->getResumeFilePath();
+                                    $resumeId = $applicationdetail->getResumeFilePath();
 
                                     // Get the file extension
-                                    $fileExtension = strtolower(pathinfo($filePath, PATHINFO_EXTENSION));
+                                    // $fileExtension = strtolower(pathinfo($resumeId, PATHINFO_EXTENSION));
 
+                                    echo '<iframe id="pdfViewer" width="100%" height="600px"></iframe>';
                                     // Check the file extension and generate the HTML accordingly
-                                    switch ($fileExtension) {
-                                        case 'pdf':
-                                            // Display PDF file using an object tag
-                                            echo '<object data="' . $filePath . '" type="application/pdf" width="100%" height="600px">';
-                                            echo '<p>It appears you don\'t have a PDF plugin for this browser.</p>';
-                                            echo 'Click here to download the PDF file: <a href="' . $filePath . '">Resume PDF</a>';
-                                            echo '</object>';
+                                    // switch ($fileExtension) {
+                                    //     case 'pdf':
+                                    //         // Display PDF file using an object tag
+                                    //         echo '<object data="' . $resumeId . '" type="application/pdf" width="100%" height="600px">';
+                                    //         echo '<p>It appears you don\'t have a PDF plugin for this browser.</p>';
+                                    //         echo 'Click here to download the PDF file: <a href="' . $resumeId . '">Resume PDF</a>';
+                                    //         echo '</object>';
 
-                                            break;
-                                        case 'jpg':
-                                        case 'jpeg':
-                                        case 'png':
-                                            // Display image file using an img tag
-                                            echo '<img src="' . $filePath . '" alt="Resume" style="height: 80vh; object-fit: scale-down;" 
-                                                    class="img-fluid bg-secondary rounded border border-dark">';
-                                            break;
-                                        default:
-                                            // Handle other file types or unknown extensions
-                                            echo "Unsupported file type.";
-                                            break;
-                                    }
+                                    //         break;
+                                    //     case 'jpg':
+                                    //     case 'jpeg':
+                                    //     case 'png':
+                                    //         // Display image file using an img tag
+                                    //         echo '<img src="' . $resumeId . '" alt="Resume" style="height: 80vh; object-fit: scale-down;" 
+                                    //                 class="img-fluid bg-secondary rounded border border-dark">';
+                                    //         break;
+                                    //     default:
+                                    //         // Handle other file types or unknown extensions
+                                    //         echo "Unsupported file type.";
+                                    //         break;
+                                    // }
                                 }
                             }
                             else{
@@ -144,10 +147,10 @@ $pagetitle = "HireMe - View Applicant # ".$applicantID;
                                 <h5>Application Details</h5>
                                 <?php
                                     if ($applicationdetails){
-                                        foreach ($applicationdetails as $applicationdetail){
+                                        $applicationdetails = $applicationdetail;
 
-                                            $filePath = $applicationdetail->getResumeFilePath();
-                                            $fileExtension = strtoupper(pathinfo($filePath, PATHINFO_EXTENSION));
+                                            // $resumeId = $applicationdetail->getResumeFilePath();
+                                            // $fileExtension = strtoupper(pathinfo($resumeId, PATHINFO_EXTENSION));
                                             $applicationdate = $applicationdetail->getApplicationDate();
                                             $postingDate = new DateTime($applicationdate);
                                             $currentDate = new DateTime();
@@ -168,10 +171,10 @@ $pagetitle = "HireMe - View Applicant # ".$applicantID;
                                                 $timePassed = $interval->format('%s seconds ago');
                                             }
                                         
-                                            echo "<strong><p>File Type: </strong>". $fileExtension .'</p>';
+                                            // echo "<strong><p>File Type: </strong>". $fileExtension .'</p>';
                                             echo "<strong><p>Application Date: </strong>". $applicationdate .'</p>';
                                             echo "<strong><p>Sent: </strong>". $timePassed .'</p>';
-                                        }
+                                        
                                     }
                                     else{
                                         echo "Error getting application details.";
@@ -289,7 +292,7 @@ $pagetitle = "HireMe - View Applicant # ".$applicantID;
 
                               <div class="form-group mb-5">
                                   <label for="interview_date">Interview Date:</label>
-                                  <input type="datetime-local" id="interviewDate" name="interviewDate" required>
+                                  <input type="datetime-local" id="interviewDate" name="interviewDate" required min="<?php echo date('Y-m-d\TH:i'); ?>">
                               </div>
 
                             <input type="submit" class="btn btn-primary" value="Submit">
@@ -334,10 +337,10 @@ $pagetitle = "HireMe - View Applicant # ".$applicantID;
       $(document).ready(function() {
         var setInterviewButton = document.getElementById("setInterviewButton");
 
-setInterviewButton.addEventListener("click", function(event) {
-    var modal = new bootstrap.Modal(document.getElementById("setInterviewModal"));
-    modal.show();
-})
+        setInterviewButton.addEventListener("click", function(event) {
+            var modal = new bootstrap.Modal(document.getElementById("setInterviewModal"));
+            modal.show();
+        })
 
         
           $('#setInterview').on('submit', function(e) {
@@ -412,7 +415,24 @@ setInterviewButton.addEventListener("click", function(event) {
           }, 2000);
       }
 
+      function getPDF(userId, jobId) {
+          fetch(`../functions/getpdf.php?userId=${userId}&jobId=${jobId}`)
+              .then(response => response.blob())
+              .then(blob => {
+                  const url = URL.createObjectURL(blob);
+                  const pdfViewer = document.getElementById('pdfViewer');
+                  pdfViewer.src = url;
+              })
+              .catch(error => {
+                  console.error('Error fetching PDF:', error);
+              });
+      }
+
       document.addEventListener("DOMContentLoaded", function() {
+          const userId = <?= $applicantID ?>;
+          const jobId = <?= $jobID ?>;
+          getPDF(userId, jobId); // display pdf if dom is loaded
+
           var confirmationModal = document.getElementById("confirmationModal");
           var verifyButton = document.querySelector("#updateapplication button[value='Verified']");
           var rejectButton = document.querySelector("#updateapplication button[value='Rejected']");

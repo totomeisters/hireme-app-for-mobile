@@ -52,7 +52,7 @@ if (isset($_SESSION['username'])) {
     </li>
     <?php
 
-    if (!$companydetails == null && $status !== 'Pending') { ?>
+    if (!$companydetails == null && $status === 'Pending') { ?>
       <li class="menu-item open">
         <a href="javascript:void(0);" class="menu-link menu-toggle">
           <i class="menu-icon tf-icons bx bx-briefcase"></i>
