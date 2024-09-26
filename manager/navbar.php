@@ -41,6 +41,7 @@ $notifications = $job->getNotifications(0);
         <ul class="px-1 dropdown-menu dropdown-menu-end border border-secondary">
           <h4>Notifications</h4>
           <?php if (count($notifications) > 0) : ?>
+              <div style="max-height: 500px; overflow-y: auto;">
             <?php foreach ($notifications as $notification) : ?>
               <li>
                 <div class="rounded-2 mb-1 dropdown-item text-wrap mark-as-read <?php echo $notification['is_read'] ? 'bg-light text-dark border border-secondary' : 'bg-dark text-white'; ?>" data-notification-id="<?= $notification['id']; ?>" style="width: 25rem;">
@@ -48,6 +49,7 @@ $notifications = $job->getNotifications(0);
                 </div>
               </li>
             <?php endforeach; ?>
+            </div>
           <?php else : ?>
             <li>
               <div class="rounded-2 mb-1 dropdown-item bg-dark text-white text-wrap border border-secondary" style="width: 25rem;"></div>

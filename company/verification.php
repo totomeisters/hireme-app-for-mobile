@@ -58,11 +58,12 @@ $pagetitle = "HireMe - Requirement Verification";
                 <div class="card p-2 my-1">
 
                   <form id="formAuthentication" action="../functions/uploadcompanydocument.php" method="post" enctype="multipart/form-data">
-                    <div class="form-group my-2">
-                      <label for="DocumentName">Document Name</label>
-                      <input type="text" class="form-control" id="DocumentName" name="DocumentName" required>
-                    </div>
-                    <div class="form-group my-2">
+  
+                        <div class="form-group my-2">
+                   
+                      <input type="text" class="form-control" id="DocumentName" name="DocumentName" hidden>
+                  
+                      
                       <label for="documentType">Document Type:</label>
                       <p class="small m-0"><span class="text-danger">*</span>If some options are missing, you may have submitted it and it is currently pending, or it has already been verified.</p>
                       <p class="small m-0"><span class="text-danger">*</span>You can resubmit if your prior submission was rejected.</p>
@@ -165,7 +166,7 @@ $pagetitle = "HireMe - Requirement Verification";
                       <div class="viewdocumentbutton cursor-pointer card p-2 my-3">
                         <input hidden type="text" name="CompanyApplicationID" value="<?php echo $companyapplciationID; ?>" />
 
-                        <p class="card-text my-1"><?php echo $companyapplciationdetail->getDocumentName(); ?></p>
+                        <p class="card-text my-1"><?php echo $doctype; ?></p>
                         <p class="card-text mb-1 small text-muted">Document: <?= $doctype; ?></p>
                         <p class="card-text mb-1">
                           <small class="text-muted">Verification:
@@ -180,7 +181,7 @@ $pagetitle = "HireMe - Requirement Verification";
                                 echo '<span class="text-success">' . $verification . '</span>';
                                 break;
                               case 'Rejected':
-                                echo '<span class="text-danger">' . $verification . '</span>';
+                                echo '<span class="text-danger">For Resubmission</span>';
                                 break;
                               default:
                                 echo '<span>' . $verification . '</span>';

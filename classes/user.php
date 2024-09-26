@@ -23,7 +23,7 @@ class User {
     public function addUser($username, $password, $email, $role, $token) {
         try {
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-            $stmt = $this->conn->prepare("INSERT INTO Users (Username, Password, Email, Role, Token) VALUES (?, ?, ?, ?, ?)");
+            $stmt = $this->conn->prepare("INSERT INTO users (Username, Password, Email, Role, Token) VALUES (?, ?, ?, ?, ?)");
             $stmt->bind_param("sssss", $username, $hashedPassword, $email, $role, $token);
             $result = $stmt->execute();
             $stmt->close();
@@ -107,12 +107,12 @@ class User {
             session_start();
             }
 
-            $query = "SELECT Password FROM Users WHERE Username = ?";
+            $query = "SELECT Password FROM users WHERE Username = ?";
             $userDetails = $this->getUserDetails($username);
             $_SESSION['username'] = $username;
 
             if (filter_var($username, FILTER_VALIDATE_EMAIL)) {
-                $query = "SELECT Password FROM Users WHERE Email = ?";
+                $query = "SELECT Password FROM users WHERE Email = ?";
                 $userDetails = $this->getUserDetailsUsingEmail($username);
                 if ($userDetails) {
                     $usernamee = $userDetails->getUsername();
@@ -306,7 +306,7 @@ class User {
         
             
             //set the token that was generated
-                $stmt = $this->conn->prepare("UPDATE Users SET Token = ? WHERE Email = ?");
+                $stmt = $this->conn->prepare("UPDATE users SET Token = ? WHERE Email = ?");
                 $stmt->bind_param("ss", $token, $email);
                 $result = $stmt->execute();
                 $stmt->close();
@@ -340,7 +340,7 @@ class User {
     public function changePasswordByToken($password, $token){
         try {
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-            $stmt = $this->conn->prepare("UPDATE Users SET Password = ?, Token = NULL WHERE Token = ?"); //change password and removes previous token
+            $stmt = $this->conn->prepare("UPDATE users SET Password = ?, Token = NULL WHERE Token = ?"); //change password and removes previous token
             $stmt->bind_param("ss", $hashedPassword, $token);
             $result = $stmt->execute();
             $stmt->close();

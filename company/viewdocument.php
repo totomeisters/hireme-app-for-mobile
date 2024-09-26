@@ -113,7 +113,7 @@ $pagetitle = "HireMe - Requirement Verification";
                         $rejectionreason = $companyapplciationdetail->getReasonForRejection();
                         $dateposted = $companyapplciationdetail->getDate();
 
-                        echo "<strong><p>Name: </strong>" . $documentname . '</p>';
+                        echo "<strong><p>Name: </strong>" .  $requirementtype . '</p>';
                         echo "<strong><p>Document: </strong>" . $requirementtype . '</p>';
                         echo "<strong><p>Date Posted: </strong>" . $dateposted . '</p>';
                         echo "<strong><p>File Type: </strong>" . strtoupper($fileextension) . '</p>';

@@ -94,16 +94,24 @@ $pagetitle = "HireMe - Post a Job";
                                                 <input class="form-control mt-2" type="text" id="otherWorkType" name="otherWorkType" style="display: none;" placeholder="Enter work type...">
                                             </div>
                                         </div>
+                                        
                                         <div class="row">
+                                            <div class="col-md-6">
+                                                <label for="salaryMin">Minimum Salary:</label>
+                                                <input type="number" class="form-control" id="salaryMin" name="salaryMin" placeholder="Enter minimum salary" required>
+                                                </div>
+                                           
                                             <div class="col-md-6">
                                                 <label for="salaryMax">Maximum Salary:</label>
                                                 <input type="number" class="form-control" id="salaryMax" name="salaryMax" placeholder="Enter maximum salary" required>
-                                            </div>
+                                         </div>
+                                          
                                             <div class="col-md-6">
                                                 <label for="workHours">Work Hours:</label>
                                                 <input type="text" class="form-control" id="workHours" name="workHours" placeholder="Enter work hours.. example: (8AM-5PM)" required>
                                             </div>
                                         </div>
+                                        
                                         <div class="row p-2">
                                             <div class="col-md-6">
                                                 <div id="slider-range"></div>
@@ -172,24 +180,7 @@ $pagetitle = "HireMe - Post a Job";
     <script src="../assets/js/tinymce.js"></script>
 
     <!-- Salary Slider -->
-    <script>
-        $(function() {
-            $("#slider-range").slider({
-                min: 0,
-                max: 200000,
-                step: 1000,
-                value: 0,
-                orientation: "horizontal",
-                range: "min",
-                animate: true,
-                slide: function(event, ui) {
-                    $("#salaryMax").val(ui.value);
-                }
-            });
 
-            $("#salaryMax").val($("#slider-range").slider("value"));
-        });
-    </script>
 
     <!-- Toast and AJAX -->
     <script>
@@ -296,7 +287,7 @@ $pagetitle = "HireMe - Post a Job";
     </script>
 
     <!-- Salary Min-Max checker, salarymin cant be greater than salarymax -->
-    <!-- <script>
+    <script>
         function validateSalaryRange() {
             var minSalary = parseFloat(document.getElementById('salaryMin').value);
             var maxSalary = parseFloat(document.getElementById('salaryMax').value);
@@ -306,7 +297,7 @@ $pagetitle = "HireMe - Post a Job";
                 document.getElementById('salaryMin').value = '';
             }
         }
-    </script> -->
+    </script> 
 </body>
 
 </html>

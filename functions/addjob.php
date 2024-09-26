@@ -5,9 +5,11 @@ if (!isset($_SESSION)) {
 require_once '../classes/user.php';
 require_once '../classes/company.php';
 require_once '../classes/job.php';
+require_once '../classes/jobseekerapplication.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
+    $jobapplication = new JobSeekerApplication($conn);
 
     $username = $_SESSION['username'];
     $user = new User($conn);
@@ -37,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $jobLocation = trim($jobLocation);
         }
     }
-    
+
     $workType = $_POST['workType'];
 
     if ($workType === 'others') {
@@ -68,6 +70,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $job = new Job($conn);
     if ($job->addJob($companyID, $jobTitle, $jobDescription, $jobType, $salaryMin, $salaryMax, $workHours, $jobLocation, $jobLocationType, $jobIndustry, $otherIndustry, $workType)) {
         if ($job->addNotif($companyName, $jobTitle, 0, 0)) {
+            $jobDetails = $job->getJobsByWorkType($workType);
+            if ($jobDetails) {
+                foreach ($jobDetails as $jobDetail) {
+                    $jobapplicationDetails = $jobapplication->getJobApplicationDetailsByJobID($jobDetail['JobID']);
+                    if ($jobapplicationDetails) {
+                        foreach ($jobapplicationDetails as $jobapplicationDetail) {
+                            $applicantUserID = $jobapplicationDetail->getUserID();
+                            $userEmail = $user->getUserDetailsByUserID($applicantUserID)->getEmail();
+                            if ($job->newJobNotif($userEmail, $jobTitle, $jobDescription) !== true) {
+                                $response = array('status' => 'error', 'message' => 'Notifying applicants failed. Please try again.', 'redirect' => './addjob.php');
+                            } 
+                            // else {
+                            //     $response = array('status' => 'success', 'message' => 'Successfully notified possible applicants. Connecting to server, please wait.', 'redirect' => './jobs.php');
+                            // }
+                        }
+                    }
+                }
+            } else {
+            $response = array('status' => 'error', 'message' => 'Error adding job. Please try again.', 'redirect' => './addjob.php');
+        }
+
             $response = array('status' => 'success', 'message' => 'Successfully added job. Connecting to server, please wait.', 'redirect' => './jobs.php');
         } else {
             $response = array('status' => 'error', 'message' => 'Notifiying the managers failed. Please try again.', 'redirect' => './addjob.php');

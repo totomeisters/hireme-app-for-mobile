@@ -1,0 +1,151 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.banner {
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(rgba(245, 239, 239, 0.75), rgba(85, 156, 237, 0.75));
+    background-size: cover;
+    background-position: center;
+}
+
+.navbar {
+    width: 100%;
+    height: 15%;
+    margin: auto;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #faf9f9;
+}
+
+.logo {
+    width: 180px; /* Increased width */
+    height: auto; /* Maintain aspect ratio */
+    cursor: pointer;
+}
+
+.navbar ul li {
+    list-style: none;
+    display: inline-block;
+    margin: 0 20px;
+    position: relative;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: #141414;
+    text-transform: uppercase;
+    font-size: 13px; /* Set the font size to a smaller value */
+    margin: auto;
+}
+
+.navbar ul li::after {
+    content: '';
+    height: 3px;
+    width: 0;
+    background: #009688;
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    transition: 0.5s;
+}
+
+.navbar ul li:hover::after {
+    width: 100%;
+}
+
+@font-face {
+    font-family: 'MyLocalFont';
+    src: url('path/to/font.woff2') format('woff2');
+}
+
+.content {
+    font-family: 'MyLocalFont', sans-serif;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    
+    color: #0b0b0b;
+}
+
+.content-container {
+    display: flex;
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center items horizontally */
+    gap: 250px; /* Space between text and image */
+}
+
+.text {
+    max-width: 50%; /* Adjust width if needed */
+    font-family: 'Lato', sans-serif; /* Apply the minimalist font */
+}
+
+.text h1 {
+    font-size: 70px;
+    margin: 0 0 20px 0;
+    font-family: 'Lato', sans-serif; /* Apply the minimalist font */
+}
+
+.text p {
+    margin: 20px 0;
+    font-weight: 100;
+    line-height: 25px;
+    font-family: 'Lato', sans-serif; /* Apply the minimalist font */
+}
+
+
+.image img {
+    max-width: 450px; /* Increase max-width to enlarge image */
+    height: auto; /* Maintain aspect ratio */
+    border: 5px solid #009688; /* Add a solid border with color */
+    border-radius: 15px; /* Optional: Add rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Add a subtle shadow */
+}
+
+
+button {
+    width: 200px;
+    padding: 15px 0;
+    text-align: center;
+    margin: 20px 10px;
+    border-radius: 25px;
+    font-weight: bold;
+    border: 2px solid #009688;
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+span {
+    background: #009688;
+    height: 100%;
+    width: 100%;
+    border-radius: 25px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    transition: 0.5s;
+}
+
+button:hover span {
+    width: 100%;
+      background-color: DodgerBlue;
+  border: none;
+  color: white;
+  padding: 12px 30px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+button:hover {
+    border: none;
+}

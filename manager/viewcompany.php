@@ -225,7 +225,7 @@ $pagetitle = "HireMe - View: ".$companyName;
                               <tbody>
                                   <?php foreach ($companyapplciationdetails as $companyapplciationdetail): ?>
                                       <tr>
-                                          <td><?= ucfirst($companyapplciationdetail->getDocumentName()); ?></td>
+                                          <td><?= ucfirst($companyapplciationdetail->getDocumentType()); ?></td>
                                           <td class="d-none d-md-table-cell"><?= strtoupper(pathinfo($companyapplciationdetail->getDocumentFilePath(), PATHINFO_EXTENSION)); ?></td>
                                           <td class="d-none d-md-table-cell"><?= $companyapplciationdetail->getDate(); ?></td>
                                           <td class="d-none d-md-table-cell"><?= $companyapplciationdetail->getVerification(); ?></td>

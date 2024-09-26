@@ -19,7 +19,7 @@ class Interview {
         $interviewDate = $interviewDetails->getInterviewDate();
         $dateMade = $interviewDetails->getDateMade();
 
-        $sql = "INSERT INTO Interviews (JobID, JobSeekerApplicationID, InterviewDate, DateMade) VALUES (?, ?, ?, ?)";
+        $sql = "INSERT INTO interviews (JobID, JobSeekerApplicationID, InterviewDate, DateMade) VALUES (?, ?, ?, ?)";
         $stmt = $this->conn->prepare($sql);
         $stmt->bind_param("iiss", $jobID, $jobSeekerApplicationID, $interviewDate, $dateMade);
 
@@ -31,7 +31,7 @@ class Interview {
     }
 
     // public function getAllInterviews() {
-    //     $sql = "SELECT InterviewID, JobID, JobSeekerApplicationID, InterviewDate, DateMade, Status FROM Interviews";
+    //     $sql = "SELECT InterviewID, JobID, JobSeekerApplicationID, InterviewDate, DateMade, Status FROM interviews";
     //     $result = $this->conn->query($sql);
     
     //     if ($result->num_rows > 0) {
@@ -55,7 +55,7 @@ class Interview {
 
     public function getAllInterviewsByJobID($jobID) {
       try {
-        $stmt = $this->conn->prepare("SELECT * FROM Interviews WHERE JobID=?");
+        $stmt = $this->conn->prepare("SELECT * FROM interviews WHERE JobID=?");
         $stmt->bind_param("i", $jobID);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -87,7 +87,7 @@ class Interview {
 
     public function getInterviewByJobSeekerApplicationID($applicationID) {
       try {
-          $stmt = $this->conn->prepare("SELECT * FROM Interviews WHERE JobSeekerApplicationID=? LIMIT 1");
+          $stmt = $this->conn->prepare("SELECT * FROM interviews WHERE JobSeekerApplicationID=? LIMIT 1");
           $stmt->bind_param("i", $applicationID);
           $stmt->execute();
           $result = $stmt->get_result();

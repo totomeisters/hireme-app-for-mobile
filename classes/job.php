@@ -1,4 +1,7 @@
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+// require '../hireme/PHPMailer/src/Exception.php';
+
 if (!isset($_SESSION)) {
     session_start();
 }
@@ -17,7 +20,7 @@ class Job
     public function addJob($companyId, $jobTitle, $jobDescription, $jobType, $salaryMin, $salaryMax, $workHours, $jobLocation, $jobLocationType, $jobIndustry, $otherIndustry, $workType)
     {
         try {
-            $stmt = $this->conn->prepare("INSERT INTO Jobs (CompanyID, 
+            $stmt = $this->conn->prepare("INSERT INTO jobs (CompanyID, 
                                                             JobTitle, 
                                                             JobDescription, 
                                                             JobType, 
@@ -40,13 +43,13 @@ class Job
 
             if (!$result) {
                 // handle error
-                return false;
+                return 'no result';
             }
 
             return true;
         } catch (Exception $e) {
             // handle exception
-            return false;
+            return $e->getMessage();
         }
     }
 
@@ -119,7 +122,7 @@ class Job
     public function getAllJobs($companyId)
     {
         try {
-            $stmt = $this->conn->prepare("SELECT * FROM Jobs WHERE CompanyID=?");
+            $stmt = $this->conn->prepare("SELECT * FROM jobs WHERE CompanyID=?");
             $stmt->bind_param("i", $companyId);
             $stmt->execute();
             $result = $stmt->get_result();
@@ -179,7 +182,7 @@ class Job
     public function getJobDetailsByID($jobID)
     {
         try {
-            $stmt = $this->conn->prepare("SELECT * FROM Jobs WHERE JobID=?");
+            $stmt = $this->conn->prepare("SELECT * FROM jobs WHERE JobID=?");
             $stmt->bind_param("i", $jobID);
             $stmt->execute();
             $result = $stmt->get_result();
@@ -218,7 +221,7 @@ class Job
     {
         $status = 'Verified';
         try {
-            $stmt = $this->conn->prepare("SELECT * FROM Jobs WHERE VerificationStatus=?");
+            $stmt = $this->conn->prepare("SELECT * FROM jobs WHERE VerificationStatus=?");
             $stmt->bind_param("s", $status);
             $stmt->execute();
             $result = $stmt->get_result();
@@ -433,6 +436,62 @@ class Job
         } else {
             http_response_code(500);
             return json_encode(array('error' => 'Database error: ' . $this->conn->error));
+        }
+    }
+    
+    public function getJobsByWorkType($workType)
+    {
+        $stmt = $this->conn->prepare("SELECT JobID FROM `jobs` WHERE `WorkType` = ?");
+        $stmt->bind_param("s", $workType);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+
+        $jobs = $result->fetch_all(MYSQLI_ASSOC);
+
+        $stmt->close();
+
+        return $jobs ? $jobs : null;
+    } 
+    
+    public function newJobNotif($email, $jobName, $jobDescription)
+    {
+        if (empty($email) || empty($jobName)){
+            return false;
+        }
+        
+        //Hireme Email
+        $hireme_mail = "hiremeapp722@gmail.com";
+
+        //Hireme App Password
+        $hireme_pass = "rrqbzkjdcmfyudpy";
+
+        $mail = new PHPMailer(true);
+        $mail->isSMTP();
+        $mail->SMTPAuth = true;
+        $mail->Host = "smtp.gmail.com";
+        $mail->Username = $hireme_mail;
+        $mail->Password = $hireme_pass;
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->Port = 587;
+
+
+        $mail->setFrom($hireme_mail, "Hire Me");
+        $mail->addAddress($email);
+        $mail->addReplyTo($hireme_mail, "Admin-hireme");
+        $mail->IsHTML(true);
+        $mail->Subject = "A new Job (".ucfirst($jobName).") has been posted!";
+        if (!empty($jobDescription)){
+            $mail->Body = "$jobDescription";
+        } else{
+            $mail->Body = "No Job Description Included.";
+        }
+        $mail->AltBody = "Code not retrieved";
+
+        if (!$mail->send()) {
+            return false;
+        } else {
+            return true;
         }
     }
 }

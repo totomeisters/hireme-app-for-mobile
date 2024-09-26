@@ -111,7 +111,7 @@ $pagetitle = "HireMe - Registration";
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label for="rep_number">Representative Contact Number</label>
-                                                    <input type="tel" class="form-control" id="rep_number" name="rep_number" pattern="[0-9]{3}-[0-9]{4}" placeholder="Enter 7-digit (XXX-XXXX) landline number." required>
+                                                    <input type="tel" class="form-control" id="rep_number" name="rep_number" pattern="^09\d{9}$" placeholder="Enter 11-digit (09XX-XXX-YYYY) mobile number." required>
                                                 </div>
                                             </div>
                                             <button type="submit" class="btn btn-primary">Submit</button>

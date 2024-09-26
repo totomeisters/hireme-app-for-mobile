@@ -19,7 +19,7 @@ class Company
     public function addCompany($companyname, $companydesc, $companyaddress, $userID)
     {
         try {
-            $stmt = $this->conn->prepare("INSERT INTO Companies (UserID, CompanyName, CompanyDescription, CompanyAddress) VALUES (?, ?, ?, ?)");
+            $stmt = $this->conn->prepare("INSERT INTO companies (UserID, CompanyName, CompanyDescription, CompanyAddress) VALUES (?, ?, ?, ?)");
             $stmt->bind_param("isss", $userID, $companyname, $companydesc, $companyaddress);
             $result = $stmt->execute();
             $stmt->close();

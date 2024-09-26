@@ -58,7 +58,7 @@ else {
             <div class="card-body">
              <!-- Logo -->
              <div class="app-brand justify-content-center">
-                  <img src="./assets/img/favicon/android-chrome-512x512.png" alt="HireMeLogo" style="max-height: 80px;">
+                   <img src="hireme_logo1.png" alt="HireMeLogo" style="max-height: 150px;">
               </div>
                <div class="app-brand justify-content-center">
                 <span class="logotext text-black">HireMe-App</span>

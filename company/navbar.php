@@ -1,7 +1,9 @@
 <?php
 require_once '../classes/job.php';
 $job = new Job($conn);
+if (isset($companyID)){
 $notifications = $job->getNotifications($companyID);
+}
 
 function time_elapsed($datetime) {
   $now = new DateTime();
@@ -48,12 +50,15 @@ function time_elapsed($datetime) {
     <ul class="navbar-nav flex-row align-items-center ms-auto">
       <?php
         $unreadCount = 0;
-        foreach ($notifications as $notification) {
-          if ($notification['is_read'] == 0) {
-            $unreadCount++;
-          }
+        if (isset($notifications)){
+            foreach ($notifications as $notification) {
+              if ($notification['is_read'] == 0) {
+                $unreadCount++;
+              }
+            }
         }
       ?>
+      <?php if (isset($notifications)) : ?>
       <li class="nav-item dropdown notifications">
         <a class="nav-link dropdown-toggle hide-arrow" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-toggle="tooltip" data-bs-placement="left" title='Click on a notification to mark them as "read".'>
           <span class="notification-circle">
@@ -65,11 +70,15 @@ function time_elapsed($datetime) {
             ?>
           </span>
         </a>
+
         <ul class="p-1 dropdown-menu dropdown-menu-end border border-secondary">
           <h4>Notifications</h4>
           <?php if (count($notifications) > 0) : ?>
+          <div style="max-height: 500px; overflow-y: auto;">
             <?php foreach ($notifications as $notification) : ?>
+            
               <li>
+                         
                 <div class="rounded-1 my-1 p-2 dropdown-item text-wrap mark-as-read small <?php echo $notification['is_read'] ? 'bg-light text-dark border border-secondary' : 'bg-dark text-white'; ?>" data-notification-id="<?= $notification['id']; ?>" style="width: 30rem;">
                   <?= $notification['content'];?>
                   <div class="small text-end">
@@ -78,14 +87,18 @@ function time_elapsed($datetime) {
                   </div>
                 </div>
               </li>
+              
             <?php endforeach; ?>
+            </div>
           <?php else : ?>
             <li>
-              <div class="rounded-2 mb-1 dropdown-item bg-dark text-white text-wrap border border-secondary" style="width: 25rem;"></div>
+              <div class="rounded-2 mb-1 dropdown-item bg-dark text-white text-wrap border border-secondary" style="width: 25rem;">No notifications.</div>
             </li>
           <?php endif; ?>
         </ul>
+       
       </li>
+      <?php endif; ?>
 
       <!-- UserNav -->
       <li class="nav-item navbar-dropdown dropdown-user dropdown">

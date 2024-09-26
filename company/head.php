@@ -40,7 +40,7 @@
   <!-- <link href="https://cdn.jsdelivr.net/npm/quill@2.0.0-beta.0/dist/quill.snow.css" rel="stylesheet" /> -->
 
   <!-- TinyMCE -->
-  <script type="text/javascript" src="https://cdn.tiny.cloud/1/tcgxxydkqx73ozufy4rzvmt2kb9hc4c46iguzha6hdrjpz56/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+  <script type="text/javascript" src="https://cdn.tiny.cloud/1/v2ooa4tj54wbeh5fgh0x5j1j62dcp4y8ouf2p895dms4e0z6/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
 </head>
 
 <style>

@@ -49,7 +49,7 @@
             <div class="card-body">
               <!-- Logo -->
               <div class="app-brand justify-content-center">
-                  <img src="./assets/img/favicon/android-chrome-512x512.png" alt="HireMeLogo" style="max-height: 80px;">
+                  <img src="hireme_logo1.png" alt="HireMeLogo" style="max-height: 150px;">
               </div>
                <div class="app-brand justify-content-center">
                 <span class="logotext text-black">HireMe-App</span>
@@ -65,8 +65,6 @@
                   <select class="form-control" id="role" name="role" required>
                     <option value="" disabled selected>Select Role</option>
                     <option value="Company">Company</option>
-                    <option value="Job Seeker">Job Seeker</option>
-                    <option value="Manager">Manager</option>
                   </select>
                 </div>
                 <div class="mb-3">
@@ -101,15 +99,90 @@
                   </div>
                 </div>
 
-                <div class="mb-3">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="terms-conditions" name="terms" required/>
-                    <label class="form-check-label" for="terms-conditions">
-                      I agree to
-                      <a href="javascript:void(0);">privacy policy & terms</a>
-                    </label>
-                  </div>
-                </div>
+<!-- Popup HTML -->
+<div id="popup" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="hidePopup()">&times;</span>
+        <h2>Privacy Policy</h2>
+        <p><strong>Effective Date:</strong> September 1, 2024</p>
+        <p><strong>1. Overview</strong><br>HireMe-App values your privacy. This policy details how we collect, use, and protect your information.</p>
+        <p><strong>2. Information We Collect</strong><br>- Personal Info: Email, username, password, phone number.<br>- Job & Company Info: Details related to job openings and companies.</p>
+        <p><strong>3. How We Use Your Data</strong><br>- To provide and improve our services.<br>- To communicate with you about updates and job-related matters.</p>
+        <p><strong>4. Data Sharing</strong><br>We don’t sell your info. We may share it with service providers or as required by law.</p>
+        <p><strong>5. Security</strong><br>We use reasonable measures to protect your data but cannot guarantee complete security.</p>
+        <p><strong>6. Your Rights</strong><br>You can access, correct, or request deletion of your personal info by contacting us.</p>
+        <p><strong>7. Changes</strong><br>We may update this policy and will post changes on our website.</p>
+        <p><strong>8. Contact</strong><br>For questions, email us at hiremeapp722@gmail.com.</p>
+        
+        <h2>Terms of Service</h2>
+        <p><strong>Effective Date:</strong> September 1, 2024</p>
+        <p><strong>1. Agreement</strong><br>By using HireMe-App, you agree to these terms. If you disagree, do not use our services.</p>
+        <p><strong>2. User Responsibilities</strong><br>- Keep your account details secure.<br>- Don’t use the site for illegal activities.</p>
+        <p><strong>3. Intellectual Property</strong><br>All content on our site is owned by us or our partners.</p>
+        <p><strong>4. Liability</strong><br>We aren’t liable for any damages arising from your use of our site.</p>
+        <p><strong>5. Termination</strong><br>We can suspend or terminate your account if you breach these terms.</p>
+        <p><strong>6. Changes</strong><br>We may update these terms, and your continued use means you accept the changes.</p>
+        <p><strong>7. Contact</strong><br>For any questions, email us at hiremeapp722@gmail.com.</p>
+    </div>
+</div>
+<style>
+    .popup {
+        display: none;
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        justify-content: center;
+        align-items: center;
+    }
+    .popup-content {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        width: 80%;
+        max-width: 600px;
+        max-height: 80vh; /* Limit the height of the popup content */
+        overflow-y: auto; /* Enable vertical scrolling */
+    }
+    .popup-content h2 {
+        margin-top: 0;
+    }
+    .close {
+        display: block;
+        text-align: right;
+        cursor: pointer;
+        color: #888;
+    }
+    .close:hover {
+        color: #000;
+    }
+</style>
+
+<script>
+    function showPopup() {
+        document.getElementById('popup').style.display = 'flex';
+    }
+
+    function hidePopup() {
+        document.getElementById('popup').style.display = 'none';
+    }
+
+    document.querySelector('a[href="javascript:void(0);"]').addEventListener('click', showPopup);
+</script>
+
+
+<div class="mb-3">
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" id="terms-conditions" name="terms" required/>
+    <label class="form-check-label" for="terms-conditions">
+      I agree to
+<a href="javascript:void(0);" onclick="showPopup()">Privacy Policy & Terms</a>
+    </label>
+  </div>
+</div>
+
                 <button class="btn btn-warning d-grid w-100">Sign up</button>
               </form>
 

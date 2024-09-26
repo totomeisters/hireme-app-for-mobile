@@ -48,15 +48,15 @@ $pagetitle = "HireMe - Application";
                             <form id="formAuthentication" action="../functions/registercompany.php" method="post">
                                 <div class="form-group mb-2">
                                     <label for="companyName">Company Name:</label>
-                                    <input type="text" class="form-control" id="companyName" name="companyName" placeholder="Enter Company Name">
+                                    <input type="text" class="form-control" id="companyName" name="companyName" placeholder="Enter Company Name" required >
                                 </div>
                                 <div class="form-group mb-2">
                                     <label for="companyDescription">Company Description:</label>
-                                    <textarea class="form-control" id="companyDescription" name="companyDescription" rows="10" placeholder="Enter Company Description"></textarea>
+                                    <textarea class="form-control" id="companyDescription" name="companyDescription" rows="10" placeholder="Enter Company Description" required></textarea>
                                 </div>
                                 <div class="form-group mb-2">
                                     <label for="address">Address:</label>
-                                    <input type="text" class="form-control" id="companyAddress" name="companyAddress" placeholder="Enter Address">
+                                    <input type="text" class="form-control" id="companyAddress" name="companyAddress" placeholder="Enter Address" required>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </form>

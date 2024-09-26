@@ -13,8 +13,6 @@ $jobseeker = new JobSeeker($conn);
 $jobSeekerApplication = new JobSeekerApplication($conn);
 $interview = new Interview($conn);
 
-$verifiedApplications = $jobSeekerApplication->getAllVerifiedJobApplicationDetails();
-
 $pagetitle = "HireMe - Candidates";
 ?>
 
@@ -54,44 +52,36 @@ $pagetitle = "HireMe - Candidates";
                 <!-- Card -->
                 <div class="col-lg-12 mb-4 order-0">
                   <h1 class="text-center mb-4">Verified Applicants</h1>
-                    <?php if (!empty($verifiedApplications)): ?>
-                        <table id="candidatesTable" class="table table-hover">
+                    <?php
+                    function isVerified(JobSeekerApplicationDetails $application): bool {
+                        return $application->getStatus() === 'Verified';
+                    }
+                    $alljobs = $job->getAllJobs($companyID);
+                    if (!empty($alljobs)){ ?>
+                    <table id="candidatesTable" class="table table-hover">
                             <tr>
                                 <th>Job Title</th>
                                 <th>Applicant Name</th>
                                 <th class="d-none d-md-table-cell">Application Date</th>
                                 <th class="d-none d-md-table-cell">Status</th>
-                                <th class="d-none d-md-table-cell">Interview Status</th>
                                 <th>Action</th>
                             </tr>
-                            <?php foreach ($verifiedApplications as $application): 
+                      <?php foreach ($alljobs as $alljob){
+                        $allApplications = $jobSeekerApplication->getJobApplicationDetailsByJobID($alljob->getJobID());
+                        $verifiedApplications = array_filter($allApplications, 'isVerified');
+                        $verifiedApplications = array_values($verifiedApplications);
+                    if (!empty($verifiedApplications)){
+                        foreach ($verifiedApplications as $application){ 
                                 $jobTitle = $job->getJobDetailsByID($application->getJobID())->getJobTitle();
                                 $applicantFName = $jobseeker->getJobSeekerDetailsByUserID($application->getUserID())->getFirstName();
                                 $applicantLName = $jobseeker->getJobSeekerDetailsByUserID($application->getUserID())->getLastName();
-                                $applicantName = $applicantFName.' '.$applicantLName;
-                                $status = 'Pending';
-
-                                if(empty($jobTitle)){
-                                    $jobTitle = 'error getting job title';
-                                }
-
-                                if(empty($applicantName)){
-                                    $applicantName = 'error getting job title';
-                                }
-
-                                // if(!empty($application->getJobSeekerApplicationID())){
-                                //   $applicationStatus = $interview->getInterviewByJobSeekerApplicationID($application->getJobSeekerApplicationID())->getStatus();
-                                //   $status = !empty($applicationStatus) ? $applicationStatus : "Unknown";
-                                // }
-                                
-                                
-                                ?>
+                                $applicantName = ucfirst($applicantFName).' '.ucfirst($applicantLName);
+                            ?>
                                 <tr>
                                     <td><?= $jobTitle ?></td>
                                     <td><?= $applicantName ?></td>
                                     <td class="d-none d-md-table-cell"><?= date('Y-m-d', strtotime($application->getApplicationDate())) ?></td>
                                     <td class="d-none d-md-table-cell"><?= $application->getStatus() ?></td>
-                                    <td class="d-none d-md-table-cell"><?= $status ?></td>
                                     <td>
                                         <form action="./viewapplicant.php" method="post">
                                             <input type="text" value="<?= $application->getUserID() ?>" name="applicantID" hidden>
@@ -101,11 +91,7 @@ $pagetitle = "HireMe - Candidates";
                                         </form>
                                     </td>
                                 </tr>
-                            <?php endforeach; ?>
-                        </table>
-                    <?php else: ?>
-                        No verified applicants found.
-                    <?php endif; ?>
+                            <?php } }  else { $noverapp = '<p class="text-center">No verfied applicants found.</p>'; } } echo '</table>'; if(!empty($noverapp)){echo $noverapp;}} else { echo 'No jobs found.'; }?>
 
                 </div>
                 <!-- /Card -->

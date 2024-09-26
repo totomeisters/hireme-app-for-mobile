@@ -39,7 +39,7 @@ class CompanyApplication
     public function getCompanyApplicationDetails($companyID)
     {
         try {
-            $stmt = $this->conn->prepare("SELECT * FROM CompanyApplication WHERE CompanyID=?");
+            $stmt = $this->conn->prepare("SELECT * FROM companyapplication WHERE CompanyID=?");
             $stmt->bind_param("i", $companyID);
             $stmt->execute();
             $result = $stmt->get_result();
@@ -75,7 +75,7 @@ class CompanyApplication
     public function getCompanyApplicationDetailsByID($companyapplciationID)
     {
         try {
-            $stmt = $this->conn->prepare("SELECT * FROM CompanyApplication WHERE CompanyApplicationID=?");
+            $stmt = $this->conn->prepare("SELECT * FROM companyapplication WHERE CompanyApplicationID=?");
             $stmt->bind_param("i", $companyapplciationID);
             $stmt->execute();
             $result = $stmt->get_result();

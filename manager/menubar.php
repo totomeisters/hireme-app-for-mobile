@@ -59,6 +59,12 @@ if (isset($_SESSION['username'])) {
           </a>
         </li>
       </ul>
+    </li>
+    <li class="menu-item">
+      <a href="./hiree.php" class="menu-link">
+        <i class="menu-icon tf-icons bx bx-user-check"></i>
+        <div data-i18n="Hired Applicants">Hired Applicants</div>
+      </a>
     </li>    
   </ul>
 </aside>

@@ -128,7 +128,7 @@ $pagetitle = "HireMe - Company Documents";
                                     $rejectionreason = $companyapplicationdetail->getReasonForRejection();
                                     $dateposted = $companyapplicationdetail->getDate();
 
-                                    echo "<strong><p>Name: </strong>". $documentname.'</p>';
+                                 
                                     echo "<strong><p>Document: </strong>". $requirementtype.'</p>';
                                     echo "<strong><p>Date Posted: </strong>". $dateposted.'</p>';
                                     echo "<strong><p>File Type: </strong>". strtoupper($fileextension).'</p>';

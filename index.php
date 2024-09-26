@@ -19,7 +19,7 @@
 
 <?php
 if (true){
-  header("Location: ./login.php");
+  header("Location: ./home.php");
   exit();
 }
 else{

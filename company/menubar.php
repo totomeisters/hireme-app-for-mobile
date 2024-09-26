@@ -15,6 +15,7 @@ if (isset($_SESSION['username'])) {
       $status = $companydetails->getVerificationStatus();
       $companyID = $companydetails->getCompanyID();
       $companyprofile = $company->getCompanyProfile($companyID);
+      $companyName = $companydetails->getCompanyName();
     }
   }
 } else {
@@ -43,7 +44,7 @@ if (isset($_SESSION['username'])) {
     <li class="menu-item">
       <a href="./dashboard.php" class="menu-link">
         <i class="menu-icon tf-icons bx bx-home-circle"></i>
-        <div data-i18n="Dashboard">Dashboard</div>
+        <div data-i18n="Dashboard"><strong class="small"><?= strtoupper($companyName); ?></strong></div>
       </a>
     </li>
 
@@ -52,7 +53,7 @@ if (isset($_SESSION['username'])) {
     </li>
     <?php
 
-    if (!$companydetails == null && $status === 'Pending') { ?>
+    if ($companydetails !== null && $status === 'Verified') { ?>
       <li class="menu-item open">
         <a href="javascript:void(0);" class="menu-link menu-toggle">
           <i class="menu-icon tf-icons bx bx-briefcase"></i>
@@ -107,7 +108,7 @@ if (isset($_SESSION['username'])) {
       </li>
 
     <?php
-    } if ($companydetails !== null && $companyprofile !== null) { ?>
+    } if ($companydetails !== null && $companyprofile !== null && $status !== 'Verified') { ?>
 
       <li class="menu-item">
         <a href="./verification.php" class="menu-link">

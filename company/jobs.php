@@ -72,8 +72,8 @@ $pagetitle = "HireMe - Jobs";
                             <td class="d-none d-md-table-cell"><?= $jobdetail->getJobType(); ?></td>
                             <td class="d-none d-md-table-cell"><?= $jobdetail->getPostingDate(); ?></td>
                             <td class="d-none d-md-table-cell"><?= $jobdetail->getVerificationStatus(); ?></td>
-                            <td class="d-none d-md-table-cell"><?= $job->getApplicantsCountByJobID($jobdetail->getJobID()); ?></td>
                             <td class="d-none d-md-table-cell"><?= $job->getFaveJobsCountByJobID($jobdetail->getJobID()); ?></td>
+                            <td class="d-none d-md-table-cell"><?= $job->getApplicantsCountByJobID($jobdetail->getJobID()); ?></td>
                             <td>
                             <form method="post" action="./viewjob.php">
                                 <input type="hidden" name="jobID" value="<?= $jobdetail->getJobID(); ?>">

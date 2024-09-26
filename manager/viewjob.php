@@ -4,7 +4,15 @@ if (!isset($_SESSION)) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if(isset($_POST['jobID']) && isset($_POST['companyID'])){
+    if (isset($_POST['jobID']) && isset($_POST['companyID']) && ($_POST['referer'] === 'viewhiree') && isset($_POST['userID']) && isset($_POST['applicationID']) && isset($_POST['hireeID'])) {
+      $jobID = $_POST['jobID'];
+      $companyID = $_POST['companyID'];
+      $applicantID = $_POST['userID'];
+      $applicationID = $_POST['applicationID'];
+      $referer = $_POST['referer'];
+      $hireeID = $_POST['hireeID'];
+    }
+    elseif(isset($_POST['jobID']) && isset($_POST['companyID'])){
       $jobID = $_POST['jobID'];
       $companyID = $_POST['companyID'];
     }
@@ -90,10 +98,20 @@ $pagetitle = "HireMe - View Job # ".$jobID;
                         <p class="card-text"><?= ucfirst($jobs->getJobDescription()); ?></p>
                       </div>
                     </div>
+                    <?php if(!empty($referer) && $referer === 'viewhiree'){?>
+                      <form action="./viewhiree.php" method="post">
+                          <input type="text" value="<?= $applicantID ?>" name="userID" hidden>
+                          <input type="text" value="<?= $jobID ?>" name="jobID" hidden>
+                          <input type="text" value="<?= $applicationID ?>" name="applicationID" hidden>
+                          <input type="text" value="<?= $hireeID ?>" name="hireeID" hidden>
+                          <button type="submit" class="btn btn-primary">Go Back</button>
+                      </form>
+                    <?php } else{?>
                       <form action="./viewcompany.php" method="post">
                         <input type="hidden" name="companyID" value="<?= $companyID; ?>">
                         <button type="submit" class="btn btn-secondary">Go Back</button>
                       </form>
+                    <?php } ?>  
                   </div>
                   <div class="col-md-3">
                     <div class="row">
