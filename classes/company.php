@@ -90,6 +90,26 @@ class Company
         }
     }
 
+    public function getAllCompanies()
+    {
+        $query = "SELECT VerificationStatus, COUNT(*) as count FROM companies GROUP BY VerificationStatus";
+        $result = $this->conn->query($query);
+        $data = array();
+        
+        if ($result) {       
+            while ($row = $result->fetch_assoc()) {
+                $data[] = array(
+                    'label' => $row['VerificationStatus'],
+                    'value' => (int)$row['count']
+                );
+            }
+        
+            return json_encode($data);
+        } else {
+            return json_encode(array('error' => 'Failed to fetch data from the database'));
+        }
+    }
+
     public function getAllVerifiedCompanies()
     {
         $status = 'Verified';

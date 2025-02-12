@@ -77,6 +77,22 @@ class Job
         }
     }
 
+    public function addUserNotif($content) {    
+        $sql = "INSERT INTO notifications (user_id, content, type, is_read, created_at) VALUES ('-1', ?, 'user_notif', '0', current_timestamp());";
+    
+        try {
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bind_param("s", $content);
+            $stmt->execute();
+            $stmt->close();
+    
+            return true;
+        } catch (Exception $e) {
+            error_log("Error adding notification: " . $e->getMessage());
+            return "Error adding notification";
+        }
+    }
+
     public function getNotifications($userID)
     {
         $sql = "SELECT * FROM notifications WHERE user_id = ? ORDER BY created_at DESC";

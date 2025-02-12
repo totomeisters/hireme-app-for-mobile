@@ -68,7 +68,23 @@ $pagetitle = "HireMe - Dashboard";
                 <!-- Card -->
                 <div class="col-lg-12 mb-4 order-0">
                   <div class="card p-2">
-                    manager
+                    <p class="m-0">Hello, <span style="font-weight: bold;"><?php echo ucfirst($_SESSION['username']) ?>!</span> 
+                      Your streamlined workspace for managing companies and applicants starts here.
+                    </p>
+                  </div>
+                </div>
+                <div class="col-lg-12 mb-4 order-0">
+                  <div class="row" id="ChartDiv">
+                    <div class="col-lg-6 mb-2 order-1">
+                      <div class="card p-3">
+                        <canvas id="CompanyListingPieChart"></canvas>
+                      </div>
+                    </div>
+                    <div class="col-lg-6 mb-2 order-2">
+                      <div class="card p-3">
+                        <canvas id="ApplicationsBarChart"></canvas>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <!-- /Card -->
@@ -107,6 +123,7 @@ $pagetitle = "HireMe - Dashboard";
   <!-- build:js assets/vendor/js/core.js -->
 <?php }
         require_once __DIR__ . "/endscripts.php"; ?>
+  <script src="../assets/js/managerchart.js"></script>
 </body>
 
 </html>

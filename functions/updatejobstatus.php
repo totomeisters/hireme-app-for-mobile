@@ -3,8 +3,10 @@ if (!isset($_SESSION)) {
     session_start();
 }
 require_once '../classes/job.php';
+require_once '../classes/company.php';
 
 $job = new Job($conn);
+$company = new Company($conn);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $status = $_POST['status'];
@@ -13,6 +15,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $statusErr = 0;
     $jobIDerr = 0;
     $jobTitle = $job->getJobDetailsByID($jobID)->getJobTitle();
+    $company = $job->getJobDetailsByID($jobID)->getCompanyId();
+    $companyName = $company->getCompanyDetailsByCompanyID($company)->getCompanyName();
 
     if (empty($status) || ($status !== "Rejected" && $status !== "Verified")) {
         $statusErr = 1;
@@ -32,6 +36,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($statusErr == 0 && $jobIDerr == 0) {
         if ($job->updateJobStatus($status, $jobID)) {
             $job->addNotif(null, $jobTitle, 1, $companyID);
+            $content = ucfirst($jobTitle)." at ".ucfirst($companyName);
+            $job->addUserNotif($content);
             $_SESSION['viewjobID'] = $jobID;
             $_SESSION['viewcompanyID'] = $companyID;
             $response = array('status' => 'success', 'message' => 'Status was successfully updated.', 'redirect' => './viewjob.php');

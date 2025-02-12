@@ -108,6 +108,39 @@ Class JobSeekerApplication {
         return $applications;
     }
 
+    public function getAllJobApplications() {
+        $sql = "SELECT
+                    MONTH(ApplicationDate) AS month,
+                    Status,
+                    COUNT(*) AS count
+                FROM
+                    jobseekerapplication
+                GROUP BY
+                    MONTH(ApplicationDate), Status
+                ORDER BY
+                    month, Status;";
+        $result = $this->conn->query($sql);
+
+        if($result){
+        $response = [
+            'verified' => array_fill(0, 12, 0),
+            'pending'  => array_fill(0, 12, 0),
+            'rejected' => array_fill(0, 12, 0),
+            'hired' => array_fill(0, 12, 0),
+        ];
+        
+        foreach ($result as $row) {
+            $month = $row['month'] - 1;
+            $status = strtolower($row['Status']);
+            $response[$status][$month] = (int)$row['count'];
+        }
+
+        return json_encode($response);
+        } else {
+            return json_encode(array('error' => 'Failed to fetch data from the database'));
+        }
+    }
+
     public function changeJobApplicationStatus($status, $applicationID) {
         $stmt = $this->conn->prepare("UPDATE jobseekerapplication SET Status = ? WHERE JobSeekerApplicationID = ?;");
 
