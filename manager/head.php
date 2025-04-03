@@ -31,7 +31,11 @@
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
   <!-- DataTables -->
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.0.5/css/dataTables.dataTables.min.css">
+  <link href="https://cdn.datatables.net/v/bs5/dt-2.2.2/datatables.min.css" rel="stylesheet">
+  <script src="https://cdn.datatables.net/v/bs5/dt-2.2.2/datatables.min.js"></script>
+
+  <!-- <link href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.min.css" rel="stylesheet">
+  <script src="https://cdn.datatables.net/2.2.2/js/dataTables.min.js"></script> -->
 </head>
 
 <style>

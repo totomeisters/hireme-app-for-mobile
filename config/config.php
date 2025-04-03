@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
-$serverusername = "u201145375_root";
-$serverpassword = "Hireme@pp722";
+$serverusername = "root";
+$serverpassword = "";
 $key = "hireme";
 $dbname = "u201145375_hiremedb";
 

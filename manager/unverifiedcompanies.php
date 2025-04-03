@@ -64,12 +64,12 @@ $pagetitle = "HireMe - Unverified Companies";
                 <!-- Card -->
                 <div class="col-lg-12 mb-4 order-0">
                     <h3>Unverified Companies</h3>
-                    <div class="card">
+                    <div class="card p-2">
                 <?php
                     $unVerifiedCompanies = $company->getAllUnverifiedCompanies();
                     if (!empty($unVerifiedCompanies)) {
                 ?>
-                        <table class="table table-hover table-bordered">
+                        <table id="unverified" class="table table-hover table-bordered" style="width:100%">
                             <thead>
                                 <tr>
                                     <th class="col-1" scope="col">#</th>
@@ -139,5 +139,8 @@ $pagetitle = "HireMe - Unverified Companies";
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
     <?php require_once __DIR__ . "/endscripts.php";?>
+    <script>
+      new DataTable('#unverified');
+    </script>
   </body>
 </html>

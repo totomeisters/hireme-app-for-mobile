@@ -64,12 +64,12 @@ $pagetitle = "HireMe - Verified Companies";
                 <!-- Card -->
                 <div class="col-lg-12 mb-4 order-0">
                 <h3>Verified Companies</h3>
-                    <div class="card">
+                    <div class="card p-2">
                 <?php
                     $verifiedCompanies = $company->getAllVerifiedCompanies();
                     if (!empty($verifiedCompanies)) {
                 ?>
-                        <table class="table table-hover table-bordered">
+                        <table id="verified" class="table table-hover table-bordered" style="width:100%">
                             <thead>
                                 <tr>
                                     <th class="col-1" scope="col">#</th>
@@ -139,5 +139,8 @@ $pagetitle = "HireMe - Verified Companies";
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
     <?php require_once __DIR__ . "/endscripts.php";?>
+    <script>
+      new DataTable('#verified');
+    </script>
   </body>
 </html>

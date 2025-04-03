@@ -64,12 +64,12 @@ $pagetitle = "HireMe - Rejected Companies";
                 <!-- Card -->
                 <div class="col-lg-12 mb-4 order-0">
                     <h3>Rejected Companies</h3>
-                    <div class="card">
+                    <div class="card p-2">
                 <?php
                     $rejectedCompanies = $company->getAllRejectedCompanies();
                     if (!empty($rejectedCompanies)) {
                 ?>
-                        <table class="table table-hover table-bordered">
+                        <table id="rejected" class="table table-hover table-bordered" style="width:100%">
                             <thead>
                                 <tr>
                                     <th class="col-1" scope="col">#</th>
@@ -139,5 +139,8 @@ $pagetitle = "HireMe - Rejected Companies";
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
     <?php require_once __DIR__ . "/endscripts.php";?>
+    <script>
+      new DataTable('#rejected');
+    </script>
   </body>
 </html>

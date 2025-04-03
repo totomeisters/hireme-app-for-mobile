@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
             labels: ["Verified", "Rejected", "Pending"],
             datasets: [
                 {
-                    label: " Companies",
+                    label: "Companies",
                     data: [0, 0, 0],
                     backgroundColor: [
                         "rgb(56, 142, 60)",
@@ -26,18 +26,36 @@ document.addEventListener("DOMContentLoaded", function () {
                     font: {
                         size: 18
                     }
-                }
+                },
+                datalabels: {
+                    display: true,
+                    padding: 5,
+                    backgroundColor: 'white',
+                    borderColor: 'white',
+                    borderRadius: 20,
+                    borderWidth: 1,
+                    color: 'black',  // Text color
+                    font: {
+                        weight: 'bold',  // Font weight
+                        size: 15         // Font size
+                    },
+                    formatter: "2",
+                    anchor: 'center',  // Position the label in the center of each segment
+                    align: 'center',   // Align the text to the center
+                },
             },
             aspectRatio: 1.5,
         },
+        plugins: [ChartDataLabels]
     });
+    
     $.ajax({
         url: "../functions/getallcompanies.php",
         method: "POST",
         success: function (response) {
             try {
                 var jsonData = JSON.parse(response);
-
+    
                 if (Array.isArray(jsonData) && jsonData.length > 0) {
                     var labels = [];
                     var dataValues = [];
@@ -45,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         labels.push(item.label);
                         dataValues.push(item.value);
                     });
-
+    
                     // Update chart data
                     companyListings.data.labels = labels;
                     companyListings.data.datasets[0].data = dataValues;
@@ -58,7 +76,7 @@ document.addEventListener("DOMContentLoaded", function () {
         error: function (xhr, status, error) {
             console.error("AJAX request failed:", status, error);
         }
-    });
+    });    
 
     // applications chart
     const applicationsBarChart = document.getElementById('ApplicationsBarChart').getContext('2d');

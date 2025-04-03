@@ -53,12 +53,7 @@ $pagetitle = "HireMe - Jobs";
             <div class="container mt-5">
         <h1 class="text-center mb-4">Jobs You Posted</h1>
         <?php if ($jobdetails): ?>
-                <div class="input-group mb-3">
-                                        <input type="text" name="sjobdetail" required value="<?php if(isset($_GET['getJobTitle'])){echo $_GET['getJobTitle']; } ?>" class="form-control" placeholder="Search data">
-                                        <button type="submit" class="btn btn-primary">Search</button>
-                                    </div>
-                                </form>
-            <table class="table table-hover">
+            <table id="jobtable" class="table table-hover">
                 <thead>
                     <tr>
                         <th>Job Title</th>
@@ -71,9 +66,6 @@ $pagetitle = "HireMe - Jobs";
                     </tr>
                 </thead>
                 <tbody>
-                   
-
-</form>
 
 
                     <?php foreach ($jobdetails as $jobdetail): ?>
@@ -103,8 +95,6 @@ $pagetitle = "HireMe - Jobs";
         <?php endif; ?>
     </div>
 
-
-?>
             <!-- / Content -->
 
             <!-- Footer -->
@@ -136,5 +126,8 @@ $pagetitle = "HireMe - Jobs";
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
     <?php require_once "./endscripts.php";?>
+    <script>
+      let table = new DataTable('#jobtable');
+    </script>
   </body>
 </html>
