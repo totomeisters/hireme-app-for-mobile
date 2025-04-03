@@ -15,8 +15,11 @@ class MailService
         //Hireme Email
         $hireme_mail = "hiremeapp722@gmail.com";
 
-        //Hireme App Password
-        $hireme_pass = "rrqbzkjdcmfyudpy";
+        //old Hireme App Password
+        //$hireme_pass = "vqlfhepoenixetvs";
+
+        //new hireme app Password
+        $hireme_pass = "pmccmdmjyhmbyohm";
 
         $mail = new PHPMailer(true);
         $mail->isSMTP();

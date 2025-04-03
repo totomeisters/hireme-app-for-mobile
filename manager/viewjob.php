@@ -160,8 +160,8 @@ $pagetitle = "HireMe - View Job # ".$jobID;
                           <form id="updateapplication" method="post" action="../functions/updatejobstatus.php">
                               <input type="hidden" name="jobID" value="<?= $jobID; ?>">
                               <input type="hidden" name="companyID" value="<?= $companyID; ?>">
-                              <button class="btn btn-success" type="submit" name="status" value="Verified">Verify</button>
-                              <button class="btn btn-danger" type="submit" name="status" value="Rejected">Reject</button>
+                              <button class="btn btn-success" type="submit" name="status" value="Verified">Accept Job Vacancy</button>
+                              <button class="btn btn-danger" type="submit" name="status" value="Rejected">Reject Job Vacancy</button>
                           </form>
                         </div>
                       </div>

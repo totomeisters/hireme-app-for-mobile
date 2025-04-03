@@ -64,7 +64,7 @@ else {
                 <span class="logotext text-black">HireMe-App</span>
               </div>
               <!-- /Logo -->
-              <h4 class="mb-2">Welcome to back! 👋</h4>
+              <h4 class="mb-2">Good to see you!👋</h4>
               <p class="mb-4">Please sign-in to your account and continue the adventure!</p>
 
               <form id="formAuthentication" class="mb-3" action="./functions/login.php" method="POST">

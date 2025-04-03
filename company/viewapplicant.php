@@ -175,7 +175,7 @@ $pagetitle = "HireMe - View Applicant # " . $applicantID;
                     ?>
                   </div>
                   <div class="card p-2 my-1">
-                    <h5><strong>Application Status</strong></h5>
+                    <h5><strong>Actions for Applicant</strong></h5>
                     <?php
                     if ($applicationdetails) {
                       $applicationID = $applicationdetail->getJobSeekerApplicationID();
@@ -190,12 +190,12 @@ $pagetitle = "HireMe - View Applicant # " . $applicantID;
                         echo '<button id="setInterviewButton" type="button" class="btn btn-primary" data-toggle="modal" data-target="#setInterviewModal">Set Interview</button>';
                       } elseif ($status === "Verified" && (!empty($interviewcheck) || $interviewcheck !== null)) {
                         echo '<p>This application is set for an interview. To check the interview details, <a href="./interviews.php" target="_blank">Click Here</a> or visit the Interviews page from the side menubar.</p>';
-                        echo '<button id="changeStatusButton" type="button" class="btn btn-primary" data-toggle="modal" data-target="#changeStatusModal">Change Status</button>';
+                        echo '<button id="changeStatusButton" type="button" class="btn btn-primary" data-toggle="modal" data-target="#changeStatusModal">Hire/Reject Applicant </button>';
                       } elseif ($status === "Pending") {
                         echo '<form id="updateapplication" method="post" action="../functions/updateapplicationstatus.php">
                                                 <input type="hidden" name="applicationID" value="' . $applicationID . '">
-                                                <button class="btn btn-success" type="submit" name="status" value="Verified">Verify</button>
-                                                <button class="btn btn-danger" type="submit" name="status" value="Rejected">Reject</button>
+                                                <button class="btn btn-success" type="submit" name="status" value="Verified">Set for Interview</button>
+                                                <button class="btn btn-danger" type="submit" name="status" value="Rejected">Reject Application</button>
                                               </form>';
                       } else {
                         echo 'Application status is unknown.';
@@ -286,7 +286,7 @@ $pagetitle = "HireMe - View Applicant # " . $applicantID;
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="changeStatusModalLabel">Change Application Status</h5>
+                  <h5 class="modal-title" id="changeStatusModalLabel"> Do you want to hire this Applicant?</h5>
                   <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -302,15 +302,15 @@ $pagetitle = "HireMe - View Applicant # " . $applicantID;
                     <div class="form-group mb-5">
                       <label for="dateHired">Date Hired:</label>
                       <p><span class="text-danger">*</span><small class="text-muted">Not required if choosing "Rejected".</small></p>
-                      <input type="datetime-local" class="form-control" id="dateHired" name="dateHired" required max="<?php echo date('Y-m-d\TH:i'); ?>" required>
+                      <input type="datetime-local" class="form-control" id="dateHired" name="dateHired" required ="<?php echo date('Y-m-d\TH:i'); ?>" required> <!--removed max kasi na rerestrict-->
                     </div>
 
                     <div class="form-group mb-5">
                       <label for="status">Status:</label>
                       <select class="form-control" id="status" name="status" required>
                         <option selected disabled>-- Select an option --</option>
-                        <option value="Hired">Hired</option>
-                        <option value="Rejected">Rejected</option>
+                        <option value="Hired">Hire Applicant</option>
+                        <option value="Rejected">Reject Applicant</option>
                       </select>
                     </div>
 

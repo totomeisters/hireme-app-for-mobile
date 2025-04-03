@@ -26,7 +26,9 @@
               
                     <br><h2>Public Employment Service Office (PESO) - Antipolo City </h2><br>
                     <p><b>Address:</b> Antipolo City Hall, M. Santos Street Corner F. Manalo Street, H5PG+F93, Antipolo, 1870 Rizal, Philippines</p>
-                    <p><b>Telephone:</b> (8) 620-2400</p>
+                    <p><b>Telephone:</b> 8689-4500 (Landline)</p>
+                    <p>0960-225-9083</p>
+                    <p>0917-821-0676</p>
                     <br><h2>HireMe-App </h2><br>
                     <p><b>Our Gmail:</b> hiremeapp722@gmail.com</p>
                 </p>

@@ -96,8 +96,8 @@ class AuthService
                 $response['message'] = "Please enter your contact number!";
                 return json_encode($response, JSON_PRETTY_PRINT);
             } else {
-                //Check username availability
-                $uname_sql = "SELECT Username FROM `users` WHERE Username ='$username'";
+                //Check username and email availability
+                $uname_sql = "SELECT Username, Email FROM `users` WHERE Username ='$username' OR Email = '$email';";
 
                 if (mysqli_query($conn->get_db(), $uname_sql)) {
                     $uname_result = mysqli_query($conn->get_db(), $uname_sql);
@@ -112,19 +112,20 @@ class AuthService
                         $sql = "INSERT INTO `users` (`UserID`, `Username`, `Password`, `Email`, `Role`, `Token`) VALUES (NULL, '$username', '$password', '$email', 'User', '$rand')";
 
                         if (mysqli_query($conn->get_db(), $sql)) {
-                            $sql = "SELECT UserID FROM `users` WHERE Username ='$username'";
-                            $result = mysqli_query($conn->get_db(), $sql);
+                            $new_uname_sql = "SELECT UserID FROM `users` WHERE Username ='$username'";
+                            $new_uname_result = mysqli_query($conn->get_db(), $new_uname_sql);
                             
-                            if (mysqli_num_rows($result) == 1) {
-                                while ($row = mysqli_fetch_assoc($result)) {
+                                    
+                            if (mysqli_num_rows($new_uname_result) == 1) {
+                                while ($row = mysqli_fetch_assoc($new_uname_result)) {
 
                                     $userId = $row['UserID'];
-
                                     //Create jobseeker profile
-                                    $sql = "INSERT INTO `jobseekers` (`JobSeekerID`, `UserID`, `FirstName`, `LastName`, `BirthDate`, `Address`, `ContactNumber`) VALUES (NULL, '$userId', '$fname', '$lname', '$bdate', '$address', '$contactNum');";
-
-                                    if (mysqli_query($conn->get_db(), $sql)) {
+                                    $jobseeker_sql = "INSERT INTO `jobseekers` (`JobSeekerID`, `UserID`, `FirstName`, `LastName`, `BirthDate`, `Address`, `ContactNumber`) VALUES (NULL, '$userId', '$fname', '$lname', '$bdate', '$address', '$contactNum');";
+                                    
+                                    if (mysqli_query($conn->get_db(), $jobseeker_sql)) {
                                         if ($mailDb->sendMail($email, $rand)) {
+                                            
                                             header("Content-Type: JSON");
                                             $response['verdict'] = true;
                                             $response['user_id'] = $userId;

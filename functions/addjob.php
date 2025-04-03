@@ -1,4 +1,9 @@
+
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+ // OLD CODE BOSSING IN CASE NA MAGKA ERROR ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 if (!isset($_SESSION)) {
     session_start();
 }
@@ -75,16 +80,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 foreach ($jobDetails as $jobDetail) {
                     $jobapplicationDetails = $jobapplication->getJobApplicationDetailsByJobID($jobDetail['JobID']);
                     if ($jobapplicationDetails) {
-                        foreach ($jobapplicationDetails as $jobapplicationDetail) {
-                            $applicantUserID = $jobapplicationDetail->getUserID();
-                            $userEmail = $user->getUserDetailsByUserID($applicantUserID)->getEmail();
-                            if ($job->newJobNotif($userEmail, $jobTitle, $jobDescription) !== true) {
-                                $response = array('status' => 'error', 'message' => 'Notifying applicants failed. Please try again.', 'redirect' => './addjob.php');
-                            } 
-                            // else {
-                            //     $response = array('status' => 'success', 'message' => 'Successfully notified possible applicants. Connecting to server, please wait.', 'redirect' => './jobs.php');
-                            // }
-                        }
+                        // foreach ($jobapplicationDetails as $jobapplicationDetail) {
+                        //     $applicantUserID = $jobapplicationDetail->getUserID();
+                        //     $userEmail = $user->getUserDetailsByUserID($applicantUserID)->getEmail();
+                        //     if ($job->newJobNotif($userEmail, $jobTitle, $jobDescription) !== true) {
+                        //         $response = array('status' => 'error', 'message' => 'Notifying applicants failed. Please try again.', 'redirect' => './addjob.php');
+                        //     } 
+                        //     else {
+                        //         $response = array('status' => 'success', 'message' => 'Successfully notified possible applicants. Connecting to server, please wait.', 'redirect' => './jobs.php');
+                        //     }
+                        // }
                     }
                 }
             } else {
@@ -102,3 +107,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo json_encode($response);
     exit();
 }
+  // OLD CODE BOSSING IN CASE MAG KA ERROR ////////////////////////////////////////////////////////////////////////////////////////////////////////// LAGYAN LANG NG COMMENT /* */
+?>
+

@@ -31,7 +31,7 @@
                     <img src="slide2.jpg" alt="Your Image">
                     <br>
                     <center>
-                     <a href="https://drive.google.com/file/d/1nz9n6gbwwAMUr2H0ftIfVi3GIKXaipk8/view?usp=drive_link">  <button class="btn"><i class="fa fa-download"></i> Download</button></center></a>
+                     <a href="https://drive.google.com/file/d/1X2yFTXqlqxJqfnPKluokP598p4NqUkEK/view?usp=drive_link">  <button class="btn"><i class="fa fa-download"></i> Download</button></center></a>
                 </div>
             </div>
         </div>

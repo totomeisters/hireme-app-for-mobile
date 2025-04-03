@@ -154,9 +154,17 @@ $pagetitle = "HireMe - View Job # " . $jobID;
                         </tr>
                       </thead>
                       <tbody>
-                        <?php foreach ($applications as $application) : //echo 'foreach<pre>'; print_r($application); echo '</pre>';
+                        <?php foreach ($applications as $application) : //echo '<pre>'; print_r($application); echo '</pre>';
+                          if (empty($application)) {
+                              continue;
+                          }
                           $jobseekerdetails = $jobseeker->getJobSeekerDetailsByUserID($application->getUserID());
-                          $email = $user->getUserDetailsByUserID($jobseekerdetails->getUserID())->getEmail();
+                            if (!empty($user->getUserDetailsByUserID($jobseekerdetails->getUserID()))) {
+                                $email = $user->getUserDetailsByUserID($jobseekerdetails->getUserID())->getEmail();
+                            } else {
+                                $email = "Unknown";
+                            }
+                          
                         ?>
                           <tr>
                             <td><?= ucfirst($jobseekerdetails->getFirstName()) . ' ' . ucfirst($jobseekerdetails->getLastName()) ?></td>

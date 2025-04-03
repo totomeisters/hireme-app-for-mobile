@@ -82,12 +82,12 @@ $pagetitle = "HireMe - Requirement Verification";
                           }
 
                           if ($documentscheck->getBusinessPermit() == 0) {
-                            $options .= '<option value="Business Permit">Business Permit</option>';
+                            $options .= '<option value="Business Permit">Business Permit / Mayor\'s Permit (REQUIRED)</option>';
                           }
-
-                          if ($documentscheck->getMayorPermit() == 0) {
-                            $options .= '<option value="Mayor\'s Permit">Mayor\'s Permit</option>';
-                          }
+                           
+                         // if ($documentscheck->getMayorPermit() == 0) { //
+                          //   $options .= '<option value="Mayor\'s Permit"></option>';  //
+                          // } //
 
                           if ($documentscheck->getCertificate() == 0) {
                             $options .= '<option value="Certificate">FDA or DOLE Certificate</option>';
@@ -117,12 +117,13 @@ $pagetitle = "HireMe - Requirement Verification";
                       <div class="col-md-9">
                         <?php
                         $documentRequirements = array(
-                          ' BIR Registration' => $documentscheck->getBir(),
-                          ' SEC Registration' => $documentscheck->getSec(),
-                          ' Business Permit' => $documentscheck->getBusinessPermit(),
-                          " Mayor's Permit" => $documentscheck->getMayorPermit(),
-                          ' FDA or DOLE Certificate' => $documentscheck->getCertificate()
+                            '<strong style="color: red;">Business Permit / Mayor\'s Permit (Required)</strong>' => $documentscheck->getBusinessPermit(),
+                            '<strong>FDA or DOLE Certificate (Optional)</strong>' => $documentscheck->getCertificate(),
+                            '<strong>SEC Registration (Optional)</strong>' => $documentscheck->getSec(),
+                            '<strong>BIR Registration (Optional)</strong>' => $documentscheck->getBir(),
+                            // '<strong>Mayor\'s Permit (Optional)</strong>' => $documentscheck->getMayorPermit(),
                         );
+
 
                         foreach ($documentRequirements as $document => $checked) {
                           echo "<p class='fw-bold'>";

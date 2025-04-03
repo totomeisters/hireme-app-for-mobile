@@ -55,7 +55,7 @@ $pagetitle = "HireMe - Post a Job";
                                 <div class="card p-2">
                                     <form id="formAuthentication" action="../functions/addjob.php" method="post">
                                         <input type="text" id="jobIndustry" name="jobIndustry" value="Hotel and Restaurant Management" hidden>
-                                        <input type="number" id="salaryMin" name="salaryMin" value="0" hidden>
+                                        <!--<input type="number" id="salaryMin" name="salaryMin" value="0" hidden>-->
                                         <input type="text" name="jobLocationType" value="On Site" hidden>
                                         <div class="form-group mb-2">
                                             <label for="jobTitle">Job Title:</label>
@@ -83,8 +83,8 @@ $pagetitle = "HireMe - Post a Job";
                                                     <option selected disabled value="">Select work type</option>
                                                     <option value="Janitor">Janitor/Cleaner</option>
                                                     <option value="Security Guard">Security Guard</option>
-                                                    <option value="Receptionist">Receptionist</option>
-                                                    <option value="Mailroom Clerk">Mailroom Clerk</option>
+                                                    <option value="Chef/Cook">Chef/Cook</option>
+                                                    <option value="Housekeeping">Housekeeping</option>
                                                     <option value="Food Service Worker">Food Service Worker</option>
                                                     <option value="Driver">Driver</option>
                                                     <option value="Maintenance Worker">Maintenance Worker</option>
@@ -287,17 +287,17 @@ $pagetitle = "HireMe - Post a Job";
     </script>
 
     <!-- Salary Min-Max checker, salarymin cant be greater than salarymax -->
-    <script>
-        function validateSalaryRange() {
-            var minSalary = parseFloat(document.getElementById('salaryMin').value);
-            var maxSalary = parseFloat(document.getElementById('salaryMax').value);
+    // <script>
+    //     function validateSalaryRange() {
+    //         var minSalary = parseFloat(document.getElementById('salaryMin').value);
+    //         var maxSalary = parseFloat(document.getElementById('salaryMax').value);
 
-            if (minSalary > maxSalary) {
-                alert("Minimum salary cannot be greater than maximum salary");
-                document.getElementById('salaryMin').value = '';
-            }
-        }
-    </script> 
+    //         if (minSalary > maxSalary) {
+    //             alert("Minimum salary cannot be greater than maximum salary");
+    //             document.getElementById('salaryMin').value = '';
+    //         }
+    //     }
+    // </script> 
 </body>
 
 </html>

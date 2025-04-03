@@ -15,8 +15,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $statusErr = 0;
     $jobIDerr = 0;
     $jobTitle = $job->getJobDetailsByID($jobID)->getJobTitle();
-    $company = $job->getJobDetailsByID($jobID)->getCompanyId();
-    $companyName = $company->getCompanyDetailsByCompanyID($company)->getCompanyName();
+    $companyId = $job->getJobDetailsByID($jobID)->getCompanyId();
+    $companyName = $company->getCompanyDetailsByCompanyID($companyId)->getCompanyName();
 
     if (empty($status) || ($status !== "Rejected" && $status !== "Verified")) {
         $statusErr = 1;
@@ -36,8 +36,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($statusErr == 0 && $jobIDerr == 0) {
         if ($job->updateJobStatus($status, $jobID)) {
             $job->addNotif(null, $jobTitle, 1, $companyID);
-            $content = ucfirst($jobTitle)." at ".ucfirst($companyName);
-            $job->addUserNotif($content);
+            if (isset($companyId) && isset($companyName)){
+                $content = ucfirst($jobTitle)." at ".ucfirst($companyName);
+                if($job->addUserNotif($content) != true) {
+                    $response = array('status' => 'error', 'message' => 'Failed to add user notification.', 'redirect' => '');
+                }
+            }
             $_SESSION['viewjobID'] = $jobID;
             $_SESSION['viewcompanyID'] = $companyID;
             $response = array('status' => 'success', 'message' => 'Status was successfully updated.', 'redirect' => './viewjob.php');

@@ -7,6 +7,7 @@ include 'connect.php';
 include 'user.php';
 include 'smtp.php';
 
+
 $authDb = new AuthService();
 $jobDb = new JobService();
 $userDb = new UserService();

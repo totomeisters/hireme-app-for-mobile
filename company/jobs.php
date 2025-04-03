@@ -53,6 +53,11 @@ $pagetitle = "HireMe - Jobs";
             <div class="container mt-5">
         <h1 class="text-center mb-4">Jobs You Posted</h1>
         <?php if ($jobdetails): ?>
+                <div class="input-group mb-3">
+                                        <input type="text" name="sjobdetail" required value="<?php if(isset($_GET['getJobTitle'])){echo $_GET['getJobTitle']; } ?>" class="form-control" placeholder="Search data">
+                                        <button type="submit" class="btn btn-primary">Search</button>
+                                    </div>
+                                </form>
             <table class="table table-hover">
                 <thead>
                     <tr>
@@ -66,9 +71,17 @@ $pagetitle = "HireMe - Jobs";
                     </tr>
                 </thead>
                 <tbody>
+                   
+
+</form>
+
+
                     <?php foreach ($jobdetails as $jobdetail): ?>
                         <tr>
+                            
                             <td><?= $jobdetail->getJobTitle(); ?></td>
+                            
+                            
                             <td class="d-none d-md-table-cell"><?= $jobdetail->getJobType(); ?></td>
                             <td class="d-none d-md-table-cell"><?= $jobdetail->getPostingDate(); ?></td>
                             <td class="d-none d-md-table-cell"><?= $jobdetail->getVerificationStatus(); ?></td>
@@ -81,6 +94,7 @@ $pagetitle = "HireMe - Jobs";
                             </form>
                             </td>
                         </tr>
+                        
                     <?php endforeach; ?>
                 </tbody>
             </table>
@@ -88,6 +102,9 @@ $pagetitle = "HireMe - Jobs";
             <p class="text-center">No jobs found for this company.</p>
         <?php endif; ?>
     </div>
+
+
+?>
             <!-- / Content -->
 
             <!-- Footer -->

@@ -76,7 +76,7 @@ class Job
             return "Error adding notification: " . $e->getMessage();
         }
     }
-
+//
     public function addUserNotif($content) {    
         $sql = "INSERT INTO notifications (user_id, content, type, is_read, created_at) VALUES ('-1', ?, 'user_notif', '0', current_timestamp());";
     
@@ -92,7 +92,7 @@ class Job
             return "Error adding notification";
         }
     }
-
+//
     public function getNotifications($userID)
     {
         $sql = "SELECT * FROM notifications WHERE user_id = ? ORDER BY created_at DESC";

@@ -87,6 +87,29 @@ $pagetitle = "HireMe - Dashboard";
                     </div>
                   </div>
                 </div>
+                
+                <style>
+                    table, th, td {
+                    border:1px solid black;
+                    }
+                </style>
+                <body>
+
+                <h4>Number of Companies</h4>
+
+                <table style="width:100%">
+                    <tr>
+                    <th>Verified Company</th>
+                     <th>Unverified Company</th>
+                    <th>Rejected Companies</th>
+                     </tr>
+                     <tr>
+                       <td>12</td>
+                         <td>3</td>
+                          <td>0</td>
+                             </tr>
+                            </table>
+
                 <!-- /Card -->
 
               </div>

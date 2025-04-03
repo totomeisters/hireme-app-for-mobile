@@ -37,7 +37,7 @@ class JobService
                 }
             }
 
-            $sql = "SELECT b.CompanyName, a.*  FROM `jobs` a, `companies` b WHERE  a.CompanyID = b.CompanyID AND a.VerificationStatus != 'Closed'" . $filterString;
+            $sql = "SELECT b.CompanyName, a.*  FROM `jobs` a, `companies` b WHERE  a.CompanyID = b.CompanyID AND a.VerificationStatus = 'Verified'" . $filterString;
             $result = mysqli_query($conn->get_db(), $sql);
             if (mysqli_num_rows($result) >= 1) {
 

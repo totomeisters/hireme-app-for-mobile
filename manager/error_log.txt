@@ -1,0 +1,63 @@
+[11-Feb-2025 13:47:09 UTC] PHP Parse error:  Unmatched '}' in /home/u201145375/domains/hireme-app.online/public_html/manager/dashboard.php on line 140
+[11-Feb-2025 14:01:40 UTC] PHP Parse error:  Unmatched '}' in /home/u201145375/domains/hireme-app.online/public_html/manager/dashboard.php on line 140
+[11-Feb-2025 14:03:17 UTC] PHP Parse error:  syntax error, unexpected token "=", expecting end of file in /home/u201145375/domains/hireme-app.online/public_html/classes/company.php on line 309
+[11-Feb-2025 14:03:28 UTC] PHP Parse error:  syntax error, unexpected token "=", expecting end of file in /home/u201145375/domains/hireme-app.online/public_html/classes/company.php on line 309
+[11-Feb-2025 14:05:21 UTC] PHP Parse error:  syntax error, unexpected token "=", expecting end of file in /home/u201145375/domains/hireme-app.online/public_html/classes/company.php on line 309
+[12-Feb-2025 05:32:37 UTC] PHP Parse error:  syntax error, unexpected token "=", expecting end of file in /home/u201145375/domains/hireme-app.online/public_html/classes/company.php on line 309
+[12-Feb-2025 05:35:12 UTC] PHP Parse error:  syntax error, unexpected token "=", expecting end of file in /home/u201145375/domains/hireme-app.online/public_html/classes/company.php on line 309
+[20-Feb-2025 02:19:19 UTC] PHP Warning:  Undefined array key "referer" in /home/u201145375/domains/hireme-app.online/public_html/manager/viewjob.php on line 7
+[07-Mar-2025 11:22:11 UTC] PHP Warning:  Undefined array key "referer" in /home/u201145375/domains/hireme-app.online/public_html/manager/viewjob.php on line 7
+[09-Mar-2025 11:03:59 UTC] PHP Warning:  Undefined array key "referer" in /home/u201145375/domains/hireme-app.online/public_html/manager/viewjob.php on line 7
+[19-Mar-2025 15:17:23 UTC] PHP Warning:  Undefined variable $companyID in /home/u201145375/domains/hireme-app.online/public_html/manager/viewcompany.php on line 25
+[19-Mar-2025 15:17:23 UTC] PHP Warning:  Undefined variable $companyID in /home/u201145375/domains/hireme-app.online/public_html/manager/viewcompany.php on line 26
+[19-Mar-2025 15:17:23 UTC] PHP Warning:  Undefined variable $companyName in /home/u201145375/domains/hireme-app.online/public_html/manager/viewcompany.php on line 37
+[19-Mar-2025 15:17:23 UTC] PHP Warning:  Undefined variable $companyName in /home/u201145375/domains/hireme-app.online/public_html/manager/viewcompany.php on line 84
+[19-Mar-2025 15:17:23 UTC] PHP Warning:  Undefined variable $companyName in /home/u201145375/domains/hireme-app.online/public_html/manager/viewcompany.php on line 88
+[19-Mar-2025 15:17:23 UTC] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in /home/u201145375/domains/hireme-app.online/public_html/manager/viewcompany.php on line 88
+[19-Mar-2025 15:17:23 UTC] PHP Warning:  Undefined variable $companyAddress in /home/u201145375/domains/hireme-app.online/public_html/manager/viewcompany.php on line 89
+[19-Mar-2025 15:17:23 UTC] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in /home/u201145375/domains/hireme-app.online/public_html/manager/viewcompany.php on line 89
+[19-Mar-2025 15:17:23 UTC] PHP Warning:  Undefined variable $companyDescription in /home/u201145375/domains/hireme-app.online/public_html/manager/viewcompany.php on line 94
+[19-Mar-2025 15:17:23 UTC] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in /home/u201145375/domains/hireme-app.online/public_html/manager/viewcompany.php on line 94
+[19-Mar-2025 15:17:23 UTC] PHP Warning:  Undefined variable $companyID in /home/u201145375/domains/hireme-app.online/public_html/manager/viewcompany.php on line 108
+[19-Mar-2025 15:17:23 UTC] PHP Warning:  Undefined variable $companyStatus in /home/u201145375/domains/hireme-app.online/public_html/manager/viewcompany.php on line 126
+[19-Mar-2025 15:17:23 UTC] PHP Warning:  Undefined variable $companyStatus in /home/u201145375/domains/hireme-app.online/public_html/manager/viewcompany.php on line 136
+[19-Mar-2025 15:17:23 UTC] PHP Warning:  Undefined variable $companyStatus in /home/u201145375/domains/hireme-app.online/public_html/manager/viewcompany.php on line 136
+[19-Mar-2025 15:17:23 UTC] PHP Deprecated:  strtoupper(): Passing null to parameter #1 ($string) of type string is deprecated in /home/u201145375/domains/hireme-app.online/public_html/manager/viewcompany.php on line 136
+[20-Mar-2025 00:39:27 UTC] PHP Warning:  Undefined variable $companyID in /home/u201145375/domains/hireme-app.online/public_html/manager/viewcompany.php on line 25
+[20-Mar-2025 00:39:27 UTC] PHP Warning:  Undefined variable $companyID in /home/u201145375/domains/hireme-app.online/public_html/manager/viewcompany.php on line 26
+[20-Mar-2025 00:39:27 UTC] PHP Warning:  Undefined variable $companyName in /home/u201145375/domains/hireme-app.online/public_html/manager/viewcompany.php on line 37
+[20-Mar-2025 00:39:27 UTC] PHP Warning:  Undefined array key "username" in /home/u201145375/domains/hireme-app.online/public_html/manager/navbar.php on line 67
+[20-Mar-2025 00:39:27 UTC] PHP Deprecated:  substr(): Passing null to parameter #1 ($string) of type string is deprecated in /home/u201145375/domains/hireme-app.online/public_html/manager/navbar.php on line 69
+[20-Mar-2025 00:39:27 UTC] PHP Warning:  Undefined array key "username" in /home/u201145375/domains/hireme-app.online/public_html/manager/navbar.php on line 86
+[20-Mar-2025 00:39:27 UTC] PHP Deprecated:  substr(): Passing null to parameter #1 ($string) of type string is deprecated in /home/u201145375/domains/hireme-app.online/public_html/manager/navbar.php on line 88
+[20-Mar-2025 00:39:27 UTC] PHP Warning:  Undefined array key "username" in /home/u201145375/domains/hireme-app.online/public_html/manager/navbar.php on line 99
+[20-Mar-2025 00:39:27 UTC] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in /home/u201145375/domains/hireme-app.online/public_html/manager/navbar.php on line 99
+[20-Mar-2025 00:39:27 UTC] PHP Warning:  Undefined variable $companyName in /home/u201145375/domains/hireme-app.online/public_html/manager/viewcompany.php on line 84
+[20-Mar-2025 00:39:27 UTC] PHP Warning:  Undefined variable $companyName in /home/u201145375/domains/hireme-app.online/public_html/manager/viewcompany.php on line 88
+[20-Mar-2025 00:39:27 UTC] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in /home/u201145375/domains/hireme-app.online/public_html/manager/viewcompany.php on line 88
+[20-Mar-2025 00:39:27 UTC] PHP Warning:  Undefined variable $companyAddress in /home/u201145375/domains/hireme-app.online/public_html/manager/viewcompany.php on line 89
+[20-Mar-2025 00:39:27 UTC] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in /home/u201145375/domains/hireme-app.online/public_html/manager/viewcompany.php on line 89
+[20-Mar-2025 00:39:27 UTC] PHP Warning:  Undefined variable $companyDescription in /home/u201145375/domains/hireme-app.online/public_html/manager/viewcompany.php on line 94
+[20-Mar-2025 00:39:27 UTC] PHP Deprecated:  ucfirst(): Passing null to parameter #1 ($string) of type string is deprecated in /home/u201145375/domains/hireme-app.online/public_html/manager/viewcompany.php on line 94
+[20-Mar-2025 00:39:27 UTC] PHP Warning:  Undefined variable $companyID in /home/u201145375/domains/hireme-app.online/public_html/manager/viewcompany.php on line 108
+[20-Mar-2025 00:39:27 UTC] PHP Warning:  Undefined variable $companyStatus in /home/u201145375/domains/hireme-app.online/public_html/manager/viewcompany.php on line 126
+[20-Mar-2025 00:39:27 UTC] PHP Warning:  Undefined variable $companyStatus in /home/u201145375/domains/hireme-app.online/public_html/manager/viewcompany.php on line 136
+[20-Mar-2025 00:39:27 UTC] PHP Warning:  Undefined variable $companyStatus in /home/u201145375/domains/hireme-app.online/public_html/manager/viewcompany.php on line 136
+[20-Mar-2025 00:39:27 UTC] PHP Deprecated:  strtoupper(): Passing null to parameter #1 ($string) of type string is deprecated in /home/u201145375/domains/hireme-app.online/public_html/manager/viewcompany.php on line 136
+[02-Apr-2025 05:28:55 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method Job::countJobs() in /home/u201145375/domains/hireme-app.online/public_html/manager/viewcompany.php:44
+Stack trace:
+#0 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/manager/viewcompany.php on line 44
+[02-Apr-2025 05:28:59 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method Job::countJobs() in /home/u201145375/domains/hireme-app.online/public_html/manager/viewcompany.php:44
+Stack trace:
+#0 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/manager/viewcompany.php on line 44
+[02-Apr-2025 05:29:02 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method Job::countJobs() in /home/u201145375/domains/hireme-app.online/public_html/manager/viewcompany.php:44
+Stack trace:
+#0 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/manager/viewcompany.php on line 44
+[02-Apr-2025 05:41:26 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method JobDetails::getInterested() in /home/u201145375/domains/hireme-app.online/public_html/manager/viewcompany.php:181
+Stack trace:
+#0 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/manager/viewcompany.php on line 181
+[02-Apr-2025 07:05:53 UTC] PHP Warning:  Undefined array key "referer" in /home/u201145375/domains/hireme-app.online/public_html/manager/viewjob.php on line 7
