@@ -79,38 +79,59 @@ $pagetitle = "HireMe - View Applicant # " . $applicantID;
               <div class="col-lg-8 order-0 my-1">
                 <div class="card p-2 my-1 col">
                   <?php
-
-                  function modify_google_drive_link($link)
-                  {
-                    $view_pos = strpos($link, '/view');
-                    if ($view_pos !== false) {
-                      return substr($link, 0, $view_pos) . '/preview';
-                    } else {
-                      return $link;
-                    }
+                  function modify_google_drive_link($link) {
+                      $view_pos = strpos($link, '/view');
+                      if ($view_pos !== false) {
+                          return substr($link, 0, $view_pos) . '/preview';
+                      } else {
+                          return $link;
+                      }
                   }
 
-                  function is_google_drive_link($link)
-                  {
-                    $pattern = '/^https:\/\/drive\.google\.com\/file\/d\/[a-zA-Z0-9\-_]+\/(.+)/';
-                    return preg_match($pattern, $link) === 1;
+                  function is_google_drive_link($link) {
+                      $pattern = '/^https:\/\/drive\.google\.com\/file\/d\/[a-zA-Z0-9\-_]+\/(.+)/';
+                      return preg_match($pattern, $link) === 1;
                   }
 
                   if ($applicationdetails) {
-                    foreach ($applicationdetails as $applicationdetail) {
-                      $resumeId = $applicationdetail->getResumeFilePath();
-                      $link = modify_google_drive_link($resumeId);
-
-                      if (is_google_drive_link($resumeId)) {
-                        echo '<iframe src="' . $link . '" width="100%" height="600px"></iframe>';
-                      } else {
-                        echo "This is not a Google Drive link.";
-                      }
-                    }
+                      foreach ($applicationdetails as $applicationdetail) {
+                          $resumeId = $applicationdetail->getResumeFilePath();
+                          $resume = $applicationdetail->getResumeFile(); // This is the BLOB data
+                      
+                                                  
+                          if (!empty($resumeId)) {
+                            $link = modify_google_drive_link($resumeId);
+                              // Check if the link is a Google Drive link
+                            if (is_google_drive_link($resumeId)) {
+                              echo '<iframe src="' . $link . '" width="100%" height="600px"></iframe>';
+                            } else {
+                              echo "That was not a Google Drive link.";
+                            }
+                          } 
+                          
+                         
+                          elseif (!empty($resume)) {
+                            // Encode the BLOB data as base64
+                            $base64_pdf = base64_encode($resume);
+                          
+                            // Create the data URI
+                            $pdf_data_uri = 'data:application/pdf;base64,' . $base64_pdf;
+                          
+                            // Embed the PDF using an <iframe> or <object>
+                            echo '<iframe src="' . $pdf_data_uri . '" width="100%" height="600px"></iframe>';
+                            //Or using object tag
+                            //echo '<object data="' . $pdf_data_uri . '" type="application/pdf" width="100%" height="600px"></object>';
+                          
+                        } else {
+                            echo "File not found.";
+                        }
+                      } 
+                      
+                      
                   } else {
-                    echo "Error getting document details.";
+                      echo "Error getting document details.";
                   }
-                  ?>
+                ?>
                 </div>
               </div>
               <div class="col-lg-4 order-1 my-1">
@@ -185,7 +206,9 @@ $pagetitle = "HireMe - View Applicant # " . $applicantID;
                       if ($status === "Hired") {
                         echo '<p>This application is already marked as <strong><span class="text-success">HIRED</span></strong>.</p>';
                       } elseif ($status === "Rejected") {
+                            $reason = $applicationdetail->getRejectionReason();
                         echo '<p>This application is already marked as <strong><span class="text-danger">REJECTED</span></strong>.</p>';
+                        echo '<p>"'.ucfirst($reason).'"</p>';
                       } elseif ($status === "Verified" && (empty($interviewcheck) || $interviewcheck == null)) {
                         echo '<button id="setInterviewButton" type="button" class="btn btn-primary" data-toggle="modal" data-target="#setInterviewModal">Set Interview</button>';
                       } elseif ($status === "Verified" && (!empty($interviewcheck) || $interviewcheck !== null)) {
@@ -286,8 +309,8 @@ $pagetitle = "HireMe - View Applicant # " . $applicantID;
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="changeStatusModalLabel"> Do you want to hire this Applicant?</h5>
-                  <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                  <h5 class="modal-title" id="changeStatusModalLabel"> What to do with this Applicant?</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                   <form id="changeapplicationstatus" method="post" action="../functions/changeapplicationstatus.php">
@@ -300,18 +323,21 @@ $pagetitle = "HireMe - View Applicant # " . $applicantID;
                     <input type="text" id="applicationID" name="applicationID" value="<?= $applicationID ?>" hidden>
 
                     <div class="form-group mb-5">
-                      <label for="dateHired">Date Hired:</label>
-                      <p><span class="text-danger">*</span><small class="text-muted">Not required if choosing "Rejected".</small></p>
-                      <input type="datetime-local" class="form-control" id="dateHired" name="dateHired" required ="<?php echo date('Y-m-d\TH:i'); ?>" required> <!--removed max kasi na rerestrict-->
-                    </div>
-
-                    <div class="form-group mb-5">
                       <label for="status">Status:</label>
                       <select class="form-control" id="status" name="status" required>
                         <option selected disabled>-- Select an option --</option>
                         <option value="Hired">Hire Applicant</option>
                         <option value="Rejected">Reject Applicant</option>
                       </select>
+                    </div>
+                    <div class="form-group mb-5">
+                      <label for="dateHired">Date Hired:</label>
+                      <!-- <p><span class="text-danger">*</span><small class="text-muted">Not required if choosing "Rejected".</small></p> -->
+                      <input type="datetime-local" class="form-control" id="dateHired" name="dateHired" required ="<?php echo date('Y-m-d\TH:i'); ?>" required> <!--removed max kasi na rerestrict-->
+                    </div>
+                    <div class="form-group mb-5" hidden>
+                      <label for="reason">Reason for Rejection:</label>
+                      <textarea class="form-control" id="reason" name="reason" rows="3" required></textarea>
                     </div>
 
                     <input type="submit" class="btn btn-primary" value="Submit">
@@ -354,6 +380,21 @@ $pagetitle = "HireMe - View Applicant # " . $applicantID;
 
   <script>
     $(document).ready(function() {
+        document.getElementById('status').addEventListener('change', function () {
+        const reasonField = document.getElementById('reason').parentElement;
+        const dateHired = document.getElementById('dateHired').parentElement;
+        if (this.value === 'Rejected') {
+          reasonField.hidden = false;
+          dateHired.hidden = true;
+          document.getElementById('reason').required = true;
+          document.getElementById('dateHired').required = false;
+        } else {
+          reasonField.hidden = true;
+          dateHired.hidden = false;
+          document.getElementById('reason').required = false;
+          document.getElementById('dateHired').required = true;
+        }
+      });
       var setInterviewButton = document.getElementById("setInterviewButton");
 
       setInterviewButton.addEventListener("click", function(event) {

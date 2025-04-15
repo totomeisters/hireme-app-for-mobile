@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if(!$userID == null) {
         $company = new Company($conn);
         if($company->addCompany($companyname, $companydesc, $companyaddress, $userID)){
-            $response = array('status' => 'success', 'message' => 'First step completed. You will be redirected shortly.', 'redirect' => '../company/registration.php');
+            $response = array('status' => 'success', 'message' => 'First step completed. You will be redirected shortly.', 'redirect' => '../company/email-verification.php');
         }
         else {
             $response = array('status' => 'error', 'message' => 'Company registration failed.');

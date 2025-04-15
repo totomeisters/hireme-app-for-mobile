@@ -17,6 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $jobTitle = $job->getJobDetailsByID($jobID)->getJobTitle();
     $companyId = $job->getJobDetailsByID($jobID)->getCompanyId();
     $companyName = $company->getCompanyDetailsByCompanyID($companyId)->getCompanyName();
+    $reason = $_POST['reason'] ?? "No reason provided.";
 
     if (empty($status) || ($status !== "Rejected" && $status !== "Verified")) {
         $statusErr = 1;
@@ -34,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     if ($statusErr == 0 && $jobIDerr == 0) {
-        if ($job->updateJobStatus($status, $jobID)) {
+        if ($job->updateJobStatus($status, $jobID, $reason)) {
             $job->addNotif(null, $jobTitle, 1, $companyID);
             if (isset($companyId) && isset($companyName)){
                 $content = ucfirst($jobTitle)." at ".ucfirst($companyName);

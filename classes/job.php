@@ -1,6 +1,5 @@
 <?php
 use PHPMailer\PHPMailer\PHPMailer;
-// require '../hireme/PHPMailer/src/Exception.php';
 
 if (!isset($_SESSION)) {
     session_start();
@@ -17,7 +16,7 @@ class Job
         $this->conn = $conn;
     }
 
-    public function addJob($companyId, $jobTitle, $jobDescription, $jobType, $salaryMin, $salaryMax, $workHours, $jobLocation, $jobLocationType, $jobIndustry, $otherIndustry, $workType)
+    public function addJob($companyId, $jobTitle, $jobDescription, $jobType, $salaryMin, $salaryMax, $workHours, $jobLocation, $jobLocationType, $jobIndustry, $otherIndustry, $workType, $skills, $qualifications, $vacancies)
     {
         try {
             $stmt = $this->conn->prepare("INSERT INTO jobs (CompanyID, 
@@ -33,22 +32,40 @@ class Job
                                                             VerificationStatus,
                                                             JobIndustry,
                                                             OtherIndustry,
-                                                            WorkType)
-                                            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), 'Pending', ?, ?, ?)");
-            $stmt->bind_param("isssddssssss", $companyId, $jobTitle, $jobDescription, $jobType, $salaryMin, $salaryMax, $workHours, $jobLocation, $jobLocationType, $jobIndustry, $otherIndustry, $workType);
+                                                            WorkType,
+                                                            Skills,
+                                                            Qualifications,
+                                                            Vacancies)
+                                            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), 'Pending', ?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param(
+                "isssddssssssssi",
+                $companyId,
+                $jobTitle,
+                $jobDescription,
+                $jobType,
+                $salaryMin,
+                $salaryMax,
+                $workHours,
+                $jobLocation,
+                $jobLocationType,
+                $jobIndustry,
+                $otherIndustry,
+                $workType,
+                $skills,
+                $qualifications,
+                $vacancies
+            );
 
             $result = $stmt->execute();
 
             $stmt->close();
 
             if (!$result) {
-                // handle error
-                return 'no result';
+                return 'No result';
             }
 
             return true;
         } catch (Exception $e) {
-            // handle exception
             return $e->getMessage();
         }
     }
@@ -76,23 +93,24 @@ class Job
             return "Error adding notification: " . $e->getMessage();
         }
     }
-//
-    public function addUserNotif($content) {    
+
+    public function addUserNotif($content)
+    {
         $sql = "INSERT INTO notifications (user_id, content, type, is_read, created_at) VALUES ('-1', ?, 'user_notif', '0', current_timestamp());";
-    
+
         try {
             $stmt = $this->conn->prepare($sql);
             $stmt->bind_param("s", $content);
             $stmt->execute();
             $stmt->close();
-    
+
             return true;
         } catch (Exception $e) {
             error_log("Error adding notification: " . $e->getMessage());
             return "Error adding notification";
         }
     }
-//
+
     public function getNotifications($userID)
     {
         $sql = "SELECT * FROM notifications WHERE user_id = ? ORDER BY created_at DESC";
@@ -143,10 +161,10 @@ class Job
             $stmt->execute();
             $result = $stmt->get_result();
             $jobs = $result->fetch_all(MYSQLI_ASSOC);
-            $stmt->close(); // Close the statement after fetching the results
+            $stmt->close();
 
             if (empty($jobs)) {
-                return []; // Return an empty array instead of false
+                return [];
             }
 
             $jobObjects = [];
@@ -180,7 +198,11 @@ class Job
                         $job['PostingDate'],
                         $job['VerificationStatus'],
                         $job['JobIndustry'],
-                        $job['OtherIndustry']
+                        $job['OtherIndustry'],
+                        $job['Skills'],
+                        $job['Qualifications'],
+                        $job['Vacancies'],
+                        $job['RejectionReason']
                     );
                 } else {
                     error_log("Incomplete job data for JobID: " . ($job['JobID'] ?? 'Unknown JobID'));
@@ -189,9 +211,8 @@ class Job
 
             return $jobObjects;
         } catch (Exception $e) {
-            // Log the error or handle it in a way that allows for recovery
             error_log($e->getMessage());
-            throw $e; // Rethrow the exception to allow for higher-level error handling
+            throw $e;
         }
     }
 
@@ -223,7 +244,11 @@ class Job
                 $job['PostingDate'],
                 $job['VerificationStatus'],
                 $job['JobIndustry'],
-                $job['OtherIndustry']
+                $job['OtherIndustry'],
+                $job['Skills'],
+                $job['Qualifications'],
+                $job['Vacancies'],
+                $job['RejectionReason']
             );
 
             return $jobdetails;
@@ -279,7 +304,11 @@ class Job
                         $job['PostingDate'],
                         $job['VerificationStatus'],
                         $job['JobIndustry'],
-                        $job['OtherIndustry']
+                        $job['OtherIndustry'],
+                        $job['Skills'],
+                        $job['Qualifications'],
+                        $job['Vacancies'],
+                        $job['RejectionReason']
                     );
                 } else {
                     error_log("Incomplete job data for JobID: " . ($job['JobID'] ?? 'Unknown JobID'));
@@ -389,11 +418,15 @@ class Job
         return $affected;
     }
 
-    public function updateJobStatus($status, $jobID)
+    public function updateJobStatus($status, $jobID, $rejectionReason)
     {
-        $stmt = $this->conn->prepare("UPDATE jobs SET VerificationStatus = ? WHERE JobID = ?");
-
-        $stmt->bind_param("si", $status, $jobID);
+        if ($status === 'Rejected' && $rejectionReason !== null) {
+            $stmt = $this->conn->prepare("UPDATE jobs SET VerificationStatus = ?, RejectionReason = ? WHERE JobID = ?");
+            $stmt->bind_param("ssi", $status, $rejectionReason, $jobID);
+        } else {
+            $stmt = $this->conn->prepare("UPDATE jobs SET VerificationStatus = ? WHERE JobID = ?");
+            $stmt->bind_param("si", $status, $jobID);
+        }
 
         if ($stmt->execute()) {
             return true;
@@ -454,7 +487,7 @@ class Job
             return json_encode(array('error' => 'Database error: ' . $this->conn->error));
         }
     }
-    
+
     public function getJobsByWorkType($workType)
     {
         $stmt = $this->conn->prepare("SELECT JobID FROM `jobs` WHERE `WorkType` = ?");
@@ -468,18 +501,15 @@ class Job
         $stmt->close();
 
         return $jobs ? $jobs : null;
-    } 
-    
+    }
+
     public function newJobNotif($email, $jobName, $jobDescription)
     {
-        if (empty($email) || empty($jobName)){
+        if (empty($email) || empty($jobName)) {
             return false;
         }
-        
-        //Hireme Email
-        $hireme_mail = "hiremeapp722@gmail.com";
 
-        //Hireme App Password
+        $hireme_mail = "hiremeapp722@gmail.com";
         $hireme_pass = "rrqbzkjdcmfyudpy";
 
         $mail = new PHPMailer(true);
@@ -491,15 +521,14 @@ class Job
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
 
-
         $mail->setFrom($hireme_mail, "Hire Me");
         $mail->addAddress($email);
         $mail->addReplyTo($hireme_mail, "Admin-hireme");
         $mail->IsHTML(true);
-        $mail->Subject = "A new Job (".ucfirst($jobName).") has been posted!";
-        if (!empty($jobDescription)){
+        $mail->Subject = "A new Job (" . ucfirst($jobName) . ") has been posted!";
+        if (!empty($jobDescription)) {
             $mail->Body = "$jobDescription";
-        } else{
+        } else {
             $mail->Body = "No Job Description Included.";
         }
         $mail->AltBody = "Code not retrieved";

@@ -82,12 +82,20 @@ if (isset($_POST['api_key'])) {
                     );
                     break;
                 case "state_apply_job":
-                    echo $jobDb->apply_job(
-                        $_POST['user_id'],
-                        $_POST['resume'],
-                        $_POST['job_id']
-                    );
-                    break;
+                    $resume = isset($_FILES['resume']) ? $_FILES['resume'] : null;
+                    $url = isset($_POST['url']) ? $_POST['url'] : null;
+                   
+                    // Modify this to handle both resume and URL
+                    if ($resume && $url) {
+                        echo $jobDb->apply_job_with_url($_POST['user_id'], $resume, $_POST['job_id'], $url);
+                    } elseif ($resume) {
+                        echo $jobDb->apply_job_with_file($_POST['user_id'], $resume, $_POST['job_id']);
+                    } elseif ($url) {
+                        echo $jobDb->apply_job_with_url_only($_POST['user_id'], $_POST['job_id'], $url);
+                    } else {
+                        echo $jobDb->apply_job_without_file_or_url($_POST['user_id'], $_POST['job_id']);
+                    }
+                    break;                                  
                 case "state_verify_user":
                     echo $authDb->user_verification(
                         $_POST['user_id'],

@@ -4,12 +4,12 @@ if (!isset($_SESSION)) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (isset($_POST['jobID']) && isset($_POST['companyID']) && ($_POST['referer'] === 'viewhiree') && isset($_POST['userID']) && isset($_POST['applicationID']) && isset($_POST['hireeID'])) {
+    if (isset($_POST['jobID']) && isset($_POST['companyID']) && isset($_POST['userID']) && isset($_POST['applicationID']) && isset($_POST['hireeID'])) {
       $jobID = $_POST['jobID'];
       $companyID = $_POST['companyID'];
       $applicantID = $_POST['userID'];
       $applicationID = $_POST['applicationID'];
-      $referer = $_POST['referer'];
+      $referer = $_POST['referer'] ?? null;
       $hireeID = $_POST['hireeID'];
     }
     elseif(isset($_POST['jobID']) && isset($_POST['companyID'])){
@@ -95,6 +95,9 @@ $pagetitle = "HireMe - View Job # ".$jobID;
                         <p class="card-subtitle mb-2"><strong>Location Type: </strong><?= $jobs->getJobLocationType(); ?></p>
                         <p class="card-subtitle mb-2"><strong>Salary Range: </strong>₱<?= $jobs->getSalaryMin() . ' - ₱' . $jobs->getSalaryMax(); ?></p>
                         <p class="card-subtitle mb-4"><strong>Work Hours: </strong><?= $jobs->getWorkHours(); ?></p>
+                        <p class="card-subtitle mb-4"><strong>Skills: </strong><?= $jobs->getSkills(); ?></p>
+                        <p class="card-subtitle mb-4"><strong>Qualifications: </strong><?= $jobs->getQualifications(); ?></p>
+                        <p class="card-subtitle mb-4"><strong>Vacancies: </strong><?= $vacancies = $jobs->getVacancies()==0 ? 'Indefinite Hiring' : $jobs->getVacancies() ?></p>
                         <p class="card-text"><?= ucfirst($jobs->getJobDescription()); ?></p>
                       </div>
                     </div>
@@ -144,7 +147,11 @@ $pagetitle = "HireMe - View Job # ".$jobID;
                                     $verification = $jobs->getVerificationStatus();
 
                                     if($verification == 'Pending'){echo '<span class="text-warning">'.$verification.'</span>';}
-                                    else{echo '<span class="text-success">'.$verification.'</span>';}?></small></p>
+                                    elseif($verification == 'Verified'){echo '<span class="text-success">'.$verification.'</span>';}
+                                    else{echo '<span class="text-danger">'.$verification.'</span>';}?></small></p>
+                            <?php if($jobs->getRejectionReason() != null){?>
+                            <p class="card-text"><small class="text-muted">Remarks: <?= $jobs->getRejectionReason(); ?></small></p>
+                            <?php } ?>
                         </div>
                       </div>
                     </div>
@@ -153,15 +160,15 @@ $pagetitle = "HireMe - View Job # ".$jobID;
                           if ($verification == 'Pending') {
                         ?>
                     <div class="row">
-                      <div class="card p-2 mb-4">
+                      <div class="card p-2 mb-2">
                         <div class="card-body">
                           <h6>Verification</h6>
                         
                           <form id="updateapplication" method="post" action="../functions/updatejobstatus.php">
                               <input type="hidden" name="jobID" value="<?= $jobID; ?>">
                               <input type="hidden" name="companyID" value="<?= $companyID; ?>">
-                              <button class="btn btn-success" type="submit" name="status" value="Verified">Accept Job Vacancy</button>
-                              <button class="btn btn-danger" type="submit" name="status" value="Rejected">Reject Job Vacancy</button>
+                              <button class="btn btn-success m-1" type="submit" name="status" value="Verified">Accept Job Vacancy</button>
+                              <button class="btn btn-danger m-1" type="submit" name="status" value="Rejected">Reject Job Vacancy</button>
                           </form>
                         </div>
                       </div>
@@ -172,7 +179,7 @@ $pagetitle = "HireMe - View Job # ".$jobID;
                   </div>
                   <?php else: ?>
                     <div>
-                      <p>This place is nonexistent. Pray tell, how didst thou arrive hither? Go back whence you came, human.</p>
+                      <p>This place is nonexistent. Pray tell, how didst thou arrive hither?</p>
                     </div>
                   <?php endif; ?>
                 </div>
@@ -217,8 +224,8 @@ $pagetitle = "HireMe - View Job # ".$jobID;
                   <span id="modalMessage"></span>
               </div>
               <div class="modal-footer">
-                  <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button> -->
-                  <button type="button" class="btn btn-primary">Confirm</button>
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                  <button type="button" id="modalconfirm" class="btn btn-primary" disabled>Confirm</button>
               </div>
           </div>
       </div>
@@ -294,16 +301,28 @@ $pagetitle = "HireMe - View Job # ".$jobID;
             statusValue = "Rejected";
             var modalMessage = confirmationModal.querySelector(".modal-body");
             modalMessage.innerHTML = "You clicked <strong class='text-danger'>REJECT</strong>. Are you sure you want to continue? <strong>This action cannot be undone.</strong>";
+            modalMessage.innerHTML += '<textarea class="form-control" id="reason" name="reason" rows="3" placeholder="Reason for Rejection"></textarea>';
             var modal = new bootstrap.Modal(confirmationModal);
             modal.show();
           });
-        
-          document.getElementById("confirmationModal").querySelector(".btn-primary").addEventListener("click", function() {
+              
+          document.getElementById("confirmationModal").querySelector(".btn-primary").addEventListener("click", function () {
+              let reasonField = document.getElementById('reason');
+              let reason = reasonField.value.trim();
+                    
+              if (reason === "") {
+                  alert("Please provide a reason for rejection.");
+                  reasonField.focus();
+                  return;
+              }
+            
               var formData = $('#updateapplication').serialize();
               formData += "&status=" + statusValue;
+              formData += "&reason=" + reason;
             
               handleFormSubmission(formData);
           });
+
       });
   </script>
 

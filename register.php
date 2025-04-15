@@ -81,8 +81,17 @@
                 </div>
                 <div class="mb-3">
                   <label for="email" class="form-label">Email</label>
-                  <input type="text" class="form-control" id="email" name="email" placeholder="Enter your email" required/>
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    required
+                  />
+                  <div class="invalid-feedback">Please enter a valid email address.</div>
                 </div>
+
                 <div class="mb-3 form-password-toggle">
                   <label class="form-label" for="password">Password</label>
                   <div class="input-group input-group-merge">
@@ -91,11 +100,16 @@
                       id="password"
                       class="form-control"
                       name="password"
-                      placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
-                      aria-describedby="password"
+                      placeholder="••••••••"
+                      minlength="6"
+                      pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$"
+                      title="Password must be at least 6 characters and contain at least one letter and one number"
                       required
                     />
                     <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                    <div class="invalid-feedback">
+                      Password must be at least 6 characters long and contain a number.
+                    </div>
                   </div>
                 </div>
 

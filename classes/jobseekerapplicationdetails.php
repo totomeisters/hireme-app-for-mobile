@@ -5,16 +5,20 @@ class JobSeekerApplicationDetails {
     private $jobID;
     private $userID;
     private $resumeFilePath;
+    private $resumeFile;
     private $applicationDate;
     private $status;
+    private $rejectionReason;
 
-    public function __construct($jobSeekerApplicationID, $jobID, $userID, $resumeFilePath, $applicationDate, $status) {
+    public function __construct($jobSeekerApplicationID, $jobID, $userID, $resumeFilePath, $resumeFile, $applicationDate, $status, $rejectionReason) {
         $this->jobSeekerApplicationID = $jobSeekerApplicationID;
         $this->jobID = $jobID;
         $this->userID = $userID;
         $this->resumeFilePath = $resumeFilePath;
+        $this->resumeFile = $resumeFile;
         $this->applicationDate = $applicationDate;
-        $this->status = $status;
+        $this->status = $status;    
+        $this->rejectionReason = $rejectionReason;
     }
 
     // Getters
@@ -34,12 +38,20 @@ class JobSeekerApplicationDetails {
         return $this->resumeFilePath;
     }
 
+    public function getResumeFile() {
+        return $this->resumeFile;
+    }
+
     public function getApplicationDate() {
         return $this->applicationDate;
     }
 
     public function getStatus() {
         return $this->status;
+    }
+
+    public function getRejectionReason() {
+        return $this->rejectionReason;
     }
 
     // Setters
@@ -59,11 +71,19 @@ class JobSeekerApplicationDetails {
         $this->resumeFilePath = $resumeFilePath;
     }
 
+    public function setResumeFile($resumeFile) {
+        $this->resumeFile = $resumeFile;
+    }
+
     public function setApplicationDate($applicationDate) {
         $this->applicationDate = $applicationDate;
     }
 
     public function setStatus($status) {
         $this->status = $status;
+    }
+
+    public function setRejectionReason($rejectionReason) {
+        $this->rejectionReason = $rejectionReason;
     }
 }

@@ -16,8 +16,12 @@ class JobDetails {
     private $verificationStatus;
     private $jobIndustry;
     private $otherIndustry;
+    private $skills;
+    private $qualifications;
+    private $vacancies;
+    private $rejectionReason;
 
-    public function __construct($jobID, $companyId, $jobTitle, $jobDescription, $jobType, $workType, $salaryMin, $salaryMax, $workHours, $jobLocation, $jobLocationType, $postingDate, $verificationStatus, $jobIndustry, $otherIndustry) {
+    public function __construct($jobID, $companyId, $jobTitle, $jobDescription, $jobType, $workType, $salaryMin, $salaryMax, $workHours, $jobLocation, $jobLocationType, $postingDate, $verificationStatus, $jobIndustry, $otherIndustry, $skills, $qualifications, $vacancies, $rejectionReason) {
         $this->jobID = $jobID;
         $this->companyId = $companyId;
         $this->jobTitle = $jobTitle;
@@ -33,67 +37,87 @@ class JobDetails {
         $this->verificationStatus = $verificationStatus;
         $this->jobIndustry = $jobIndustry;
         $this->otherIndustry = $otherIndustry;
+        $this->skills = $skills;
+        $this->qualifications = $qualifications;
+        $this->vacancies = $vacancies;
+        $this->rejectionReason = $rejectionReason;
     }
 
     // Getters
-    public function getJobID(){
+    public function getJobID() {
         return $this->jobID;
     }
 
-    public function getCompanyId(){
+    public function getCompanyId() {
         return $this->companyId;
     }
 
-    public function getJobTitle(){
+    public function getJobTitle() {
         return $this->jobTitle;
     }
 
-    public function getJobDescription(){
+    public function getJobDescription() {
         return $this->jobDescription;
     }
 
-    public function getJobType(){
+    public function getJobType() {
         return $this->jobType;
     }
 
-    public function getWorkType(){
+    public function getWorkType() {
         return $this->workType;
     }
 
-    public function getSalaryMin(){
+    public function getSalaryMin() {
         return $this->salaryMin;
     }
 
-    public function getSalaryMax(){
+    public function getSalaryMax() {
         return $this->salaryMax;
     }
 
-    public function getWorkHours(){
+    public function getWorkHours() {
         return $this->workHours;
     }
 
-    public function getJobLocation(){
+    public function getJobLocation() {
         return $this->jobLocation;
     }
 
-    public function getJobLocationType(){
+    public function getJobLocationType() {
         return $this->jobLocationType;
     }
 
-    public function getPostingDate(){
+    public function getPostingDate() {
         return $this->postingDate;
     }
 
-    public function getVerificationStatus(){
+    public function getVerificationStatus() {
         return $this->verificationStatus;
     }
 
-    public function getJobIndustry(){
+    public function getJobIndustry() {
         return $this->jobIndustry;
     }
 
-    public function getOtherIndustry(){
+    public function getOtherIndustry() {
         return $this->otherIndustry;
+    }
+
+    public function getSkills() {
+        return $this->skills;
+    }
+
+    public function getQualifications() {
+        return $this->qualifications;
+    }
+
+    public function getVacancies() {
+        return $this->vacancies;
+    }
+
+    public function getRejectionReason() {
+        return $this->rejectionReason;
     }
 
     // Setters
@@ -149,11 +173,27 @@ class JobDetails {
         $this->verificationStatus = $verificationStatus;
     }
 
-    public function setJobIndustry($jobIndustry){
+    public function setJobIndustry($jobIndustry) {
         $this->jobIndustry = $jobIndustry;
     }
 
-    public function setOtherIndustry($otherIndustry){
+    public function setOtherIndustry($otherIndustry) {
         $this->otherIndustry = $otherIndustry;
+    }
+
+    public function setSkills($skills) {
+        $this->skills = $skills;
+    }
+
+    public function setQualifications($qualifications) {
+        $this->qualifications = $qualifications;
+    }
+
+    public function setVacancies($vacancies) {
+        $this->vacancies = $vacancies;
+    }
+
+    public function setRejectionReason($rejectionReason) {
+        $this->rejectionReason = $rejectionReason;
     }
 }

@@ -33,7 +33,6 @@ if (!$userdetails == null) {
 $rolecheck = 0;
 $pagetitle = "HireMe - Registration";
 ?>
-
 <!DOCTYPE html>
 <html lang="en" class="light-style layout-menu-fixed" dir="ltr" data-theme="theme-default" data-assets-path="../assets/" data-template="vertical-menu-template-free">
 <!-- Head -->
@@ -79,25 +78,32 @@ $pagetitle = "HireMe - Registration";
                             <div class="row">
                                 <div class="col-lg-12 mb-4 order-0">
                                     <div class="card p-2">
+                                    <small class="p-2"><span style="color: red;">*</span>This is what the PESO manager/s will see.</small>
                                         <form id="formAuthentication">
+                                            <input type="email" class="form-control" id="email" name="email" value="<?= $_GET['email'] ?? 'company@email.com' ?>" hidden>
                                             <input type="text" name="companyID" id="companyID" value="<?= $companydetails->getCompanyID(); ?>" hidden />
                                             <input type="text" name="type" id="type" value="profile" hidden />
-                                            <div class="mb-2">
-                                                <label for="name">Company Name</label>
-                                                <input type="text" class="form-control" id="name" name="name" placeholder="Enter company name" required>
-                                            </div>
-                                            <div class="mb-2">
-                                                <label for="address">Address</label>
-                                                <input type="text" class="form-control" id="address" name="address" placeholder="Enter address" required>
-                                            </div>
+
+                                        <div class="mb-2">
+                                            <label for="name">Full Company Name</label>
+                                            <input type="text" class="form-control" id="name" name="name" placeholder="Enter the registered company name" required>
+                                        </div>
+                                        <div class="mb-2">
+                                            <label for="address">Address</label>
+                                            <input type="text" class="form-control" id="address" name="address" placeholder="Enter address" required>
+                                        </div>
+
                                             <div class="row mb-2">
-                                                <div class="col-md-6">
+                                               <div class="col-md-6">
                                                     <label for="contact_number">Contact Number</label>
-                                                    <input type="tel" class="form-control" id="contact_number" name="contact_number" placeholder="Enter contact number" required>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label for="email">Email</label>
-                                                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required>
+                                                    <input type="tel" 
+                                                           class="form-control" 
+                                                           id="contact_number" 
+                                                           name="contact_number" 
+                                                           placeholder="Enter contact number" 
+                                                           required 
+                                                           pattern="\d{11}" 
+                                                           title="Contact number must be exactly 11 digits">
                                                 </div>
                                             </div>
                                             <div class="mb-2">
@@ -111,7 +117,14 @@ $pagetitle = "HireMe - Registration";
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label for="rep_number">Representative Contact Number</label>
-                                                    <input type="tel" class="form-control" id="rep_number" name="rep_number" pattern="^09\d{9}$" placeholder="Enter 11-digit (09XX-XXX-YYYY) mobile number." required>
+                                                    <input type="tel" 
+                                                           class="form-control" 
+                                                           id="rep_number" 
+                                                           name="rep_number" 
+                                                           placeholder="Enter contact number" 
+                                                           required 
+                                                           pattern="\d{11}" 
+                                                           title="Contact number must be exactly 11 digits">
                                                 </div>
                                             </div>
                                             <button type="submit" class="btn btn-primary">Submit</button>
@@ -170,7 +183,6 @@ $pagetitle = "HireMe - Registration";
     $(document).ready(function() {
         $('#formAuthentication').on('submit', function(e) {
             e.preventDefault();
-
             var formData = $(this).serialize();
 
             $.ajax({

@@ -209,68 +209,138 @@ class JobService
         }
     }
 
-    function apply_job(
-        $user_id,
-        $resume,
-        $job_id
-    ) {
+    function apply_job_with_url($user_id, $resume_file, $job_id, $url) {
         $conn = new ConnectDb();
-        if ($conn->get_db()) {
-            if ($job_id == "") {
-                header("Content-Type: JSON");
-                $response['verdict'] = false;
-                $response['message'] = "Job ID empty!";
-                return json_encode($response, JSON_PRETTY_PRINT);
-            } else if ($resume == "") {
-                header("Content-Type: JSON");
-                $response['verdict'] = false;
-                $response['message'] = "Please submit your resume!";
-                return json_encode($response, JSON_PRETTY_PRINT);
-            } else if ($user_id == "") {
-                header("Content-Type: JSON");
-                $response['verdict'] = false;
-                $response['message'] = "User ID empty!";
-                return json_encode($response, JSON_PRETTY_PRINT);
-            } else {
-                //Check if application already exists
-                $sql = "SELECT JobSeekerApplicationID FROM `jobseekerapplication` WHERE UserID ='$user_id' && JobID = '$job_id'";
-                $result = mysqli_query($conn->get_db(), $sql);
-                if (mysqli_num_rows($result) == 1) {
-                    while ($row = mysqli_fetch_assoc($result)) {
-                        header("Content-Type: JSON");
-                        $response['verdict'] = false;
-                        $response['message'] = "Application already exists!";
-                        return json_encode($response, JSON_PRETTY_PRINT);
-                    }
-                } else if (mysqli_num_rows($result) == 0) {
-                    //Create Job application
-                    $insert = "INSERT INTO `jobseekerapplication` (`JobID`, `UserID`, `ResumeFilePath`, `ApplicationDate`, `Status`) VALUES ('$job_id', '$user_id', '$resume', current_timestamp(), 'Pending');";
+        $db = $conn->get_db();
 
-                    if (mysqli_query($conn->get_db(), $insert)) {
-                        $check = "SELECT JobSeekerApplicationID FROM `jobseekerapplication` WHERE UserID ='$user_id' && JobID = '$job_id'";
-                        $result = mysqli_query($conn->get_db(), $check);
-                        if (mysqli_num_rows($result) == 1) {
-                            while ($row = mysqli_fetch_assoc($result)) {
-                                header("Content-Type: JSON");
-                                $response['verdict'] = true;
-                                $response['application_id'] = $row['JobSeekerApplicationID'];
-                                $response['message'] = "Job application created";
-                                return json_encode($response, JSON_PRETTY_PRINT);
-                            }
-                        }
-                    } else {
-                        header("Content-Type: JSON");
-                        $response['verdict'] = false;
-                        $response['message'] = "Application failed!";
-                        return json_encode($response, JSON_PRETTY_PRINT);
-                    }
-                }
-            }
+        if (!$db) {
+            return json_encode(['verdict' => false, 'message' => 'No DB Connection!'], JSON_PRETTY_PRINT);
+        }
+
+        if (empty($user_id) || empty($job_id) || empty($url)) {
+            return json_encode(['verdict' => false, 'message' => 'Missing required fields!'], JSON_PRETTY_PRINT);
+        }
+
+        // Handle file upload
+        $resume_data = null;
+        if (isset($resume_file) && $resume_file['error'] === UPLOAD_ERR_OK) {
+            // Read file content as blob
+            $resume_data = file_get_contents($resume_file['tmp_name']);
+        }
+
+        // Insert application with URL in ResumeFilePath
+        $insert = "INSERT INTO jobseekerapplication (JobID, UserID, ResumeFilePath, resumefile, ApplicationDate, Status)
+                   VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP, 'Pending')";
+        $stmt = $db->prepare($insert);
+        $stmt->bind_param("iiss", $job_id, $user_id, $url, $resume_data);
+
+        if ($stmt->execute()) {
+            $app_id = $stmt->insert_id;
+            return json_encode([
+                'verdict' => true,
+                'application_id' => $app_id,
+                'message' => 'Job application created with URL and file'
+            ], JSON_PRETTY_PRINT);
         } else {
-            header("Content-Type: JSON");
-            $response['verdict'] = false;
-            $response['message'] = "No DB Connection!";
-            return json_encode($response, JSON_PRETTY_PRINT);
+            return json_encode(['verdict' => false, 'message' => 'Application failed!'], JSON_PRETTY_PRINT);
+        }
+    }
+
+    function apply_job_with_file($user_id, $resume_file, $job_id) {
+        $conn = new ConnectDb();
+        $db = $conn->get_db();
+
+        if (!$db) {
+            return json_encode(['verdict' => false, 'message' => 'No DB Connection!'], JSON_PRETTY_PRINT);
+        }
+
+        if (empty($user_id) || empty($job_id)) {
+            return json_encode(['verdict' => false, 'message' => 'Missing required fields!'], JSON_PRETTY_PRINT);
+        }
+
+        // Handle file upload
+        $resume_data = null;
+        if (isset($resume_file) && $resume_file['error'] === UPLOAD_ERR_OK) {
+            // Read file content as blob
+            $resume_data = file_get_contents($resume_file['tmp_name']);
+        }
+
+        // Insert application with the file and null URL (store file data in ResumeFilePath)
+        $insert = "INSERT INTO jobseekerapplication (JobID, UserID, ResumeFilePath, resumefile, ApplicationDate, Status)
+                   VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP, 'Pending')";
+        $stmt = $db->prepare($insert);
+        $stmt->bind_param("iiss", $job_id, $user_id, $resume_data, $resume_data);
+
+        if ($stmt->execute()) {
+            $app_id = $stmt->insert_id;
+            return json_encode([
+                'verdict' => true,
+                'application_id' => $app_id,
+                'message' => 'Job application created with resume file'
+            ], JSON_PRETTY_PRINT);
+        } else {
+            return json_encode(['verdict' => false, 'message' => 'Application failed!'], JSON_PRETTY_PRINT);
+        }
+    }
+
+    function apply_job_with_url_only($user_id, $job_id, $url) {
+        $conn = new ConnectDb();
+        $db = $conn->get_db();
+
+        if (!$db) {
+            return json_encode(['verdict' => false, 'message' => 'No DB Connection!'], JSON_PRETTY_PRINT);
+        }
+
+        if (empty($user_id) || empty($job_id) || empty($url)) {
+            return json_encode(['verdict' => false, 'message' => 'Missing required fields!'], JSON_PRETTY_PRINT);
+        }
+
+        // Insert application with URL only (store URL in ResumeFilePath)
+        $insert = "INSERT INTO jobseekerapplication (JobID, UserID, ResumeFilePath, resumefile, ApplicationDate, Status)
+                   VALUES (?, ?, ?, NULL, CURRENT_TIMESTAMP, 'Pending')";
+        $stmt = $db->prepare($insert);
+        $stmt->bind_param("iss", $job_id, $user_id, $url);
+
+        if ($stmt->execute()) {
+            $app_id = $stmt->insert_id;
+            return json_encode([
+                'verdict' => true,
+                'application_id' => $app_id,
+                'message' => 'Job application created with URL only'
+            ], JSON_PRETTY_PRINT);
+        } else {
+            return json_encode(['verdict' => false, 'message' => 'Application failed!'], JSON_PRETTY_PRINT);
+        }
+    }
+
+    function apply_job_without_file_or_url($user_id, $job_id) {
+        $conn = new ConnectDb();
+        $db = $conn->get_db();
+
+        if (!$db) {
+            return json_encode(['verdict' => false, 'message' => 'No DB Connection!'], JSON_PRETTY_PRINT);
+        }
+
+        if (empty($user_id) || empty($job_id)) {
+            return json_encode(['verdict' => false, 'message' => 'Missing required fields!'], JSON_PRETTY_PRINT);
+        }
+
+        // Insert application without file or URL (store both as null)
+        $insert = "INSERT INTO jobseekerapplication (JobID, UserID, ResumeFilePath, resumefile, ApplicationDate, Status)
+                   VALUES (?, ?, NULL, NULL, CURRENT_TIMESTAMP, 'Pending')";
+        $stmt = $db->prepare($insert);
+        $stmt->bind_param("ii", $job_id, $user_id);
+
+        if ($stmt->execute()) {
+            $app_id = $stmt->insert_id;
+            return json_encode([
+                'verdict' => true,
+                'application_id' => $app_id,
+                'message' => 'Job application created without file or URL'
+            ], JSON_PRETTY_PRINT);
+        } else {
+            return json_encode(['verdict' => false, 'message' => 'Application failed!'], JSON_PRETTY_PRINT);
         }
     }
 }
+       

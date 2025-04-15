@@ -1,7 +1,1370 @@
-[03-Apr-2025 20:11:27 Asia/Manila] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'u201145375_root'@'localhost' (using password: YES) in C:\wamp64\www\HireMe\config\config.php:8
+[15-Feb-2025 16:53:10 UTC] PHP Warning:  Undefined array key "email-username" in /home/u201145375/domains/hireme-app.online/public_html/functions/login.php on line 14
+[15-Feb-2025 16:53:10 UTC] PHP Warning:  Undefined array key "password" in /home/u201145375/domains/hireme-app.online/public_html/functions/login.php on line 15
+[15-Feb-2025 16:53:10 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/u201145375/domains/hireme-app.online/public_html/classes/user.php on line 137
+[15-Feb-2025 16:53:34 UTC] PHP Warning:  Undefined array key "username" in /home/u201145375/domains/hireme-app.online/public_html/functions/register.php on line 12
+[15-Feb-2025 16:53:34 UTC] PHP Warning:  Undefined array key "password" in /home/u201145375/domains/hireme-app.online/public_html/functions/register.php on line 13
+[15-Feb-2025 16:53:34 UTC] PHP Warning:  Undefined array key "email" in /home/u201145375/domains/hireme-app.online/public_html/functions/register.php on line 14
+[15-Feb-2025 16:53:34 UTC] PHP Warning:  Undefined array key "role" in /home/u201145375/domains/hireme-app.online/public_html/functions/register.php on line 18
+[18-Feb-2025 12:13:01 UTC] PHP Warning:  Undefined variable $message in /home/u201145375/domains/hireme-app.online/public_html/functions/readnotifs.php on line 22
+[18-Feb-2025 13:59:07 UTC] PHP Warning:  Undefined variable $message in /home/u201145375/domains/hireme-app.online/public_html/functions/readnotifs.php on line 22
+[18-Feb-2025 14:09:49 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[19-Feb-2025 09:59:11 UTC] PHP Warning:  Undefined array key "email-username" in /home/u201145375/domains/hireme-app.online/public_html/functions/login.php on line 14
+[19-Feb-2025 09:59:11 UTC] PHP Warning:  Undefined array key "password" in /home/u201145375/domains/hireme-app.online/public_html/functions/login.php on line 15
+[19-Feb-2025 09:59:11 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/u201145375/domains/hireme-app.online/public_html/classes/user.php on line 137
+[19-Feb-2025 09:59:20 UTC] PHP Warning:  Undefined array key "email" in /home/u201145375/domains/hireme-app.online/public_html/functions/forgotpassword.php on line 10
+[19-Feb-2025 09:59:25 UTC] PHP Warning:  Undefined array key "username" in /home/u201145375/domains/hireme-app.online/public_html/functions/register.php on line 12
+[19-Feb-2025 09:59:25 UTC] PHP Warning:  Undefined array key "password" in /home/u201145375/domains/hireme-app.online/public_html/functions/register.php on line 13
+[19-Feb-2025 09:59:25 UTC] PHP Warning:  Undefined array key "email" in /home/u201145375/domains/hireme-app.online/public_html/functions/register.php on line 14
+[19-Feb-2025 09:59:25 UTC] PHP Warning:  Undefined array key "role" in /home/u201145375/domains/hireme-app.online/public_html/functions/register.php on line 18
+[19-Feb-2025 14:44:25 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[19-Feb-2025 14:44:31 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[19-Feb-2025 14:44:38 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[19-Feb-2025 14:44:42 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[19-Feb-2025 14:45:32 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[19-Feb-2025 14:46:16 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[19-Feb-2025 14:46:35 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[19-Feb-2025 14:50:57 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[19-Feb-2025 14:51:26 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[19-Feb-2025 14:51:53 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[19-Feb-2025 14:52:14 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[19-Feb-2025 14:52:47 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[20-Feb-2025 02:23:35 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[20-Feb-2025 02:24:22 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[20-Feb-2025 02:24:48 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[20-Feb-2025 02:26:13 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[02-Mar-2025 11:18:51 UTC] PHP Warning:  Undefined array key "email-username" in /home/u201145375/domains/hireme-app.online/public_html/functions/login.php on line 14
+[02-Mar-2025 11:18:51 UTC] PHP Warning:  Undefined array key "password" in /home/u201145375/domains/hireme-app.online/public_html/functions/login.php on line 15
+[02-Mar-2025 11:18:51 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/u201145375/domains/hireme-app.online/public_html/classes/user.php on line 137
+[02-Mar-2025 11:18:58 UTC] PHP Warning:  Undefined array key "email" in /home/u201145375/domains/hireme-app.online/public_html/functions/forgotpassword.php on line 10
+[02-Mar-2025 11:19:01 UTC] PHP Warning:  Undefined array key "username" in /home/u201145375/domains/hireme-app.online/public_html/functions/register.php on line 12
+[02-Mar-2025 11:19:01 UTC] PHP Warning:  Undefined array key "password" in /home/u201145375/domains/hireme-app.online/public_html/functions/register.php on line 13
+[02-Mar-2025 11:19:01 UTC] PHP Warning:  Undefined array key "email" in /home/u201145375/domains/hireme-app.online/public_html/functions/register.php on line 14
+[02-Mar-2025 11:19:01 UTC] PHP Warning:  Undefined array key "role" in /home/u201145375/domains/hireme-app.online/public_html/functions/register.php on line 18
+[07-Mar-2025 11:35:51 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[07-Mar-2025 11:36:06 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[07-Mar-2025 11:36:12 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[07-Mar-2025 11:36:18 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[17-Mar-2025 01:53:36 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/u201145375/domains/hireme-app.online/public_html/classes/user.php on line 137
+[17-Mar-2025 01:53:43 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/u201145375/domains/hireme-app.online/public_html/classes/user.php on line 137
+[17-Mar-2025 01:54:51 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/u201145375/domains/hireme-app.online/public_html/classes/user.php on line 137
+[19-Mar-2025 15:13:54 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/u201145375/domains/hireme-app.online/public_html/classes/user.php on line 137
+[22-Mar-2025 13:54:00 UTC] PHP Warning:  Undefined array key "email" in /home/u201145375/domains/hireme-app.online/public_html/functions/forgotpassword.php on line 10
+[27-Mar-2025 04:54:41 UTC] PHP Warning:  Undefined array key "email" in /home/u201145375/domains/hireme-app.online/public_html/functions/forgotpassword.php on line 10
+[31-Mar-2025 00:04:48 UTC] PHP Warning:  Undefined array key "email" in /home/u201145375/domains/hireme-app.online/public_html/functions/forgotpassword.php on line 10
+[31-Mar-2025 14:12:09 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[31-Mar-2025 14:12:27 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[31-Mar-2025 14:14:36 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[31-Mar-2025 14:15:17 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[31-Mar-2025 14:19:12 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[31-Mar-2025 14:23:22 UTC] PHP Warning:  Undefined array key "DocumentType" in /home/u201145375/domains/hireme-app.online/public_html/functions/uploadcompanydocument.php on line 23
+[02-Apr-2025 05:54:45 UTC] PHP Warning:  Undefined variable $message in /home/u201145375/domains/hireme-app.online/public_html/functions/readnotifs.php on line 22
+[02-Apr-2025 06:42:16 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Resource temporarily unavailable in /home/u201145375/domains/hireme-app.online/public_html/config/config.php:8
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/config/config.php(8): mysqli->__construct()
+#1 /home/u201145375/domains/hireme-app.online/public_html/classes/user.php(5): require_once('/home/u20114537...')
+#2 /home/u201145375/domains/hireme-app.online/public_html/functions/register.php(9): require_once('/home/u20114537...')
+#3 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/config/config.php on line 8
+[02-Apr-2025 06:42:25 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Resource temporarily unavailable in /home/u201145375/domains/hireme-app.online/public_html/config/config.php:8
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/config/config.php(8): mysqli->__construct()
+#1 /home/u201145375/domains/hireme-app.online/public_html/classes/user.php(5): require_once('/home/u20114537...')
+#2 /home/u201145375/domains/hireme-app.online/public_html/functions/register.php(9): require_once('/home/u20114537...')
+#3 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/config/config.php on line 8
+[02-Apr-2025 06:42:40 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Resource temporarily unavailable in /home/u201145375/domains/hireme-app.online/public_html/config/config.php:8
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/config/config.php(8): mysqli->__construct()
+#1 /home/u201145375/domains/hireme-app.online/public_html/classes/user.php(5): require_once('/home/u20114537...')
+#2 /home/u201145375/domains/hireme-app.online/public_html/functions/register.php(9): require_once('/home/u20114537...')
+#3 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/config/config.php on line 8
+[02-Apr-2025 06:42:51 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'test4@gmail.com' for key 'unique_email' in /home/u201145375/domains/hireme-app.online/public_html/classes/user.php:28
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/user.php(28): mysqli_stmt->execute()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/register.php(25): User->addUser()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/user.php on line 28
+[02-Apr-2025 06:42:51 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'test4@gmail.com' for key 'unique_email' in /home/u201145375/domains/hireme-app.online/public_html/classes/user.php:28
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/user.php(28): mysqli_stmt->execute()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/register.php(25): User->addUser()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/user.php on line 28
+[02-Apr-2025 06:42:52 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'test4@gmail.com' for key 'unique_email' in /home/u201145375/domains/hireme-app.online/public_html/classes/user.php:28
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/user.php(28): mysqli_stmt->execute()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/register.php(25): User->addUser()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/user.php on line 28
+[02-Apr-2025 07:13:01 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[02-Apr-2025 07:14:16 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[02-Apr-2025 07:14:42 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[02-Apr-2025 07:15:03 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[02-Apr-2025 07:15:37 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[02-Apr-2025 07:17:33 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[02-Apr-2025 23:39:39 UTC] PHP Warning:  Undefined array key "email" in /home/u201145375/domains/hireme-app.online/public_html/functions/forgotpassword.php on line 10
+[05-Apr-2025 03:22:53 UTC] PHP Warning:  Undefined variable $message in /home/u201145375/domains/hireme-app.online/public_html/functions/readnotifs.php on line 22
+[05-Apr-2025 03:39:16 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[05-Apr-2025 03:40:08 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[05-Apr-2025 03:40:40 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[05-Apr-2025 03:40:59 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[05-Apr-2025 03:43:29 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[05-Apr-2025 03:43:51 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[07-Apr-2025 18:08:39 UTC] PHP Warning:  Undefined array key "email" in /home/u201145375/domains/hireme-app.online/public_html/functions/forgotpassword.php on line 10
+[08-Apr-2025 10:40:33 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[08-Apr-2025 10:40:51 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[08-Apr-2025 10:42:42 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[08-Apr-2025 10:42:52 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[08-Apr-2025 10:50:57 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[08-Apr-2025 11:01:36 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[08-Apr-2025 11:01:43 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[08-Apr-2025 11:01:45 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[08-Apr-2025 11:01:47 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[08-Apr-2025 11:11:24 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[08-Apr-2025 11:13:54 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[08-Apr-2025 11:13:59 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[08-Apr-2025 11:17:52 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[08-Apr-2025 11:19:35 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[08-Apr-2025 11:19:40 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[08-Apr-2025 11:24:58 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[08-Apr-2025 11:25:02 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[08-Apr-2025 11:25:06 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[08-Apr-2025 11:25:08 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[08-Apr-2025 11:25:13 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[08-Apr-2025 11:27:43 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[08-Apr-2025 11:27:47 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[08-Apr-2025 11:33:13 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[08-Apr-2025 11:33:17 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[08-Apr-2025 11:37:11 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[08-Apr-2025 11:40:09 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[08-Apr-2025 11:40:11 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[08-Apr-2025 11:40:13 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[08-Apr-2025 11:44:54 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[08-Apr-2025 11:44:58 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[08-Apr-2025 11:46:23 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[08-Apr-2025 11:53:27 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[08-Apr-2025 12:34:20 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[08-Apr-2025 12:34:22 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[08-Apr-2025 12:34:29 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[08-Apr-2025 12:35:33 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[08-Apr-2025 13:16:44 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[08-Apr-2025 13:43:09 UTC] PHP Warning:  Undefined array key "email" in /home/u201145375/domains/hireme-app.online/public_html/functions/forgotpassword.php on line 10
+[08-Apr-2025 14:10:59 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[08-Apr-2025 14:13:54 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[08-Apr-2025 14:16:51 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[08-Apr-2025 14:18:37 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[08-Apr-2025 14:21:08 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[08-Apr-2025 14:21:11 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[08-Apr-2025 14:22:12 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[08-Apr-2025 14:22:15 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[08-Apr-2025 14:22:17 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[08-Apr-2025 14:25:27 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[08-Apr-2025 14:25:30 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[08-Apr-2025 14:37:51 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[08-Apr-2025 14:41:54 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 04:01:12 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 04:01:16 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 04:01:21 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 04:07:16 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 04:46:52 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 04:46:55 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 04:47:34 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 04:47:39 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 04:47:42 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 04:47:45 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 04:48:00 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 04:53:56 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 04:54:08 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 04:54:15 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 04:54:18 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 04:54:24 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 04:54:27 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 04:54:57 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 04:59:03 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 05:05:26 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 05:27:10 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 05:27:12 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 05:27:43 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 05:47:12 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 05:47:36 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 05:47:45 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 05:49:40 UTC] PHP Warning:  require_once(../database/dbconnection.php): Failed to open stream: No such file or directory in /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php on line 6
+[09-Apr-2025 05:49:40 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../database/dbconnection.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php on line 6
+[09-Apr-2025 05:50:22 UTC] PHP Warning:  require_once(../database/dbconnection.php): Failed to open stream: No such file or directory in /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php on line 6
+[09-Apr-2025 05:50:22 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '../database/dbconnection.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php on line 6
+[09-Apr-2025 05:50:40 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 05:50:55 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 05:52:28 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 05:52:55 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 05:52:58 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 06:02:26 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 06:03:04 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 06:14:14 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 06:25:02 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 06:25:39 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 06:25:42 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 06:26:02 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 06:26:56 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 06:26:59 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 08:19:16 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 08:19:19 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 08:21:14 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 08:22:42 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 08:23:13 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 08:24:01 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 08:24:04 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 08:25:26 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 08:25:29 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 08:25:31 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 08:25:34 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 08:25:52 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 08:25:55 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 08:25:58 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 08:27:12 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 08:30:00 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 08:30:35 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 08:31:18 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 08:31:25 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 08:31:33 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 08:32:32 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 08:33:11 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 08:33:13 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 08:35:31 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 10:17:35 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 10:17:39 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 10:17:42 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 10:27:03 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 10:27:18 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 10:27:22 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 10:28:29 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 10:31:07 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 10:31:12 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[09-Apr-2025 10:31:16 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[10-Apr-2025 07:09:35 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'dd' for key 'unique_email' in /home/u201145375/domains/hireme-app.online/public_html/classes/user.php:28
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/user.php(28): mysqli_stmt->execute()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/register.php(25): User->addUser()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/user.php on line 28
+[10-Apr-2025 07:16:09 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'dd' for key 'unique_username' in /home/u201145375/domains/hireme-app.online/public_html/classes/user.php:28
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/user.php(28): mysqli_stmt->execute()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/register.php(25): User->addUser()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/user.php on line 28
+[10-Apr-2025 07:16:15 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'dd' for key 'unique_username' in /home/u201145375/domains/hireme-app.online/public_html/classes/user.php:28
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/user.php(28): mysqli_stmt->execute()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/register.php(25): User->addUser()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/user.php on line 28
+[10-Apr-2025 07:16:42 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'dd' for key 'unique_username' in /home/u201145375/domains/hireme-app.online/public_html/classes/user.php:28
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/user.php(28): mysqli_stmt->execute()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/register.php(25): User->addUser()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/user.php on line 28
+[10-Apr-2025 07:16:52 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'dd' for key 'unique_username' in /home/u201145375/domains/hireme-app.online/public_html/classes/user.php:28
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/user.php(28): mysqli_stmt->execute()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/register.php(25): User->addUser()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/user.php on line 28
+[10-Apr-2025 07:16:53 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'dd' for key 'unique_username' in /home/u201145375/domains/hireme-app.online/public_html/classes/user.php:28
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/user.php(28): mysqli_stmt->execute()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/register.php(25): User->addUser()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/user.php on line 28
+[10-Apr-2025 07:16:53 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'dd' for key 'unique_username' in /home/u201145375/domains/hireme-app.online/public_html/classes/user.php:28
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/user.php(28): mysqli_stmt->execute()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/register.php(25): User->addUser()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/user.php on line 28
+[10-Apr-2025 07:16:53 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'dd' for key 'unique_username' in /home/u201145375/domains/hireme-app.online/public_html/classes/user.php:28
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/user.php(28): mysqli_stmt->execute()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/register.php(25): User->addUser()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/user.php on line 28
+[10-Apr-2025 07:16:53 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'dd' for key 'unique_username' in /home/u201145375/domains/hireme-app.online/public_html/classes/user.php:28
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/user.php(28): mysqli_stmt->execute()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/register.php(25): User->addUser()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/user.php on line 28
+[10-Apr-2025 07:16:53 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'dd' for key 'unique_username' in /home/u201145375/domains/hireme-app.online/public_html/classes/user.php:28
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/user.php(28): mysqli_stmt->execute()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/register.php(25): User->addUser()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/user.php on line 28
+[10-Apr-2025 07:18:59 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'dd' for key 'unique_username' in /home/u201145375/domains/hireme-app.online/public_html/classes/user.php:28
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/user.php(28): mysqli_stmt->execute()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/register.php(25): User->addUser()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/user.php on line 28
+[10-Apr-2025 07:19:15 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'dd' for key 'unique_username' in /home/u201145375/domains/hireme-app.online/public_html/classes/user.php:28
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/user.php(28): mysqli_stmt->execute()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/register.php(25): User->addUser()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/user.php on line 28
+[10-Apr-2025 07:19:30 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'dd' for key 'unique_email' in /home/u201145375/domains/hireme-app.online/public_html/classes/user.php:28
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/user.php(28): mysqli_stmt->execute()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/register.php(25): User->addUser()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/user.php on line 28
+[10-Apr-2025 07:19:32 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Duplicate entry 'dd' for key 'unique_email' in /home/u201145375/domains/hireme-app.online/public_html/classes/user.php:28
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/user.php(28): mysqli_stmt->execute()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/register.php(25): User->addUser()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/user.php on line 28
+[10-Apr-2025 07:35:36 UTC] PHP Warning:  Undefined array key "name" in /home/u201145375/domains/hireme-app.online/public_html/functions/addcompanyprofile.php on line 7
+[10-Apr-2025 07:35:36 UTC] PHP Warning:  Undefined array key "address" in /home/u201145375/domains/hireme-app.online/public_html/functions/addcompanyprofile.php on line 8
+[10-Apr-2025 07:35:36 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Column 'name' cannot be null in /home/u201145375/domains/hireme-app.online/public_html/classes/company.php:265
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/company.php(265): mysqli_stmt->execute()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/addcompanyprofile.php(16): Company->addCompanyProfile()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/company.php on line 265
+[10-Apr-2025 07:44:14 UTC] PHP Warning:  Undefined array key "workHours" in /home/u201145375/domains/hireme-app.online/public_html/functions/addjob.php on line 59
+[10-Apr-2025 07:44:14 UTC] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/u201145375/domains/hireme-app.online/public_html/functions/addjob.php on line 59
+[10-Apr-2025 07:44:27 UTC] PHP Warning:  Undefined array key "workHours" in /home/u201145375/domains/hireme-app.online/public_html/functions/addjob.php on line 59
+[10-Apr-2025 07:44:27 UTC] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/u201145375/domains/hireme-app.online/public_html/functions/addjob.php on line 59
+[10-Apr-2025 07:45:26 UTC] PHP Warning:  Undefined array key "workHours" in /home/u201145375/domains/hireme-app.online/public_html/functions/addjob.php on line 59
+[10-Apr-2025 07:45:26 UTC] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/u201145375/domains/hireme-app.online/public_html/functions/addjob.php on line 59
+[10-Apr-2025 07:50:06 UTC] PHP Warning:  Undefined array key "workHours" in /home/u201145375/domains/hireme-app.online/public_html/functions/addjob.php on line 59
+[10-Apr-2025 07:50:06 UTC] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/u201145375/domains/hireme-app.online/public_html/functions/addjob.php on line 59
+[10-Apr-2025 07:54:53 UTC] PHP Warning:  Undefined array key "workHours" in /home/u201145375/domains/hireme-app.online/public_html/functions/addjob.php on line 59
+[10-Apr-2025 07:54:53 UTC] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/u201145375/domains/hireme-app.online/public_html/functions/addjob.php on line 59
+[10-Apr-2025 07:55:58 UTC] PHP Warning:  Undefined array key "workHours" in /home/u201145375/domains/hireme-app.online/public_html/functions/addjob.php on line 59
+[10-Apr-2025 07:55:58 UTC] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/u201145375/domains/hireme-app.online/public_html/functions/addjob.php on line 59
+[10-Apr-2025 07:57:01 UTC] PHP Warning:  Undefined array key "workHours" in /home/u201145375/domains/hireme-app.online/public_html/functions/addjob.php on line 59
+[10-Apr-2025 07:57:01 UTC] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/u201145375/domains/hireme-app.online/public_html/functions/addjob.php on line 59
+[10-Apr-2025 08:06:49 UTC] PHP Warning:  Undefined array key "workHours" in /home/u201145375/domains/hireme-app.online/public_html/functions/addjob.php on line 59
+[10-Apr-2025 08:06:49 UTC] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/u201145375/domains/hireme-app.online/public_html/functions/addjob.php on line 59
+[10-Apr-2025 08:08:42 UTC] PHP Warning:  Undefined array key "workHours" in /home/u201145375/domains/hireme-app.online/public_html/functions/addjob.php on line 59
+[10-Apr-2025 08:08:42 UTC] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/u201145375/domains/hireme-app.online/public_html/functions/addjob.php on line 59
+[10-Apr-2025 09:05:35 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[10-Apr-2025 09:05:38 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[10-Apr-2025 09:05:43 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[10-Apr-2025 09:05:46 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[11-Apr-2025 06:18:29 UTC] PHP Warning:  Undefined array key "otherIndustry" in /home/u201145375/domains/hireme-app.online/public_html/functions/addjob.php on line 38
+[11-Apr-2025 06:18:29 UTC] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/u201145375/domains/hireme-app.online/public_html/functions/addjob.php on line 38
+[11-Apr-2025 06:50:53 UTC] PHP Warning:  Undefined array key "otherIndustry" in /home/u201145375/domains/hireme-app.online/public_html/functions/addjob.php on line 64
+[11-Apr-2025 06:50:53 UTC] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/u201145375/domains/hireme-app.online/public_html/functions/addjob.php on line 64
+[11-Apr-2025 06:51:18 UTC] PHP Warning:  Undefined variable $otherIndustry in /home/u201145375/domains/hireme-app.online/public_html/functions/addjob.php on line 88
+[11-Apr-2025 06:56:19 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[11-Apr-2025 06:59:49 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[11-Apr-2025 06:59:52 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[11-Apr-2025 06:59:55 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'WHERE' in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php:18
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php(18): mysqli->prepare()
+#1 /home/u201145375/domains/hireme-app.online/public_html/functions/getpdf.php(12): BinaryPDF->getApplicantResume()
+#2 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/classes/pdf.php on line 18
+[14-Apr-2025 18:25:43 Asia/Manila] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'u201145375_root'@'localhost' (using password: YES) in C:\wamp64\www\HireMe\config\config.php:8
+Stack trace:
+#0 C:\wamp64\www\HireMe\config\config.php(8): mysqli->__construct('localhost', 'u201145375_root', Object(SensitiveParameterValue), 'u201145375_hire...')
+#1 C:\wamp64\www\HireMe\classes\user.php(5): require_once('C:\\wamp64\\www\\H...')
+#2 C:\wamp64\www\HireMe\functions\register.php(9): require_once('C:\\wamp64\\www\\H...')
+#3 {main}
+  thrown in C:\wamp64\www\HireMe\config\config.php on line 8
+[14-Apr-2025 18:26:05 Asia/Manila] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'u201145375_root'@'localhost' (using password: YES) in C:\wamp64\www\HireMe\config\config.php:8
 Stack trace:
 #0 C:\wamp64\www\HireMe\config\config.php(8): mysqli->__construct('localhost', 'u201145375_root', Object(SensitiveParameterValue), 'u201145375_hire...')
 #1 C:\wamp64\www\HireMe\classes\user.php(5): require_once('C:\\wamp64\\www\\H...')
 #2 C:\wamp64\www\HireMe\functions\login.php(10): require_once('C:\\wamp64\\www\\H...')
 #3 {main}
   thrown in C:\wamp64\www\HireMe\config\config.php on line 8
+[14-Apr-2025 18:26:58 Asia/Manila] PHP Warning:  Trying to access array offset on value of type null in C:\wamp64\www\HireMe\classes\user.php on line 137
+[14-Apr-2025 18:26:58 Asia/Manila] PHP Stack trace:
+[14-Apr-2025 18:26:58 Asia/Manila] PHP   1. {main}() C:\wamp64\www\HireMe\functions\login.php:0
+[14-Apr-2025 18:26:58 Asia/Manila] PHP   2. User->login($username = 'riotgamess', $password = 'passwords') C:\wamp64\www\HireMe\functions\login.php:19
+[14-Apr-2025 18:34:09 Asia/Manila] PHP Warning:  Trying to access array offset on value of type null in C:\wamp64\www\HireMe\classes\user.php on line 137
+[14-Apr-2025 18:34:09 Asia/Manila] PHP Stack trace:
+[14-Apr-2025 18:34:09 Asia/Manila] PHP   1. {main}() C:\wamp64\www\HireMe\functions\login.php:0
+[14-Apr-2025 18:34:09 Asia/Manila] PHP   2. User->login($username = 'riotgamess', $password = 'passwords') C:\wamp64\www\HireMe\functions\login.php:19
+[14-Apr-2025 18:34:14 Asia/Manila] PHP Warning:  Trying to access array offset on value of type null in C:\wamp64\www\HireMe\classes\user.php on line 137
+[14-Apr-2025 18:34:14 Asia/Manila] PHP Stack trace:
+[14-Apr-2025 18:34:14 Asia/Manila] PHP   1. {main}() C:\wamp64\www\HireMe\functions\login.php:0
+[14-Apr-2025 18:34:14 Asia/Manila] PHP   2. User->login($username = 'riotgamess', $password = 'passwords') C:\wamp64\www\HireMe\functions\login.php:19
+[14-Apr-2025 18:37:34 Asia/Manila] PHP Warning:  Trying to access array offset on value of type null in C:\wamp64\www\HireMe\classes\user.php on line 137
+[14-Apr-2025 18:37:34 Asia/Manila] PHP Stack trace:
+[14-Apr-2025 18:37:34 Asia/Manila] PHP   1. {main}() C:\wamp64\www\HireMe\functions\login.php:0
+[14-Apr-2025 18:37:34 Asia/Manila] PHP   2. User->login($username = 'riotgamess', $password = 'passwords') C:\wamp64\www\HireMe\functions\login.php:19
+[14-Apr-2025 18:39:21 Asia/Manila] PHP Warning:  Trying to access array offset on value of type null in C:\wamp64\www\HireMe\classes\user.php on line 137
+[14-Apr-2025 18:39:21 Asia/Manila] PHP Stack trace:
+[14-Apr-2025 18:39:21 Asia/Manila] PHP   1. {main}() C:\wamp64\www\HireMe\functions\login.php:0
+[14-Apr-2025 18:39:21 Asia/Manila] PHP   2. User->login($username = 'riotgamess', $password = 'passwords') C:\wamp64\www\HireMe\functions\login.php:19
+[14-Apr-2025 20:02:39 Asia/Manila] PHP Warning:  Trying to access array offset on value of type null in C:\wamp64\www\HireMe\classes\user.php on line 137
+[14-Apr-2025 20:02:39 Asia/Manila] PHP Stack trace:
+[14-Apr-2025 20:02:39 Asia/Manila] PHP   1. {main}() C:\wamp64\www\HireMe\functions\login.php:0
+[14-Apr-2025 20:02:39 Asia/Manila] PHP   2. User->login($username = 'paradox1', $password = 'paradox1') C:\wamp64\www\HireMe\functions\login.php:19
+[14-Apr-2025 20:02:41 Asia/Manila] PHP Warning:  Trying to access array offset on value of type null in C:\wamp64\www\HireMe\classes\user.php on line 137
+[14-Apr-2025 20:02:41 Asia/Manila] PHP Stack trace:
+[14-Apr-2025 20:02:41 Asia/Manila] PHP   1. {main}() C:\wamp64\www\HireMe\functions\login.php:0
+[14-Apr-2025 20:02:41 Asia/Manila] PHP   2. User->login($username = 'paradox1', $password = 'paradox1') C:\wamp64\www\HireMe\functions\login.php:19
+[14-Apr-2025 23:28:41 Asia/Manila] PHP Warning:  Undefined array key "Skills" in C:\wamp64\www\HireMe\classes\job.php on line 200
+[14-Apr-2025 23:28:41 Asia/Manila] PHP Stack trace:
+[14-Apr-2025 23:28:41 Asia/Manila] PHP   1. {main}() C:\wamp64\www\HireMe\functions\getapplicantsdata.php:0
+[14-Apr-2025 23:28:41 Asia/Manila] PHP   2. Job->getAllJobs($companyId = '11') C:\wamp64\www\HireMe\functions\getapplicantsdata.php:9
+[14-Apr-2025 23:28:41 Asia/Manila] PHP Warning:  Undefined array key "Qualifications" in C:\wamp64\www\HireMe\classes\job.php on line 201
+[14-Apr-2025 23:28:41 Asia/Manila] PHP Stack trace:
+[14-Apr-2025 23:28:41 Asia/Manila] PHP   1. {main}() C:\wamp64\www\HireMe\functions\getapplicantsdata.php:0
+[14-Apr-2025 23:28:41 Asia/Manila] PHP   2. Job->getAllJobs($companyId = '11') C:\wamp64\www\HireMe\functions\getapplicantsdata.php:9
+[14-Apr-2025 23:28:41 Asia/Manila] PHP Warning:  Undefined array key "Skills" in C:\wamp64\www\HireMe\classes\job.php on line 200
+[14-Apr-2025 23:28:41 Asia/Manila] PHP Stack trace:
+[14-Apr-2025 23:28:41 Asia/Manila] PHP   1. {main}() C:\wamp64\www\HireMe\functions\getapplicantsdata.php:0
+[14-Apr-2025 23:28:41 Asia/Manila] PHP   2. Job->getAllJobs($companyId = '11') C:\wamp64\www\HireMe\functions\getapplicantsdata.php:9
+[14-Apr-2025 23:28:41 Asia/Manila] PHP Warning:  Undefined array key "Qualifications" in C:\wamp64\www\HireMe\classes\job.php on line 201
+[14-Apr-2025 23:28:41 Asia/Manila] PHP Stack trace:
+[14-Apr-2025 23:28:41 Asia/Manila] PHP   1. {main}() C:\wamp64\www\HireMe\functions\getapplicantsdata.php:0
+[14-Apr-2025 23:28:41 Asia/Manila] PHP   2. Job->getAllJobs($companyId = '11') C:\wamp64\www\HireMe\functions\getapplicantsdata.php:9
+[14-Apr-2025 23:28:41 Asia/Manila] PHP Warning:  Undefined array key "Skills" in C:\wamp64\www\HireMe\classes\job.php on line 200
+[14-Apr-2025 23:28:41 Asia/Manila] PHP Stack trace:
+[14-Apr-2025 23:28:41 Asia/Manila] PHP   1. {main}() C:\wamp64\www\HireMe\functions\getapplicantsdata.php:0
+[14-Apr-2025 23:28:41 Asia/Manila] PHP   2. Job->getAllJobs($companyId = '11') C:\wamp64\www\HireMe\functions\getapplicantsdata.php:9
+[14-Apr-2025 23:28:41 Asia/Manila] PHP Warning:  Undefined array key "Qualifications" in C:\wamp64\www\HireMe\classes\job.php on line 201
+[14-Apr-2025 23:28:41 Asia/Manila] PHP Stack trace:
+[14-Apr-2025 23:28:41 Asia/Manila] PHP   1. {main}() C:\wamp64\www\HireMe\functions\getapplicantsdata.php:0
+[14-Apr-2025 23:28:41 Asia/Manila] PHP   2. Job->getAllJobs($companyId = '11') C:\wamp64\www\HireMe\functions\getapplicantsdata.php:9
+[14-Apr-2025 23:28:41 Asia/Manila] PHP Warning:  Undefined array key "Skills" in C:\wamp64\www\HireMe\classes\job.php on line 200
+[14-Apr-2025 23:28:41 Asia/Manila] PHP Stack trace:
+[14-Apr-2025 23:28:41 Asia/Manila] PHP   1. {main}() C:\wamp64\www\HireMe\functions\getapplicantsdata.php:0
+[14-Apr-2025 23:28:41 Asia/Manila] PHP   2. Job->getAllJobs($companyId = '11') C:\wamp64\www\HireMe\functions\getapplicantsdata.php:9
+[14-Apr-2025 23:28:41 Asia/Manila] PHP Warning:  Undefined array key "Qualifications" in C:\wamp64\www\HireMe\classes\job.php on line 201
+[14-Apr-2025 23:28:41 Asia/Manila] PHP Stack trace:
+[14-Apr-2025 23:28:41 Asia/Manila] PHP   1. {main}() C:\wamp64\www\HireMe\functions\getapplicantsdata.php:0
+[14-Apr-2025 23:28:41 Asia/Manila] PHP   2. Job->getAllJobs($companyId = '11') C:\wamp64\www\HireMe\functions\getapplicantsdata.php:9
+[14-Apr-2025 23:28:41 Asia/Manila] PHP Warning:  Undefined array key "Skills" in C:\wamp64\www\HireMe\classes\job.php on line 200
+[14-Apr-2025 23:28:41 Asia/Manila] PHP Stack trace:
+[14-Apr-2025 23:28:41 Asia/Manila] PHP   1. {main}() C:\wamp64\www\HireMe\functions\getapplicantsdata.php:0
+[14-Apr-2025 23:28:41 Asia/Manila] PHP   2. Job->getAllJobs($companyId = '11') C:\wamp64\www\HireMe\functions\getapplicantsdata.php:9
+[14-Apr-2025 23:28:41 Asia/Manila] PHP Warning:  Undefined array key "Qualifications" in C:\wamp64\www\HireMe\classes\job.php on line 201
+[14-Apr-2025 23:28:41 Asia/Manila] PHP Stack trace:
+[14-Apr-2025 23:28:41 Asia/Manila] PHP   1. {main}() C:\wamp64\www\HireMe\functions\getapplicantsdata.php:0
+[14-Apr-2025 23:28:41 Asia/Manila] PHP   2. Job->getAllJobs($companyId = '11') C:\wamp64\www\HireMe\functions\getapplicantsdata.php:9
+[14-Apr-2025 23:28:41 Asia/Manila] PHP Warning:  Undefined array key "Skills" in C:\wamp64\www\HireMe\classes\job.php on line 200
+[14-Apr-2025 23:28:41 Asia/Manila] PHP Stack trace:
+[14-Apr-2025 23:28:41 Asia/Manila] PHP   1. {main}() C:\wamp64\www\HireMe\functions\getapplicantsdata.php:0
+[14-Apr-2025 23:28:41 Asia/Manila] PHP   2. Job->getAllJobs($companyId = '11') C:\wamp64\www\HireMe\functions\getapplicantsdata.php:9
+[14-Apr-2025 23:28:41 Asia/Manila] PHP Warning:  Undefined array key "Qualifications" in C:\wamp64\www\HireMe\classes\job.php on line 201
+[14-Apr-2025 23:28:41 Asia/Manila] PHP Stack trace:
+[14-Apr-2025 23:28:41 Asia/Manila] PHP   1. {main}() C:\wamp64\www\HireMe\functions\getapplicantsdata.php:0
+[14-Apr-2025 23:28:41 Asia/Manila] PHP   2. Job->getAllJobs($companyId = '11') C:\wamp64\www\HireMe\functions\getapplicantsdata.php:9
+[14-Apr-2025 23:28:41 Asia/Manila] PHP Warning:  Undefined array key "Skills" in C:\wamp64\www\HireMe\classes\job.php on line 200
+[14-Apr-2025 23:28:41 Asia/Manila] PHP Stack trace:
+[14-Apr-2025 23:28:41 Asia/Manila] PHP   1. {main}() C:\wamp64\www\HireMe\functions\getapplicantsdata.php:0
+[14-Apr-2025 23:28:41 Asia/Manila] PHP   2. Job->getAllJobs($companyId = '11') C:\wamp64\www\HireMe\functions\getapplicantsdata.php:9
+[14-Apr-2025 23:28:41 Asia/Manila] PHP Warning:  Undefined array key "Qualifications" in C:\wamp64\www\HireMe\classes\job.php on line 201
+[14-Apr-2025 23:28:41 Asia/Manila] PHP Stack trace:
+[14-Apr-2025 23:28:41 Asia/Manila] PHP   1. {main}() C:\wamp64\www\HireMe\functions\getapplicantsdata.php:0
+[14-Apr-2025 23:28:41 Asia/Manila] PHP   2. Job->getAllJobs($companyId = '11') C:\wamp64\www\HireMe\functions\getapplicantsdata.php:9
+[14-Apr-2025 23:28:41 Asia/Manila] PHP Warning:  Undefined array key "Skills" in C:\wamp64\www\HireMe\classes\job.php on line 200
+[14-Apr-2025 23:28:41 Asia/Manila] PHP Stack trace:
+[14-Apr-2025 23:28:41 Asia/Manila] PHP   1. {main}() C:\wamp64\www\HireMe\functions\getapplicantsdata.php:0
+[14-Apr-2025 23:28:41 Asia/Manila] PHP   2. Job->getAllJobs($companyId = '11') C:\wamp64\www\HireMe\functions\getapplicantsdata.php:9
+[14-Apr-2025 23:28:41 Asia/Manila] PHP Warning:  Undefined array key "Qualifications" in C:\wamp64\www\HireMe\classes\job.php on line 201
+[14-Apr-2025 23:28:41 Asia/Manila] PHP Stack trace:
+[14-Apr-2025 23:28:41 Asia/Manila] PHP   1. {main}() C:\wamp64\www\HireMe\functions\getapplicantsdata.php:0
+[14-Apr-2025 23:28:41 Asia/Manila] PHP   2. Job->getAllJobs($companyId = '11') C:\wamp64\www\HireMe\functions\getapplicantsdata.php:9
+[14-Apr-2025 23:28:55 Asia/Manila] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'where clause' in C:\wamp64\www\HireMe\classes\pdf.php:18
+Stack trace:
+#0 C:\wamp64\www\HireMe\classes\pdf.php(18): mysqli->prepare('SELECT * FROM r...')
+#1 C:\wamp64\www\HireMe\functions\getpdf.php(12): BinaryPDF->getApplicantResume('172', '41')
+#2 {main}
+  thrown in C:\wamp64\www\HireMe\classes\pdf.php on line 18
+[14-Apr-2025 23:29:20 Asia/Manila] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'where clause' in C:\wamp64\www\HireMe\classes\pdf.php:18
+Stack trace:
+#0 C:\wamp64\www\HireMe\classes\pdf.php(18): mysqli->prepare('SELECT * FROM r...')
+#1 C:\wamp64\www\HireMe\functions\getpdf.php(12): BinaryPDF->getApplicantResume('172', '41')
+#2 {main}
+  thrown in C:\wamp64\www\HireMe\classes\pdf.php on line 18
+[14-Apr-2025 23:31:21 Asia/Manila] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'where clause' in C:\wamp64\www\HireMe\classes\pdf.php:18
+Stack trace:
+#0 C:\wamp64\www\HireMe\classes\pdf.php(18): mysqli->prepare('SELECT * FROM r...')
+#1 C:\wamp64\www\HireMe\functions\getpdf.php(12): BinaryPDF->getApplicantResume('172', '41')
+#2 {main}
+  thrown in C:\wamp64\www\HireMe\classes\pdf.php on line 18
+[14-Apr-2025 23:33:28 Asia/Manila] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'where clause' in C:\wamp64\www\HireMe\classes\pdf.php:18
+Stack trace:
+#0 C:\wamp64\www\HireMe\classes\pdf.php(18): mysqli->prepare('SELECT * FROM r...')
+#1 C:\wamp64\www\HireMe\functions\getpdf.php(12): BinaryPDF->getApplicantResume('172', '41')
+#2 {main}
+  thrown in C:\wamp64\www\HireMe\classes\pdf.php on line 18
+[14-Apr-2025 23:34:05 Asia/Manila] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'where clause' in C:\wamp64\www\HireMe\classes\pdf.php:18
+Stack trace:
+#0 C:\wamp64\www\HireMe\classes\pdf.php(18): mysqli->prepare('SELECT * FROM r...')
+#1 C:\wamp64\www\HireMe\functions\getpdf.php(12): BinaryPDF->getApplicantResume('172', '41')
+#2 {main}
+  thrown in C:\wamp64\www\HireMe\classes\pdf.php on line 18
+[14-Apr-2025 23:34:29 Asia/Manila] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'where clause' in C:\wamp64\www\HireMe\classes\pdf.php:18
+Stack trace:
+#0 C:\wamp64\www\HireMe\classes\pdf.php(18): mysqli->prepare('SELECT * FROM r...')
+#1 C:\wamp64\www\HireMe\functions\getpdf.php(12): BinaryPDF->getApplicantResume('172', '41')
+#2 {main}
+  thrown in C:\wamp64\www\HireMe\classes\pdf.php on line 18
+[14-Apr-2025 23:34:54 Asia/Manila] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'jobId' in 'where clause' in C:\wamp64\www\HireMe\classes\pdf.php:18
+Stack trace:
+#0 C:\wamp64\www\HireMe\classes\pdf.php(18): mysqli->prepare('SELECT * FROM r...')
+#1 C:\wamp64\www\HireMe\functions\getpdf.php(12): BinaryPDF->getApplicantResume('172', '41')
+#2 {main}
+  thrown in C:\wamp64\www\HireMe\classes\pdf.php on line 18

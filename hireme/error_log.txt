@@ -1,1 +1,40 @@
 [12-Feb-2025 02:39:45 UTC] PHP Warning:  Undefined array key "user_id" in /home/u201145375/domains/hireme-app.online/public_html/hireme/api.php on line 55
+[08-Apr-2025 14:12:59 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method JobService::save_resume_file() in /home/u201145375/domains/hireme-app.online/public_html/hireme/jobs.php:318
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/hireme/api.php(88): JobService->apply_job()
+#1 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/hireme/jobs.php on line 318
+[08-Apr-2025 14:13:35 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method JobService::save_resume_file() in /home/u201145375/domains/hireme-app.online/public_html/hireme/jobs.php:318
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/hireme/api.php(88): JobService->apply_job()
+#1 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/hireme/jobs.php on line 318
+[08-Apr-2025 14:14:20 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method JobService::save_resume_file() in /home/u201145375/domains/hireme-app.online/public_html/hireme/jobs.php:318
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/hireme/api.php(88): JobService->apply_job()
+#1 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/hireme/jobs.php on line 318
+[08-Apr-2025 14:17:07 UTC] PHP Parse error:  Unclosed '{' on line 3 in /home/u201145375/domains/hireme-app.online/public_html/hireme/jobs.php on line 374
+[08-Apr-2025 14:18:16 UTC] PHP Parse error:  Unclosed '{' on line 3 in /home/u201145375/domains/hireme-app.online/public_html/hireme/jobs.php on line 374
+[08-Apr-2025 14:39:04 UTC] PHP Warning:  Undefined array key "resume" in /home/u201145375/domains/hireme-app.online/public_html/hireme/jobs.php on line 326
+[08-Apr-2025 14:39:04 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/u201145375/domains/hireme-app.online/public_html/hireme/jobs.php on line 326
+[08-Apr-2025 14:39:04 UTC] PHP Deprecated:  move_uploaded_file(): Passing null to parameter #1 ($from) of type string is deprecated in /home/u201145375/domains/hireme-app.online/public_html/hireme/jobs.php on line 326
+[08-Apr-2025 14:50:16 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method JobService::apply_job_with_file() in /home/u201145375/domains/hireme-app.online/public_html/hireme/api.php:101
+Stack trace:
+#0 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/hireme/api.php on line 101
+[08-Apr-2025 14:52:57 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method JobService::apply_job_with_file() in /home/u201145375/domains/hireme-app.online/public_html/hireme/api.php:101
+Stack trace:
+#0 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/hireme/api.php on line 101
+[08-Apr-2025 14:54:06 UTC] File name/path: Career-Fair-Completion-Form-CFCF-QC.pdf
+[08-Apr-2025 14:54:06 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method JobService::apply_job_with_file() in /home/u201145375/domains/hireme-app.online/public_html/hireme/api.php:99
+Stack trace:
+#0 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/hireme/api.php on line 99
+[09-Apr-2025 03:50:58 UTC] PHP Parse error:  Unclosed '{' on line 3 in /home/u201145375/domains/hireme-app.online/public_html/hireme/jobs.php on line 316
+[09-Apr-2025 03:51:03 UTC] PHP Parse error:  Unclosed '{' on line 3 in /home/u201145375/domains/hireme-app.online/public_html/hireme/jobs.php on line 316
+[09-Apr-2025 03:51:33 UTC] PHP Parse error:  Unclosed '{' on line 3 in /home/u201145375/domains/hireme-app.online/public_html/hireme/jobs.php on line 316
+[09-Apr-2025 04:05:03 UTC] PHP Warning:  Undefined array key "resume" in /home/u201145375/domains/hireme-app.online/public_html/hireme/api.php on line 95
+[09-Apr-2025 04:05:29 UTC] PHP Warning:  Undefined array key "resume" in /home/u201145375/domains/hireme-app.online/public_html/hireme/api.php on line 95
+[09-Apr-2025 04:06:07 UTC] PHP Warning:  Undefined array key "resume" in /home/u201145375/domains/hireme-app.online/public_html/hireme/api.php on line 95

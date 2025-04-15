@@ -37,8 +37,11 @@ Class JobSeekerApplication {
                 $row['JobID'], 
                 $row['UserID'], 
                 $row['ResumeFilePath'], 
+                $row['resumefile'], 
                 $row['ApplicationDate'], 
-                $row['Status']);
+                $row['Status'],
+                $row['RejectionReason']
+            );
             $applications[] = $application;
         }
     
@@ -58,8 +61,11 @@ Class JobSeekerApplication {
                 $row['JobID'], 
                 $row['UserID'], 
                 $row['ResumeFilePath'], 
+                $row['resumefile'], 
                 $row['ApplicationDate'], 
-                $row['Status']);
+                $row['Status'],
+                $row['RejectionReason']
+            );
             $applications[] = $application;
         }
     
@@ -80,8 +86,10 @@ Class JobSeekerApplication {
             $application['JobID'],
             $application['UserID'],
             $application['ResumeFilePath'],
+            $application['resumefile'], 
             $application['ApplicationDate'],
-            $application['Status']
+            $application['Status'],
+            $application['RejectionReason']
           );
         } else {
           return null;
@@ -100,8 +108,11 @@ Class JobSeekerApplication {
                 $row['JobID'], 
                 $row['UserID'], 
                 $row['ResumeFilePath'], 
+                $row['resumefile'], 
                 $row['ApplicationDate'], 
-                $row['Status']);
+                $row['Status'],
+                $row['RejectionReason']
+            );
             $applications[] = $application;
         }
     
@@ -141,10 +152,10 @@ Class JobSeekerApplication {
         }
     }
 
-    public function changeJobApplicationStatus($status, $applicationID) {
-        $stmt = $this->conn->prepare("UPDATE jobseekerapplication SET Status = ? WHERE JobSeekerApplicationID = ?;");
+    public function changeJobApplicationStatus($status, $applicationID, $reason) {
+        $stmt = $this->conn->prepare("UPDATE jobseekerapplication SET Status = ?, RejectionReason = ? WHERE JobSeekerApplicationID = ?;");
 
-        $stmt->bind_param("si", $status, $applicationID);
+        $stmt->bind_param("ssi", $status, $reason, $applicationID);
 
         if ($stmt->execute()) {
             return true;

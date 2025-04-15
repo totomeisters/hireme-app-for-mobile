@@ -12,25 +12,11 @@ $pagetitle = "HireMe - Post a Job";
 <?php require_once './head.php'; ?>
 <!-- /Head -->
 
-<!-- <style>
-    .ui-slider {
-        background: transparent; /* Set initial background color to transparent */
-    }
-
-    .ui-slider .ui-slider-handle {
-        background-color: #0d6efd; /* Bootstrap primary blue color */
-    }
-
-    .ui-slider-range {
-        background-color: #0d6efd; /* Bootstrap primary blue color */
-    }
-</style> -->
-
 <body>
     <!-- Toast Overlay -->
     <div id="toast-container"></div>
     <div class="overlay"></div>
-    <!-- / Toast Overlay   -->
+    <!-- / Toast Overlay -->
 
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
@@ -55,17 +41,21 @@ $pagetitle = "HireMe - Post a Job";
                                 <div class="card p-2">
                                     <form id="formAuthentication" action="../functions/addjob.php" method="post">
                                         <input type="text" id="jobIndustry" name="jobIndustry" value="Hotel and Restaurant Management" hidden>
-                                        <!--<input type="number" id="salaryMin" name="salaryMin" value="0" hidden>-->
                                         <input type="text" name="jobLocationType" value="On Site" hidden>
+                                        
+                                        <!-- Job Title -->
                                         <div class="form-group mb-2">
                                             <label for="jobTitle">Job Title:</label>
                                             <input type="text" class="form-control" id="jobTitle" name="jobTitle" placeholder="Enter job title" required>
                                         </div>
+                                        
+                                        <!-- Job Description -->
                                         <div class="form-group mb-2">
                                             <label for="jobDescription">Job Description:</label>
-                                            <textarea id="jobDescription" name="jobDescription" placeholder="Enter Job Description..."></textarea>
-
+                                            <textarea id="jobDescription" name="jobDescription" placeholder="Enter Job Description..." class="form-control" ></textarea>
                                         </div>
+                                        
+                                        <!-- Job Type and Work Type -->
                                         <div class="row">
                                             <div class="form-group mb-2 col-6">
                                                 <label for="jobType">Job Type:</label>
@@ -90,62 +80,176 @@ $pagetitle = "HireMe - Post a Job";
                                                     <option value="Maintenance Worker">Maintenance Worker</option>
                                                     <option value="others">Others</option>
                                                 </select>
-
-                                                <input class="form-control mt-2" type="text" id="otherWorkType" name="otherWorkType" style="display: none;" placeholder="Enter work type...">
+                                                <input class="form-control mt-2" type="text" id="otherWorkType" name="otherWorkType" style="display: none;" placeholder="Enter work type..." >
                                             </div>
                                         </div>
-                                        
+
+                                        <!-- Salary and Work Hours -->
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <label for="salaryMin">Minimum Salary:</label>
                                                 <input type="number" class="form-control" id="salaryMin" name="salaryMin" placeholder="Enter minimum salary" required>
-                                                </div>
-                                           
+                                            </div>
+
                                             <div class="col-md-6">
                                                 <label for="salaryMax">Maximum Salary:</label>
                                                 <input type="number" class="form-control" id="salaryMax" name="salaryMax" placeholder="Enter maximum salary" required>
-                                         </div>
-                                          
+                                            </div>
+
                                             <div class="col-md-6">
                                                 <label for="workHours">Work Hours:</label>
                                                 <input type="text" class="form-control" id="workHours" name="workHours" placeholder="Enter work hours.. example: (8AM-5PM)" required>
                                             </div>
-                                        </div>
-                                        
-                                        <div class="row p-2">
+                                            
                                             <div class="col-md-6">
-                                                <div id="slider-range"></div>
+                                                <div data-bs-toggle="tooltip" data-bs-placement="top" title="Pick zero for indefinite hiring.">
+                                                  <label for="slots">Vacancies:</label>
+                                                  <input type="number" class="form-control" id="slots" name="slots" required min="0" step="1">
+                                                </div>
                                             </div>
                                         </div>
-                                        <div id="otherIndustryField" class="form-group mb-2" style="display: none;">
-                                            <label for="otherIndustry">Other Industry:</label>
-                                            <input type="text" class="form-control" id="otherIndustry" name="otherIndustry" placeholder="Enter other industry">
+
+                                        <!-- Skills -->
+                                        <div class="row">
+                                        <div class="form-group mb-2 col-6">
+                                            <label for="skills">Skills:</label>
+                                            <div class="dropdown">
+                                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownSkills" data-bs-toggle="dropdown" aria-expanded="false" >
+                                                    Select Skills
+                                                </button>
+                                                <ul class="dropdown-menu" aria-labelledby="dropdownSkills">
+                                                    <li>
+                                                        <div class="form-check ms-3">
+                                                            <input class="form-check-input" type="checkbox" id="skill1" name="skills[]" value="Attention to detail">
+                                                            <label class="form-check-label" for="skill1">Attention to detail</label>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="form-check ms-3">
+                                                            <input class="form-check-input" type="checkbox" id="skill2" name="skills[]" value="Leadership">
+                                                            <label class="form-check-label" for="skill2">Leadership</label>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="form-check ms-3">
+                                                            <input class="form-check-input" type="checkbox" id="skill3" name="skills[]" value="Problem solving">
+                                                            <label class="form-check-label" for="skill3">Problem solving</label>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="form-check ms-3">
+                                                            <input class="form-check-input" type="checkbox" id="skill4" name="skills[]" value="Adaptability">
+                                                            <label class="form-check-label" for="skill4">Adaptability</label>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="form-check ms-3">
+                                                            <input class="form-check-input" type="checkbox" id="skill5" name="skills[]" value="Conflict resolution">
+                                                            <label class="form-check-label" for="skill5">Conflict resolution</label>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="form-check ms-3">
+                                                            <input class="form-check-input" type="checkbox" id="skill6" name="skills[]" value="Customer service">
+                                                            <label class="form-check-label" for="skill6">Customer service</label>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="form-check ms-3">
+                                                            <input class="form-check-input" type="checkbox" id="skill7" name="skills[]" value="Multitasking">
+                                                            <label class="form-check-label" for="skill7">Multitasking</label>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="form-check ms-3">
+                                                            <input class="form-check-input" type="checkbox" id="skill8" name="skills[]" value="Teamwork">
+                                                            <label class="form-check-label" for="skill8">Teamwork</label>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="form-check ms-3">
+                                                            <input class="form-check-input" type="checkbox" id="skill9" name="skills[]" value="Cultural awareness">
+                                                            <label class="form-check-label" for="skill9">Cultural awareness</label>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
                                         </div>
+
+                                        <!-- Qualifications -->
+                                        <div class="form-group mb-2 col-6">
+                                            <label for="qualifications">Qualifications:</label>
+                                            <div class="dropdown">
+                                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownQualifications" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    Select Qualifications
+                                                </button>
+                                                <ul class="dropdown-menu" aria-labelledby="dropdownQualifications">
+                                                    <li>
+                                                        <div class="form-check ms-3">
+                                                            <input class="form-check-input" type="checkbox" id="qualification1" name="qualifications[]" value="College Graduate">
+                                                            <label class="form-check-label" for="qualification1">College Graduate</label>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="form-check ms-3">
+                                                            <input class="form-check-input" type="checkbox" id="qualification2" name="qualifications[]" value="High School Graduate">
+                                                            <label class="form-check-label" for="qualification2">High School Graduate</label>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="form-check ms-3">
+                                                            <input class="form-check-input" type="checkbox" id="qualification3" name="qualifications[]" value="5 Months Work Experience">
+                                                            <label class="form-check-label" for="qualification3">5 Months Work Experience</label>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="form-check ms-3">
+                                                            <input class="form-check-input" type="checkbox" id="qualification4" name="qualifications[]" value="1 Year Work Experience">
+                                                            <label class="form-check-label" for="qualification4">1 Year Work Experience</label>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="form-check ms-3">
+                                                            <input class="form-check-input" type="checkbox" id="qualification5" name="qualifications[]" value="2 Years Work Experience">
+                                                            <label class="form-check-label" for="qualification5">2 Years Work Experience</label>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="form-check ms-3">
+                                                            <input class="form-check-input" type="checkbox" id="qualification6" name="qualifications[]" value="3 Years Work Experience">
+                                                            <label class="form-check-label" for="qualification6">3 Years Work Experience</label>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="form-check ms-3">
+                                                            <input class="form-check-input" type="checkbox" id="qualification7" name="qualifications[]" value="Certifications">
+                                                            <label class="form-check-label" for="qualification7">Certifications</label>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="form-check ms-3">
+                                                            <input class="form-check-input" type="checkbox" id="qualification8" name="qualifications[]" value="Specialized Training">
+                                                            <label class="form-check-label" for="qualification8">Specialized Training</label>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        </div>
+                                        <!-- Job Location -->
                                         <div class="form-group mb-2">
                                             <label for="jobLocation">Job Location:</label>
-                                            <!-- <p class="small"><span class="text-danger">*Required only if choosing "On Site"</span></p> -->
                                             <p class="small"><span class="text-danger">*Antipolo City is automatically added to the address</span></p>
-                                            <input type="text" class="form-control" id="jobLocation" name="jobLocation" placeholder="Enter office address">
+                                            <input type="text" class="form-control" id="jobLocation" name="jobLocation" placeholder="Enter office address" required>
                                         </div>
-                                        <!-- <div class="form-group mb-2">
-                                            <label for="jobLocationType">Job Location Type:</label>
-                                            <div class="form-check form-check-inline mx-2">
-                                                <input class="form-check-input" type="radio" id="wfhRadio" name="jobLocationType" value="WFH" required>
-                                                <label class="form-check-label" for="wfhRadio">WFH</label>
-                                            </div>
-                                            <div class="form-check form-check-inline mx-2">
-                                                <input class="form-check-input" type="radio" id="onsiteRadio" name="jobLocationType" value="On Site" required>
-                                                <label class="form-check-label" for="onsiteRadio">On Site</label>
-                                            </div>
-                                        </div> -->
+                                        
+                                        <!-- Submit Button -->
                                         <button type="submit" class="btn btn-primary">Submit</button>
                                     </form>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <!-- / Content -->
 
                     <!-- Footer -->
                     <footer>
@@ -174,13 +278,8 @@ $pagetitle = "HireMe - Post a Job";
     <!-- / Layout wrapper -->
 
     <!-- Core JS -->
-    <!-- build:js assets/vendor/js/core.js -->
     <?php require_once "./endscripts.php"; ?>
-    <!-- <script src="../assets/js/quill.js"></script> -->
     <script src="../assets/js/tinymce.js"></script>
-
-    <!-- Salary Slider -->
-
 
     <!-- Toast and AJAX -->
     <script>
@@ -195,11 +294,11 @@ $pagetitle = "HireMe - Post a Job";
                 toast.remove();
                 // Hide the overlay after the toast has faded out
                 $('.overlay').hide();
-            }, 2000); // 3000 milliseconds = 3 seconds
+            }, 2000); // 2000 milliseconds = 2 seconds
         }
 
         $(document).ready(function() {
-
+            // Handle work type selection
             const workTypeSelect = document.getElementById('workType');
             const otherWorkTypeInput = document.getElementById('otherWorkType');
 
@@ -213,15 +312,25 @@ $pagetitle = "HireMe - Post a Job";
                 }
             });
 
-
+            // Single form submission handler with validation
             $('#formAuthentication').on('submit', function(e) {
-                e.preventDefault();
+                e.preventDefault(); // Prevent default form submission
+                
+                // Check if both salary fields have values
+                var minSalary = parseFloat($('#salaryMin').val());
+                var maxSalary = parseFloat($('#salaryMax').val());
 
-                //   var jobDescription = JSON.stringify(quill.getContents());
+                // Perform salary range validation
+                if (!isNaN(minSalary) && !isNaN(maxSalary)) {
+                    if (minSalary > maxSalary) {
+                        alert("Minimum salary cannot be greater than maximum salary");
+                        $('#salaryMin').val('');  // Reset the min salary field
+                        return false;  // Stop processing and prevent AJAX submission
+                    }
+                }
 
+                // If validation passes, proceed with AJAX form submission
                 var formData = $(this).serializeArray();
-
-                //   formData.push({ name: 'jobDescription', value: jobDescription });
 
                 $.ajax({
                     type: 'POST',
@@ -243,61 +352,12 @@ $pagetitle = "HireMe - Post a Job";
                     },
                     error: function(xhr, status, error) {
                         console.error('AJAX Error:', error);
+                        console.log("Error response:", xhr.responseText);
                         showToast('An error occurred. Please try again.', 'error');
                     }
                 });
             });
         });
     </script>
-
-    <!-- Show text field if industry is not on the list -->
-    <script>
-        function showTextField() {
-            var industrySelect = document.getElementById("jobIndustry");
-            var otherIndustryField = document.getElementById("otherIndustryField");
-
-            if (industrySelect.value === "Others") {
-                otherIndustryField.style.display = "block";
-            } else {
-                otherIndustryField.style.display = "none";
-            }
-        }
-    </script>
-
-    <!-- Required job location if "On Site" -->
-    <script>
-        function requireLocation() {
-            var jobLocationType = document.getElementById("onsiteRadio");
-            var jobLocation = document.getElementById("jobLocation");
-
-            if (jobLocationType.checked) {
-                jobLocation.required = true;
-            } else {
-                jobLocation.required = false;
-            }
-        }
-
-        window.onload = function() {
-            var onsiteRadio = document.getElementById("onsiteRadio");
-            var wfhRadio = document.getElementById("wfhRadio");
-
-            onsiteRadio.addEventListener('change', requireLocation);
-            wfhRadio.addEventListener('change', requireLocation);
-        }
-    </script>
-
-    <!-- Salary Min-Max checker, salarymin cant be greater than salarymax -->
-    // <script>
-    //     function validateSalaryRange() {
-    //         var minSalary = parseFloat(document.getElementById('salaryMin').value);
-    //         var maxSalary = parseFloat(document.getElementById('salaryMax').value);
-
-    //         if (minSalary > maxSalary) {
-    //             alert("Minimum salary cannot be greater than maximum salary");
-    //             document.getElementById('salaryMin').value = '';
-    //         }
-    //     }
-    // </script> 
 </body>
-
 </html>

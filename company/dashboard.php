@@ -106,7 +106,7 @@ $pagetitle = "HireMe - Dashboard";
                     else{?>
 
                       <h5 class="card-title">Hello <?php echo ucfirst($username);?>!</h5>
-                      <p class="card-text">It looks like you have yet to register your company to us. Click "New Application" on the side bar to get started.</p>
+                      <p class="card-text">It looks like you have yet to register your company to us. Click "Register" on the side bar to get started.</p>
                       <?php
                   }?>
 

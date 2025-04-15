@@ -61,3 +61,50 @@ Stack trace:
 #0 {main}
   thrown in /home/u201145375/domains/hireme-app.online/public_html/manager/viewcompany.php on line 181
 [02-Apr-2025 07:05:53 UTC] PHP Warning:  Undefined array key "referer" in /home/u201145375/domains/hireme-app.online/public_html/manager/viewjob.php on line 7
+[05-Apr-2025 03:23:10 UTC] PHP Warning:  Undefined array key "referer" in /home/u201145375/domains/hireme-app.online/public_html/manager/viewjob.php on line 7
+[05-Apr-2025 03:44:41 UTC] PHP Warning:  Undefined array key "referer" in /home/u201145375/domains/hireme-app.online/public_html/manager/viewjob.php on line 7
+[05-Apr-2025 06:21:30 UTC] PHP Warning:  Undefined array key "referer" in /home/u201145375/domains/hireme-app.online/public_html/manager/viewjob.php on line 7
+[11-Apr-2025 06:00:34 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method Job::getNotifications() in /home/u201145375/domains/hireme-app.online/public_html/manager/navbar.php:4
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/manager/dashboard.php(55): require_once()
+#1 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/manager/navbar.php on line 4
+[11-Apr-2025 06:00:36 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method Job::getNotifications() in /home/u201145375/domains/hireme-app.online/public_html/manager/navbar.php:4
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/manager/viewcompanies.php(56): require_once()
+#1 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/manager/navbar.php on line 4
+[11-Apr-2025 06:00:38 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method Job::getNotifications() in /home/u201145375/domains/hireme-app.online/public_html/manager/navbar.php:4
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/manager/unverifiedcompanies.php(56): require_once()
+#1 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/manager/navbar.php on line 4
+[11-Apr-2025 06:00:39 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method Job::getNotifications() in /home/u201145375/domains/hireme-app.online/public_html/manager/navbar.php:4
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/manager/rejectedcompanies.php(56): require_once()
+#1 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/manager/navbar.php on line 4
+[11-Apr-2025 06:00:40 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method Job::getNotifications() in /home/u201145375/domains/hireme-app.online/public_html/manager/navbar.php:4
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/manager/dashboard.php(55): require_once()
+#1 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/manager/navbar.php on line 4
+[11-Apr-2025 06:00:43 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method Job::getNotifications() in /home/u201145375/domains/hireme-app.online/public_html/manager/navbar.php:4
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/manager/hiree.php(55): require_once()
+#1 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/manager/navbar.php on line 4
+[11-Apr-2025 06:00:52 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method Job::getNotifications() in /home/u201145375/domains/hireme-app.online/public_html/manager/navbar.php:4
+Stack trace:
+#0 /home/u201145375/domains/hireme-app.online/public_html/manager/hiree.php(55): require_once()
+#1 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/manager/navbar.php on line 4
+[11-Apr-2025 06:24:57 UTC] PHP Warning:  Undefined array key "referer" in /home/u201145375/domains/hireme-app.online/public_html/manager/viewjob.php on line 7
+[11-Apr-2025 06:25:27 UTC] PHP Warning:  Undefined array key "referer" in /home/u201145375/domains/hireme-app.online/public_html/manager/viewjob.php on line 7
+[11-Apr-2025 06:26:28 UTC] PHP Warning:  Undefined array key "referer" in /home/u201145375/domains/hireme-app.online/public_html/manager/viewjob.php on line 7
+[11-Apr-2025 06:26:39 UTC] PHP Warning:  Undefined array key "referer" in /home/u201145375/domains/hireme-app.online/public_html/manager/viewjob.php on line 7
+[11-Apr-2025 06:26:43 UTC] PHP Warning:  Undefined array key "referer" in /home/u201145375/domains/hireme-app.online/public_html/manager/viewjob.php on line 7
+[11-Apr-2025 06:27:02 UTC] PHP Warning:  Undefined array key "referer" in /home/u201145375/domains/hireme-app.online/public_html/manager/viewjob.php on line 7
+[11-Apr-2025 06:28:56 UTC] PHP Warning:  Undefined array key "referer" in /home/u201145375/domains/hireme-app.online/public_html/manager/viewjob.php on line 7
+[11-Apr-2025 06:30:18 UTC] PHP Warning:  Undefined array key "referer" in /home/u201145375/domains/hireme-app.online/public_html/manager/viewjob.php on line 7
+[11-Apr-2025 06:34:04 UTC] PHP Warning:  Undefined array key "referer" in /home/u201145375/domains/hireme-app.online/public_html/manager/viewjob.php on line 7

@@ -31,10 +31,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $companyID = $_POST['companyID'];
         $companyName = $_POST['companyName'];
         $dateHired = $_POST['dateHired'];
+        $reason = $_POST['reason'];
     
-        $hireeDetails = new HireeDetails(null, $fullName, $jobName, $companyName, $userID, $jobID, $companyID, $applicationID, $dateHired);
+        $hireeDetails = new HireeDetails(null, $fullName, $jobName, $companyName, $userID, $jobID, $companyID, $applicationID, $dateHired, $reason);
 
-        if ($application->changeJobApplicationStatus('Hired', $applicationID)) {
+        if ($application->changeJobApplicationStatus('Hired', null, $applicationID)) {
             if ($hiree->addHiree($hireeDetails)) {
                 $response = array('status' => 'success', 'message' => 'Hiree recorded successfully. Connecting to server, please wait.');
         
@@ -47,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     } 
     else{
-        if ($application->changeJobApplicationStatus('Rejected', $applicationID)) {
+        if ($application->changeJobApplicationStatus('Rejected', $reason, $applicationID)) {
             $response = array('status' => 'success', 'message' => 'Successfully rejected application. Connecting to server, please wait.');
     
         } else {

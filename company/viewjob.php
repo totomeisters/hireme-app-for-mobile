@@ -36,7 +36,7 @@ $pagetitle = "HireMe - View Job # " . $jobID;
 <body>
   <div id="toast-container"></div>
   <div class="overlay"></div>
-  
+
   <!-- Layout wrapper -->
   <div class="layout-wrapper layout-content-navbar">
     <div class="layout-container">
@@ -71,15 +71,14 @@ $pagetitle = "HireMe - View Job # " . $jobID;
                           </h6>
                         </div>
                         <div class="col-2">
-                            <?php if ($jobs->getVerificationStatus() !== 'Closed'){?>
-                          <button type="button" id="closejob" class="btn btn-danger" data-job-id="<?= $jobs->getJobID(); ?>">Close Job</button>
+                          <?php if ($jobs->getVerificationStatus() !== 'Closed') { ?>
+                            <button type="button" id="closejob" class="btn btn-danger" data-job-id="<?= $jobs->getJobID(); ?>">Close Job</button>
                           <?php } ?>
                         </div>
                       </div>
                       <div class="mb-4"><?= $jobs->getJobDescription(); ?></div>
 
                       <ul class="list-group list-group-flush">
-                        <li class="list-group-item"></li>
                         <li class="list-group-item">Job Type: <?= $jobs->getJobType(); ?></li>
                         <li class="list-group-item">Work Type: <?= $jobs->getWorkType(); ?></li>
                         <li class="list-group-item">Job Industry: <?= $jobs->getJobIndustry(); ?></li>
@@ -87,9 +86,13 @@ $pagetitle = "HireMe - View Job # " . $jobID;
                         <li class="list-group-item">Minimum Salary: ₱<?= $jobs->getSalaryMin(); ?></li>
                         <li class="list-group-item">Maximum Salary: ₱<?= $jobs->getSalaryMax(); ?></li>
                         <li class="list-group-item">Work Hours: <?= $jobs->getWorkHours(); ?></li>
-                        <li class="list-group-item"></li>
+                        <li class="list-group-item">Skills: <?= $jobs->getSkills(); ?></li>
+                        <li class="list-group-item">Qualifications: <?= $jobs->getQualifications(); ?></li>
+                        <li class="list-group-item">Vacancies: <?= $vacancies = $jobs->getVacancies()==0 ? 'Indefinite Hiring' : $jobs->getVacancies() ?></li>
                       </ul>
+
                       <?php
+                      // Posting date details
                       $postingDate = new DateTime($jobs->getPostingDate());
                       $currentDate = new DateTime();
                       $interval = $currentDate->diff($postingDate);
@@ -126,7 +129,7 @@ $pagetitle = "HireMe - View Job # " . $jobID;
                   </div>
                 <?php else : ?>
                   <div>
-                    <p>This place is nonexistent. Pray tell, how didst thou arrive hither? Go back whence you came, human.</p>
+                    <p>This place is nonexistent. Pray tell, how didst thou arrive hither?</p>
                   </div>
                 <?php endif; ?>
                 <h4>Applicants for "<?= $jobs->getJobTitle(); ?>"</h4>
@@ -139,8 +142,7 @@ $pagetitle = "HireMe - View Job # " . $jobID;
                       </div>
                     </div>
                   </div>
-                <?php else : //echo '<pre>'; print_r($applications); echo '</pre>';
-                ?>
+                <?php else : ?>
                   <div class="row">
                     <table class="table table-striped table-hover">
                       <thead>
@@ -154,17 +156,16 @@ $pagetitle = "HireMe - View Job # " . $jobID;
                         </tr>
                       </thead>
                       <tbody>
-                        <?php foreach ($applications as $application) : //echo '<pre>'; print_r($application); echo '</pre>';
+                        <?php foreach ($applications as $application) :
                           if (empty($application)) {
-                              continue;
+                            continue;
                           }
                           $jobseekerdetails = $jobseeker->getJobSeekerDetailsByUserID($application->getUserID());
-                            if (!empty($user->getUserDetailsByUserID($jobseekerdetails->getUserID()))) {
-                                $email = $user->getUserDetailsByUserID($jobseekerdetails->getUserID())->getEmail();
-                            } else {
-                                $email = "Unknown";
-                            }
-                          
+                          if (!empty($user->getUserDetailsByUserID($jobseekerdetails->getUserID()))) {
+                            $email = $user->getUserDetailsByUserID($jobseekerdetails->getUserID())->getEmail();
+                          } else {
+                            $email = "Unknown";
+                          }
                         ?>
                           <tr>
                             <td><?= ucfirst($jobseekerdetails->getFirstName()) . ' ' . ucfirst($jobseekerdetails->getLastName()) ?></td>
@@ -187,10 +188,8 @@ $pagetitle = "HireMe - View Job # " . $jobID;
                   </div>
                 <?php endif; ?>
               </div>
-
               <!-- /Card -->
             </div>
-
           </div>
           <!-- / Content -->
 
@@ -221,31 +220,27 @@ $pagetitle = "HireMe - View Job # " . $jobID;
   <!-- / Layout wrapper -->
 
   <!-- Core JS -->
-  <!-- build:js assets/vendor/js/core.js -->
-  
   <?php require_once "./endscripts.php"; ?>
-  
-    <script src="./assets/vendor/libs/jquery/jquery.js"></script>
-    
+  <script src="./assets/vendor/libs/jquery/jquery.js"></script>
+
   <script>
     function showToast(message, type) {
-          var toast = $('<div>', {
-              class: 'toast ' + type,
-              text: message
-          });
-          $('#toast-container').append(toast);
-          toast.addClass('show');
-          setTimeout(function() {
-              toast.remove();
-              $('.overlay').hide();
-          }, 2000);
-      }
+      var toast = $('<div>', {
+        class: 'toast ' + type,
+        text: message
+      });
+      $('#toast-container').append(toast);
+      toast.addClass('show');
+      setTimeout(function() {
+        toast.remove();
+        $('.overlay').hide();
+      }, 2000);
+    }
 
     $(document).ready(function() {
       $('#closejob').click(function() {
         var jobId = $(this).data('job-id');
 
-        // Confirmation dialog
         if (confirm("Are you sure you want to close this job?")) {
           $.ajax({
             type: 'POST',
@@ -256,14 +251,14 @@ $pagetitle = "HireMe - View Job # " . $jobID;
             dataType: 'json',
             success: function(response) {
               if (response.status === 'success') {
-                  console.log(response.message);
+                console.log(response.message);
                 $('.overlay').show();
                 showToast(response.message, 'success');
                 setTimeout(function() {
                   window.location.href = response.redirect;
                 }, 1400);
               } else if (response.status === 'error') {
-                  console.error(response.message);
+                console.error(response.message);
                 showToast(response.message, 'warning');
               } else {
                 console.error('Unknown response status:', response.status);
@@ -279,5 +274,4 @@ $pagetitle = "HireMe - View Job # " . $jobID;
     });
   </script>
 </body>
-
 </html>

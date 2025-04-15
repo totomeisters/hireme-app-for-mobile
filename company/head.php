@@ -42,6 +42,9 @@
 
   <!-- TinyMCE -->
   <script type="text/javascript" src="https://cdn.tiny.cloud/1/v2ooa4tj54wbeh5fgh0x5j1j62dcp4y8ouf2p895dms4e0z6/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+  <!-- GetOTP -->
+  <script src="https://otp.dev/js/getotp.min.js"></script>
+  
 </head>
 
 <style>
