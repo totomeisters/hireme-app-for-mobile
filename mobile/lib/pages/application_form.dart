@@ -135,43 +135,55 @@ class _ApplicationFormState extends State<ApplicationForm> {
     final prefs = await SharedPreferences.getInstance();
     String? userId = prefs.getString('userid');
 
-    Map<String, dynamic> response;
+    try {
+      Map<String, dynamic> response;
 
-    if (_pickedFile != null && _resumeFile != null) {
-      // Extract file path as a string
-      String resumePath = _resumeFile!.path; // Use the non-nullable path
-      // Submit with file picker
-      response = await JobService.applyToJob(
-        userId!,
-        resumePath,
-        widget.jobId,
-        isFile: true, // Specify this is a file upload
+      if (_pickedFile != null && _resumeFile != null) {
+        // Extract file path as a string
+        String resumePath = _resumeFile!.path;
+        // Submit with file picker
+        response = await JobService.applyToJob(
+          userId!,
+          resumePath,
+          widget.jobId,
+          isFile: true,
+        );
+      } else {
+        // Submit with Google Drive link
+        response = await JobService.applyToJob(
+          userId!,
+          _gdriveLinkController.text,
+          widget.jobId,
+          isFile: false,
+        );
+      }
+
+      setState(() {
+        _isSubmitting = false;
+      });
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(response["verdict"] == true
+              ? 'Application submitted!'
+              : response["message"].isNotEmpty
+                  ? response["message"]
+                  : "No Data"),
+          backgroundColor:
+              response["verdict"] == true ? Colors.green : Colors.red,
+        ),
       );
-    } else {
-      // Submit with Google Drive link
-      response = await JobService.applyToJob(
-        userId!,
-        _gdriveLinkController.text,
-        widget.jobId,
-        isFile: false, // Specify this is a URL
+    } catch (e) {
+      setState(() {
+        _isSubmitting = false;
+      });
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Failed to submit application: $e'),
+          backgroundColor: Colors.red,
+        ),
       );
     }
-
-    setState(() {
-      _isSubmitting = false;
-    });
-
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(response["verdict"] == true
-            ? 'Application submitted!'
-            : response["message"].isNotEmpty
-                ? response["message"]
-                : "No Data"),
-        backgroundColor:
-            response["verdict"] == true ? Colors.green : Colors.red,
-      ),
-    );
   }
 
   void _confirmSubmission() {
