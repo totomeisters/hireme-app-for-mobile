@@ -225,7 +225,7 @@ $pagetitle = "HireMe - View Job # ".$jobID;
               </div>
               <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                  <button type="button" id="modalconfirm" class="btn btn-primary" disabled>Confirm</button>
+                  <button type="button" id="modalconfirm" class="btn btn-primary">Confirm</button>
               </div>
           </div>
       </div>
@@ -290,6 +290,7 @@ $pagetitle = "HireMe - View Job # ".$jobID;
           verifyButton.addEventListener("click", function(event) {
               event.preventDefault();
               statusValue = "Verified";
+              let reason = "";
               var modalMessage = confirmationModal.querySelector(".modal-body");
               modalMessage.innerHTML = "You clicked <strong class='text-success'>VERIFY</strong>. Are you sure you want to continue? <strong>This action cannot be undone.</strong>";
               var modal = new bootstrap.Modal(confirmationModal);
@@ -307,13 +308,16 @@ $pagetitle = "HireMe - View Job # ".$jobID;
           });
               
           document.getElementById("confirmationModal").querySelector(".btn-primary").addEventListener("click", function () {
-              let reasonField = document.getElementById('reason');
-              let reason = reasonField.value.trim();
-                    
-              if (reason === "") {
+              var reason = "";
+              if(statusValue === "Rejected"){
+                let reasonField = document.getElementById('reason');
+                let reason = reasonField.value.trim();
+                
+                if (reason === "" && statusValue === "Rejected") {
                   alert("Please provide a reason for rejection.");
                   reasonField.focus();
                   return;
+                }
               }
             
               var formData = $('#updateapplication').serialize();

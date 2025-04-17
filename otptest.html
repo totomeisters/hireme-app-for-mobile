@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Email OTP</title>
+  <script src="https://otp.dev/js/getotp.min.js"></script>
+</head>
+<body>
+  <form id="otp-form">
+    <input type="email" id="email" name="email" placeholder="Enter your email" required />
+    <button type="submit">Send OTP</button>
+  </form>
+
+  <script>
+    document.getElementById('otp-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+
+      fetch('otp.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: `email=${encodeURIComponent(email)}`
+        })
+        .then(res => res.json())
+        .then(response => {
+          if (response.link) {
+            window.open(response.link, '_blank');
+          } else {
+            alert('OTP request failed.');
+          }
+        })
+        .catch(err => alert('Error: ' + err));
+    });
+  </script>
+</body>
+</html>

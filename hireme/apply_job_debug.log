@@ -1,0 +1,8 @@
+Incoming request: Array
+(
+    [user_id] => 171
+    [resume] => https://drive.google.com/file/d/1DXpDeD6BiT99vJ9K3DyzlTYumumOjIJY/view?usp=sharing
+    [job_id] => 38
+)
+Checking existing application: SELECT JobSeekerApplicationID FROM `jobseekerapplication` WHERE UserID ='171' && JobID = '38'
+Unknown error occurred.

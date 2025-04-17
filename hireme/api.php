@@ -81,21 +81,46 @@ if (isset($_POST['api_key'])) {
                         $_POST['user_id']
                     );
                     break;
-                case "state_apply_job":
-                    $resume = isset($_FILES['resume']) ? $_FILES['resume'] : null;
-                    $url = isset($_POST['url']) ? $_POST['url'] : null;
-                   
-                    // Modify this to handle both resume and URL
-                    if ($resume && $url) {
-                        echo $jobDb->apply_job_with_url($_POST['user_id'], $resume, $_POST['job_id'], $url);
-                    } elseif ($resume) {
-                        echo $jobDb->apply_job_with_file($_POST['user_id'], $resume, $_POST['job_id']);
-                    } elseif ($url) {
-                        echo $jobDb->apply_job_with_url_only($_POST['user_id'], $_POST['job_id'], $url);
-                    } else {
-                        echo $jobDb->apply_job_without_file_or_url($_POST['user_id'], $_POST['job_id']);
+               /* case "state_apply_job":
+                    echo $jobDb->apply_job(
+                        $_POST['user_id'],
+                        $_POST['resume'],
+                        $_POST['job_id']
+                    );
+                    break; */
+                    
+                  /*  case "state_apply_job":
+                        $response = $jobDb->apply_job($_POST['user_id'], $_POST['resume'], $_POST['job_id']);
+                        if (!$response) {
+                            header("Content-Type: JSON");
+                            echo json_encode(['verdict' => false, 'message' => 'Unexpected error occurred'], JSON_PRETTY_PRINT);
+                        } else {
+                            echo $response;
+                        }
+                        break; */
+                        
+                 case "state_apply_job":
+                    $user_id = $_POST['user_id'] ?? '';
+                    $resume = $_POST['resumefile'] ?? ''; // File picker uploads
+                    $resume_path = $_POST['ResumeFilePath'] ?? ''; // Google Drive links
+                    $job_id = $_POST['job_id'] ?? '';
+                
+                    // Validate inputs
+                    if (empty($user_id) || (empty($resume) && empty($resume_path)) || empty($job_id)) {
+                        echo json_encode(['verdict' => false, 'message' => 'Missing required parameters!'], JSON_PRETTY_PRINT);
+                        break;
                     }
-                    break;                                  
+                
+                    // Handle file picker uploads
+                    if (!empty($resume)) {
+                        echo $jobDb->apply_job_with_file($user_id, $resume, $job_id);
+                    }
+                    // Handle Google Drive link uploads
+                    elseif (!empty($resume_path)) {
+                        echo $jobDb->apply_job_with_link($user_id, $resume_path, $job_id);
+                    }
+                    break;
+    
                 case "state_verify_user":
                     echo $authDb->user_verification(
                         $_POST['user_id'],

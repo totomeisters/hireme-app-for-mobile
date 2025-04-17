@@ -27,11 +27,7 @@
 }
 
 .toast.warning {
-    background-color: #e8af05;
-}
-
-.toast.error {
-    background-color: #c42206;
+    background-color: #f44336;
 }
 
 .toast.success {

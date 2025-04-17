@@ -108,3 +108,8 @@ Stack trace:
 [11-Apr-2025 06:28:56 UTC] PHP Warning:  Undefined array key "referer" in /home/u201145375/domains/hireme-app.online/public_html/manager/viewjob.php on line 7
 [11-Apr-2025 06:30:18 UTC] PHP Warning:  Undefined array key "referer" in /home/u201145375/domains/hireme-app.online/public_html/manager/viewjob.php on line 7
 [11-Apr-2025 06:34:04 UTC] PHP Warning:  Undefined array key "referer" in /home/u201145375/domains/hireme-app.online/public_html/manager/viewjob.php on line 7
+[14-Apr-2025 11:30:19 UTC] PHP Warning:  Undefined array key "referer" in /home/u201145375/domains/hireme-app.online/public_html/manager/viewjob.php on line 7
+[14-Apr-2025 11:44:32 UTC] PHP Warning:  Undefined array key "referer" in /home/u201145375/domains/hireme-app.online/public_html/manager/viewjob.php on line 7
+[14-Apr-2025 12:08:02 UTC] PHP Warning:  Undefined array key "referer" in /home/u201145375/domains/hireme-app.online/public_html/manager/viewjob.php on line 7
+[14-Apr-2025 18:04:56 UTC] PHP Warning:  Undefined array key "referer" in /home/u201145375/domains/hireme-app.online/public_html/manager/viewjob.php on line 7
+[14-Apr-2025 18:40:07 UTC] PHP Warning:  Undefined array key "referer" in /home/u201145375/domains/hireme-app.online/public_html/manager/viewjob.php on line 7

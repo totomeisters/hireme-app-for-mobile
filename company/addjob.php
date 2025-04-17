@@ -103,8 +103,8 @@ $pagetitle = "HireMe - Post a Job";
                                             
                                             <div class="col-md-6">
                                                 <div data-bs-toggle="tooltip" data-bs-placement="top" title="Pick zero for indefinite hiring.">
-                                                  <label for="slots">Vacancies:</label>
-                                                  <input type="number" class="form-control" id="slots" name="slots" required min="0" step="1">
+                                                  <label for="vacancies">Vacancies:</label>
+                                                  <input type="number" class="form-control" id="vacancies" name="vacancies" required min="0" step="1">
                                                 </div>
                                             </div>
                                         </div>
@@ -186,16 +186,18 @@ $pagetitle = "HireMe - Post a Job";
                                                 <ul class="dropdown-menu" aria-labelledby="dropdownQualifications">
                                                     <li>
                                                         <div class="form-check ms-3">
-                                                            <input class="form-check-input" type="checkbox" id="qualification1" name="qualifications[]" value="College Graduate">
-                                                            <label class="form-check-label" for="qualification1">College Graduate</label>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="form-check ms-3">
                                                             <input class="form-check-input" type="checkbox" id="qualification2" name="qualifications[]" value="High School Graduate">
                                                             <label class="form-check-label" for="qualification2">High School Graduate</label>
                                                         </div>
                                                     </li>
+                                                    
+                                                    <li>
+                                                        <div class="form-check ms-3">
+                                                            <input class="form-check-input" type="checkbox" id="qualification1" name="qualifications[]" value="College Graduate">
+                                                            <label class="form-check-label" for="qualification1">College Graduate</label>
+                                                        </div>
+                                                    </li>
+                                 
                                                     <li>
                                                         <div class="form-check ms-3">
                                                             <input class="form-check-input" type="checkbox" id="qualification3" name="qualifications[]" value="5 Months Work Experience">

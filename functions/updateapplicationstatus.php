@@ -11,6 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $applicationID = $_POST['applicationID'];
     $statuserr = 0;
     $applicationIDerr = 0;
+    $reason = $_POST['reason'] ?? null;
 
     if(empty($status) || ($status !== "Rejected" && $status !== "Verified")) {
         $statuserr = 1;
@@ -29,8 +30,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     if($statuserr == 0 && $applicationIDerr == 0) {
-        if($jobapplication->changeJobApplicationStatus($status, $applicationID)) {
-            $response = array('status' => 'success', 'message' => 'Status was successfully updated.', 'redirect' => './candidates.php');
+        if($jobapplication->changeJobApplicationStatus($status, $applicationID, $reason)) {
+            
+            if($status=='Verified'){
+                $response = array('status' => 'success', 'message' => 'Successfully verified.', 'redirect' => './candidates.php');
+            }elseif($status=='Rejected'){
+                $response = array('status' => 'success', 'message' => 'Successfully rejected.', 'redirect' => '');
+            }
         } else {
             $response = array('status' => 'error', 'message' => 'Failed to update status.', 'redirect' => '');
         }

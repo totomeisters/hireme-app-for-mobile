@@ -38,3 +38,13 @@ Stack trace:
 [09-Apr-2025 04:05:03 UTC] PHP Warning:  Undefined array key "resume" in /home/u201145375/domains/hireme-app.online/public_html/hireme/api.php on line 95
 [09-Apr-2025 04:05:29 UTC] PHP Warning:  Undefined array key "resume" in /home/u201145375/domains/hireme-app.online/public_html/hireme/api.php on line 95
 [09-Apr-2025 04:06:07 UTC] PHP Warning:  Undefined array key "resume" in /home/u201145375/domains/hireme-app.online/public_html/hireme/api.php on line 95
+[14-Apr-2025 12:29:27 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method JobService::apply_job() in /home/u201145375/domains/hireme-app.online/public_html/hireme/api.php:85
+Stack trace:
+#0 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/hireme/api.php on line 85
+[14-Apr-2025 12:29:50 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method JobService::apply_job() in /home/u201145375/domains/hireme-app.online/public_html/hireme/api.php:85
+Stack trace:
+#0 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/hireme/api.php on line 85
+[15-Apr-2025 00:03:38 UTC] PHP Warning:  Undefined array key "resume" in /home/u201145375/domains/hireme-app.online/public_html/hireme/api.php on line 87
+[15-Apr-2025 00:04:13 UTC] PHP Warning:  Undefined array key "resume" in /home/u201145375/domains/hireme-app.online/public_html/hireme/api.php on line 87

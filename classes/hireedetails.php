@@ -20,7 +20,7 @@ class HireeDetails {
         $this->jobName = $jobName;
         $this->companyName = $companyName;
         $this->applicationID = $applicationID;
-        $this->dateHired = $dateHired;        
+        $this->dateHired = $dateHired;    
     }
 
     // Getters

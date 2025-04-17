@@ -129,7 +129,7 @@ $pagetitle = "HireMe - View Job # " . $jobID;
                   </div>
                 <?php else : ?>
                   <div>
-                    <p>This place is nonexistent. Pray tell, how didst thou arrive hither?</p>
+                    <p>This place is nonexistent. Pray tell, how didst thou arrive hither? Go back whence you came, human.</p>
                   </div>
                 <?php endif; ?>
                 <h4>Applicants for "<?= $jobs->getJobTitle(); ?>"</h4>

@@ -45,7 +45,7 @@ $pagetitle = "HireMe - Application";
                 <div class="row">
                     <div class="col-lg-12 mb-4 order-0">
                         <div class="card p-2">
-                          <small class="p-2"><span style="color: red;">*</span>This is what the applicants will see.</small>
+                            <small class="p-2"><span style="color: red;">*</span>This is what the applicants will see.</small>
                             <form id="formAuthentication" action="../functions/registercompany.php" method="post">
                                 <div class="form-group mb-2">
                                     <label for="companyName">Company Name:</label>

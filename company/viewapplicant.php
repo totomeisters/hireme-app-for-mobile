@@ -92,45 +92,30 @@ $pagetitle = "HireMe - View Applicant # " . $applicantID;
                       $pattern = '/^https:\/\/drive\.google\.com\/file\/d\/[a-zA-Z0-9\-_]+\/(.+)/';
                       return preg_match($pattern, $link) === 1;
                   }
-
-                  if ($applicationdetails) {
-                      foreach ($applicationdetails as $applicationdetail) {
-                          $resumeId = $applicationdetail->getResumeFilePath();
-                          $resume = $applicationdetail->getResumeFile(); // This is the BLOB data
-                      
-                                                  
-                          if (!empty($resumeId)) {
+                    if ($applicationdetails) {
+                        $applicationdetail = end($applicationdetails);
+                        $resumeId = $applicationdetail->getResumeFilePath();
+                        $resume = $applicationdetail->getResumeFile();
+                    
+                        if ($resumeId) {
                             $link = modify_google_drive_link($resumeId);
                               // Check if the link is a Google Drive link
                             if (is_google_drive_link($resumeId)) {
-                              echo '<iframe src="' . $link . '" width="100%" height="600px"></iframe>';
+                                echo '<iframe src="' . $link . '" width="100%" height="600px"></iframe>';
                             } else {
-                              echo "That was not a Google Drive link.";
+                                echo "That was not a Google Drive link.";
                             }
-                          } 
-                          
-                         
-                          elseif (!empty($resume)) {
-                            // Encode the BLOB data as base64
+                        } elseif ($resume) {
                             $base64_pdf = base64_encode($resume);
-                          
-                            // Create the data URI
                             $pdf_data_uri = 'data:application/pdf;base64,' . $base64_pdf;
-                          
-                            // Embed the PDF using an <iframe> or <object>
                             echo '<iframe src="' . $pdf_data_uri . '" width="100%" height="600px"></iframe>';
-                            //Or using object tag
-                            //echo '<object data="' . $pdf_data_uri . '" type="application/pdf" width="100%" height="600px"></object>';
-                          
                         } else {
                             echo "File not found.";
                         }
-                      } 
-                      
-                      
-                  } else {
-                      echo "Error getting document details.";
-                  }
+                    } else {
+                        echo "Error getting document details.";
+                    }
+
                 ?>
                 </div>
               </div>
@@ -284,7 +269,7 @@ $pagetitle = "HireMe - View Applicant # " . $applicantID;
               <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title" id="setInterviewModalLabel">Set Interview</h5>
-                  <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                   <form id="setInterview" method="post" action="../functions/addinterview.php">
@@ -309,7 +294,7 @@ $pagetitle = "HireMe - View Applicant # " . $applicantID;
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="changeStatusModalLabel"> What to do with this Applicant?</h5>
+                  <h5 class="modal-title" id="changeStatusModalLabel"> Do you want to hire this Applicant?</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -321,6 +306,12 @@ $pagetitle = "HireMe - View Applicant # " . $applicantID;
                     <input type="text" id="companyID" name="companyID" value="<?= $companyID ?>" hidden>
                     <input type="text" id="companyName" name="companyName" value="<?= $companyName ?>" hidden>
                     <input type="text" id="applicationID" name="applicationID" value="<?= $applicationID ?>" hidden>
+
+                    <div class="form-group mb-5">
+                      <label for="dateHired">Date Hired:</label>
+                      <p><span class="text-danger">*</span><small class="text-muted">Not required if choosing "Rejected".</small></p>
+                      <input type="datetime-local" class="form-control" id="dateHired" name="dateHired" required ="<?php echo date('Y-m-d\TH:i'); ?>" required> <!--removed max kasi na rerestrict-->
+                    </div>
 
                     <div class="form-group mb-5">
                       <label for="status">Status:</label>
@@ -539,7 +530,7 @@ $pagetitle = "HireMe - View Applicant # " . $applicantID;
     document.addEventListener("DOMContentLoaded", function() {
       const userId = <?= $applicantID ?>;
       const jobId = <?= $jobID ?>;
-      getPDF(userId, jobId); // display pdf if dom is loaded
+      // getPDF(userId, jobId);
 
       var confirmationModal = document.getElementById("confirmationModal");
       var verifyButton = document.querySelector("#updateapplication button[value='Verified']");
@@ -549,6 +540,7 @@ $pagetitle = "HireMe - View Applicant # " . $applicantID;
       verifyButton.addEventListener("click", function(event) {
         event.preventDefault();
         statusValue = "Verified";
+        let reason = "";
         var modalMessage = confirmationModal.querySelector(".modal-body");
         modalMessage.innerHTML = "You clicked <strong class='text-success'>VERIFY</strong>. Are you sure you want to continue? <strong>This action cannot be undone.</strong>";
         var modal = new bootstrap.Modal(confirmationModal);
@@ -560,15 +552,30 @@ $pagetitle = "HireMe - View Applicant # " . $applicantID;
         statusValue = "Rejected";
         var modalMessage = confirmationModal.querySelector(".modal-body");
         modalMessage.innerHTML = "You clicked <strong class='text-danger'>REJECT</strong>. Are you sure you want to continue? <strong>This action cannot be undone.</strong>";
+        modalMessage.innerHTML += '<textarea class="form-control" id="reason" name="reason" rows="3" placeholder="Reason for Rejection"></textarea>';
         var modal = new bootstrap.Modal(confirmationModal);
         modal.show();
-      });
-
-      document.getElementById("confirmationModal").querySelector(".btn-primary").addEventListener("click", function() {
-        var formData = $('#updateapplication').serialize();
-        formData += "&status=" + statusValue;
-        handleFormSubmission(formData);
-      });
+      }); 
+         
+      document.getElementById("confirmationModal").querySelector(".btn-primary").addEventListener("click", function () {
+              var reason = "";
+              if(statusValue === "Rejected"){
+                let reasonField = document.getElementById('reason');
+                let reason = reasonField.value.trim();
+                
+                if (reason === "" && statusValue === "Rejected") {
+                  alert("Please provide a reason for rejection.");
+                  reasonField.focus();
+                  return;
+                }
+              }
+            
+              var formData = $('#updateapplication').serialize();
+              formData += "&status=" + statusValue;
+              formData += "&reason=" + reason;
+            
+              handleFormSubmission(formData);
+          });
     });
   </script>
 </body>

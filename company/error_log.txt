@@ -270,176 +270,88 @@ Stack trace:
 #0 /home/u201145375/domains/hireme-app.online/public_html/company/addjob.php(32): require_once()
 #1 {main}
   thrown in /home/u201145375/domains/hireme-app.online/public_html/company/navbar.php on line 5
-[14-Apr-2025 18:40:31 Asia/Manila] PHP Warning:  Undefined variable $companyName in C:\wamp64\www\HireMe\company\menubar.php on line 47
-[14-Apr-2025 18:40:31 Asia/Manila] PHP Stack trace:
-[14-Apr-2025 18:40:31 Asia/Manila] PHP   1. {main}() C:\wamp64\www\HireMe\company\dashboard.php:0
-[14-Apr-2025 18:40:31 Asia/Manila] PHP   2. require_once() C:\wamp64\www\HireMe\company\dashboard.php:62
-[14-Apr-2025 18:40:31 Asia/Manila] PHP Deprecated:  strtoupper(): Passing null to parameter #1 ($string) of type string is deprecated in C:\wamp64\www\HireMe\company\menubar.php on line 47
-[14-Apr-2025 18:40:31 Asia/Manila] PHP Stack trace:
-[14-Apr-2025 18:40:31 Asia/Manila] PHP   1. {main}() C:\wamp64\www\HireMe\company\dashboard.php:0
-[14-Apr-2025 18:40:31 Asia/Manila] PHP   2. require_once() C:\wamp64\www\HireMe\company\dashboard.php:62
-[14-Apr-2025 18:40:31 Asia/Manila] PHP   3. strtoupper($string = NULL) C:\wamp64\www\HireMe\company\menubar.php:47
-[14-Apr-2025 18:40:42 Asia/Manila] PHP Warning:  Undefined variable $companyName in C:\wamp64\www\HireMe\company\menubar.php on line 47
-[14-Apr-2025 18:40:42 Asia/Manila] PHP Stack trace:
-[14-Apr-2025 18:40:42 Asia/Manila] PHP   1. {main}() C:\wamp64\www\HireMe\company\application.php:0
-[14-Apr-2025 18:40:42 Asia/Manila] PHP   2. require_once() C:\wamp64\www\HireMe\company\application.php:32
-[14-Apr-2025 18:40:42 Asia/Manila] PHP Deprecated:  strtoupper(): Passing null to parameter #1 ($string) of type string is deprecated in C:\wamp64\www\HireMe\company\menubar.php on line 47
-[14-Apr-2025 18:40:42 Asia/Manila] PHP Stack trace:
-[14-Apr-2025 18:40:42 Asia/Manila] PHP   1. {main}() C:\wamp64\www\HireMe\company\application.php:0
-[14-Apr-2025 18:40:42 Asia/Manila] PHP   2. require_once() C:\wamp64\www\HireMe\company\application.php:32
-[14-Apr-2025 18:40:42 Asia/Manila] PHP   3. strtoupper($string = NULL) C:\wamp64\www\HireMe\company\menubar.php:47
-[14-Apr-2025 18:42:11 Asia/Manila] PHP Warning:  Undefined variable $companyName in C:\wamp64\www\HireMe\company\menubar.php on line 47
-[14-Apr-2025 18:42:11 Asia/Manila] PHP Stack trace:
-[14-Apr-2025 18:42:11 Asia/Manila] PHP   1. {main}() C:\wamp64\www\HireMe\company\application.php:0
-[14-Apr-2025 18:42:11 Asia/Manila] PHP   2. require_once() C:\wamp64\www\HireMe\company\application.php:32
-[14-Apr-2025 18:42:11 Asia/Manila] PHP Deprecated:  strtoupper(): Passing null to parameter #1 ($string) of type string is deprecated in C:\wamp64\www\HireMe\company\menubar.php on line 47
-[14-Apr-2025 18:42:11 Asia/Manila] PHP Stack trace:
-[14-Apr-2025 18:42:11 Asia/Manila] PHP   1. {main}() C:\wamp64\www\HireMe\company\application.php:0
-[14-Apr-2025 18:42:11 Asia/Manila] PHP   2. require_once() C:\wamp64\www\HireMe\company\application.php:32
-[14-Apr-2025 18:42:11 Asia/Manila] PHP   3. strtoupper($string = NULL) C:\wamp64\www\HireMe\company\menubar.php:47
-[14-Apr-2025 18:43:31 Asia/Manila] PHP Warning:  Undefined variable $companyName in C:\wamp64\www\HireMe\company\menubar.php on line 47
-[14-Apr-2025 18:43:31 Asia/Manila] PHP Stack trace:
-[14-Apr-2025 18:43:31 Asia/Manila] PHP   1. {main}() C:\wamp64\www\HireMe\company\application.php:0
-[14-Apr-2025 18:43:31 Asia/Manila] PHP   2. require_once() C:\wamp64\www\HireMe\company\application.php:32
-[14-Apr-2025 18:43:31 Asia/Manila] PHP Deprecated:  strtoupper(): Passing null to parameter #1 ($string) of type string is deprecated in C:\wamp64\www\HireMe\company\menubar.php on line 47
-[14-Apr-2025 18:43:31 Asia/Manila] PHP Stack trace:
-[14-Apr-2025 18:43:31 Asia/Manila] PHP   1. {main}() C:\wamp64\www\HireMe\company\application.php:0
-[14-Apr-2025 18:43:31 Asia/Manila] PHP   2. require_once() C:\wamp64\www\HireMe\company\application.php:32
-[14-Apr-2025 18:43:31 Asia/Manila] PHP   3. strtoupper($string = NULL) C:\wamp64\www\HireMe\company\menubar.php:47
-[14-Apr-2025 18:44:39 Asia/Manila] PHP Warning:  Undefined variable $companyName in C:\wamp64\www\HireMe\company\menubar.php on line 47
-[14-Apr-2025 18:44:39 Asia/Manila] PHP Stack trace:
-[14-Apr-2025 18:44:39 Asia/Manila] PHP   1. {main}() C:\wamp64\www\HireMe\company\application.php:0
-[14-Apr-2025 18:44:39 Asia/Manila] PHP   2. require_once() C:\wamp64\www\HireMe\company\application.php:32
-[14-Apr-2025 18:44:39 Asia/Manila] PHP Deprecated:  strtoupper(): Passing null to parameter #1 ($string) of type string is deprecated in C:\wamp64\www\HireMe\company\menubar.php on line 47
-[14-Apr-2025 18:44:39 Asia/Manila] PHP Stack trace:
-[14-Apr-2025 18:44:39 Asia/Manila] PHP   1. {main}() C:\wamp64\www\HireMe\company\application.php:0
-[14-Apr-2025 18:44:39 Asia/Manila] PHP   2. require_once() C:\wamp64\www\HireMe\company\application.php:32
-[14-Apr-2025 18:44:39 Asia/Manila] PHP   3. strtoupper($string = NULL) C:\wamp64\www\HireMe\company\menubar.php:47
-[14-Apr-2025 23:28:43 Asia/Manila] PHP Warning:  Undefined array key "Skills" in C:\wamp64\www\HireMe\classes\job.php on line 200
-[14-Apr-2025 23:28:43 Asia/Manila] PHP Stack trace:
-[14-Apr-2025 23:28:43 Asia/Manila] PHP   1. {main}() C:\wamp64\www\HireMe\company\jobs.php:0
-[14-Apr-2025 23:28:43 Asia/Manila] PHP   2. Job->getAllJobs($companyId = 11) C:\wamp64\www\HireMe\company\jobs.php:18
-[14-Apr-2025 23:28:43 Asia/Manila] PHP Warning:  Undefined array key "Qualifications" in C:\wamp64\www\HireMe\classes\job.php on line 201
-[14-Apr-2025 23:28:43 Asia/Manila] PHP Stack trace:
-[14-Apr-2025 23:28:43 Asia/Manila] PHP   1. {main}() C:\wamp64\www\HireMe\company\jobs.php:0
-[14-Apr-2025 23:28:43 Asia/Manila] PHP   2. Job->getAllJobs($companyId = 11) C:\wamp64\www\HireMe\company\jobs.php:18
-[14-Apr-2025 23:28:43 Asia/Manila] PHP Warning:  Undefined array key "Skills" in C:\wamp64\www\HireMe\classes\job.php on line 200
-[14-Apr-2025 23:28:43 Asia/Manila] PHP Stack trace:
-[14-Apr-2025 23:28:43 Asia/Manila] PHP   1. {main}() C:\wamp64\www\HireMe\company\jobs.php:0
-[14-Apr-2025 23:28:43 Asia/Manila] PHP   2. Job->getAllJobs($companyId = 11) C:\wamp64\www\HireMe\company\jobs.php:18
-[14-Apr-2025 23:28:43 Asia/Manila] PHP Warning:  Undefined array key "Qualifications" in C:\wamp64\www\HireMe\classes\job.php on line 201
-[14-Apr-2025 23:28:43 Asia/Manila] PHP Stack trace:
-[14-Apr-2025 23:28:43 Asia/Manila] PHP   1. {main}() C:\wamp64\www\HireMe\company\jobs.php:0
-[14-Apr-2025 23:28:43 Asia/Manila] PHP   2. Job->getAllJobs($companyId = 11) C:\wamp64\www\HireMe\company\jobs.php:18
-[14-Apr-2025 23:28:43 Asia/Manila] PHP Warning:  Undefined array key "Skills" in C:\wamp64\www\HireMe\classes\job.php on line 200
-[14-Apr-2025 23:28:43 Asia/Manila] PHP Stack trace:
-[14-Apr-2025 23:28:43 Asia/Manila] PHP   1. {main}() C:\wamp64\www\HireMe\company\jobs.php:0
-[14-Apr-2025 23:28:43 Asia/Manila] PHP   2. Job->getAllJobs($companyId = 11) C:\wamp64\www\HireMe\company\jobs.php:18
-[14-Apr-2025 23:28:43 Asia/Manila] PHP Warning:  Undefined array key "Qualifications" in C:\wamp64\www\HireMe\classes\job.php on line 201
-[14-Apr-2025 23:28:43 Asia/Manila] PHP Stack trace:
-[14-Apr-2025 23:28:43 Asia/Manila] PHP   1. {main}() C:\wamp64\www\HireMe\company\jobs.php:0
-[14-Apr-2025 23:28:43 Asia/Manila] PHP   2. Job->getAllJobs($companyId = 11) C:\wamp64\www\HireMe\company\jobs.php:18
-[14-Apr-2025 23:28:43 Asia/Manila] PHP Warning:  Undefined array key "Skills" in C:\wamp64\www\HireMe\classes\job.php on line 200
-[14-Apr-2025 23:28:43 Asia/Manila] PHP Stack trace:
-[14-Apr-2025 23:28:43 Asia/Manila] PHP   1. {main}() C:\wamp64\www\HireMe\company\jobs.php:0
-[14-Apr-2025 23:28:43 Asia/Manila] PHP   2. Job->getAllJobs($companyId = 11) C:\wamp64\www\HireMe\company\jobs.php:18
-[14-Apr-2025 23:28:43 Asia/Manila] PHP Warning:  Undefined array key "Qualifications" in C:\wamp64\www\HireMe\classes\job.php on line 201
-[14-Apr-2025 23:28:43 Asia/Manila] PHP Stack trace:
-[14-Apr-2025 23:28:43 Asia/Manila] PHP   1. {main}() C:\wamp64\www\HireMe\company\jobs.php:0
-[14-Apr-2025 23:28:43 Asia/Manila] PHP   2. Job->getAllJobs($companyId = 11) C:\wamp64\www\HireMe\company\jobs.php:18
-[14-Apr-2025 23:28:43 Asia/Manila] PHP Warning:  Undefined array key "Skills" in C:\wamp64\www\HireMe\classes\job.php on line 200
-[14-Apr-2025 23:28:43 Asia/Manila] PHP Stack trace:
-[14-Apr-2025 23:28:43 Asia/Manila] PHP   1. {main}() C:\wamp64\www\HireMe\company\jobs.php:0
-[14-Apr-2025 23:28:43 Asia/Manila] PHP   2. Job->getAllJobs($companyId = 11) C:\wamp64\www\HireMe\company\jobs.php:18
-[14-Apr-2025 23:28:43 Asia/Manila] PHP Warning:  Undefined array key "Qualifications" in C:\wamp64\www\HireMe\classes\job.php on line 201
-[14-Apr-2025 23:28:43 Asia/Manila] PHP Stack trace:
-[14-Apr-2025 23:28:43 Asia/Manila] PHP   1. {main}() C:\wamp64\www\HireMe\company\jobs.php:0
-[14-Apr-2025 23:28:43 Asia/Manila] PHP   2. Job->getAllJobs($companyId = 11) C:\wamp64\www\HireMe\company\jobs.php:18
-[14-Apr-2025 23:28:43 Asia/Manila] PHP Warning:  Undefined array key "Skills" in C:\wamp64\www\HireMe\classes\job.php on line 200
-[14-Apr-2025 23:28:43 Asia/Manila] PHP Stack trace:
-[14-Apr-2025 23:28:43 Asia/Manila] PHP   1. {main}() C:\wamp64\www\HireMe\company\jobs.php:0
-[14-Apr-2025 23:28:43 Asia/Manila] PHP   2. Job->getAllJobs($companyId = 11) C:\wamp64\www\HireMe\company\jobs.php:18
-[14-Apr-2025 23:28:43 Asia/Manila] PHP Warning:  Undefined array key "Qualifications" in C:\wamp64\www\HireMe\classes\job.php on line 201
-[14-Apr-2025 23:28:43 Asia/Manila] PHP Stack trace:
-[14-Apr-2025 23:28:43 Asia/Manila] PHP   1. {main}() C:\wamp64\www\HireMe\company\jobs.php:0
-[14-Apr-2025 23:28:43 Asia/Manila] PHP   2. Job->getAllJobs($companyId = 11) C:\wamp64\www\HireMe\company\jobs.php:18
-[14-Apr-2025 23:28:43 Asia/Manila] PHP Warning:  Undefined array key "Skills" in C:\wamp64\www\HireMe\classes\job.php on line 200
-[14-Apr-2025 23:28:43 Asia/Manila] PHP Stack trace:
-[14-Apr-2025 23:28:43 Asia/Manila] PHP   1. {main}() C:\wamp64\www\HireMe\company\jobs.php:0
-[14-Apr-2025 23:28:43 Asia/Manila] PHP   2. Job->getAllJobs($companyId = 11) C:\wamp64\www\HireMe\company\jobs.php:18
-[14-Apr-2025 23:28:43 Asia/Manila] PHP Warning:  Undefined array key "Qualifications" in C:\wamp64\www\HireMe\classes\job.php on line 201
-[14-Apr-2025 23:28:43 Asia/Manila] PHP Stack trace:
-[14-Apr-2025 23:28:43 Asia/Manila] PHP   1. {main}() C:\wamp64\www\HireMe\company\jobs.php:0
-[14-Apr-2025 23:28:43 Asia/Manila] PHP   2. Job->getAllJobs($companyId = 11) C:\wamp64\www\HireMe\company\jobs.php:18
-[14-Apr-2025 23:28:43 Asia/Manila] PHP Warning:  Undefined array key "Skills" in C:\wamp64\www\HireMe\classes\job.php on line 200
-[14-Apr-2025 23:28:43 Asia/Manila] PHP Stack trace:
-[14-Apr-2025 23:28:43 Asia/Manila] PHP   1. {main}() C:\wamp64\www\HireMe\company\jobs.php:0
-[14-Apr-2025 23:28:43 Asia/Manila] PHP   2. Job->getAllJobs($companyId = 11) C:\wamp64\www\HireMe\company\jobs.php:18
-[14-Apr-2025 23:28:43 Asia/Manila] PHP Warning:  Undefined array key "Qualifications" in C:\wamp64\www\HireMe\classes\job.php on line 201
-[14-Apr-2025 23:28:43 Asia/Manila] PHP Stack trace:
-[14-Apr-2025 23:28:43 Asia/Manila] PHP   1. {main}() C:\wamp64\www\HireMe\company\jobs.php:0
-[14-Apr-2025 23:28:43 Asia/Manila] PHP   2. Job->getAllJobs($companyId = 11) C:\wamp64\www\HireMe\company\jobs.php:18
-[14-Apr-2025 23:28:45 Asia/Manila] PHP Warning:  Undefined array key "Skills" in C:\wamp64\www\HireMe\classes\job.php on line 244
-[14-Apr-2025 23:28:45 Asia/Manila] PHP Stack trace:
-[14-Apr-2025 23:28:45 Asia/Manila] PHP   1. {main}() C:\wamp64\www\HireMe\company\viewjob.php:0
-[14-Apr-2025 23:28:45 Asia/Manila] PHP   2. Job->getJobDetailsByID($jobID = '41') C:\wamp64\www\HireMe\company\viewjob.php:25
-[14-Apr-2025 23:28:45 Asia/Manila] PHP Warning:  Undefined array key "Qualifications" in C:\wamp64\www\HireMe\classes\job.php on line 245
-[14-Apr-2025 23:28:45 Asia/Manila] PHP Stack trace:
-[14-Apr-2025 23:28:45 Asia/Manila] PHP   1. {main}() C:\wamp64\www\HireMe\company\viewjob.php:0
-[14-Apr-2025 23:28:45 Asia/Manila] PHP   2. Job->getJobDetailsByID($jobID = '41') C:\wamp64\www\HireMe\company\viewjob.php:25
-[14-Apr-2025 23:28:55 Asia/Manila] PHP Warning:  Undefined array key "Skills" in C:\wamp64\www\HireMe\classes\job.php on line 244
-[14-Apr-2025 23:28:55 Asia/Manila] PHP Stack trace:
-[14-Apr-2025 23:28:55 Asia/Manila] PHP   1. {main}() C:\wamp64\www\HireMe\company\viewapplicant.php:0
-[14-Apr-2025 23:28:55 Asia/Manila] PHP   2. Job->getJobDetailsByID($jobID = '41') C:\wamp64\www\HireMe\company\viewapplicant.php:30
-[14-Apr-2025 23:28:55 Asia/Manila] PHP Warning:  Undefined array key "Qualifications" in C:\wamp64\www\HireMe\classes\job.php on line 245
-[14-Apr-2025 23:28:55 Asia/Manila] PHP Stack trace:
-[14-Apr-2025 23:28:55 Asia/Manila] PHP   1. {main}() C:\wamp64\www\HireMe\company\viewapplicant.php:0
-[14-Apr-2025 23:28:55 Asia/Manila] PHP   2. Job->getJobDetailsByID($jobID = '41') C:\wamp64\www\HireMe\company\viewapplicant.php:30
-[14-Apr-2025 23:29:20 Asia/Manila] PHP Warning:  Undefined array key "Skills" in C:\wamp64\www\HireMe\classes\job.php on line 244
-[14-Apr-2025 23:29:20 Asia/Manila] PHP Stack trace:
-[14-Apr-2025 23:29:20 Asia/Manila] PHP   1. {main}() C:\wamp64\www\HireMe\company\viewapplicant.php:0
-[14-Apr-2025 23:29:20 Asia/Manila] PHP   2. Job->getJobDetailsByID($jobID = '41') C:\wamp64\www\HireMe\company\viewapplicant.php:30
-[14-Apr-2025 23:29:20 Asia/Manila] PHP Warning:  Undefined array key "Qualifications" in C:\wamp64\www\HireMe\classes\job.php on line 245
-[14-Apr-2025 23:29:20 Asia/Manila] PHP Stack trace:
-[14-Apr-2025 23:29:20 Asia/Manila] PHP   1. {main}() C:\wamp64\www\HireMe\company\viewapplicant.php:0
-[14-Apr-2025 23:29:20 Asia/Manila] PHP   2. Job->getJobDetailsByID($jobID = '41') C:\wamp64\www\HireMe\company\viewapplicant.php:30
-[14-Apr-2025 23:31:20 Asia/Manila] PHP Warning:  Undefined array key "Skills" in C:\wamp64\www\HireMe\classes\job.php on line 244
-[14-Apr-2025 23:31:20 Asia/Manila] PHP Stack trace:
-[14-Apr-2025 23:31:20 Asia/Manila] PHP   1. {main}() C:\wamp64\www\HireMe\company\viewapplicant.php:0
-[14-Apr-2025 23:31:20 Asia/Manila] PHP   2. Job->getJobDetailsByID($jobID = '41') C:\wamp64\www\HireMe\company\viewapplicant.php:30
-[14-Apr-2025 23:31:20 Asia/Manila] PHP Warning:  Undefined array key "Qualifications" in C:\wamp64\www\HireMe\classes\job.php on line 245
-[14-Apr-2025 23:31:20 Asia/Manila] PHP Stack trace:
-[14-Apr-2025 23:31:20 Asia/Manila] PHP   1. {main}() C:\wamp64\www\HireMe\company\viewapplicant.php:0
-[14-Apr-2025 23:31:20 Asia/Manila] PHP   2. Job->getJobDetailsByID($jobID = '41') C:\wamp64\www\HireMe\company\viewapplicant.php:30
-[14-Apr-2025 23:33:27 Asia/Manila] PHP Warning:  Undefined array key "Skills" in C:\wamp64\www\HireMe\classes\job.php on line 244
-[14-Apr-2025 23:33:27 Asia/Manila] PHP Stack trace:
-[14-Apr-2025 23:33:27 Asia/Manila] PHP   1. {main}() C:\wamp64\www\HireMe\company\viewapplicant.php:0
-[14-Apr-2025 23:33:27 Asia/Manila] PHP   2. Job->getJobDetailsByID($jobID = '41') C:\wamp64\www\HireMe\company\viewapplicant.php:30
-[14-Apr-2025 23:33:27 Asia/Manila] PHP Warning:  Undefined array key "Qualifications" in C:\wamp64\www\HireMe\classes\job.php on line 245
-[14-Apr-2025 23:33:27 Asia/Manila] PHP Stack trace:
-[14-Apr-2025 23:33:27 Asia/Manila] PHP   1. {main}() C:\wamp64\www\HireMe\company\viewapplicant.php:0
-[14-Apr-2025 23:33:27 Asia/Manila] PHP   2. Job->getJobDetailsByID($jobID = '41') C:\wamp64\www\HireMe\company\viewapplicant.php:30
-[14-Apr-2025 23:34:04 Asia/Manila] PHP Warning:  Undefined array key "Skills" in C:\wamp64\www\HireMe\classes\job.php on line 244
-[14-Apr-2025 23:34:04 Asia/Manila] PHP Stack trace:
-[14-Apr-2025 23:34:04 Asia/Manila] PHP   1. {main}() C:\wamp64\www\HireMe\company\viewapplicant.php:0
-[14-Apr-2025 23:34:04 Asia/Manila] PHP   2. Job->getJobDetailsByID($jobID = '41') C:\wamp64\www\HireMe\company\viewapplicant.php:30
-[14-Apr-2025 23:34:04 Asia/Manila] PHP Warning:  Undefined array key "Qualifications" in C:\wamp64\www\HireMe\classes\job.php on line 245
-[14-Apr-2025 23:34:04 Asia/Manila] PHP Stack trace:
-[14-Apr-2025 23:34:04 Asia/Manila] PHP   1. {main}() C:\wamp64\www\HireMe\company\viewapplicant.php:0
-[14-Apr-2025 23:34:04 Asia/Manila] PHP   2. Job->getJobDetailsByID($jobID = '41') C:\wamp64\www\HireMe\company\viewapplicant.php:30
-[14-Apr-2025 23:34:28 Asia/Manila] PHP Warning:  Undefined array key "Skills" in C:\wamp64\www\HireMe\classes\job.php on line 244
-[14-Apr-2025 23:34:28 Asia/Manila] PHP Stack trace:
-[14-Apr-2025 23:34:28 Asia/Manila] PHP   1. {main}() C:\wamp64\www\HireMe\company\viewapplicant.php:0
-[14-Apr-2025 23:34:28 Asia/Manila] PHP   2. Job->getJobDetailsByID($jobID = '41') C:\wamp64\www\HireMe\company\viewapplicant.php:30
-[14-Apr-2025 23:34:28 Asia/Manila] PHP Warning:  Undefined array key "Qualifications" in C:\wamp64\www\HireMe\classes\job.php on line 245
-[14-Apr-2025 23:34:28 Asia/Manila] PHP Stack trace:
-[14-Apr-2025 23:34:28 Asia/Manila] PHP   1. {main}() C:\wamp64\www\HireMe\company\viewapplicant.php:0
-[14-Apr-2025 23:34:28 Asia/Manila] PHP   2. Job->getJobDetailsByID($jobID = '41') C:\wamp64\www\HireMe\company\viewapplicant.php:30
-[14-Apr-2025 23:34:53 Asia/Manila] PHP Warning:  Undefined array key "Skills" in C:\wamp64\www\HireMe\classes\job.php on line 244
-[14-Apr-2025 23:34:53 Asia/Manila] PHP Stack trace:
-[14-Apr-2025 23:34:53 Asia/Manila] PHP   1. {main}() C:\wamp64\www\HireMe\company\viewapplicant.php:0
-[14-Apr-2025 23:34:53 Asia/Manila] PHP   2. Job->getJobDetailsByID($jobID = '41') C:\wamp64\www\HireMe\company\viewapplicant.php:30
-[14-Apr-2025 23:34:53 Asia/Manila] PHP Warning:  Undefined array key "Qualifications" in C:\wamp64\www\HireMe\classes\job.php on line 245
-[14-Apr-2025 23:34:53 Asia/Manila] PHP Stack trace:
-[14-Apr-2025 23:34:53 Asia/Manila] PHP   1. {main}() C:\wamp64\www\HireMe\company\viewapplicant.php:0
-[14-Apr-2025 23:34:53 Asia/Manila] PHP   2. Job->getJobDetailsByID($jobID = '41') C:\wamp64\www\HireMe\company\viewapplicant.php:30
+[14-Apr-2025 10:03:20 UTC] PHP Warning:  Undefined variable $companyName in /home/u201145375/domains/hireme-app.online/public_html/company/menubar.php on line 47
+[14-Apr-2025 10:03:20 UTC] PHP Deprecated:  strtoupper(): Passing null to parameter #1 ($string) of type string is deprecated in /home/u201145375/domains/hireme-app.online/public_html/company/menubar.php on line 47
+[14-Apr-2025 10:03:52 UTC] PHP Warning:  Undefined variable $companyName in /home/u201145375/domains/hireme-app.online/public_html/company/menubar.php on line 47
+[14-Apr-2025 10:03:52 UTC] PHP Deprecated:  strtoupper(): Passing null to parameter #1 ($string) of type string is deprecated in /home/u201145375/domains/hireme-app.online/public_html/company/menubar.php on line 47
+[14-Apr-2025 14:17:41 UTC] PHP Warning:  Undefined variable $email in /home/u201145375/domains/hireme-app.online/public_html/company/registration.php on line 112
+[14-Apr-2025 14:23:46 UTC] PHP Warning:  Undefined array key "username" in /home/u201145375/domains/hireme-app.online/public_html/company/registration.php on line 9
+[14-Apr-2025 14:23:46 UTC] PHP Warning:  Undefined array key "username" in /home/u201145375/domains/hireme-app.online/public_html/company/registration.php on line 15
+[14-Apr-2025 14:23:46 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getRole() on null in /home/u201145375/domains/hireme-app.online/public_html/company/registration.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/company/registration.php on line 15
+[14-Apr-2025 14:23:55 UTC] PHP Warning:  Undefined variable $email in /home/u201145375/domains/hireme-app.online/public_html/company/registration.php on line 112
+[14-Apr-2025 14:58:22 UTC] PHP Warning:  Undefined array key "verifiedemail" in /home/u201145375/domains/hireme-app.online/public_html/company/registration.php on line 83
+[14-Apr-2025 14:58:22 UTC] PHP Warning:  Undefined array key "otpID" in /home/u201145375/domains/hireme-app.online/public_html/company/registration.php on line 83
+[14-Apr-2025 15:07:18 UTC] PHP Warning:  Undefined array key "verifiedemail" in /home/u201145375/domains/hireme-app.online/public_html/company/registration.php on line 83
+[14-Apr-2025 15:07:18 UTC] PHP Warning:  Undefined array key "otpID" in /home/u201145375/domains/hireme-app.online/public_html/company/registration.php on line 83
+[14-Apr-2025 16:52:46 UTC] PHP Warning:  Undefined variable $jobID in /home/u201145375/domains/hireme-app.online/public_html/company/viewapplicant.php on line 30
+[14-Apr-2025 16:52:46 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getJobTitle() on array in /home/u201145375/domains/hireme-app.online/public_html/company/viewapplicant.php:30
+Stack trace:
+#0 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/company/viewapplicant.php on line 30
+[14-Apr-2025 17:20:49 UTC] PHP Deprecated:  strpos(): Passing null to parameter #1 ($haystack) of type string is deprecated in /home/u201145375/domains/hireme-app.online/public_html/company/viewapplicant.php on line 85
+[14-Apr-2025 17:20:49 UTC] PHP Deprecated:  preg_match(): Passing null to parameter #2 ($subject) of type string is deprecated in /home/u201145375/domains/hireme-app.online/public_html/company/viewapplicant.php on line 96
+[14-Apr-2025 17:25:17 UTC] PHP Deprecated:  strpos(): Passing null to parameter #1 ($haystack) of type string is deprecated in /home/u201145375/domains/hireme-app.online/public_html/company/viewapplicant.php on line 85
+[14-Apr-2025 17:25:17 UTC] PHP Deprecated:  preg_match(): Passing null to parameter #2 ($subject) of type string is deprecated in /home/u201145375/domains/hireme-app.online/public_html/company/viewapplicant.php on line 96
+[14-Apr-2025 17:26:18 UTC] PHP Deprecated:  preg_match(): Passing null to parameter #2 ($subject) of type string is deprecated in /home/u201145375/domains/hireme-app.online/public_html/company/viewapplicant.php on line 96
+[14-Apr-2025 19:56:46 UTC] PHP Warning:  Undefined array key "verifiedemail" in /home/u201145375/domains/hireme-app.online/public_html/company/registration.php on line 83
+[14-Apr-2025 19:56:46 UTC] PHP Warning:  Undefined array key "otpID" in /home/u201145375/domains/hireme-app.online/public_html/company/registration.php on line 83
+[14-Apr-2025 20:12:35 UTC] PHP Warning:  Undefined variable $companyName in /home/u201145375/domains/hireme-app.online/public_html/company/menubar.php on line 47
+[14-Apr-2025 20:12:35 UTC] PHP Deprecated:  strtoupper(): Passing null to parameter #1 ($string) of type string is deprecated in /home/u201145375/domains/hireme-app.online/public_html/company/menubar.php on line 47
+[14-Apr-2025 20:13:10 UTC] PHP Warning:  Undefined variable $companyName in /home/u201145375/domains/hireme-app.online/public_html/company/menubar.php on line 47
+[14-Apr-2025 20:13:10 UTC] PHP Deprecated:  strtoupper(): Passing null to parameter #1 ($string) of type string is deprecated in /home/u201145375/domains/hireme-app.online/public_html/company/menubar.php on line 47
+[14-Apr-2025 20:13:14 UTC] PHP Warning:  Undefined variable $companyName in /home/u201145375/domains/hireme-app.online/public_html/company/menubar.php on line 47
+[14-Apr-2025 20:13:14 UTC] PHP Deprecated:  strtoupper(): Passing null to parameter #1 ($string) of type string is deprecated in /home/u201145375/domains/hireme-app.online/public_html/company/menubar.php on line 47
+[14-Apr-2025 20:13:14 UTC] PHP Warning:  Undefined variable $companyProfile in /home/u201145375/domains/hireme-app.online/public_html/company/profile.php on line 81
+[14-Apr-2025 20:13:18 UTC] PHP Warning:  Undefined variable $companyName in /home/u201145375/domains/hireme-app.online/public_html/company/menubar.php on line 47
+[14-Apr-2025 20:13:18 UTC] PHP Deprecated:  strtoupper(): Passing null to parameter #1 ($string) of type string is deprecated in /home/u201145375/domains/hireme-app.online/public_html/company/menubar.php on line 47
+[14-Apr-2025 20:13:24 UTC] PHP Warning:  Undefined variable $companyName in /home/u201145375/domains/hireme-app.online/public_html/company/menubar.php on line 47
+[14-Apr-2025 20:13:24 UTC] PHP Deprecated:  strtoupper(): Passing null to parameter #1 ($string) of type string is deprecated in /home/u201145375/domains/hireme-app.online/public_html/company/menubar.php on line 47
+[14-Apr-2025 20:14:21 UTC] PHP Warning:  Undefined variable $companyName in /home/u201145375/domains/hireme-app.online/public_html/company/menubar.php on line 47
+[14-Apr-2025 20:14:21 UTC] PHP Deprecated:  strtoupper(): Passing null to parameter #1 ($string) of type string is deprecated in /home/u201145375/domains/hireme-app.online/public_html/company/menubar.php on line 47
+[14-Apr-2025 22:34:37 UTC] PHP Warning:  Undefined variable $companyName in /home/u201145375/domains/hireme-app.online/public_html/company/menubar.php on line 47
+[14-Apr-2025 22:34:37 UTC] PHP Deprecated:  strtoupper(): Passing null to parameter #1 ($string) of type string is deprecated in /home/u201145375/domains/hireme-app.online/public_html/company/menubar.php on line 47
+[14-Apr-2025 22:34:38 UTC] PHP Warning:  Undefined variable $companyName in /home/u201145375/domains/hireme-app.online/public_html/company/menubar.php on line 47
+[14-Apr-2025 22:34:38 UTC] PHP Deprecated:  strtoupper(): Passing null to parameter #1 ($string) of type string is deprecated in /home/u201145375/domains/hireme-app.online/public_html/company/menubar.php on line 47
+[15-Apr-2025 02:04:29 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getResumeFilePath() on array in /home/u201145375/domains/hireme-app.online/public_html/company/viewapplicant.php:132
+Stack trace:
+#0 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/company/viewapplicant.php on line 132
+[15-Apr-2025 02:04:38 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getResumeFilePath() on array in /home/u201145375/domains/hireme-app.online/public_html/company/viewapplicant.php:132
+Stack trace:
+#0 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/company/viewapplicant.php on line 132
+[15-Apr-2025 02:05:52 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getResumeFilePath() on array in /home/u201145375/domains/hireme-app.online/public_html/company/viewapplicant.php:132
+Stack trace:
+#0 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/company/viewapplicant.php on line 132
+[15-Apr-2025 02:06:30 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getResumeFilePath() on array in /home/u201145375/domains/hireme-app.online/public_html/company/viewapplicant.php:132
+Stack trace:
+#0 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/company/viewapplicant.php on line 132
+[15-Apr-2025 02:06:51 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getResumeFilePath() on array in /home/u201145375/domains/hireme-app.online/public_html/company/viewapplicant.php:132
+Stack trace:
+#0 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/company/viewapplicant.php on line 132
+[15-Apr-2025 02:07:11 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getResumeFilePath() on array in /home/u201145375/domains/hireme-app.online/public_html/company/viewapplicant.php:132
+Stack trace:
+#0 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/company/viewapplicant.php on line 132
+[15-Apr-2025 02:08:10 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getResumeFilePath() on array in /home/u201145375/domains/hireme-app.online/public_html/company/viewapplicant.php:132
+Stack trace:
+#0 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/company/viewapplicant.php on line 132
+[15-Apr-2025 02:08:27 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getResumeFilePath() on array in /home/u201145375/domains/hireme-app.online/public_html/company/viewapplicant.php:132
+Stack trace:
+#0 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/company/viewapplicant.php on line 132
+[15-Apr-2025 02:11:41 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getResumeFilePath() on array in /home/u201145375/domains/hireme-app.online/public_html/company/viewapplicant.php:132
+Stack trace:
+#0 {main}
+  thrown in /home/u201145375/domains/hireme-app.online/public_html/company/viewapplicant.php on line 132
+[15-Apr-2025 06:38:09 UTC] PHP Warning:  Undefined variable $companyName in /home/u201145375/domains/hireme-app.online/public_html/company/menubar.php on line 47
+[15-Apr-2025 06:38:09 UTC] PHP Deprecated:  strtoupper(): Passing null to parameter #1 ($string) of type string is deprecated in /home/u201145375/domains/hireme-app.online/public_html/company/menubar.php on line 47
+[15-Apr-2025 06:38:14 UTC] PHP Warning:  Undefined variable $companyName in /home/u201145375/domains/hireme-app.online/public_html/company/menubar.php on line 47
+[15-Apr-2025 06:38:14 UTC] PHP Deprecated:  strtoupper(): Passing null to parameter #1 ($string) of type string is deprecated in /home/u201145375/domains/hireme-app.online/public_html/company/menubar.php on line 47
