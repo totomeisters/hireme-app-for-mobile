@@ -202,40 +202,26 @@ class JobService {
 
   static Future<Map<String, dynamic>> jobApplied(String userId) async {
     try {
-      // API Link
-      // var uri = Uri.parse('https://hireme-capstone.000webhostapp.com');
       var uri = Uri.parse('https://hireme-app.online/hireme/api.php');
-
-      // Get date now
       DateTime now = DateTime.now();
-
-      // Format Date
       String formattedDate = DateFormat('yyyy-MM-dd').format(now);
+      String apiKey =
+          md5.convert(utf8.encode("hireme$formattedDate")).toString();
 
-      // Key
-      String key = "hireme$formattedDate";
-
-      // Convert key to md5
-      String apiKey = md5.convert(utf8.encode(key)).toString();
-
-      // Fill up needed data for request
       var requestBody = {
         "state": "state_list_job_application",
         "user_id": userId,
         "api_key": apiKey,
       };
 
-      // Send http request
-      http.Response response = await http.post(
-        uri,
-        body: requestBody,
-      );
-
-      // Decode Response
-      final responseJson = utf8.decode(response.bodyBytes);
-      return jsonDecode(responseJson);
+      final response = await http.post(uri, body: requestBody);
+      print('Request Body: $requestBody');
+      print('Raw API Response: ${response.body}');
+      if (response.body.isEmpty) {
+        return {'verdict': false, 'message': 'Empty response from server'};
+      }
+      return jsonDecode(utf8.decode(response.bodyBytes));
     } catch (e) {
-      print('Error during login: $e');
       return {'verdict': false, 'message': e.toString()};
     }
   }

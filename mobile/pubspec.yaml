@@ -46,7 +46,7 @@ dependencies:
   path_provider: ^2.1.1  # For accessing device directory paths
   path: ^1.8.3          # For path manipulation functions
   shimmer: ^2.0.0
- 
+  lottie: ^2.3.2  # Check the latest version on pub.dev
  
 
 
