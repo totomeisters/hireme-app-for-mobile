@@ -24,9 +24,17 @@ class _NotificationPageState extends State<NotificationPage> {
 
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
+        debugPrint(
+            'Response data: $data'); // Debug log to check the raw response
+
         if (data['success']) {
           return data['notifications'];
+        } else {
+          debugPrint('No notifications found or error in response.');
         }
+      } else {
+        debugPrint(
+            'Error: Server returned non-200 status code: ${response.statusCode}');
       }
     } catch (e) {
       debugPrint('Error fetching notifications: $e');
@@ -63,7 +71,7 @@ class _NotificationPageState extends State<NotificationPage> {
             ),
             const SizedBox(width: 15),
             Text(
-              'Job Posting Notifications',
+              'Notifications',
               style: GoogleFonts.roboto(
                 textStyle: const TextStyle(
                   color: Colors.white,
@@ -98,14 +106,24 @@ class _NotificationPageState extends State<NotificationPage> {
               itemCount: snapshot.data!.length,
               itemBuilder: (context, index) {
                 final notification = snapshot.data![index];
+
                 String createdAt = convertDate(notification['created_at']);
-                String content = notification['content'];
-                String jobId = notification['job_id']?.toString() ?? 'unknown';
+                String? content = notification['content'];
+                String? jobStatus = notification['job_update_status'];
+                String? interviewStatus = notification['interview_status'];
+                String? interviewDate = notification['interview_date'];
+                String? applicationStatus = notification['application_status'];
+                String? interviewScheduledDate =
+                    notification['interview_scheduled_date'];
 
                 return _buildNotificationCard(
                   content: content,
                   date: createdAt,
-                  jobId: jobId,
+                  jobStatus: jobStatus,
+                  interviewStatus: interviewStatus,
+                  interviewDate: interviewDate,
+                  applicationStatus: applicationStatus,
+                  interviewScheduledDate: interviewScheduledDate,
                 );
               },
             );
@@ -136,8 +154,8 @@ class _NotificationPageState extends State<NotificationPage> {
             label: 'About',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.info_outline),
-            activeIcon: Icon(Icons.info),
+            icon: Icon(Icons.recommend_outlined),
+            activeIcon: Icon(Icons.recommend),
             label: 'Recommended Jobs',
           ),
         ],
@@ -155,24 +173,25 @@ class _NotificationPageState extends State<NotificationPage> {
 
   // Build notification card widget
   Widget _buildNotificationCard({
-    required String content,
+    required String? content,
     required String date,
-    required String jobId,
+    String? jobStatus,
+    String? interviewStatus,
+    String? interviewDate,
+    String? applicationStatus,
+    String? interviewScheduledDate,
   }) {
-    return InkWell(
-      onTap: () {
-        widget.onNotificationClick(jobId); // Call the passed function here
-      },
-      child: Card(
-        elevation: 8.0,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15.0),
-        ),
-        child: Container(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
+    return Card(
+      elevation: 8.0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(15.0),
+      ),
+      child: Container(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            if (content != null)
               Text(
                 content,
                 style: GoogleFonts.roboto(
@@ -182,18 +201,58 @@ class _NotificationPageState extends State<NotificationPage> {
                   ),
                 ),
               ),
-              const SizedBox(height: 10),
+            if (jobStatus != null)
               Text(
-                date,
+                "Application Status: $jobStatus",
                 style: GoogleFonts.roboto(
                   textStyle: const TextStyle(
-                    fontSize: 14,
-                    color: Colors.grey,
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.blue,
                   ),
                 ),
               ),
-            ],
-          ),
+            if (interviewStatus != null && interviewDate != null)
+              Text(
+                "Interview Status: $interviewStatus\nInterview Date: $interviewDate",
+                style: GoogleFonts.roboto(
+                  textStyle: const TextStyle(
+                    fontSize: 16,
+                    color: Colors.green,
+                  ),
+                ),
+              ),
+            if (applicationStatus != null)
+              Text(
+                "Application Status: $applicationStatus",
+                style: GoogleFonts.roboto(
+                  textStyle: const TextStyle(
+                    fontSize: 16,
+                    color: Colors.orange,
+                  ),
+                ),
+              ),
+            if (interviewScheduledDate != null)
+              Text(
+                "Scheduled Interview: $interviewScheduledDate",
+                style: GoogleFonts.roboto(
+                  textStyle: const TextStyle(
+                    fontSize: 16,
+                    color: Colors.red,
+                  ),
+                ),
+              ),
+            const SizedBox(height: 10),
+            Text(
+              date,
+              style: GoogleFonts.roboto(
+                textStyle: const TextStyle(
+                  fontSize: 14,
+                  color: Colors.grey,
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );

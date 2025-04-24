@@ -8,7 +8,7 @@ import 'package:hireme_app/pages/about.dart';
 import 'package:hireme_app/services/job.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
-import 'package:shimmer/shimmer.dart'; // Add this in pubspec.yaml
+import 'package:shimmer/shimmer.dart';
 
 class JobApplication extends StatefulWidget {
   const JobApplication({super.key});
@@ -20,8 +20,11 @@ class JobApplication extends StatefulWidget {
 class _JobApplicationState extends State<JobApplication> {
   List appliedJobs = [];
   List interviewList = [];
+  List filteredAppliedJobs = [];
+  List filteredInterviewList = [];
   bool isLoading = true;
   int _selectedIndex = 2;
+  String selectedFilter = "Newest"; // Default filter
 
   @override
   void initState() {
@@ -34,6 +37,7 @@ class _JobApplicationState extends State<JobApplication> {
     await interviewListData();
     setState(() {
       isLoading = false;
+      applyFilters(); // Apply filters after fetching data
     });
   }
 
@@ -63,16 +67,6 @@ class _JobApplicationState extends State<JobApplication> {
           ),
         );
       }
-    } on FormatException catch (e) {
-      debugPrint("FormatException while fetching applied jobs: $e");
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content:
-              Text('Failed to retrieve applied jobs. Invalid response format.'),
-          duration: Duration(seconds: 3),
-          backgroundColor: Colors.red,
-        ),
-      );
     } catch (e) {
       debugPrint("Unexpected error while fetching applied jobs: $e");
       ScaffoldMessenger.of(context).showSnackBar(
@@ -119,16 +113,6 @@ class _JobApplicationState extends State<JobApplication> {
           ),
         );
       }
-    } on FormatException catch (e) {
-      debugPrint("FormatException while fetching interview list: $e");
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text(
-              'Failed to retrieve interview list. Invalid response format.'),
-          duration: Duration(seconds: 3),
-          backgroundColor: Colors.red,
-        ),
-      );
     } catch (e) {
       debugPrint("Unexpected error while fetching interview list: $e");
       ScaffoldMessenger.of(context).showSnackBar(
@@ -169,6 +153,29 @@ class _JobApplicationState extends State<JobApplication> {
     }
   }
 
+  void applyFilters() {
+    setState(() {
+      if (selectedFilter == "Newest") {
+        // Sort by date descending
+        filteredAppliedJobs = [...appliedJobs]..sort((a, b) =>
+            DateTime.parse(b['ApplicationDate'])
+                .compareTo(DateTime.parse(a['ApplicationDate'])));
+        filteredInterviewList = [...interviewList]..sort((a, b) =>
+            DateTime.parse(b['InterviewDate'])
+                .compareTo(DateTime.parse(a['InterviewDate'])));
+      } else if (selectedFilter == "Status") {
+        // Sort by status alphabetically
+        filteredAppliedJobs = [...appliedJobs]..sort((a, b) =>
+            (a['Status'] ?? '')
+                .toString()
+                .compareTo((b['Status'] ?? '').toString()));
+        filteredInterviewList = [
+          ...interviewList
+        ]; // No specific status for interviews
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -191,6 +198,27 @@ class _JobApplicationState extends State<JobApplication> {
               ),
             ],
           ),
+          actions: [
+            PopupMenuButton<String>(
+              onSelected: (value) {
+                setState(() {
+                  selectedFilter = value;
+                  applyFilters(); // Reapply filters whenever the filter changes
+                });
+              },
+              itemBuilder: (context) => [
+                const PopupMenuItem(
+                  value: "Newest",
+                  child: Text('Newest'),
+                ),
+                const PopupMenuItem(
+                  value: "Status",
+                  child: Text('Status'),
+                ),
+              ],
+              icon: const Icon(Icons.filter_alt),
+            ),
+          ],
           backgroundColor: Colors.blue,
           bottom: TabBar(
             indicatorWeight: 4,
@@ -214,8 +242,9 @@ class _JobApplicationState extends State<JobApplication> {
             color: Colors.black.withOpacity(0.2),
             child: TabBarView(
               children: [
-                _buildJobList(appliedJobs, 'No Jobs Applied', false),
-                _buildJobList(interviewList, 'No Interviews Scheduled', true),
+                _buildJobList(filteredAppliedJobs, 'No Jobs Applied', false),
+                _buildJobList(
+                    filteredInterviewList, 'No Interviews Scheduled', true),
               ],
             ),
           ),

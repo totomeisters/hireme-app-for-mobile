@@ -162,6 +162,7 @@ class JobService {
       return {'verdict': false, 'message': e.toString()};
     }
   } */
+
   static Future<Map<String, dynamic>> applyToJob(
       String userId, String resume, String jobId,
       {bool isFile = false}) async {
