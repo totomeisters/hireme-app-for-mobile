@@ -162,27 +162,51 @@ class _ApplicationFormState extends State<ApplicationForm> {
         _isSubmitting = false;
       });
 
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(response["verdict"] == true
-              ? 'Application submitted!'
-              : response["message"].isNotEmpty
-                  ? response["message"]
-                  : "No Data"),
-          backgroundColor:
-              response["verdict"] == true ? Colors.green : Colors.red,
-        ),
-      );
+      // Validate and handle server response
+      if (response.containsKey("verdict") && response["verdict"] == true) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Application submitted!'),
+            backgroundColor: Colors.green,
+          ),
+        );
+      } else if (response.containsKey("message")) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(response["message"]),
+            backgroundColor: Colors.red,
+          ),
+        );
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Unexpected response from the server.'),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
     } catch (e) {
       setState(() {
         _isSubmitting = false;
       });
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Failed to submit application: $e'),
-          backgroundColor: Colors.red,
-        ),
-      );
+
+      // Check if it's a JSON parsing error or a network issue
+      if (e is FormatException) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text(
+                'Invalid response from the server. Please contact support.'),
+            backgroundColor: Colors.red,
+          ),
+        );
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Failed to submit application: $e'),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
     }
   }
 
@@ -197,16 +221,29 @@ class _ApplicationFormState extends State<ApplicationForm> {
       return;
     }
 
-    if (_pickedFile != null &&
-        !_pickedFile!.name.endsWith('.pdf') &&
-        !_pickedFile!.name.endsWith('.docx')) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Only .pdf or .docx files are allowed.'),
-          backgroundColor: Colors.red,
-        ),
-      );
-      return;
+    // File validation: Check if the file exists
+    if (_pickedFile != null) {
+      if (!_pickedFile!.name.endsWith('.pdf') &&
+          !_pickedFile!.name.endsWith('.docx')) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Only .pdf or .docx files are allowed.'),
+            backgroundColor: Colors.red,
+          ),
+        );
+        return;
+      }
+
+      if (_resumeFile == null || !_resumeFile!.existsSync()) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content:
+                Text('The selected file does not exist. Please reattach it.'),
+            backgroundColor: Colors.red,
+          ),
+        );
+        return;
+      }
     }
 
     showDialog(

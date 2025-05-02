@@ -50,18 +50,26 @@ class _JobApplicationState extends State<JobApplication> {
         return;
       }
 
-      var response = await JobService.jobApplied(userId);
+      var responseRaw = await JobService.jobApplied(userId);
 
-      if (response["verdict"] == true) {
+      debugPrint("RAW jobApplied response: $responseRaw");
+
+      if (responseRaw is String) {
+        // If it's a raw string, maybe it wasn't parsed properly
+        debugPrint(
+            "Response is a raw string, not a map. Possible server error.");
+      }
+
+      if (responseRaw["verdict"] == true) {
         setState(() {
-          appliedJobs = response["application_list"] ?? [];
+          appliedJobs = responseRaw["application_list"] ?? [];
         });
       } else {
-        debugPrint("Error: ${response["message"]}");
+        debugPrint("Error: ${responseRaw["message"]}");
         if (!mounted) return;
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text(response["message"] ?? 'No Data.'),
+            content: Text(responseRaw["message"] ?? 'No Data.'),
             duration: const Duration(seconds: 3),
             backgroundColor: Colors.red,
           ),
